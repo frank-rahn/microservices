@@ -13,9 +13,20 @@
 	<artifactId>microservices</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
-	<name>microservices</name>
+	<name>Microservices</name>
 	<description>Die Parent-POM für die Microservices auf Basis von Spring Boot.</description>
+	<url>https://github.com/frank-rahn/microservices</url>
+
+	<organization>
+		<name>Frank W. Rahn</name>
+		<url>http://www.frank-rahn.de/</url>
+	</organization>
+
+	<scm>
+		<url>https://github.com/frank-rahn/microservices</url>
+		<connection>scm:git:git://github.com/frank-rahn/microservices.git</connection>
+		<developerConnection>scm:git:git@github.com:frank-rahn/microservices.git</developerConnection>
+	</scm>
 
 	<modules>
 		<module>securities-management</module>
@@ -27,6 +38,16 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<!-- Workaround for http://jira.codehaus.org/browse/MECLIPSE-94 -->
+					<eclipseProjectDir>.</eclipseProjectDir>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
