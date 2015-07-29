@@ -1,0 +1,11 @@
+# Java Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Project Files #
+target
+bin
