@@ -1,32 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.5.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>de.rahn</groupId>
 	<artifactId>microservices</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<name>Microservices</name>
 	<description>Die Parent-POM für die Microservices auf Basis von Spring Boot.</description>
 	<url>https://github.com/frank-rahn/microservices</url>
-
-	<organization>
-		<name>Frank W. Rahn</name>
-		<url>http://www.frank-rahn.de/</url>
-	</organization>
-
-	<scm>
-		<url>https://github.com/frank-rahn/microservices</url>
-		<connection>scm:git:git://github.com/frank-rahn/microservices.git</connection>
-		<developerConnection>scm:git:git@github.com:frank-rahn/microservices.git</developerConnection>
-	</scm>
 
 	<modules>
 		<module>securities-management</module>
@@ -35,6 +25,32 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<organization>
+		<name>Frank W. Rahn</name>
+		<url>http://www.frank-rahn.de/</url>
+	</organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+	<scm>
+		<url>https://github.com/frank-rahn/microservices</url>
+		<connection>scm:git:git://github.com/frank-rahn/microservices.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:frank-rahn/microservices.git</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>Frank Rahn</name>
+			<email>frank+git at frank-rahn.de</email>
+			<organization>Frank W. Rahn</organization>
+		</developer>
+	</developers>
 
 	<build>
 		<plugins>
@@ -45,12 +61,32 @@
 					<downloadSources>true</downloadSources>
 					<!-- Workaround for http://jira.codehaus.org/browse/MECLIPSE-94 -->
 					<eclipseProjectDir>.</eclipseProjectDir>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.m2e.core.maven2Builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.springframework.ide.eclipse.core.springbuilder</name>
+						</buildCommand>
+					</additionalBuildcommands>
 				</configuration>
 			</plugin>
 
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							 <goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
