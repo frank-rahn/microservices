@@ -3,7 +3,7 @@
  */
 
 /**
- * Die Datenbankrepräsentationen der Wertpapierverwaltung.
+ * Die Datenobjekte der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
-package de.rahn.finances.entities;
+package de.rahn.finances.domain;
