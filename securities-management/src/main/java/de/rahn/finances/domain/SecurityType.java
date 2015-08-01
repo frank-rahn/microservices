@@ -4,7 +4,7 @@
 package de.rahn.finances.domain;
 
 /**
- * Die Art des Wertpapiers.
+ * Die Art eines Wertpapiers.
  * @author Frank W. Rahn
  */
 public enum SecurityType {
