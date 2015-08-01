@@ -26,13 +26,17 @@ public enum SecurityType {
 	 * @return das Suchergebnis oder <code>null</code>
 	 */
 	public static SecurityType searchText(String name) {
-		for (SecurityType s : SecurityType.values()) {
+		if (name == null) {
+			throw new NullPointerException("Attribut name ist null");
+		}
+
+		for (SecurityType s : values()) {
 			if (s.name.equals(name)) {
 				return s;
 			}
 		}
 
-		return null;
+		throw new IllegalArgumentException("Der Name '" + name + "' ist nicht bekannt");
 	}
 
 	/**

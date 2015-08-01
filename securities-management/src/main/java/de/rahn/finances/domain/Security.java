@@ -3,20 +3,28 @@
  */
 package de.rahn.finances.domain;
 
+import static javax.persistence.AccessType.FIELD;
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
+import javax.persistence.Access;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import de.rahn.finances.domain.util.SecurityTypeConverter;
+
 /**
- * Ein persistente Wertpapier.
+ * Ein persistentes Wertpapier.
  * @author Frank W. Rahn
  */
 @Entity
-@Table(schema = "finances")
+@Table(name = "SEC")
+@Access(FIELD)
 public class Security {
 
 	@Id
@@ -41,6 +49,8 @@ public class Security {
 
 	/** Die Wertpapierart. */
 	@Column(nullable = false)
+	@Enumerated(STRING)
+	@Convert(converter = SecurityTypeConverter.class)
 	private SecurityType type;
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
