@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Author's custom styles
+   Kopfbereich oben  : #4c1c58
+   Kopfbereich unten : #593662
+   Haupthintergrund  : #fffdf7
+   Hintergrund der Seitenleiste : #edede7
+   Rahmen der Seitenleiste      : #e7e7e7
+   Hintergrund des Fußbereich : #2c2c28
+   Titel und Slogan : #ffffff
+   Schriftfarbe : #301313
+   Linkfarbe    : #9d408d
+   ========================================================================== */
+
+body {
+	padding-top: 70px;
+}
+
+body,
+body.overlay {
+	color: #301313;
+	background-color: #fffdf7;
+}
+
+.jumbotron {
+	background-color: #edede7;
+	border-color: #e7e7e7;
+}
+
+.navbar {
+	background-color: #593662;
+	background-image: -moz-linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
+	background-image: -ms-linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
+	background-image: -o-linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4c1c58), color-stop(1, #593662)) !important;
+	background-image: -webkit-linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
+	background-image: linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
+}
+
+.navbar-brand,
+.navbar-brand:focus,
+.navbar .nav > li > a,
+.navbar .nav > li > a:focus {
+	color: #ffffff;
+}
+.navbar-brand:focus {
+	outline: none !important;
+}
+
+.navbar-brand:hover,
+.navbar .nav > li > a:hover {
+	color: #ffffff;
+	background-color: #593662;
+	text-decoration: underline;
+}
+
+a {
+	color: #9d4040;
+}
+a:hover,
+a:focus {
+	color: #da2a2a;
+}
+a:active {
+	color: #e95353;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border-color: #ccc;
+}
