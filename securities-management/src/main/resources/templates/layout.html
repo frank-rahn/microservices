@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 >
 <head lang="de">
-	<title>Wertpapierverwaltung | Frank W. Rahn</title>
+	<title layout:title-pattern="$CONTENT_TITLE | $DECORATOR_TITLE">Frank W. Rahn</title>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +35,7 @@
 			</div>
 			<nav class="collapse navbar-collapse" role="navigation">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 					<li><a href="/index"><span class="glyphicon glyphicon-file"></span> Start</a></li>
 				</ul>
 			</nav>
