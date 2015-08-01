@@ -7,6 +7,8 @@ import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
+import java.io.Serializable;
+
 import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -25,7 +27,9 @@ import de.rahn.finances.domain.util.SecurityTypeConverter;
 @Entity
 @Table(name = "SEC")
 @Access(FIELD)
-public class Security {
+public class Security implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = AUTO)

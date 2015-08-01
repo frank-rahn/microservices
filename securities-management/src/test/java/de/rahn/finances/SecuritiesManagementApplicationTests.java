@@ -3,7 +3,7 @@
  */
 package de.rahn.finances;
 
-import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.rahn.finances.SecuritiesManagementApplication;
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.service.SecuritiesService;
 
@@ -36,7 +35,7 @@ public class SecuritiesManagementApplicationTests {
 	public void loadAllSecurities() {
 		List<Security> securities = service.getSecurities();
 
-		assertThat("Die Liste muss leer geliefert werden", securities, empty());
+		assertThat("Die Liste darf nicht leer sein", securities, hasSize(21));
 	}
 
 }
