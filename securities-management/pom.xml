@@ -11,7 +11,6 @@
 
 	<groupId>de.rahn.finances</groupId>
 	<artifactId>securities-management</artifactId>
-	<packaging>war</packaging>
 
 	<name>Securities Management</name>
 	<description>Die Wertpapierverwaltung.</description>
