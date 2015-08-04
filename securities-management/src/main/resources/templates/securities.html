@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+>
+<head>
+	<title>Liste</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Liste aller Wertpapiere</h1>
+	<div layout:fragment="content">
+		<section class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Filter</h2>
+			</div>
+			<div class="panel-body">
+				<form id="filter" th:object="${filter}" th:action="@{/securities}" action="#" method="post" role="form" class="form-inline">
+					<div class="form-group col-md-4 col-sm-4">
+						<label><input type="checkbox" th:field="*{inventory}" /> Bestand</label>
+					</div>
+					<div class="form-group col-md-4 col-sm-4">
+						<label for="type">Wertpapierart</label>
+						<select class="form-control" th:field="*{type}">
+							<option value="">-</option>
+							<option value="stock">Aktie</option>
+							<option value="fonds">Investmentfonds</option>
+						</select>
+					</div>
+					<div class="text-center col-md-4 col-sm-4">
+						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Filtern</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<section>
+			<h2>Wertpapiere</h2>
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>ISIN</th>
+						<th>Wertpapier-Kennnummer</th>
+						<th>Bezeichnung</th>
+						<th>Kurzname</th>
+						<th>Wertpapierart</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="security : ${securities}">
+						<td>
+							<a href="security.html" th:href="@{'/security/' + ${security.id}}" th:text="${security.isin}">DE0001234560</a>
+						</td>
+						<td th:text="${security.wkn}">123456</td>
+						<td th:text="${security.name}">Firma 1 AG</td>
+						<td th:text="${security.symbol}">A01</td>
+						<td th:text="${security.type.name}">Aktie</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<hr />
+
+		<section>
+			<p><a class="btn btn-default" th:href="@{/}"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</a></p>
+		</section>
+	</div>
+</body>
+</html>
