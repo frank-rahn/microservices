@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+>
+<head>
+	<title>Wertpapier</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Wertpapier</h1>
+	<div layout:fragment="content">
+		<section class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Wertpapier</h2>
+			</div>
+			<div class="panel-body">
+				<form id="security" th:object="${security}" th:action="@{/security}" action="#" method="post" role="form">
+					<div class="form-group">
+						<label for="id">ID:</label>
+						<input type="text" class="form-control" th:field="*{id}" value="1" readonly="readonly"/>
+					</div>
+					<div class="form-group">
+						<label for="isin">ISIN:</label>
+						<input type="text" class="form-control" th:field="*{isin}" value="DE0001234560" />
+					</div>
+					<div class="form-group">
+						<label for="wkn">Wertpapier-Kennnummer:</label>
+						<input type="text" class="form-control" th:field="*{wkn}" value="123456" />
+					</div>
+					<div class="form-group">
+						<label for="name">Name des Wertpapiers:</label>
+						<input type="text" class="form-control" th:field="*{name}" value="Firma A AG" />
+					</div>
+					<div class="form-group">
+						<label for="symbol">Symbol des Wertpapiers:</label>
+						<input type="text" class="form-control" th:field="*{symbol}" value="A01" />
+					</div>
+					<div class="form-group">
+						<label for="type">Wertpapierart</label>
+						<select class="form-control" th:field="*{type}">
+							<option value="stock">Aktie</option>
+							<option value="fonds">Investmentfonds</option>
+						</select>
+					</div>
+					<div class="text-center">
+						<a class="btn btn-default" th:href="@{/securities}">Abbrechen</a>
+						<button type="submit" class="btn btn-danger">Speichern</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
