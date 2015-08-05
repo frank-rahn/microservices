@@ -28,12 +28,11 @@ import de.rahn.finances.domain.util.SecurityTypeConverter;
 @Table(name = "SEC")
 @Access(FIELD)
 public class Security implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = AUTO)
-	private long id;
+	private Long id;
 
 	/** Die International Security Identification Number. */
 	@Column(length = 12, nullable = false)
@@ -58,7 +57,6 @@ public class Security implements Serializable {
 	private SecurityType type;
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
-
 	/**
 	 * @return the isin
 	 */
@@ -132,7 +130,7 @@ public class Security implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -144,7 +142,7 @@ public class Security implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ id >>> 32);
+		result = prime * result + (id == null ? 0 : id.hashCode());
 		result = prime * result + (isin == null ? 0 : isin.hashCode());
 		result = prime * result + (name == null ? 0 : name.hashCode());
 		result = prime * result + (symbol == null ? 0 : symbol.hashCode());
@@ -169,7 +167,11 @@ public class Security implements Serializable {
 			return false;
 		}
 		Security other = (Security) obj;
-		if (id != other.id) {
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
 		}
 		if (isin == null) {
@@ -228,5 +230,4 @@ public class Security implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-
 }

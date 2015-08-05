@@ -15,10 +15,22 @@ import de.rahn.finances.domain.Security;
  */
 public interface SecuritiesRepository extends
 	Repository<Security, Long> {
+			/**
+			 * @return alle gespeicherten Wertpapiere
+			 */
+			List<Security> findAll();
 
 	/**
-	 * @return alle gespeicherten Wertpapiere
+	 * Liefere ein Wertpapier.
+	 * @param id der Identifizierer des Wertpapiers
+	 * @return das Wertpapier
 	 */
-		List<Security> findAll();
+		Security findOne(Long id);
 
+	/**
+	 * Speichere ein Wertpapier.
+	 * @param security das Wertpapier
+	 * @return das Wertpapier
+	 */
+		Security save(Security security);
 }
