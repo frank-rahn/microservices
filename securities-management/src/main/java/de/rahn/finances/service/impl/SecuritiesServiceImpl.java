@@ -3,6 +3,7 @@
  */
 package de.rahn.finances.service.impl;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.finances.service.SecuritiesService#getSecurities()
+	 * @see SecuritiesService#getSecurities()
 	 */
 	@Override
 	public List<Security> getSecurities() {
@@ -37,10 +38,20 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.finances.service.SecuritiesService#getSecurity(java.lang.Long)
+	 * @see SecuritiesService#getSecurity(java.lang.Long)
 	 */
 	@Override
 	public Security getSecurity(Long id) {
 		return repository.findOne(id);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see SecuritiesService#save(de.rahn.finances.domain.Security)
+	 */
+	@Override
+	@Transactional(REQUIRED)
+	public Security save(Security security) {
+		return repository.save(security);
 	}
 }

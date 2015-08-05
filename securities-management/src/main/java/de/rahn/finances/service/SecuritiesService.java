@@ -22,4 +22,11 @@ public interface SecuritiesService {
 	 * @return das Wertpapier
 	 */
 		Security getSecurity(Long id);
+
+	/**
+	 * Speichere das Wertpapier
+	 * @param security das Wertpapier
+	 * @return das Wertpapier
+	 */
+		Security save(Security security);
 }
