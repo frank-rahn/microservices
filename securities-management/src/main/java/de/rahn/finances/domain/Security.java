@@ -215,19 +215,14 @@ public class Security implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Security [id=");
-		builder.append(id);
-		builder.append(", ");
-		if (name != null) {
-			builder.append("name=");
-			builder.append(name);
-			builder.append(", ");
-		}
-		if (isin != null) {
-			builder.append("isin=");
-			builder.append(isin);
-		}
-		builder.append("]");
+		builder.append("Security [id=").append(id).append(", name=").append(name).append(", isin=").append(isin).append("]");
 		return builder.toString();
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
