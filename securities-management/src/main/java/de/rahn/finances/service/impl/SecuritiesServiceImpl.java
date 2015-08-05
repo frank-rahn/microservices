@@ -21,8 +21,8 @@ import de.rahn.finances.service.SecuritiesService;
  * @author Frank W. Rahn
  */
 @Service
+@Transactional(SUPPORTS)
 public class SecuritiesServiceImpl implements SecuritiesService {
-
 	@Autowired
 	private SecuritiesRepository repository;
 
@@ -31,9 +31,16 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 * @see de.rahn.finances.service.SecuritiesService#getSecurities()
 	 */
 	@Override
-	@Transactional(SUPPORTS)
 	public List<Security> getSecurities() {
 		return repository.findAll();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see de.rahn.finances.service.SecuritiesService#getSecurity(java.lang.Long)
+	 */
+	@Override
+	public Security getSecurity(Long id) {
+		return repository.findOne(id);
+	}
 }
