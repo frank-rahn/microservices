@@ -18,6 +18,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import de.rahn.finances.domain.util.SecurityTypeConverter;
 
 /**
@@ -34,17 +36,17 @@ public class Security implements Serializable {
 	@GeneratedValue(strategy = AUTO)
 	private Long id;
 
-	/** Die International Security Identification Number. */
-	@Column(length = 12, nullable = false)
-	private String isin;
-
-	/** Die Wertpapier-Kennnummer (WKN). */
-	@Column(length = 6, nullable = false)
-	private String wkn;
-
 	/** Der Name des Wertpapiers. */
 	@Column(nullable = false)
 	private String name;
+
+	/** Die International Security Identification Number. */
+	@Column(length = 12, nullable = false, unique = true)
+	private String isin;
+
+	/** Die Wertpapier-Kennnummer (WKN). */
+	@Column(length = 6, nullable = false, unique = true)
+	private String wkn;
 
 	/** Das Symbole des Wertpapiers. */
 	@Column(length = 6)
@@ -55,6 +57,11 @@ public class Security implements Serializable {
 	@Enumerated(STRING)
 	@Convert(converter = SecurityTypeConverter.class)
 	private SecurityType type;
+
+	/** Gibt es zu diesem Wertpapier noch einen Bestand? */
+	@Column(nullable = false)
+	@ColumnDefault("false")
+	private boolean inventory = false;
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
 	/**
@@ -143,6 +150,7 @@ public class Security implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (id == null ? 0 : id.hashCode());
+		result = prime * result + (inventory ? 1231 : 1237);
 		result = prime * result + (isin == null ? 0 : isin.hashCode());
 		result = prime * result + (name == null ? 0 : name.hashCode());
 		result = prime * result + (symbol == null ? 0 : symbol.hashCode());
@@ -172,6 +180,9 @@ public class Security implements Serializable {
 				return false;
 			}
 		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (inventory != other.inventory) {
 			return false;
 		}
 		if (isin == null) {
@@ -224,5 +235,19 @@ public class Security implements Serializable {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the inventory
+	 */
+	public boolean isInventory() {
+		return inventory;
+	}
+
+	/**
+	 * @param inventory the inventory to set
+	 */
+	public void setInventory(boolean inventory) {
+		this.inventory = inventory;
 	}
 }

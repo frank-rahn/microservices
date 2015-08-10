@@ -27,10 +27,10 @@ public interface SecuritiesRepository extends
 	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.
 	 * @param pageable die Information über die Paginierung
 	 * @param inventory Filter: <code>true</code>, nur der aktuelle Bestand wird angezeigt
-	 * @param type Filter: nur die Wertpapiere dieses Typs anzeigen
+	 * @param type Filter: nur die Wertpapiere dieser Art anzeigen
 	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
 	 */
-		Page<Security> findAll(Pageable pageable, boolean inventory, SecurityType type);
+		Page<Security> findByInventoryOrType(Pageable pageable, boolean inventory, SecurityType type);
 
 	/**
 	 * Liefere ein Wertpapier.
