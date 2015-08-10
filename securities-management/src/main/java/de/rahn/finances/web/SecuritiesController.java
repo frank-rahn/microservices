@@ -8,6 +8,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.rahn.finances.domain.Security;
+import de.rahn.finances.domain.SecurityType;
 import de.rahn.finances.service.SecuritiesService;
 
 /**
@@ -30,6 +32,14 @@ public class SecuritiesController {
 
 	@Autowired
 	private SecuritiesService service;
+
+	/**
+	 * @return die Liste der {@link SecurityType}s für die Auswahllisten
+	 */
+	@ModelAttribute("securityTypeList")
+	public List<Entry<String, String>> securityTypeList() {
+		return SecurityType.getKeyValueEntries();
+	}
 
 	/**
 	 * Zeide die Startseite an.

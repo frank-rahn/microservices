@@ -38,8 +38,7 @@
 					<div class="form-group">
 						<label for="type">Wertpapierart</label>
 						<select class="form-control" th:field="*{type}">
-							<option value="stock">Aktie</option>
-							<option value="fonds">Investmentfonds</option>
+							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}">Aktie</option>
 						</select>
 					</div>
 					<div class="text-center">
