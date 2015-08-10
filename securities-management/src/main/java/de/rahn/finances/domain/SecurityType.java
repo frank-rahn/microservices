@@ -17,7 +17,7 @@ import java.util.Map.Entry;
  * @author Frank W. Rahn
  */
 public enum SecurityType {
-		stock("Aktie"), fonds("Investmentfonds"), loan("Anleihe"), certificate("Zertifikat"), warrant("Optionsscheine"),
+		stock("Aktie"), fonds("Investmentfonds"), loan("Anleihe"), certificate("Zertifikat"), warrant("Optionsschein"),
 		other("Sonstiges");
 	/** Die Liste der Key-Value-Entries dieser Aufzählung. */
 	private static final List<Entry<String, String>> ENTRIES = unmodifiableList(
