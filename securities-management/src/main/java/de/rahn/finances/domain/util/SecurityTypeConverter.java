@@ -21,7 +21,7 @@ public class SecurityTypeConverter implements AttributeConverter<SecurityType, S
 	 */
 	@Override
 	public String convertToDatabaseColumn(SecurityType attribute) {
-		return attribute.getName();
+		return attribute.getDescription();
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class SecurityTypeConverter implements AttributeConverter<SecurityType, S
 	 */
 	@Override
 	public SecurityType convertToEntityAttribute(String dbData) {
-		return SecurityType.searchText(dbData);
+		return SecurityType.searchType(dbData);
 	}
 
 }
