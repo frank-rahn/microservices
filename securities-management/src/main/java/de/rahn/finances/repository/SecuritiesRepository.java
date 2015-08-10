@@ -5,9 +5,12 @@ package de.rahn.finances.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.Repository;
 
 import de.rahn.finances.domain.Security;
+import de.rahn.finances.domain.SecurityType;
 
 /**
  * Der Zugriff auf die Wertpapiere.
@@ -19,6 +22,15 @@ public interface SecuritiesRepository extends
 			 * @return alle gespeicherten Wertpapiere
 			 */
 			List<Security> findAll();
+
+	/**
+	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.
+	 * @param pageable die Information über die Paginierung
+	 * @param inventory Filter: <code>true</code>, nur der aktuelle Bestand wird angezeigt
+	 * @param type Filter: nur die Wertpapiere dieses Typs anzeigen
+	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
+	 */
+		Page<Security> findAll(Pageable pageable, boolean inventory, SecurityType type);
 
 	/**
 	 * Liefere ein Wertpapier.
