@@ -11,6 +11,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import de.rahn.finances.domain.Security;
@@ -53,5 +55,14 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Transactional(REQUIRED)
 	public Security save(Security security) {
 		return repository.save(security);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see SecuritiesService#getSecurities(org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Security> getSecurities(Pageable pageable) {
+		return repository.findByInventoryOrType(pageable, false, null);
 	}
 }

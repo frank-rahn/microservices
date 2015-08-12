@@ -5,6 +5,9 @@ package de.rahn.finances.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import de.rahn.finances.domain.Security;
 
 /**
@@ -16,6 +19,11 @@ public interface SecuritiesService {
 		 * @return die Wertpapiere
 		 */
 		List<Security> getSecurities();
+
+	/**
+	 * @return die Wertpapiere
+	 */
+		Page<Security> getSecurities(Pageable pageable);
 
 	/**
 	 * @param id der Identifizierer eines Wertpapiers
