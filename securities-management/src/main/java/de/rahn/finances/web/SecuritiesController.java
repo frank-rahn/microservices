@@ -12,7 +12,9 @@ import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,10 +56,11 @@ public class SecuritiesController {
 	 * @return die Liste der anzuzeigenden Wertpapiere
 	 */
 	@RequestMapping(value = "/securities", method = { GET, POST })
-	@ModelAttribute("securities")
-	public List<Security> securities(@ModelAttribute("filter") SecuritiesFilter filter) {
-		LOGGER.info("Methode aufgerufen: securities({})", filter);
-		return service.getSecurities();
+	public String securities(Pageable pageable, Model model) {
+		LOGGER.info("Methode aufgerufen: securities({})", pageable);
+		model.addAttribute("inventory", Boolean.TRUE).addAttribute("type", SecurityType.stock).addAttribute("page",
+			service.getSecurities(pageable));
+		return "securities";
 	}
 
 	/**

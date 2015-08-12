@@ -14,15 +14,17 @@
 				<h2 class="panel-title">Filter</h2>
 			</div>
 			<div class="panel-body">
-				<form id="filter" th:object="${filter}" th:action="@{/securities}" action="#" method="post" role="form" class="form-inline">
+				<form id="filter" th:action="@{/securities}" action="#" method="get" role="form" class="form-inline">
+					<input type="hidden" value="1" th:value="${page.number}" id="page" name="page" />
+					<input type="hidden" value="5" th:value="${page.size}" th:field="${page.size}" />
 					<div class="form-group col-md-4 col-sm-4">
-						<label><input type="checkbox" th:field="*{inventory}" /> Bestand</label>
+						<label><input type="checkbox" name="inventory" th:checked="${inventory}" /> Bestand</label>
 					</div>
 					<div class="form-group col-md-4 col-sm-4">
 						<label for="type">Wertpapierart</label>
-						<select class="form-control" th:field="*{type}">
-							<option value="">-</option>
-							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}">Aktie</option>
+						<select class="form-control" name="type">
+							<option value="" th:selected="${type == null}">-</option>
+							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type.name()}">Aktie</option>
 						</select>
 					</div>
 					<div class="text-center col-md-4 col-sm-4">
@@ -34,6 +36,25 @@
 
 		<section>
 			<h2>Wertpapiere</h2>
+			<div class="text-center">
+				<ul class="pagination pagination-sm">
+					<li th:classappend="${page.first} ? 'disabled' : ''">
+						<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{/securities(page=0,size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
+					</li>
+					<li th:classappend="${page.hasPrevious()}? '' : 'disabled'">
+						<span th:if="${not page.hasPrevious()}"><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${page.hasPrevious()}" th:href="@{/securities(page=${page.number - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					</li>
+					<li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}" class="active" th:class="${page.number == i} ? 'active' : ''">
+						<a href="#" th:href="@{/securities(page=${i},size=${page.size})}"><span th:text="${i + 1}">1</span></a>
+					</li>
+					<li th:classappend="${page.hasNext()} ? '' : 'disabled'">
+						<span th:if="${not page.hasNext()}"><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${page.hasNext()}" th:href="@{/securities(page=${page.number + 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+					</li>
+					<li th:classappend="${page.last} ? 'disabled' : ''">
+						<span th:if="${page.last}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${not page.last}" th:href="@{/securities(page=${page.totalPages - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
+					</li>
+				</ul>
+			</div>
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
@@ -45,7 +66,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="security : ${securities}">
+					<tr th:each="security : ${page}">
 						<td>
 							<a href="security.html" th:href="@{'/security/' + ${security.id}}" th:text="${security.isin}">DE0001234560</a>
 						</td>
@@ -56,6 +77,7 @@
 					</tr>
 				</tbody>
 			</table>
+			<sup>Auf jeder Seite werden maximal <span th:text="${page.size}">20</span> Wertpapiere von insgesamt <span th:text="${page.totalElements}">21</span> Wertpapieren dargestellt.</sup>
 		</section>
 
 		<hr />

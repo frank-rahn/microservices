@@ -3,18 +3,23 @@
  */
 package de.rahn.finances;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Die Startklasse für diesen Server.
  * @author Frank W. Rahn
  */
 @SpringBootApplication
-@ComponentScan
-public class SecuritiesManagementApplication {
-
+@EnableSpringDataWebSupport
+public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter {
 	/**
 	 * @param args
 	 */
@@ -22,4 +27,15 @@ public class SecuritiesManagementApplication {
 		SpringApplication.run(SecuritiesManagementApplication.class, args);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see WebMvcConfigurerAdapter#addArgumentResolvers(List)
+	 */
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
+		resolver.setFallbackPageable(new PageRequest(0, 10));
+		argumentResolvers.add(resolver);
+		super.addArgumentResolvers(argumentResolvers);
+	}
 }
