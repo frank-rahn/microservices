@@ -4,6 +4,7 @@
 package de.rahn.finances.web;
 
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -68,10 +69,10 @@ public class SecuritiesController {
 	 * @param id die Id des Wertpapiers
 	 * @return das Model mit dem Wertpapier
 	 */
-	@RequestMapping(value = "/security/{id}", method = GET)
-	public ModelAndView security(@PathVariable("id") Long id) {
-		LOGGER.info("Methode aufgerufen: security({})", id);
-		return new ModelAndView("security").addObject("security", service.getSecurity(id));
+	@RequestMapping(value = "/security", method = GET)
+	public ModelAndView security() {
+		LOGGER.info("Methode aufgerufen: security()");
+		return new ModelAndView("security").addObject("security", new Security());
 	}
 
 	/**
@@ -83,6 +84,29 @@ public class SecuritiesController {
 	public String security(@ModelAttribute("security") Security security) {
 		LOGGER.info("Methode aufgerufen: security({})", security);
 		service.save(security);
+		return "redirect:/securities";
+	}
+
+	/**
+	 * Ermittle das anzuzeigene Wertpapier.
+	 * @param id die Id des Wertpapiers
+	 * @return das Model mit dem Wertpapier
+	 */
+	@RequestMapping(value = "/security/{id}", method = GET)
+	public ModelAndView security(@PathVariable("id") Long id) {
+		LOGGER.info("Methode aufgerufen: security({})", id);
+		return new ModelAndView("security").addObject("security", service.getSecurity(id));
+	}
+
+	/**
+	 * Lösche das Wertpapier.
+	 * @param id die Id des Wertpapiers
+	 * @return die nächste anzuzeigende View
+	 */
+	@RequestMapping(value = "/security/{id}", method = DELETE)
+	public String securityDelete(@PathVariable("id") Long id) {
+		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
+		service.save(service.getSecurity(id));
 		return "redirect:/securities";
 	}
 }
