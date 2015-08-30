@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,7 @@ import de.rahn.finances.service.SecuritiesService;
  * @author Frank W. Rahn
  */
 @Controller
+@Description("Der Controller für die Verwaltung der Wertpapiere")
 public class SecuritiesController {
 	private static final Logger LOGGER = getLogger(SecuritiesController.class);
 
