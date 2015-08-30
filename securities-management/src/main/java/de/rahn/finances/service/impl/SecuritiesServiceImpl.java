@@ -40,7 +40,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see SecuritiesService#getSecurity(java.lang.Long)
+	 * @see SecuritiesService#getSecurity(jLong)
 	 */
 	@Override
 	public Security getSecurity(Long id) {
@@ -49,7 +49,16 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see SecuritiesService#save(de.rahn.finances.domain.Security)
+	 * @see SecuritiesService#getSecurities(Pageable)
+	 */
+	@Override
+	public Page<Security> getSecurities(Pageable pageable) {
+		return repository.findByInventoryOrType(pageable, false, null);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see SecuritiesService#save(Security)
 	 */
 	@Override
 	@Transactional(REQUIRED)
@@ -59,10 +68,11 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see SecuritiesService#getSecurities(org.springframework.data.domain.Pageable)
+	 * @see SecuritiesService#delete(Security)
 	 */
 	@Override
-	public Page<Security> getSecurities(Pageable pageable) {
-		return repository.findByInventoryOrType(pageable, false, null);
+	@Transactional(REQUIRED)
+	public void delete(Security security) {
+		repository.delete(security.getId());
 	}
 }

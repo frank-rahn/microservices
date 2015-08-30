@@ -45,4 +45,10 @@ public interface SecuritiesRepository extends
 	 * @return das Wertpapier
 	 */
 		Security save(Security security);
+
+	/**
+	 * Lösche das Wertpapier.
+	 * @param id der Identifizierer des Wertpapiers
+	 */
+		void delete(Long id);
 }

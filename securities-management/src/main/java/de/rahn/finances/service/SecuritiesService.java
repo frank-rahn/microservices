@@ -32,9 +32,15 @@ public interface SecuritiesService {
 		Security getSecurity(Long id);
 
 	/**
-	 * Speichere das Wertpapier
+	 * Speichere das Wertpapier.
 	 * @param security das Wertpapier
 	 * @return das Wertpapier
 	 */
 		Security save(Security security);
+
+	/**
+	 * Lösche das Wertpapier.
+	 * @param security das Wertpapier
+	 */
+		void delete(Security security);
 }
