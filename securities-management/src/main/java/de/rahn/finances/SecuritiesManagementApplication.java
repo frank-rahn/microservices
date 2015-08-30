@@ -6,6 +6,8 @@ package de.rahn.finances;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -19,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringBootApplication
 @EnableSpringDataWebSupport
-public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter {
+public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter implements HealthIndicator {
 	/**
 	 * @param args
 	 */
@@ -37,5 +39,14 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter {
 		resolver.setFallbackPageable(new PageRequest(0, 10));
 		argumentResolvers.add(resolver);
 		super.addArgumentResolvers(argumentResolvers);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see HealthIndicator#health()
+	 */
+	@Override
+	public Health health() {
+		return Health.up().withDetail("test", "UP").build();
 	}
 }
