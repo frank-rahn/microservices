@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+>
+<head>
+	<title>Wertpapier</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Management</h1>
+	<div layout:fragment="content">
+		<section>
+			<h2>Management</h2>
+			<p><a href="list.html" th:href="@{/securities}">Liste aller Wertpapiere</a></p>
+			<p><button type="button" data-toggle="modal" data-target="#modal">Öffne Dialog</button></p>
+		</section>
+	</div>
+	<div class="modal fade" id="modal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 id="title" class="modal-title">Antwort</h4>
+				</div>
+				<div class="modal-body">
+					<p id="json">Text</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
