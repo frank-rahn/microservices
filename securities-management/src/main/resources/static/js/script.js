@@ -1,3 +1,7 @@
+function alertMessage(stat, text) {
+	$("#placeholder").html('<div class="alert alert-'+stat+' fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + text + '</div>').alert();
+}
+
 $("#delete").click(function (event) {
 	event.preventDefault();
 
@@ -8,8 +12,8 @@ $("#delete").click(function (event) {
 	    type: 'DELETE'
 	}).fail(function (xhr, textStatus, errorThrown) {
 		var r = $.parseJSON(xhr.responseText);
-		$("#alert-placeholder").html('<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> ' + r.message + '</div>').alert();
+		alertMessage("danger", r.message);
 	}).done(function (data, textStatus, xhr) {
-		$("#alert-placeholder").html('<div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> Das Wertpapier wurde gelöscht.</div>').alert();
+		alertMessage("success", "Das Wertpapier wurde gelöscht.");
 	});
 });
