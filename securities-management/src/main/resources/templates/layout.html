@@ -48,8 +48,10 @@
 		</div>
 	</div>
 
-	<div class="container" role="main" id="content">
-		<div layout:fragment="content">
+	<div class="container" role="main">
+		<div id="alert-placeholder"></div>
+
+		<div id="content" layout:fragment="content">
 			Fake content
 		</div>
 
@@ -63,5 +65,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
 </body>
 </html>

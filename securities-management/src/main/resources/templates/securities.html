@@ -78,7 +78,7 @@
 							<td th:text="${security.name}">Firma 1 AG</td>
 							<td th:text="${security.symbol}">A01</td>
 							<td th:text="${security.type.description}">Aktie</td>
-							<td><a href="security.html" th:href="@{'/security/' + ${security.id}}"><span class="glyphicon glyphicon-trash" /></a></td>
+							<td><a id="delete" href="security.html" th:href="@{'/security/' + ${security.id}}"><span class="glyphicon glyphicon-trash" /></a></td>
 						</tr>
 					</tbody>
 				</table>

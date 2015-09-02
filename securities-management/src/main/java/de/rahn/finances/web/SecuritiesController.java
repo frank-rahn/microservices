@@ -4,6 +4,7 @@
 package de.rahn.finances.web;
 
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -106,9 +108,13 @@ public class SecuritiesController {
 	 * @return die nächste anzuzeigende View
 	 */
 	@RequestMapping(value = "/security/{id}", method = DELETE)
-	public String securityDelete(@PathVariable("id") Long id) {
+	public ResponseEntity<String> securityDelete(@PathVariable("id") Long id) {
 		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
-		service.save(service.getSecurity(id));
-		return "redirect:/securities";
+		try {
+			service.delete(service.getSecurity(id));
+		} catch (Exception exception) {
+			throw new IllegalArgumentException("Das Wertpapier konnte nicht gelöscht werden. id=" + id, exception);
+		}
+		return new ResponseEntity<>(NO_CONTENT);
 	}
 }
