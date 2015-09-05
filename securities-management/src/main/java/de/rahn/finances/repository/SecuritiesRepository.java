@@ -17,7 +17,7 @@ import de.rahn.finances.domain.SecurityType;
  * @author Frank W. Rahn
  */
 public interface SecuritiesRepository extends
-	Repository<Security, Long> {
+	Repository<Security, String> {
 			/**
 			 * @return alle gespeicherten Wertpapiere
 			 */
@@ -37,7 +37,7 @@ public interface SecuritiesRepository extends
 	 * @param id der Identifizierer des Wertpapiers
 	 * @return das Wertpapier
 	 */
-		Security findOne(Long id);
+		Security findOne(String id);
 
 	/**
 	 * Speichere ein Wertpapier.
@@ -50,5 +50,5 @@ public interface SecuritiesRepository extends
 	 * Lösche das Wertpapier.
 	 * @param id der Identifizierer des Wertpapiers
 	 */
-		void delete(Long id);
+		void delete(String id);
 }

@@ -5,7 +5,6 @@ package de.rahn.finances.domain;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.GenerationType.AUTO;
 
 import java.io.Serializable;
 
@@ -19,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.domain.Persistable;
 
 import de.rahn.finances.domain.util.SecurityTypeConverter;
 
@@ -29,12 +30,13 @@ import de.rahn.finances.domain.util.SecurityTypeConverter;
 @Entity
 @Table(name = "SEC")
 @Access(FIELD)
-public class Security implements Serializable {
+public class Security implements Serializable, Persistable<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = AUTO)
-	private Long id;
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String id;
 
 	/** Der Name des Wertpapiers. */
 	@Column(nullable = false)
@@ -62,6 +64,15 @@ public class Security implements Serializable {
 	@Column(nullable = false)
 	@ColumnDefault("false")
 	private boolean inventory = false;
+
+	/**
+	 * {@inheritDoc}
+	 * @see Persistable#isNew()
+	 */
+	@Override
+	public boolean isNew() {
+		return id == null;
+	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
 	/**
@@ -137,7 +148,8 @@ public class Security implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	@Override
+	public String getId() {
 		return id;
 	}
 
@@ -233,7 +245,7 @@ public class Security implements Serializable {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

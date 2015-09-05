@@ -97,7 +97,7 @@ public class SecuritiesController {
 	 * @return das Model mit dem Wertpapier
 	 */
 	@RequestMapping(value = "/security/{id}", method = GET)
-	public ModelAndView security(@PathVariable("id") Long id) {
+	public ModelAndView security(@PathVariable("id") String id) {
 		LOGGER.info("Methode aufgerufen: security({})", id);
 		return new ModelAndView("security").addObject("security", service.getSecurity(id));
 	}
@@ -108,7 +108,7 @@ public class SecuritiesController {
 	 * @return die nächste anzuzeigende View
 	 */
 	@RequestMapping(value = "/security/{id}", method = DELETE)
-	public ResponseEntity<String> securityDelete(@PathVariable("id") Long id) {
+	public ResponseEntity<String> securityDelete(@PathVariable("id") String id) {
 		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
 		try {
 			service.delete(service.getSecurity(id));

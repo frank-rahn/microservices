@@ -29,7 +29,7 @@ public interface SecuritiesService {
 	 * @param id der Identifizierer eines Wertpapiers
 	 * @return das Wertpapier
 	 */
-		Security getSecurity(Long id);
+		Security getSecurity(String id);
 
 	/**
 	 * Speichere das Wertpapier.

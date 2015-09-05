@@ -42,10 +42,10 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * @see SecuritiesService#getSecurity(jLong)
+	 * @see SecuritiesService#getSecurity(String)
 	 */
 	@Override
-	public Security getSecurity(Long id) {
+	public Security getSecurity(String id) {
 		return repository.findOne(id);
 	}
 
