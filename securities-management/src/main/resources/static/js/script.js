@@ -8,10 +8,13 @@ function modalMessage(titel, text) {
 	$("#modal").modal();
 }
 
-$("#delete").click(function (event) {
-	event.preventDefault();
+$(document).on('click.bs.delete.data-api', '[data-toggle="delete"]', function (event) {
+	var $this = $(this);
+	var href = $this.data("url");
 
-	var href = $(this).data("url");
+	if ($this.is('a')) {
+		event.preventDefault();
+	}
 
 	$.ajax({
 	    url: href,
