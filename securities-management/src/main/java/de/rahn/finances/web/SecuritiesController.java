@@ -3,6 +3,8 @@
  */
 package de.rahn.finances.web;
 
+import static de.rahn.finances.domain.SecurityType.getKeyValueEntries;
+import static java.lang.Boolean.TRUE;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
@@ -35,6 +37,7 @@ import de.rahn.finances.service.SecuritiesService;
 @Controller
 @Description("Der Controller für die Verwaltung der Wertpapiere")
 public class SecuritiesController {
+
 	private static final Logger LOGGER = getLogger(SecuritiesController.class);
 
 	@Autowired
@@ -45,7 +48,7 @@ public class SecuritiesController {
 	 */
 	@ModelAttribute("securityTypeList")
 	public List<Entry<String, String>> securityTypeList() {
-		return SecurityType.getKeyValueEntries();
+		return getKeyValueEntries();
 	}
 
 	/**
@@ -54,6 +57,7 @@ public class SecuritiesController {
 	@RequestMapping(value = "/", method = GET)
 	public String index() {
 		LOGGER.info("Methode aufgerufen: index()");
+
 		return "index";
 	}
 
@@ -63,8 +67,10 @@ public class SecuritiesController {
 	@RequestMapping(value = "/securities", method = { GET, POST })
 	public String securities(Pageable pageable, Model model) {
 		LOGGER.info("Methode aufgerufen: securities({})", pageable);
-		model.addAttribute("inventory", Boolean.TRUE).addAttribute("type", SecurityType.stock).addAttribute("page",
+
+		model.addAttribute("inventory", TRUE).addAttribute("type", SecurityType.stock).addAttribute("page",
 			service.getSecurities(pageable));
+
 		return "securities";
 	}
 
@@ -76,6 +82,7 @@ public class SecuritiesController {
 	@RequestMapping(value = "/security", method = GET)
 	public ModelAndView security() {
 		LOGGER.info("Methode aufgerufen: security()");
+
 		return new ModelAndView("security").addObject("security", new Security());
 	}
 
@@ -87,6 +94,7 @@ public class SecuritiesController {
 	@RequestMapping(value = "/security", method = POST)
 	public String security(@ModelAttribute("security") Security security) {
 		LOGGER.info("Methode aufgerufen: security({})", security);
+
 		service.save(security);
 		return "redirect:/securities";
 	}
@@ -99,6 +107,7 @@ public class SecuritiesController {
 	@RequestMapping(value = "/security/{id}", method = GET)
 	public ModelAndView security(@PathVariable("id") String id) {
 		LOGGER.info("Methode aufgerufen: security({})", id);
+
 		return new ModelAndView("security").addObject("security", service.getSecurity(id));
 	}
 
@@ -110,11 +119,14 @@ public class SecuritiesController {
 	@RequestMapping(value = "/security/{id}", method = DELETE)
 	public ResponseEntity<String> securityDelete(@PathVariable("id") String id) {
 		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
+
 		try {
 			service.delete(service.getSecurity(id));
 		} catch (Exception exception) {
 			throw new IllegalArgumentException("Das Wertpapier konnte nicht gelöscht werden. id=" + id, exception);
 		}
+
 		return new ResponseEntity<>(NO_CONTENT);
 	}
+
 }

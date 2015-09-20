@@ -18,10 +18,11 @@ import de.rahn.finances.domain.SecurityType;
  */
 public interface SecuritiesRepository extends
 	Repository<Security, String> {
-			/**
-			 * @return alle gespeicherten Wertpapiere
-			 */
-			List<Security> findAll();
+
+	/**
+	 * @return alle gespeicherten Wertpapiere
+	 */
+		List<Security> findAll();
 
 	/**
 	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.

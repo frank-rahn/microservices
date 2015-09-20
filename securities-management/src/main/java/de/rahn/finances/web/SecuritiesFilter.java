@@ -49,20 +49,17 @@ public class SecuritiesFilter implements Serializable {
 
 	/**
 	 * {@inheritDoc}
-	 * @see java.lang.Object#toString()
+	 * @see Object#toString()
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("SecuritiesFilter [inventory=");
-		builder.append(inventory);
-		builder.append(", ");
+		StringBuilder builder = new StringBuilder().append("SecuritiesFilter [inventory=").append(inventory);
+
 		if (type != null) {
-			builder.append("type=");
-			builder.append(type);
+			builder.append(", type=").append(type);
 		}
-		builder.append("]");
-		return builder.toString();
+
+		return builder.append("]").toString();
 	}
 
 }

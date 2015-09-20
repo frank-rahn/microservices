@@ -28,6 +28,7 @@ import de.rahn.finances.service.SecuritiesService;
 @Transactional(SUPPORTS)
 @Description("Die Implementierung des SecuritiesService")
 public class SecuritiesServiceImpl implements SecuritiesService {
+
 	@Autowired
 	private SecuritiesRepository repository;
 
@@ -77,4 +78,5 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	public void delete(Security security) {
 		repository.delete(security.getId());
 	}
+
 }

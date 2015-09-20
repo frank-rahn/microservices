@@ -15,9 +15,10 @@ import de.rahn.finances.domain.Security;
  * @author Frank W. Rahn
  */
 public interface SecuritiesService {
-		/**
-		 * @return die Wertpapiere
-		 */
+
+	/**
+	 * @return die Wertpapiere
+	 */
 		List<Security> getSecurities();
 
 	/**
@@ -43,4 +44,5 @@ public interface SecuritiesService {
 	 * @param security das Wertpapier
 	 */
 		void delete(Security security);
+
 }

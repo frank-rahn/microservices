@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @EnableSpringDataWebSupport
 public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter implements HealthIndicator {
+
 	/**
 	 * @param args
 	 */
@@ -37,7 +38,9 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter imp
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
 		resolver.setFallbackPageable(new PageRequest(0, 10));
+
 		argumentResolvers.add(resolver);
+
 		super.addArgumentResolvers(argumentResolvers);
 	}
 
@@ -49,4 +52,5 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter imp
 	public Health health() {
 		return Health.up().withDetail("test", "UP").build();
 	}
+
 }

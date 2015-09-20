@@ -31,6 +31,7 @@ import de.rahn.finances.domain.util.SecurityTypeConverter;
 @Table(name = "SEC")
 @Access(FIELD)
 public class Security implements Serializable, Persistable<String> {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -75,6 +76,7 @@ public class Security implements Serializable, Persistable<String> {
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
+
 	/**
 	 * @return the isin
 	 */
@@ -262,4 +264,5 @@ public class Security implements Serializable, Persistable<String> {
 	public void setInventory(boolean inventory) {
 		this.inventory = inventory;
 	}
+
 }

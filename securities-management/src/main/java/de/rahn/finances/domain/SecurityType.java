@@ -17,8 +17,9 @@ import java.util.Map.Entry;
  * @author Frank W. Rahn
  */
 public enum SecurityType {
-		stock("Aktie"), fonds("Investmentfonds"), loan("Anleihe"), certificate("Zertifikat"), warrant("Optionsschein"),
-		other("Sonstiges");
+	stock("Aktie"), fonds("Investmentfonds"), loan("Anleihe"), certificate("Zertifikat"), warrant("Optionsschein"),
+	other("Sonstiges");
+
 	/** Die Liste der Key-Value-Entries dieser Aufzählung. */
 	private static final List<Entry<String, String>> ENTRIES = unmodifiableList(
 		stream(values()).sorted(comparing(SecurityType::getDescription)).map(s -> s.getListEntry()).collect(toList()));
@@ -43,11 +44,13 @@ public enum SecurityType {
 		if (description == null) {
 			throw new NullPointerException("Der Parameter 'description' ist null");
 		}
+
 		for (SecurityType s : values()) {
 			if (s.description.equals(description)) {
 				return s;
 			}
 		}
+
 		throw new IllegalArgumentException("Die Beschreibung '" + description + "' ist nicht bekannt");
 	}
 
@@ -71,4 +74,5 @@ public enum SecurityType {
 	public Entry<String, String> getListEntry() {
 		return new SimpleEntry<>(name(), getDescription());
 	}
+
 }
