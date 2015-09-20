@@ -4,14 +4,18 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
 >
 <head>
+	<meta charset="utf-8" />
 	<title>Home</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
 	<h1 layout:fragment="header">Wertpapierverwaltung</h1>
 	<div layout:fragment="content">
 		<section>
 			<h2>Wertpapierverwaltung</h2>
-			<p><a href="list.html" th:href="@{/securities}">Liste aller Wertpapiere</a></p>
+			<p><a href="securities.html" th:href="@{/securities}">Liste aller Wertpapiere</a></p>
 		</section>
 	</div>
 </body>

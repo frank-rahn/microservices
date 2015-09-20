@@ -4,12 +4,16 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
 >
 <head>
+	<meta charset="utf-8" />
 	<title>Liste</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
 	<h1 layout:fragment="header">Liste aller Wertpapiere</h1>
 	<div layout:fragment="content">
-		<section class="panel panel-default">
+		<!--section class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title">
 					Filter <a id="collapse" href="#" data-toggle="collapse" data-target="#filter-body"><span class="glyphicon glyphicon-collapse-down pull-right"></span></a>
@@ -34,7 +38,7 @@
 					</div>
 				</form>
 			</div>
-		</section>
+		</section-->
 
 		<section class="panel panel-default">
 			<div class="panel-heading">
@@ -92,11 +96,11 @@
 		</section>
 
 		<section>
-			<p><a class="btn btn-default" th:href="@{/}"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</a></p>
+			<p><a class="btn btn-default" href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</a></p>
 		</section>
 	</div>
 
-	<script>
+	<!--script>
 		$(document).ready(function(){
 			$("#filter-body").on("hide.bs.collapse", function(){
 				$("#collapse").html('<span class="glyphicon glyphicon-collapse-down"></span>');
@@ -105,6 +109,6 @@
 				$("#collapse").html('<span class="glyphicon glyphicon-collapse-up"></span>');
 			});
 		});
-	</script>
+	</script-->
 </body>
 </html>
