@@ -45,7 +45,7 @@
 				<h2 class="panel-title">Wertpapiere</h2>
 			</div>
 			<div class="panel-body">
-				<div class="text-center">
+				<div class="text-center" th:if="${page.totalPages gt 0}">
 					<ul class="pagination pagination-sm">
 						<li th:classappend="${page.first} ? 'disabled' : ''">
 							<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{/securities(page=0,size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -76,6 +76,9 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr th:if="${page.numberOfElements == 0}">
+							<td colspan="6">Keine Wertpapiere</td>
+						</tr>
 						<tr th:each="security : ${page}">
 							<td>
 								<a href="security.html" th:href="@{'/security/' + ${security.id}}" th:text="${security.isin}">DE0001234560</a>
