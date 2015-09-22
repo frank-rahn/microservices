@@ -31,13 +31,6 @@
 		<url>http://www.frank-rahn.de/</url>
 	</organization>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-
 	<scm>
 		<url>https://github.com/frank-rahn/microservices</url>
 		<connection>scm:git:git://github.com/frank-rahn/microservices.git</connection>
