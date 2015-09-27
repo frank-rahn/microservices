@@ -14,6 +14,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.List;
 import java.util.Map.Entry;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
@@ -21,6 +23,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,16 +53,6 @@ public class SecuritiesController {
 	@ModelAttribute("securityTypeList")
 	public List<Entry<String, String>> securityTypeList() {
 		return getKeyValueEntries();
-	}
-
-	/**
-	 * Zeide die Startseite an.
-	 */
-	@RequestMapping(value = "/", method = GET)
-	public String index() {
-		LOGGER.info("Methode aufgerufen: index()");
-
-		return "index";
 	}
 
 	/**
@@ -92,10 +86,20 @@ public class SecuritiesController {
 	 * @return die nächste anzuzeigende View
 	 */
 	@RequestMapping(value = "/security", method = POST)
-	public String security(@ModelAttribute("security") Security security) {
+	public String security(@Valid @ModelAttribute("security") Security security, BindingResult bindingResult) {
 		LOGGER.info("Methode aufgerufen: security({})", security);
 
-		service.save(security);
+		if (bindingResult.hasErrors()) {
+			return "security";
+		}
+
+		try {
+			security = service.save(security);
+		} catch (Exception exception) {
+			bindingResult.addError(new ObjectError("security", exception.toString()));
+			return "security";
+		}
+
 		return "redirect:/securities";
 	}
 
