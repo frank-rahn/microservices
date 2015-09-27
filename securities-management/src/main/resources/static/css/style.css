@@ -68,3 +68,8 @@ pre {
 	background-color: #f8f8f8;
 	border-color: #ccc;
 }
+
+.modal-pre {
+	max-height: 450px;
+	overflow: scroll;
+}

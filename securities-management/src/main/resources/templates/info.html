@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+>
+<head>
+	<meta charset="utf-8" />
+	<title>Wertpapier</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<h1 layout:fragment="header">Informationen der Anwendung</h1>
+	<div layout:fragment="content">
+		<section>
+			<h2>Management-API</h2>
+			<p><a href="#" th:href="@{/manage/info}" data-keyboard="true" data-toggle="managementapi">Informationen über die Anwendung</a></p>
+			<p><a href="#" th:href="@{/manage/health}" data-keyboard="true" data-toggle="managementapi">Health-Informationen</a></p>
+			<p><a href="#" th:href="@{/manage/mappings}" data-keyboard="true" data-toggle="managementapi">Request-Mapping</a></p>
+			<p><a href="#" th:href="@{/manage/env}" data-keyboard="true" data-toggle="managementapi">Environment</a></p>
+			<p><a href="#" th:href="@{/manage/configprops}" data-keyboard="true" data-toggle="managementapi">Konfiguration der Properties</a></p>
+			<p><a href="#" th:href="@{/manage/autoconfig}" data-keyboard="true" data-toggle="managementapi">Auto-konfigurierbaren Properties</a></p>
+			<p><a href="#" th:href="@{/manage/metrics}" data-keyboard="true" data-toggle="managementapi">Metriken</a></p>
+			<p><a href="#" th:href="@{/manage/dump}" data-keyboard="true" data-toggle="managementapi">Führe einen Thread-Dump aus</a></p>
+			<p><a href="#" th:href="@{/manage/trace}" data-keyboard="true" data-toggle="managementapi">Trace-Informationen über die letzten Requests</a></p>
+			<p><a href="#" th:href="@{/manage/beans}" data-keyboard="true" data-toggle="managementapi">Alle Spring-Beans auflisten</a></p>
+		</section>
+		<div id="modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 id="title" class="modal-title">Antwort</h4>
+					</div>
+					<div class="modal-body">
+						<pre id="text" class="modal-pre">Text</pre>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

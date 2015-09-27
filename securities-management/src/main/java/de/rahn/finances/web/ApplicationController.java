@@ -31,4 +31,14 @@ public class ApplicationController {
 		return "index";
 	}
 
+	/**
+	 * Zeide die Startseite an.
+	 */
+	@RequestMapping(value = "/info", method = GET)
+	public String info() {
+		LOGGER.info("Methode aufgerufen: info()");
+
+		return "info";
+	}
+
 }

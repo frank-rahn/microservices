@@ -26,3 +26,24 @@ $(document).on('click.bs.delete.data-api', '[data-toggle="delete"]', function (e
 		alertMessage("success", "Das Wertpapier wurde gelöscht.");
 	});
 });
+
+$(document).on('click.bs.managementapi.data-api', '[data-toggle="managementapi"]', function (event) {
+	var $this = $(this);
+	var href = $this.attr("href");
+	var title = $this.text();
+
+	if ($this.is('a')) {
+		event.preventDefault();
+	}
+
+	$.getJSON(href, function(data, textStatus, xhr){
+		if (textStatus == "success") {
+			modalMessage(title, xhr.responseText);
+			$("#placeholder").alert("close");
+		} else {
+			var r = $.parseJSON(xhr.responseText);
+			alertMessage("danger", r.message);
+		}
+	});
+
+});
