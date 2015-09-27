@@ -14,9 +14,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.domain.Persistable;
 
 import de.rahn.finances.domain.util.SecurityTypeConverter;
@@ -39,29 +43,38 @@ public class Security implements Persistable<String> {
 
 	/** Der Name des Wertpapiers. */
 	@Column(nullable = false)
+	@NotNull
+	@NotBlank
 	private String name;
 
 	/** Die International Security Identification Number. */
 	@Column(length = 12, nullable = false, unique = true)
+	@NotNull
+	@Size(min = 12, max = 12, message = "muss genau {max} Zeichen lang sein")
 	private String isin;
 
 	/** Die Wertpapier-Kennnummer (WKN). */
 	@Column(length = 6, nullable = false, unique = true)
+	@NotNull
+	@Size(min = 6, max = 6, message = "muss genau {max} Zeichen lang sein")
 	private String wkn;
 
 	/** Das Symbole des Wertpapiers. */
 	@Column(length = 6)
+	@Length(max = 6)
 	private String symbol;
 
 	/** Die Wertpapierart. */
 	@Column(nullable = false)
 	@Enumerated(STRING)
 	@Convert(converter = SecurityTypeConverter.class)
+	@NotNull
 	private SecurityType type;
 
 	/** Gibt es zu diesem Wertpapier noch einen Bestand? */
 	@Column(nullable = false)
 	@ColumnDefault("false")
+	@NotNull
 	private boolean inventory = false;
 
 	/**
