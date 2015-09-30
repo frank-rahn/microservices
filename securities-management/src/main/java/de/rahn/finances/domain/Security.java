@@ -79,6 +79,15 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
+	 * @see Persistable#getId()
+	 */
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see Persistable#isNew()
 	 */
 	@Override
@@ -156,14 +165,6 @@ public class Security implements Persistable<String> {
 	 */
 	public void setType(SecurityType type) {
 		this.type = type;
-	}
-
-	/**
-	 * @return the id
-	 */
-	@Override
-	public String getId() {
-		return id;
 	}
 
 	/**
