@@ -52,4 +52,5 @@ public interface SecuritiesRepository extends
 	 * @param id der Identifizierer des Wertpapiers
 	 */
 		void delete(String id);
+
 }
