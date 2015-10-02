@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.domain.Persistable;
@@ -30,15 +29,14 @@ import de.rahn.finances.domain.util.SecurityTypeConverter;
  * @author Frank W. Rahn
  */
 @Entity
-@Table(name = "SEC")
 @Access(FIELD)
+@Table(name = "SEC")
 public class Security implements Persistable<String> {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 
 	/** Der Name des Wertpapiers. */

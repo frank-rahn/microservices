@@ -6,4 +6,7 @@
  * Die Datenobjekte der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
+@GenericGenerator(name = "uuid", strategy = "uuid2")
 package de.rahn.finances.domain;
+
+import org.hibernate.annotations.GenericGenerator;
