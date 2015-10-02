@@ -11,16 +11,18 @@
 	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<h1 layout:fragment="header">Wertpapierverwaltung</h1>
-	<div layout:fragment="content">
-		<section>
-			<h2>Wertpapierverwaltung</h2>
-			<p><a href="securities.html" th:href="@{/securities}">Liste aller Wertpapiere</a></p>
-		</section>
-		<section>
-			<h2>Management</h2>
-			<p><a href="info.html" th:href="@{/info}">Management API</a></p>
-		</section>
+	<div class="container">
+		<h1 layout:fragment="header">Wertpapierverwaltung</h1>
+		<div layout:fragment="content">
+			<section>
+				<h2>Wertpapierverwaltung</h2>
+				<p><a href="securities.html" th:href="@{/securities}">Liste aller Wertpapiere</a></p>
+			</section>
+			<section>
+				<h2>Management</h2>
+				<p><a href="info.html" th:href="@{/info}">Management API</a></p>
+			</section>
+		</div>
 	</div>
 </body>
 </html>
