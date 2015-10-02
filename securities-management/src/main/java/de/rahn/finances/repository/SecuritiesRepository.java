@@ -3,11 +3,9 @@
  */
 package de.rahn.finances.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.domain.SecurityType;
@@ -17,12 +15,7 @@ import de.rahn.finances.domain.SecurityType;
  * @author Frank W. Rahn
  */
 public interface SecuritiesRepository extends
-	Repository<Security, String> {
-
-	/**
-	 * @return alle gespeicherten Wertpapiere
-	 */
-		List<Security> findAll();
+	JpaRepository<Security, String> {
 
 	/**
 	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.
@@ -32,25 +25,5 @@ public interface SecuritiesRepository extends
 	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
 	 */
 		Page<Security> findByInventoryOrType(Pageable pageable, boolean inventory, SecurityType type);
-
-	/**
-	 * Liefere ein Wertpapier.
-	 * @param id der Identifizierer des Wertpapiers
-	 * @return das Wertpapier
-	 */
-		Security findOne(String id);
-
-	/**
-	 * Speichere ein Wertpapier.
-	 * @param security das Wertpapier
-	 * @return das Wertpapier
-	 */
-		Security save(Security security);
-
-	/**
-	 * Lösche das Wertpapier.
-	 * @param id der Identifizierer des Wertpapiers
-	 */
-		void delete(String id);
 
 }
