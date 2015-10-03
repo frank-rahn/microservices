@@ -76,7 +76,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Override
 	@Transactional(REQUIRED)
 	public void delete(Security security) {
-		repository.delete(security.getId());
+		repository.delete(security);
 	}
 
 }
