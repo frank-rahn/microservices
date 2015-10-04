@@ -69,15 +69,26 @@ public class SecuritiesController {
 	}
 
 	/**
-	 * Ermittle das anzuzeigene Wertpapier.
-	 * @param id die Id des Wertpapiers
-	 * @return das Model mit dem Wertpapier
+	 * Zeige die Maske zum erfassen eines Wertpapieres an.
+	 * @return das Model mit dem leeren Wertpapier
 	 */
 	@RequestMapping(value = "/security", method = GET)
 	public ModelAndView security() {
 		LOGGER.info("Methode aufgerufen: security()");
 
 		return new ModelAndView("security").addObject("security", new Security());
+	}
+
+	/**
+	 * Ermittle das anzuzeigene Wertpapier.
+	 * @param id die Id des Wertpapiers
+	 * @return das Model mit dem Wertpapier
+	 */
+	@RequestMapping(value = "/security/{id}", method = GET)
+	public ModelAndView security(@PathVariable("id") String id) {
+		LOGGER.info("Methode aufgerufen: security({})", id);
+
+		return new ModelAndView("security").addObject("security", service.getSecurity(id));
 	}
 
 	/**
@@ -101,18 +112,6 @@ public class SecuritiesController {
 		}
 
 		return "redirect:/securities";
-	}
-
-	/**
-	 * Ermittle das anzuzeigene Wertpapier.
-	 * @param id die Id des Wertpapiers
-	 * @return das Model mit dem Wertpapier
-	 */
-	@RequestMapping(value = "/security/{id}", method = GET)
-	public ModelAndView security(@PathVariable("id") String id) {
-		LOGGER.info("Methode aufgerufen: security({})", id);
-
-		return new ModelAndView("security").addObject("security", service.getSecurity(id));
 	}
 
 	/**
