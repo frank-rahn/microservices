@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+>
+<head>
+	<meta charset="utf-8" />
+	<title>Fehler in der Anwendung</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div class="container">
+		<h1 layout:fragment="header">Fehler in der Anwendung</h1>
+		<div layout:fragment="content">
+			<section>
+				<div class="alert alert-danger" th:if="${url}">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Seite:</b> <span th:text="${url}">Page URL</span>
+				</div>
+				<div class="alert alert-danger" th:if="${timestamp}">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Zeitpunkt:</b> <span th:text="${timestamp}">Timestamp</span>
+				</div>
+				<div class="alert alert-danger" th:if="${status}">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Status:</b> <span th:text="${status}">Status-Code</span> <span th:if="${error}" th:text="'('+${error}+')'">error ...</span>
+				</div>
+				<div class="alert alert-danger" th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Ursache:</b> <span th:if="${ex}" th:text="${ex}">exception ...</span> <span th:if="${exception}" th:text="${exception}">exception ...</span> <span th:if="${message} and ${message.length() != 0}" th:text="${message}">message ...</span>
+				</div>
+				<div class="alert alert-danger" th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <b>Ursache:</b> Ist unbekannt!.
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
