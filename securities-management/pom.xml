@@ -61,6 +61,7 @@
 							<goal>process</goal>
 						</goals>
 						<configuration>
+							<outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
 							<processors>
 								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
 							</processors>
