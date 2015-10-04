@@ -10,7 +10,6 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
@@ -37,6 +36,7 @@ import org.springframework.data.domain.Pageable;
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.repository.SecuritiesRepository;
 import de.rahn.finances.service.SecuritiesService;
+import de.rahn.finances.service.SecurityNotFoundException;
 
 /**
  * Der test für die Implementierung des Services {@link SecuritiesService}.
@@ -111,11 +111,11 @@ public class SecuritiesServiceImplTest {
 	/**
 	 * Test method for {@link SecuritiesServiceImpl#getSecurity(String)}.
 	 */
-	@Test
+	@Test(expected = SecurityNotFoundException.class)
 	public void testGetSecurity_id_unknown() {
-		Security security = classUnderTests.getSecurity("4711");
+		classUnderTests.getSecurity("4711");
 
-		assertThat(security, nullValue());
+		fail("Hier sollte eine Exception geworfen werden");
 	}
 
 	/**

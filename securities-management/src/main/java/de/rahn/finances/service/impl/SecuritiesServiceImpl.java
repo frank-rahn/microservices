@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.repository.SecuritiesRepository;
 import de.rahn.finances.service.SecuritiesService;
+import de.rahn.finances.service.SecurityNotFoundException;
 
 /**
  * Die Implementierung des {@link SecuritiesService}.
@@ -47,7 +48,13 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 */
 	@Override
 	public Security getSecurity(String id) {
-		return repository.findOne(id);
+		Security security = repository.findOne(id);
+
+		if (security == null) {
+			throw new SecurityNotFoundException(id);
+		}
+
+		return security;
 	}
 
 	/**

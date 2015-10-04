@@ -29,6 +29,7 @@ public interface SecuritiesService {
 	/**
 	 * @param id der Identifizierer eines Wertpapiers
 	 * @return das Wertpapier
+	 * @throws SecurityNotFoundException, wenn das Wertpapier nicht gefunden wird
 	 */
 		Security getSecurity(String id);
 
