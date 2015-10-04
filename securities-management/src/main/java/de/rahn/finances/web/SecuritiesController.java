@@ -20,19 +20,22 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.domain.SecurityType;
 import de.rahn.finances.service.SecuritiesService;
+import de.rahn.finances.service.SecurityNotFoundException;
 
 /**
  * Der Controller für die Verwaltung der Wertpapiere.
@@ -73,10 +76,11 @@ public class SecuritiesController {
 	 * @return das Model mit dem leeren Wertpapier
 	 */
 	@RequestMapping(value = "/security", method = GET)
-	public ModelAndView security() {
+	public String security(Model model) {
 		LOGGER.info("Methode aufgerufen: security()");
 
-		return new ModelAndView("security").addObject("security", new Security());
+		model.addAttribute("security", new Security());
+		return "security";
 	}
 
 	/**
@@ -85,10 +89,11 @@ public class SecuritiesController {
 	 * @return das Model mit dem Wertpapier
 	 */
 	@RequestMapping(value = "/security/{id}", method = GET)
-	public ModelAndView security(@PathVariable("id") String id) {
+	public String security(@PathVariable("id") String id, Model model) {
 		LOGGER.info("Methode aufgerufen: security({})", id);
 
-		return new ModelAndView("security").addObject("security", service.getSecurity(id));
+		model.addAttribute("security", service.getSecurity(id));
+		return "security";
 	}
 
 	/**
@@ -117,7 +122,7 @@ public class SecuritiesController {
 	/**
 	 * Lösche das Wertpapier.
 	 * @param id die Id des Wertpapiers
-	 * @return die nächste anzuzeigende View
+	 * @return der Status
 	 */
 	@RequestMapping(value = "/security/{id}", method = DELETE)
 	public ResponseEntity<String> securityDelete(@PathVariable("id") String id) {
@@ -125,11 +130,22 @@ public class SecuritiesController {
 
 		try {
 			service.delete(service.getSecurity(id));
+		} catch (SecurityNotFoundException exception) {
+			// Alles Gut, da Wertpapier schon gelöscht ist
 		} catch (Exception exception) {
-			throw new IllegalArgumentException("Das Wertpapier konnte nicht gelöscht werden. id=" + id, exception);
+			throw new IllegalArgumentException("Das Wertpapier zur ID '" + id + "' konnte nicht gelöscht werden.", exception);
 		}
 
 		return new ResponseEntity<>(NO_CONTENT);
+	}
+
+	/**
+	 * Fehlerbehandlung, wenn ein Wertpapier nicht gefunden wird.
+	 */
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	@ExceptionHandler(SecurityNotFoundException.class)
+	public void securityNotFound() {
+		// Leer
 	}
 
 }
