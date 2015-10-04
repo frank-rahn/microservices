@@ -27,6 +27,9 @@
 				<div class="alert alert-danger" th:if="${message} and ${message.length() != 0}">
 					<b>Meldung:</b> <span th:text="${message}">Message</span>
 				</div>
+				<div class="alert alert-danger" th:if="${errors}">
+					<b>Meldung:</b> <span th:text="${errors}">Errors</span>
+				</div>
 				<div class="alert alert-danger" th:if="${ex} or ${exception}">
 					<b>Ausnahme:</b> <span th:if="${ex}" th:text="${ex}">Exception</span> <span th:if="${exception}" th:text="${exception}">Exception</span>
 					<pre th:if="${trace}" th:text="${trace}">Stack-Trace</pre>
