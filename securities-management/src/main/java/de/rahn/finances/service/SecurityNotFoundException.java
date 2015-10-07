@@ -3,10 +3,15 @@
  */
 package de.rahn.finances.service;
 
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 /**
  * Diese Exception wird geworfen, wenn ein Wertpapier nicht gefunden wird.
  * @author Frank W. Rahn
  */
+@ResponseStatus(value = NOT_FOUND)
 public class SecurityNotFoundException extends RuntimeException {
 
 	public static final String MESSAFE = "Zur ID '%s' wurde kein Wertpapier gefunden.";

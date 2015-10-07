@@ -20,17 +20,14 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import de.rahn.finances.domain.Security;
 import de.rahn.finances.domain.SecurityType;
@@ -67,7 +64,6 @@ public class SecuritiesController {
 
 		model.addAttribute("inventory", TRUE).addAttribute("type", SecurityType.stock).addAttribute("page",
 			service.getSecurities(pageable));
-
 		return "securities";
 	}
 
@@ -125,7 +121,7 @@ public class SecuritiesController {
 	 * @return der Status
 	 */
 	@RequestMapping(value = "/security/{id}", method = DELETE)
-	public ResponseEntity<String> securityDelete(@PathVariable("id") String id) {
+	public ResponseEntity<Void> securityDelete(@PathVariable("id") String id) {
 		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
 
 		try {
@@ -137,15 +133,6 @@ public class SecuritiesController {
 		}
 
 		return new ResponseEntity<>(NO_CONTENT);
-	}
-
-	/**
-	 * Fehlerbehandlung, wenn ein Wertpapier nicht gefunden wird.
-	 */
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	@ExceptionHandler(SecurityNotFoundException.class)
-	public void securityNotFound() {
-		// Leer
 	}
 
 }
