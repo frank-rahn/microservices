@@ -75,6 +75,7 @@
   <classpathentry kind="var" path="M2_REPO/ognl/ognl/3.0.8/ognl-3.0.8.jar" sourcepath="M2_REPO/ognl/ognl/3.0.8/ognl-3.0.8-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/unbescape/unbescape/1.1.0.RELEASE/unbescape-1.1.0.RELEASE.jar" sourcepath="M2_REPO/org/unbescape/unbescape/1.1.0.RELEASE/unbescape-1.1.0.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/nz/net/ultraq/thymeleaf/thymeleaf-layout-dialect/1.2.9/thymeleaf-layout-dialect-1.2.9.jar" sourcepath="M2_REPO/nz/net/ultraq/thymeleaf/thymeleaf-layout-dialect/1.2.9/thymeleaf-layout-dialect-1.2.9-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/dropwizard/metrics/metrics-core/3.1.2/metrics-core-3.1.2.jar" sourcepath="M2_REPO/io/dropwizard/metrics/metrics-core/3.1.2/metrics-core-3.1.2-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar" sourcepath="M2_REPO/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-test/1.2.6.RELEASE/spring-boot-starter-test-1.2.6.RELEASE.jar" sourcepath="M2_REPO/org/springframework/boot/spring-boot-starter-test/1.2.6.RELEASE/spring-boot-starter-test-1.2.6.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.12/junit-4.12.jar" sourcepath="M2_REPO/junit/junit/4.12/junit-4.12-sources.jar"/>
