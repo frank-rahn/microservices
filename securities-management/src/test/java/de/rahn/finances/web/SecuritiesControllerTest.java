@@ -48,7 +48,7 @@ public class SecuritiesControllerTest {
 	private MockMvc mockMvc;
 
 	/**
-	 * @throws java.lang.Exception
+	 * Initialisiere diesen Test.
 	 */
 	@Before
 	public void setUp() throws Exception {
