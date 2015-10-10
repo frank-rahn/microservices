@@ -22,7 +22,7 @@ public class ApplicationController {
 	private static final Logger LOGGER = getLogger(ApplicationController.class);
 
 	/**
-	 * Zeide die Startseite an.
+	 * Zeige die Startseite an.
 	 */
 	@RequestMapping(value = "/", method = GET)
 	public String index() {
@@ -32,7 +32,7 @@ public class ApplicationController {
 	}
 
 	/**
-	 * Zeide die Startseite an.
+	 * Zeige die Managementseite an.
 	 */
 	@RequestMapping(value = "/info", method = GET)
 	public String info() {
