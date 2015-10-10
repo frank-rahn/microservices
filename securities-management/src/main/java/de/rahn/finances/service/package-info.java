@@ -3,7 +3,7 @@
  */
 
 /**
- * Dieses Package beinhaltet die internen Services der Wertpapierverwaltung.
+ * Dieses Package beinhaltet die Definitionen der Services der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
 package de.rahn.finances.service;
