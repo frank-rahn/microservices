@@ -3,7 +3,7 @@
  */
 
 /**
- * In diesem Package befinden sich die Teile, die unabhängig von der Fachlichkeit sind.
+ * In diesem Package befinden sich die Utilities für die Metriken.
  * @author Frank W. Rahn
  */
-package de.rahn.finances.server;
+package de.rahn.finances.commons.metrics;
