@@ -3,7 +3,7 @@
  */
 package de.rahn.finances.commons.metrics;
 
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -46,8 +46,8 @@ public class MetricsExporterService {
 	public void initialize() {
 		rateFactor = SECONDS.toSeconds(1);
 		rateUnit = "second";
-		durationFactor = 1.0 / MICROSECONDS.toNanos(1);
-		durationUnit = "microseconds";
+		durationFactor = 1.0 / MILLISECONDS.toNanos(1);
+		durationUnit = "milliseconds";
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class MetricsExporterService {
 	 */
 	@Scheduled(cron = "0 * * * * ?")
 	public void exportMetrics() {
-		StringBuilder builder = new StringBuilder("\n***** Metriken Report *****\n");
+		StringBuilder builder = new StringBuilder("\n***** Metrics Report *****\n");
 
 		registry.getGauges().forEach((s, m) -> {
 			builder.append("metric=GAUGE,     name=").append(s).append(", value=").append(m.getValue()).append('\n');
@@ -83,7 +83,7 @@ public class MetricsExporterService {
 			builder.append("metric=METER,     name=").append(s).append(", count=").append(m.getCount()).append(", mean-rate=")
 				.append(convertRate(m.getMeanRate())).append(", 1-minute-rate=").append(convertRate(m.getOneMinuteRate()))
 				.append(", 5-minute-rate=").append(convertRate(m.getFiveMinuteRate())).append(", 15-minute-rate=")
-				.append(convertRate(m.getFifteenMinuteRate())).append(", rate-unit=").append(rateUnit).append('\n');
+				.append(convertRate(m.getFifteenMinuteRate())).append(", rate-unit=events/").append(rateUnit).append('\n');
 		});
 
 		registry.getTimers().forEach((s, m) -> {
