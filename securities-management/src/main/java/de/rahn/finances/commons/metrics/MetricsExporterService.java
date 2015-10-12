@@ -53,22 +53,25 @@ public class MetricsExporterService {
 	/**
 	 * Schreibe jede volle Stunde die aktuellen Metriken und setze sie zurück.
 	 */
-	@Scheduled(cron = "0 * * * * ?")
+	@Scheduled(cron = "0 0 * * * ?")
 	public void exportMetrics() {
-		StringBuilder builder = new StringBuilder("\n***** Metrics Report *****\n");
+		StringBuilder builder = new StringBuilder();
 
 		registry.getGauges().forEach((s, m) -> {
+			registry.remove(s);
+
 			builder.append("metric=GAUGE,     name=").append(s).append(", value=").append(m.getValue()).append('\n');
 		});
 
 		registry.getCounters().forEach((s, m) -> {
-			// Counter werden entfernt
 			registry.remove(s);
 
 			builder.append("metric=COUNTER,   name=").append(s).append(", count=").append(m.getCount()).append('\n');
 		});
 
 		registry.getHistograms().forEach((s, m) -> {
+			registry.remove(s);
+
 			Snapshot snapshot = m.getSnapshot();
 
 			builder.append("metric=HISTOGRAM, name=").append(s).append(", count=").append(m.getCount()).append(", min=")
@@ -80,6 +83,8 @@ public class MetricsExporterService {
 		});
 
 		registry.getMeters().forEach((s, m) -> {
+			registry.remove(s);
+
 			builder.append("metric=METER,     name=").append(s).append(", count=").append(m.getCount()).append(", mean-rate=")
 				.append(convertRate(m.getMeanRate())).append(", 1-minute-rate=").append(convertRate(m.getOneMinuteRate()))
 				.append(", 5-minute-rate=").append(convertRate(m.getFiveMinuteRate())).append(", 15-minute-rate=")
@@ -87,6 +92,8 @@ public class MetricsExporterService {
 		});
 
 		registry.getTimers().forEach((s, m) -> {
+			registry.remove(s);
+
 			Snapshot snapshot = m.getSnapshot();
 
 			builder.append("metric=TIMER,     name=").append(s).append(", count=").append(m.getCount()).append(", mean-rate=")
@@ -104,7 +111,9 @@ public class MetricsExporterService {
 				.append('\n');
 		});
 
-		LOGGER.info(builder.append("***************************").toString());
+		if (builder.length() > 0) {
+			LOGGER.info(builder.insert(0, "\n***** Metrics Report *****\n").append("***************************").toString());
+		}
 	}
 
 	private double convertDuration(double duration) {
