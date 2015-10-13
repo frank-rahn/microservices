@@ -7,10 +7,15 @@
 
 ## Verwendete Bibliotheken
 * Spring Boot
+  * Spring Boot Actuator
+    * Dropwizard Metrics
+* Spring AOP / AspectJ
 * Spring Data JPA
   * Hibernate
   * HSQLDB
-* Thymeleaf
+* Spring MVC
+  * Thymeleaf
+  * Bootstrap / jQuery
 
 # Build mit Maven
 Eclipse Konfiguration neu erzeugen: `$ mvn eclipse:clean eclipse:eclipse`
@@ -19,6 +24,8 @@ Anwendung bauen: `$ mvn clean install`
 
 # Run mit Maven
 Ausführen: `$ mvn spring-boot:run`
+
+Aufrufen: `http://localhost:8000/`
 
 # Homepage des Autors
 [Frank W. Rahn](http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top)
