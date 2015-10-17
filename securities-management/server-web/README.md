@@ -22,5 +22,10 @@ Eclipse Konfiguration neu erzeugen: `$ mvn eclipse:clean eclipse:eclipse`
 
 Anwendung bauen: `$ mvn clean install`
 
+# Run mit Maven
+Ausführen: `$ mvn spring-boot:run`
+
+Aufrufen: `http://localhost:8000/`
+
 # Homepage des Autors
 [Frank W. Rahn](http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top)
