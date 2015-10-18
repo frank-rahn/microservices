@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.domains.repository;
+package de.rahn.finances.domains.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

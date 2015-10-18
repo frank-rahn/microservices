@@ -3,7 +3,7 @@
  */
 
 /**
- * In diesem Package befinden sich die Utilities für die Metriken.
+ * Die Utilities für die Metriken.
  * @author Frank W. Rahn
  */
 package de.rahn.finances.commons.metrics;

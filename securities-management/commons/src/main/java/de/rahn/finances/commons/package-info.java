@@ -3,7 +3,7 @@
  */
 
 /**
- * Die Datenbankzugriffsklassen für die Wertpapierverwaltung.
+ * Die Utilities für die Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
-package de.rahn.finances.domains.repository;
+package de.rahn.finances.commons;

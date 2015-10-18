@@ -17,7 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.domains.repository.SecuritiesRepository;
+import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.service.SecuritiesService;
 import de.rahn.finances.service.SecurityNotFoundException;
 
