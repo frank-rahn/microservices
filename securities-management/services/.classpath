@@ -30,7 +30,7 @@
   <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.4.6/jackson-annotations-2.4.6.jar" sourcepath="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.4.6/jackson-annotations-2.4.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.4.6/jackson-core-2.4.6.jar" sourcepath="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.4.6/jackson-core-2.4.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.1.8.RELEASE/spring-web-4.1.8.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-web/4.1.8.RELEASE/spring-web-4.1.8.RELEASE-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/de/rahn/finances/domains/1.0.0-SNAPSHOT/domains-1.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/de/rahn/finances/domains/1.0.0-SNAPSHOT/domains-1.0.0-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="src" path="/domains"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-data-jpa/1.2.7.RELEASE/spring-boot-starter-data-jpa-1.2.7.RELEASE.jar" sourcepath="M2_REPO/org/springframework/boot/spring-boot-starter-data-jpa/1.2.7.RELEASE/spring-boot-starter-data-jpa-1.2.7.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-aop/1.2.7.RELEASE/spring-boot-starter-aop-1.2.7.RELEASE.jar" sourcepath="M2_REPO/org/springframework/boot/spring-boot-starter-aop/1.2.7.RELEASE/spring-boot-starter-aop-1.2.7.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjrt/1.8.7/aspectjrt-1.8.7.jar" sourcepath="M2_REPO/org/aspectj/aspectjrt/1.8.7/aspectjrt-1.8.7-sources.jar"/>
