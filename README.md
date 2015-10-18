@@ -1,7 +1,8 @@
 # Microservices
 In diesem Repository befinden sich Projekte rund um das Thema Microservices.
 
-[![Build Status](https://travis-ci.org/frank-rahn/microservices.svg)](https://travis-ci.org/frank-rahn/microservices)
+[![Build Status](https://travis-ci.org/frank-rahn/microservices.svg)](https://travis-ci.org/frank-rahn/microservices) [![Coverage Status](https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=master&service=github)](https://coveralls.io/github/frank-rahn/microservices?branch=master)
+
 
 ## securities-management
 Die Microservices einer Wertpapierverwaltung.
