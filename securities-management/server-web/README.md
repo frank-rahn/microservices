@@ -1,4 +1,4 @@
-# Die Wertpapierverwaltung als Microservices
+# Die Webanwendunge der Wertpapierverwaltung als Microservices
 
 ## Requirements
 * Java SE 8

@@ -3,7 +3,7 @@
  */
 
 /**
- * Hier befinden sich die Web-Komponenten.
+ * Die Webanwendung der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
 package de.rahn.finances.server.web;
