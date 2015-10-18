@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.domains.config;
+package de.rahn.finances.services.config;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -20,8 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import de.rahn.finances.domains.config.DomainsConfigurationTest.Appication;
-import de.rahn.finances.domains.repositories.SecuritiesRepository;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.config.ServicesConfigurationTest.Appication;
 
 /**
  * Test der Spring Configuration.
@@ -29,10 +29,10 @@ import de.rahn.finances.domains.repositories.SecuritiesRepository;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Appication.class)
-public class DomainsConfigurationTest {
+public class ServicesConfigurationTest {
 
 	@SpringBootApplication
-	@Import(DomainsConfiguration.class)
+	@Import(ServicesConfiguration.class)
 	static class Appication {
 		public static void main(String[] args) throws Exception {
 			run(Appication.class, args);
@@ -67,14 +67,14 @@ public class DomainsConfigurationTest {
 	}
 
 	@Autowired
-	private SecuritiesRepository repository;
+	private SecuritiesService service;
 
 	/**
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
 	@Test
 	public void testSpringConfiguration() {
-		assertThat(repository, notNullValue());
+		assertThat(service, notNullValue());
 	}
 
 }
