@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.services;
+package de.rahn.finances.services.securities;
 
 import static java.lang.System.currentTimeMillis;
 
@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.stereotype.Component;
+
+import de.rahn.finances.services.SecuritiesService;
 
 /**
  * Ein Aspekt für die Metriken des {@link SecuritiesService}.

@@ -1,0 +1,2 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = de.rahn.finances.services.config.ServicesConfiguration
