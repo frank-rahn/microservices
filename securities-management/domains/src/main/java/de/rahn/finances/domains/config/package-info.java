@@ -3,7 +3,7 @@
  */
 
 /**
- * In diesem Package befinden sich die Konfiguration der Datenbankschicht für die Wertpapierverwaltung.
+ * Die Konfiguration der Datenbankschicht für die Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
 package de.rahn.finances.domains.config;
