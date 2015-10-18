@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances;
+package de.rahn.finances.server.web;
 
 import static de.rahn.finances.domains.entities.SecurityType.loan;
 import static org.hamcrest.Matchers.hasSize;

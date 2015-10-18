@@ -1,9 +1,10 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.web;
+package de.rahn.finances.server.web;
 
-import static de.rahn.finances.domain.SecurityType.getKeyValueEntries;
+import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
+import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.lang.Boolean.TRUE;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -29,10 +30,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import de.rahn.finances.domain.Security;
-import de.rahn.finances.domain.SecurityType;
-import de.rahn.finances.service.SecuritiesService;
-import de.rahn.finances.service.SecurityNotFoundException;
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
 
 /**
  * Der Controller für die Verwaltung der Wertpapiere.
@@ -62,8 +63,7 @@ public class SecuritiesController {
 	public String securities(Pageable pageable, Model model) {
 		LOGGER.info("Methode aufgerufen: securities({})", pageable);
 
-		model.addAttribute("inventory", TRUE).addAttribute("type", SecurityType.stock).addAttribute("page",
-			service.getSecurities(pageable));
+		model.addAttribute("inventory", TRUE).addAttribute("type", stock).addAttribute("page", service.getSecurities(pageable));
 		return "securities";
 	}
 

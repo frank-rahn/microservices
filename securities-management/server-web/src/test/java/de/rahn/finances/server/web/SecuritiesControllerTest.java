@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.web;
+package de.rahn.finances.server.web;
 
 import static java.lang.Boolean.TRUE;
 import static org.hamcrest.Matchers.containsString;
@@ -29,7 +29,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.context.WebApplicationContext;
 
-import de.rahn.finances.SecuritiesManagementApplication;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
 
