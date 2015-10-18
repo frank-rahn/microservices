@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.service;
+package de.rahn.finances.services;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 

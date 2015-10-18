@@ -19,7 +19,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.service.SecuritiesService;
+import de.rahn.finances.services.SecuritiesService;
 
 /**
  * Der Test zur Klasse {@link SecuritiesManagementApplication}.

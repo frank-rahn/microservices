@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.service;
+package de.rahn.finances.services;
 
 import static java.lang.System.currentTimeMillis;
 
@@ -47,14 +47,14 @@ public class SecuritiesServiceMetricsAspect {
 	/**
 	 * Für den Zugriff auf die Schnittstelle.
 	 */
-	@Pointcut("this(de.rahn.finances.service.SecuritiesService)")
+	@Pointcut("this(de.rahn.finances.services.SecuritiesService)")
 	private void onSecuritiesService() {
 	}
 
 	/**
 	 * Zähle die erfolgreichen lesenden Zugriffe.
 	 */
-	@AfterReturning(pointcut = "execution(* de.rahn.finances.service.SecuritiesService.get*(..))")
+	@AfterReturning(pointcut = "execution(* de.rahn.finances.services.SecuritiesService.get*(..))")
 	public void afterCallingSecuritiesServiceRead() {
 		counterService.increment(PREFIX_METRICNAME_EVENTS);
 		counterService.increment(PREFIX_METRICNAME_CALLS);
@@ -65,7 +65,7 @@ public class SecuritiesServiceMetricsAspect {
 	 * Zähle die erfolgreichen verändernden Zugriffe.
 	 */
 	@AfterReturning(
-		pointcut = "execution(* de.rahn.finances.service.SecuritiesService.save(..)) || execution(* de.rahn.finances.service.SecuritiesService.delete(..))")
+		pointcut = "execution(* de.rahn.finances.services.SecuritiesService.save(..)) || execution(* de.rahn.finances.services.SecuritiesService.delete(..))")
 	public void afterCallingSecuritiesServiceModified() {
 		counterService.increment(PREFIX_METRICNAME_EVENTS);
 		counterService.increment(PREFIX_METRICNAME_CALLS);
@@ -81,7 +81,7 @@ public class SecuritiesServiceMetricsAspect {
 		counterService.increment(PREFIX_METRICNAME_ERRORS + "." + exception.getClass().getSimpleName().toLowerCase());
 	}
 
-	@Around("execution(org.springframework.data.domain.Page de.rahn.finances.service.SecuritiesService.getSecurities(org.springframework.data.domain.Pageable))")
+	@Around("execution(org.springframework.data.domain.Page de.rahn.finances.services.SecuritiesService.getSecurities(org.springframework.data.domain.Pageable))")
 	public Object doGetSecuritiesTimer(ProceedingJoinPoint joinPoint) throws Throwable {
 		long start = currentTimeMillis();
 

@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.service.impl;
+package de.rahn.finances.services.securities;
 
 import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.util.Collections.emptyList;
@@ -35,8 +35,9 @@ import org.springframework.data.domain.Pageable;
 
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
-import de.rahn.finances.service.SecuritiesService;
-import de.rahn.finances.service.SecurityNotFoundException;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
+import de.rahn.finances.services.securities.SecuritiesServiceImpl;
 
 /**
  * Der test für die Implementierung des Services {@link SecuritiesService}.

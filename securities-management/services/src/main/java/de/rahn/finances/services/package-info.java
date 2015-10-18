@@ -3,7 +3,7 @@
  */
 
 /**
- * Die implementierungen der Services der Wertpapierverwaltung.
+ * Die Definitionen der Services der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
-package de.rahn.finances.service.impl;
+package de.rahn.finances.services;
