@@ -1,6 +1,8 @@
 # Microservices
 In diesem Repository befinden sich Projekte rund um das Thema Microservices.
 
+[![Build Status](https://travis-ci.org/frank-rahn/microservices.svg)](https://travis-ci.org/frank-rahn/microservices)
+
 ## securities-management
 Die Microservices einer Wertpapierverwaltung.
 
