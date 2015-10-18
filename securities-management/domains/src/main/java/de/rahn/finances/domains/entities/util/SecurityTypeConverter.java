@@ -1,12 +1,12 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.domain.util;
+package de.rahn.finances.domains.entities.util;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import de.rahn.finances.domain.SecurityType;
+import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Ein Konverter für die Aufzählung {@link SecurityType}.

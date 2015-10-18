@@ -30,8 +30,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import de.rahn.finances.SecuritiesManagementApplication;
-import de.rahn.finances.domain.Security;
-import de.rahn.finances.domain.SecurityType;
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Einen Test für den {@link SecuritiesController}.

@@ -3,7 +3,7 @@
  */
 
 /**
- * Die Datenbankabstraktion der Wertpapierverwaltung.
+ * Die Datenbankschicht der Wertpapierverwaltung.
  * @author Frank W. Rahn
  */
-package de.rahn.finances.repository;
+package de.rahn.finances.domains;

@@ -3,7 +3,7 @@
  */
 package de.rahn.finances.service.impl;
 
-import static de.rahn.finances.domain.SecurityType.stock;
+import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.util.Collections.emptyList;
 import static java.util.UUID.randomUUID;
 import static org.hamcrest.Matchers.contains;
@@ -33,8 +33,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import de.rahn.finances.domain.Security;
-import de.rahn.finances.repository.SecuritiesRepository;
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.repository.SecuritiesRepository;
 import de.rahn.finances.service.SecuritiesService;
 import de.rahn.finances.service.SecurityNotFoundException;
 

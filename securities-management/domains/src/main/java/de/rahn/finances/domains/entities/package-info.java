@@ -7,6 +7,6 @@
  * @author Frank W. Rahn
  */
 @GenericGenerator(name = "uuid", strategy = "uuid2")
-package de.rahn.finances.domain;
+package de.rahn.finances.domains.entities;
 
 import org.hibernate.annotations.GenericGenerator;

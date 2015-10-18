@@ -3,7 +3,7 @@
  */
 package de.rahn.finances;
 
-import static de.rahn.finances.domain.SecurityType.loan;
+import static de.rahn.finances.domains.entities.SecurityType.loan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.rahn.finances.domain.Security;
+import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.service.SecuritiesService;
 
 /**

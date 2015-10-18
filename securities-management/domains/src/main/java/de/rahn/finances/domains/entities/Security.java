@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.domain;
+package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.EnumType.STRING;
@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.domain.Persistable;
 
-import de.rahn.finances.domain.util.SecurityTypeConverter;
+import de.rahn.finances.domains.entities.util.SecurityTypeConverter;
 
 /**
  * Ein persistentes Wertpapier.

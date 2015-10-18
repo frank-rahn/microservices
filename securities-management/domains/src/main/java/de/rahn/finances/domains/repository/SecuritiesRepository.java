@@ -1,14 +1,14 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.repository;
+package de.rahn.finances.domains.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import de.rahn.finances.domain.Security;
-import de.rahn.finances.domain.SecurityType;
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Der Zugriff auf die Wertpapiere.

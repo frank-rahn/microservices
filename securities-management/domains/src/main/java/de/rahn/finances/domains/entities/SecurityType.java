@@ -1,7 +1,7 @@
 /*
  * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
  */
-package de.rahn.finances.domain;
+package de.rahn.finances.domains.entities;
 
 import static java.util.Arrays.stream;
 import static java.util.Collections.unmodifiableList;
