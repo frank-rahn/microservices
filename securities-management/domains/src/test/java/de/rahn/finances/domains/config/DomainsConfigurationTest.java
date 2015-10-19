@@ -47,23 +47,23 @@ public class DomainsConfigurationTest {
 
 				/**
 				 * {@inheritDoc}
-				 * @see org.springframework.validation.Validator#validate(java.lang.Object,
-				 *      org.springframework.validation.Errors)
+				 * @see Validator#validate(Object, Errors)
 				 */
+				@Override
 				public void validate(Object target, Errors errors) {
 					// Leer
 				}
 
 				/**
 				 * {@inheritDoc}
-				 * @see org.springframework.validation.Validator#supports(java.lang.Class)
+				 * @see Validator#supports(Class)
 				 */
+				@Override
 				public boolean supports(Class<?> clazz) {
 					return false;
 				}
 			};
 		}
-
 	}
 
 	@Autowired
