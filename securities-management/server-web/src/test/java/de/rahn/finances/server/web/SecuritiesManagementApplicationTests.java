@@ -106,7 +106,7 @@ public class SecuritiesManagementApplicationTests {
 			new TestRestTemplate().getForEntity("http://localhost:" + port + "/manage/health", String.class);
 
 		assertThat(answer.getStatusCode(), is(OK));
-		assertThat(answer.getBody(), containsString("\"securitiesManagementApplication\" :"));
+		assertThat(answer.getBody(), containsString("\"test\" : \"UP\""));
 	}
 
 }
