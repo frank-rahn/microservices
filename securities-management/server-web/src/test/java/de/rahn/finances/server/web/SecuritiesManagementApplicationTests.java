@@ -4,18 +4,24 @@
 package de.rahn.finances.server.web;
 
 import static de.rahn.finances.domains.entities.SecurityType.loan;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.springframework.http.HttpStatus.OK;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.TestRestTemplate;
+import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.rahn.finances.domains.entities.Security;
@@ -27,6 +33,7 @@ import de.rahn.finances.services.SecuritiesService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SecuritiesManagementApplication.class)
+@WebIntegrationTest({ "server.port=0", "spring.jmx.enabled=false" })
 public class SecuritiesManagementApplicationTests {
 
 	/** SYMBOL */
@@ -43,6 +50,9 @@ public class SecuritiesManagementApplicationTests {
 
 	@Autowired
 	private SecuritiesService service;
+
+	@Value("${local.server.port}")
+	private int port;
 
 	/**
 	 * Alle Wertpapiere laden, alledings gibt es noch keine.
@@ -85,6 +95,18 @@ public class SecuritiesManagementApplicationTests {
 		assertThat(security.getName(), is(NAME));
 		assertThat(security.getSymbol(), is(SYMBOL));
 		assertThat(security.getType(), is(loan));
+	}
+
+	/**
+	 * Teste die Health-Endpoints.
+	 */
+	@Test
+	public void testHealth() {
+		ResponseEntity<String> answer =
+			new TestRestTemplate().getForEntity("http://localhost:" + port + "/manage/health", String.class);
+
+		assertThat(answer.getStatusCode(), is(OK));
+		assertThat(answer.getBody(), containsString("\"securitiesManagementApplication\" :"));
 	}
 
 }
