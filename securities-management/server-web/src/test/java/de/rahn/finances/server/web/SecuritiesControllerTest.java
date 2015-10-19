@@ -154,6 +154,18 @@ public class SecuritiesControllerTest {
 	}
 
 	/**
+	 * Test method for {@link SecuritiesController#security(Security, BindingResult)} .
+	 */
+	@Test
+	public void testSecurityPost_04() throws Exception {
+		mockMvc
+			.perform(post("/security").param("isin", "SE0001000010").param("wkn", "100001").param("name", "Firma 1 AG")
+				.param("symbol", "A01").param("type", "stock"))
+			.andExpect(status().isOk()).andExpect(content().string(containsString("could not execute statement")))
+			.andExpect(view().name("security"));
+	}
+
+	/**
 	 * Test method for {@link SecuritiesController#securityDelete(String)}.
 	 */
 	@Test

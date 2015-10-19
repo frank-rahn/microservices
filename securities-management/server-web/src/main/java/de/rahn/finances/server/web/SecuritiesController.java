@@ -108,6 +108,7 @@ public class SecuritiesController {
 		try {
 			security = service.save(security);
 		} catch (Exception exception) {
+			LOGGER.error("Fehler beim Speichern eines Wertpapiers", exception);
 			bindingResult.addError(new ObjectError("security", exception.toString()));
 			return "security";
 		}
