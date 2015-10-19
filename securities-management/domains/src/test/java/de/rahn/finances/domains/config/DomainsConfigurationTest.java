@@ -3,10 +3,16 @@
  */
 package de.rahn.finances.domains.config;
 
+import static de.rahn.finances.domains.entities.SecurityType.stock;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.boot.SpringApplication.run;
 import static org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.VALIDATOR_BEAN_NAME;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +27,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import de.rahn.finances.domains.config.DomainsConfigurationTest.Appication;
+import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 
 /**
@@ -75,6 +82,12 @@ public class DomainsConfigurationTest {
 	@Test
 	public void testSpringConfiguration() {
 		assertThat(repository, notNullValue());
+
+		List<Security> all = repository.findAll();
+
+		assertThat(all, notNullValue());
+		assertThat(all, hasSize(greaterThan(0)));
+		assertThat(all.get(0).getType(), is(stock));
 	}
 
 }
