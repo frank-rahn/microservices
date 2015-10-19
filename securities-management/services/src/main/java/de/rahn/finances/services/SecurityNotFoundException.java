@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = NOT_FOUND)
 public class SecurityNotFoundException extends RuntimeException {
 
-	public static final String MESSAFE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
+	public static final String MESSAGE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
 
 	private static String format(String id) {
-		return String.format(MESSAFE, id);
+		return String.format(MESSAGE, id);
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class SecurityNotFoundException extends RuntimeException {
 	 * @see RuntimeException#RuntimeException(String, Throwable)
 	 */
 	public SecurityNotFoundException(String id, Throwable cause) {
-		super(id, cause);
+		super(format(id), cause);
 	}
 
 }
