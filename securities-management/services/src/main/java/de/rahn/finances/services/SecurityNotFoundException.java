@@ -28,13 +28,4 @@ public class SecurityNotFoundException extends RuntimeException {
 		super(format(id));
 	}
 
-	/**
-	 * @param id Die ID des Wertpapieres, welches nicht gefunden wurde
-	 * @param cause eine zusätzlich Ausnahme
-	 * @see RuntimeException#RuntimeException(String, Throwable)
-	 */
-	public SecurityNotFoundException(String id, Throwable cause) {
-		super(format(id), cause);
-	}
-
 }
