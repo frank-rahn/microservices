@@ -35,13 +35,28 @@
 		<url>https://github.com/frank-rahn/microservices</url>
 		<connection>scm:git:git://github.com/frank-rahn/microservices.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:frank-rahn/microservices.git</developerConnection>
+		<tag>master</tag>
 	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/frank-rahn/microservices/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/frank-rahn/microservicess</url>
+	</ciManagement>
 
 	<developers>
 		<developer>
 			<name>Frank Rahn</name>
 			<email>frank+git at frank-rahn.de</email>
 			<organization>Frank W. Rahn</organization>
+			<roles>
+				<role>Developer</role>
+				<role>Contributor</role>
+			</roles>
 		</developer>
 	</developers>
 
