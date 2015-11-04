@@ -1,5 +1,17 @@
 /*
- * Copyright © 2015 by Frank W. Rahn. Alle Rechte vorbehalten. All rights reserved.
+ * Copyright 2011-2015 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package de.rahn.finances.server.web;
 
@@ -37,6 +49,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
 
 /**
  * Der Controller für die Verwaltung der Wertpapiere.
+ * 
  * @author Frank W. Rahn
  */
 @Controller
@@ -69,6 +82,7 @@ public class SecuritiesController {
 
 	/**
 	 * Zeige die Maske zum erfassen eines Wertpapieres an.
+	 * 
 	 * @return das Model mit dem leeren Wertpapier
 	 */
 	@RequestMapping(value = "/security", method = GET)
@@ -81,6 +95,7 @@ public class SecuritiesController {
 
 	/**
 	 * Ermittle das anzuzeigene Wertpapier.
+	 * 
 	 * @param id die Id des Wertpapiers
 	 * @return das Model mit dem Wertpapier
 	 */
@@ -94,6 +109,7 @@ public class SecuritiesController {
 
 	/**
 	 * Speichere das Wertpapier.
+	 * 
 	 * @param security das geänderte Wertpapier
 	 * @return die nächste anzuzeigende View
 	 */
@@ -118,6 +134,7 @@ public class SecuritiesController {
 
 	/**
 	 * Lösche das Wertpapier.
+	 * 
 	 * @param id die Id des Wertpapiers
 	 * @return der Status
 	 */
