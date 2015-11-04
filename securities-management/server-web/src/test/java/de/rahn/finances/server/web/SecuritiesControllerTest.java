@@ -46,7 +46,7 @@ import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Einen Test für den {@link SecuritiesController}.
- * 
+ *
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -106,7 +106,7 @@ public class SecuritiesControllerTest {
 
 	/**
 	 * Test method for {@link SecuritiesController#security(String, Model)}.
-	 * 
+	 *
 	 * @throws Exception falls ein Fehler auftritt
 	 */
 	@Test
@@ -118,7 +118,7 @@ public class SecuritiesControllerTest {
 
 	/**
 	 * Test method for {@link SecuritiesController#security(String, Model)}.
-	 * 
+	 *
 	 * @throws Exception falls ein Fehler auftritt
 	 */
 	@Test
@@ -130,7 +130,7 @@ public class SecuritiesControllerTest {
 
 	/**
 	 * Test method for {@link SecuritiesController#security(String, Model)}.
-	 * 
+	 *
 	 * @throws Exception falls ein Fehler auftritt
 	 */
 	@Test
@@ -195,6 +195,15 @@ public class SecuritiesControllerTest {
 	@Test
 	public void testSecurityDelete_02() throws Exception {
 		mockMvc.perform(delete("/security/{id}", "4711")).andExpect(status().isNoContent());
+	}
+
+	/**
+	 * Test method for {@link SecuritiesController#securityDelete(String)}.
+	 */
+	@Test
+	public void testSecurityDelete_03() throws Exception {
+		mockMvc.perform(delete("/security/{id}", "067e6162-3b6f-4ae2-a171-2470b63df001-4711"))
+			.andExpect(status().isNoContent());
 	}
 
 }

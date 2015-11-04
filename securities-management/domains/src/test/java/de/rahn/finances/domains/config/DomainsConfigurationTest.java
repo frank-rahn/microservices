@@ -19,6 +19,7 @@ import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.springframework.boot.SpringApplication.run;
@@ -44,7 +45,7 @@ import de.rahn.finances.domains.repositories.SecuritiesRepository;
 
 /**
  * Test der Spring Configuration.
- * 
+ *
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -67,7 +68,7 @@ public class DomainsConfigurationTest {
 
 				/**
 				 * {@inheritDoc}
-				 * 
+				 *
 				 * @see Validator#validate(Object, Errors)
 				 */
 				@Override
@@ -77,7 +78,7 @@ public class DomainsConfigurationTest {
 
 				/**
 				 * {@inheritDoc}
-				 * 
+				 *
 				 * @see Validator#supports(Class)
 				 */
 				@Override
@@ -102,7 +103,16 @@ public class DomainsConfigurationTest {
 
 		assertThat(all, notNullValue());
 		assertThat(all, hasSize(greaterThan(0)));
+		assertThat(all.get(0).getId(), is("067e6162-3b6f-4ae2-a171-2470b63df001"));
+		assertThat(all.get(0).getIsin(), is("DE0001000010"));
+		assertThat(all.get(0).getWkn(), is("100001"));
+		assertThat(all.get(0).getName(), is("Firma 1 AG"));
+		assertThat(all.get(0).getSymbol(), is("A01"));
 		assertThat(all.get(0).getType(), is(stock));
+
+		assertThat(all.get(0).hashCode(), not(all.get(1).hashCode()));
+		assertThat(all.get(0).toString(), not(all.get(1).toString()));
+		assertThat(all.get(0), not(all.get(1)));
 	}
 
 }
