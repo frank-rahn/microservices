@@ -33,11 +33,12 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
 import de.rahn.finances.services.config.ServicesConfigurationTest.Appication;
 
 /**
  * Test der Spring Configuration.
- * 
+ *
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -60,7 +61,7 @@ public class ServicesConfigurationTest {
 
 				/**
 				 * {@inheritDoc}
-				 * 
+				 *
 				 * @see Validator#validate(Object, Errors)
 				 */
 				@Override
@@ -70,7 +71,7 @@ public class ServicesConfigurationTest {
 
 				/**
 				 * {@inheritDoc}
-				 * 
+				 *
 				 * @see Validator#supports(Class)
 				 */
 				@Override
@@ -87,9 +88,11 @@ public class ServicesConfigurationTest {
 	/**
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
-	@Test
-	public void testSpringConfiguration() {
+	@Test(expected = SecurityNotFoundException.class)
+	public void testSpringConfiguration_01() {
 		assertThat(service, notNullValue());
+
+		service.getSecurity("4711");
 	}
 
 }
