@@ -96,7 +96,7 @@ public class DomainsConfigurationTest {
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
 	@Test
-	public void testSpringConfiguration() {
+	public void testSpringConfiguration_01() {
 		assertThat(repository, notNullValue());
 
 		List<Security> all = repository.findAll();
@@ -114,6 +114,34 @@ public class DomainsConfigurationTest {
 		assertThat(all.get(0).hashCode(), not(all.get(1).hashCode()));
 		assertThat(all.get(0).toString(), not(all.get(1).toString()));
 		assertThat(all.get(0), not(all.get(1)));
+	}
+
+	/**
+	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
+	 */
+	@Test
+	public void testSpringConfiguration_02() {
+		assertThat(repository, notNullValue());
+
+		Security testSecurity = new Security();
+		testSecurity.setIsin("DE0000000000");
+		testSecurity.setWkn("000000");
+		testSecurity.setSymbol("ABC");
+		testSecurity.setName("ABC AG");
+		testSecurity.setType(stock);
+
+		Security security = repository.save(testSecurity);
+
+		assertThat(security, notNullValue());
+		assertThat(security.isNew(), is(testSecurity.isNew()));
+		assertThat(security.getId(), is(testSecurity.getId()));
+		assertThat(security.getIsin(), is(testSecurity.getIsin()));
+		assertThat(security.getName(), is(testSecurity.getName()));
+		assertThat(security.getSymbol(), is(testSecurity.getSymbol()));
+		assertThat(security.getType(), is(testSecurity.getType()));
+		assertThat(security.getWkn(), is(testSecurity.getWkn()));
+		assertThat(security.isInventory(), is(testSecurity.isInventory()));
+		assertThat(security, is(testSecurity));
 	}
 
 }
