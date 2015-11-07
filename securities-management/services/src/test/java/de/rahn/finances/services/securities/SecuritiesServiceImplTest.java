@@ -51,8 +51,8 @@ import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
 
 /**
- * Der test für die Implementierung des Services {@link SecuritiesService}.
- * 
+ * Der Test für die Implementierung des Services {@link SecuritiesService}.
+ *
  * @author Frank W. Rahn
  */
 @RunWith(MockitoJUnitRunner.class)
