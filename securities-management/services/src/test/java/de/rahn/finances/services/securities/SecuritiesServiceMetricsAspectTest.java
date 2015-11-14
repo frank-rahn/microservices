@@ -16,7 +16,9 @@
 package de.rahn.finances.services.securities;
 
 import static de.rahn.finances.domains.entities.SecurityType.stock;
+import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_CALL;
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_CALLS;
+import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_ERROR;
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_ERRORS;
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_EVENTS;
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_TIMER;
@@ -138,7 +140,7 @@ public class SecuritiesServiceMetricsAspectTest {
 		assertThat(counters.size(), is(3));
 		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_EVENTS));
 		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
-		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
+		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALL));
 	}
 
 	/**
@@ -170,7 +172,7 @@ public class SecuritiesServiceMetricsAspectTest {
 		assertThat(counters.size(), is(3));
 		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_EVENTS));
 		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
-		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
+		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALL));
 	}
 
 	/**
@@ -187,7 +189,7 @@ public class SecuritiesServiceMetricsAspectTest {
 
 		assertThat(counters.size(), is(2));
 		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_ERRORS));
-		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_ERRORS));
+		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_ERROR));
 	}
 
 }
