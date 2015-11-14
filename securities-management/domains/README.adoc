@@ -9,7 +9,7 @@ Doc Frank Rahn <frank@frank-rahn.de>
 toc::[]
 
 == Das Model der Wertpapierverwaltung
-image:src/main/asciidoc/Securities\ Management\ Domain\ Model.png[Securities Management Domain Model, capture="Securities Management Domain Model"]
+image:src/main/asciidoc/Securities Management Domain Model.png[Securities Management Domain Model, capture="Securities Management Domain Model"]
 
 == Build mit Maven
 [source,bash]
