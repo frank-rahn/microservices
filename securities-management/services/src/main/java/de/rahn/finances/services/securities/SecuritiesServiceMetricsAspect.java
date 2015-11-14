@@ -32,7 +32,7 @@ import de.rahn.finances.services.SecuritiesService;
 
 /**
  * Ein Aspekt für die Metriken des {@link SecuritiesService}.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Aspect
@@ -40,16 +40,22 @@ import de.rahn.finances.services.SecuritiesService;
 public class SecuritiesServiceMetricsAspect {
 
 	/** Der Prefix für die Aufrufzähler. */
-	public static final String PREFIX_METRICNAME_CALLS = "counter.calls.securities";
+	public static final String PREFIX_METRICNAME_CALLS = "counter.securities.securitiesservice.invoked";
+
+	/** Der Prefix für die Aufrufzähler. */
+	public static final String PREFIX_METRICNAME_CALL = "counter.securities.securitiesservice.invoke.";
 
 	/** Der Prefix für die Aufrufrate. */
-	public static final String PREFIX_METRICNAME_EVENTS = "meter.calls.securities";
+	public static final String PREFIX_METRICNAME_EVENTS = "meter.securities.securitiesservice.used";
 
 	/** Der Prefix für die Aufrufrate. */
-	public static final String PREFIX_METRICNAME_TIMER = "timer.calls.securities";
+	public static final String PREFIX_METRICNAME_TIMER = "timer.securities.securitiesservice.getsecurities.executed";
 
 	/** Der Prefix für die Fehlerzähler. */
-	public static final String PREFIX_METRICNAME_ERRORS = "counter.errors.securities";
+	public static final String PREFIX_METRICNAME_ERRORS = "counter.securities.securitiesservice.failed";
+
+	/** Der Prefix für die Fehlerzähler. */
+	public static final String PREFIX_METRICNAME_ERROR = "counter.securities.securitiesservice.failure.";
 
 	/** Spring Boot Service für Counter und Meter. */
 	@Autowired
@@ -73,7 +79,7 @@ public class SecuritiesServiceMetricsAspect {
 	public void afterCallingSecuritiesServiceRead() {
 		counterService.increment(PREFIX_METRICNAME_EVENTS);
 		counterService.increment(PREFIX_METRICNAME_CALLS);
-		counterService.increment(PREFIX_METRICNAME_CALLS + ".read");
+		counterService.increment(PREFIX_METRICNAME_CALL + "read");
 	}
 
 	/**
@@ -84,7 +90,7 @@ public class SecuritiesServiceMetricsAspect {
 	public void afterCallingSecuritiesServiceModified() {
 		counterService.increment(PREFIX_METRICNAME_EVENTS);
 		counterService.increment(PREFIX_METRICNAME_CALLS);
-		counterService.increment(PREFIX_METRICNAME_CALLS + ".modified");
+		counterService.increment(PREFIX_METRICNAME_CALL + "modified");
 	}
 
 	/**
@@ -93,7 +99,7 @@ public class SecuritiesServiceMetricsAspect {
 	@AfterThrowing(pointcut = "onSecuritiesService()", throwing = "exception")
 	public void afterThrowsException(Exception exception) {
 		counterService.increment(PREFIX_METRICNAME_ERRORS);
-		counterService.increment(PREFIX_METRICNAME_ERRORS + "." + exception.getClass().getSimpleName().toLowerCase());
+		counterService.increment(PREFIX_METRICNAME_ERROR + exception.getClass().getSimpleName().toLowerCase());
 	}
 
 	@Around("execution(org.springframework.data.domain.Page de.rahn.finances.services.SecuritiesService.getSecurities(org.springframework.data.domain.Pageable))")
@@ -102,7 +108,7 @@ public class SecuritiesServiceMetricsAspect {
 
 		Object returnValue = joinPoint.proceed();
 
-		gaugeService.submit(PREFIX_METRICNAME_TIMER + ".getsecurities", currentTimeMillis() - start);
+		gaugeService.submit(PREFIX_METRICNAME_TIMER, currentTimeMillis() - start);
 
 		return returnValue;
 	}
