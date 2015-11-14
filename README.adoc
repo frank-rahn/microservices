@@ -5,18 +5,15 @@ Doc Frank Rahn <frank@frank-rahn.de>
 :toc-title: Inhaltsverzeichnis
 :toc-placement!:
 :sectanchors:
-:numbered:
 
 In diesem Repository befinden sich Projekte rund um das Thema Microservices.
 
-image::https://img.shields.io/badge/license-Apache_License_2-blue.svg[alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"]
-
-[![Apache License 2](https://img.shields.io/badge/license-Apache_License_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Build Status](https://travis-ci.org/frank-rahn/microservices.svg)](https://travis-ci.org/frank-rahn/microservices) [![Coverage Status](https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=master&service=github)](https://coveralls.io/github/frank-rahn/microservices?branch=master)
+image::https://img.shields.io/badge/license-Apache_License_2-blue.svg[title="Apache License 2", alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"] image::https://travis-ci.org/frank-rahn/microservices.svg[title="Build Status", alt="Build Status", link="https://travis-ci.org/frank-rahn/microservices"] image::https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=master&service=github[title="Coverage Status", alt="Coverage Status", link="https://coveralls.io/github/frank-rahn/microservices?branch=master"]
 
 toc::[]
 
 == securities-management
-link:securities-management/README.md[Die Microservices einer Wertpapierverwaltung.]
+link:securities-management[Die Microservices einer Wertpapierverwaltung.]
 
 == Build mit Maven
 [source,bash]
