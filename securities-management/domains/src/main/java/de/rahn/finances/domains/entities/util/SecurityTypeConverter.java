@@ -15,6 +15,8 @@
  */
 package de.rahn.finances.domains.entities.util;
 
+import static de.rahn.finances.domains.entities.SecurityType.valueOf;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -22,7 +24,7 @@ import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Ein Konverter für die Aufzählung {@link SecurityType}.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Converter(autoApply = true)
@@ -30,22 +32,22 @@ public class SecurityTypeConverter implements AttributeConverter<SecurityType, S
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see javax.persistence.AttributeConverter#convertToDatabaseColumn(java.lang.Object)
+	 *
+	 * @see AttributeConverter#convertToDatabaseColumn(Object)
 	 */
 	@Override
 	public String convertToDatabaseColumn(SecurityType attribute) {
-		return attribute.getDescription();
+		return attribute.name();
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see javax.persistence.AttributeConverter#convertToEntityAttribute(java.lang.Object)
+	 *
+	 * @see AttributeConverter#convertToEntityAttribute(Object)
 	 */
 	@Override
 	public SecurityType convertToEntityAttribute(String dbData) {
-		return SecurityType.searchType(dbData);
+		return valueOf(dbData);
 	}
 
 }
