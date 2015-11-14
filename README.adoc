@@ -9,6 +9,8 @@ Doc Frank Rahn <frank@frank-rahn.de>
 
 In diesem Repository befinden sich Projekte rund um das Thema Microservices.
 
+image::https://img.shields.io/badge/license-Apache_License_2-blue.svg[alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"]
+
 [![Apache License 2](https://img.shields.io/badge/license-Apache_License_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Build Status](https://travis-ci.org/frank-rahn/microservices.svg)](https://travis-ci.org/frank-rahn/microservices) [![Coverage Status](https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=master&service=github)](https://coveralls.io/github/frank-rahn/microservices?branch=master)
 
 toc::[]
@@ -16,18 +18,18 @@ toc::[]
 == securities-management
 link:securities-management/README.md[Die Microservices einer Wertpapierverwaltung.]
 
-= Build mit Maven
-[source]
+== Build mit Maven
+[source,bash]
 .Eclipse Konfiguration erzeugen
 ----
 $ mvn eclipse:clean eclipse:eclipse
 ----
 
-[source]
+[source,bash]
 .Alle Microservices bauen
 ----
 $ mvn clean install
 ----
 
-= Homepage des Autors
+== Homepage des Autors
 http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]
