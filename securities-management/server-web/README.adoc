@@ -53,4 +53,4 @@ http://localhost:8000/
 ----
 
 == Homepage des Autors
-http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]# Build mit Maven
+http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]
