@@ -1,26 +1,13 @@
-= Die Wertpapierverwaltung als Microservices
+= Die Webanwendung der Wertpapierverwaltung als Microservices
 Doc Frank Rahn <frank@frank-rahn.de>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
 :toc-placement!:
 :sectanchors:
+:source-highlighter: pygments
 
 toc::[]
-
-== Projekte
-
-=== commons
-link:commons[Die Utilities der Wertpapierverwaltung.]
-
-=== domains
-link:domains[Die Domänen der Wertpapierverwaltung.]
-
-=== services
-link:services[Die Services der Wertpapierverwaltung.]
-
-=== server-web
-link:server-web[Die Webanwendung der Wertpapierverwaltung.]
 
 == Requirements
 * Java SE 8
@@ -40,7 +27,7 @@ link:server-web[Die Webanwendung der Wertpapierverwaltung.]
 ** Bootstrap / jQuery
 
 == Build mit Maven
-[source,bash]
+[source,Bash]
 .Eclipse Konfiguration erzeugen
 ----
 $ mvn eclipse:clean eclipse:eclipse
@@ -52,5 +39,18 @@ $ mvn eclipse:clean eclipse:eclipse
 $ mvn clean install
 ----
 
+== Run mit Maven
+[source,bash]
+.Ausführen
+----
+$ mvn spring-boot:run
+----
+
+[source]
+.URL der Anwendung
+----
+http://localhost:8000/
+----
+
 == Homepage des Autors
-http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]
+http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]# Build mit Maven

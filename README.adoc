@@ -12,7 +12,8 @@ image:https://img.shields.io/badge/license-Apache_License_2-blue.svg[title="Apac
 
 toc::[]
 
-== securities-management
+== Projekte
+=== securities-management
 link:securities-management[Die Microservices einer Wertpapierverwaltung.]
 
 == Build mit Maven
