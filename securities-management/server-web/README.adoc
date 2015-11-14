@@ -5,7 +5,6 @@ Doc Frank Rahn <frank@frank-rahn.de>
 :toc-title: Inhaltsverzeichnis
 :toc-placement!:
 :sectanchors:
-:source-highlighter: pygments
 
 toc::[]
 
@@ -27,7 +26,7 @@ toc::[]
 ** Bootstrap / jQuery
 
 == Build mit Maven
-[source,Bash]
+[source,bash]
 .Eclipse Konfiguration erzeugen
 ----
 $ mvn eclipse:clean eclipse:eclipse
