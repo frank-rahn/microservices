@@ -40,22 +40,22 @@ import de.rahn.finances.services.SecuritiesService;
 public class SecuritiesServiceMetricsAspect {
 
 	/** Der Prefix für die Aufrufzähler. */
-	public static final String PREFIX_METRICNAME_CALLS = "counter.securities.securitiesservice.invoked";
+	public static final String PREFIX_METRICNAME_CALLS = "counter.securities.services.securities.invoked";
 
 	/** Der Prefix für die Aufrufzähler. */
-	public static final String PREFIX_METRICNAME_CALL = "counter.securities.securitiesservice.invoke.";
+	public static final String PREFIX_METRICNAME_CALL = "counter.securities.services.securities.invoke.";
 
 	/** Der Prefix für die Aufrufrate. */
-	public static final String PREFIX_METRICNAME_EVENTS = "meter.securities.securitiesservice.used";
+	public static final String PREFIX_METRICNAME_EVENTS = "meter.securities.services.securities.used";
 
 	/** Der Prefix für die Aufrufrate. */
-	public static final String PREFIX_METRICNAME_TIMER = "timer.securities.securitiesservice.getsecurities.executed";
+	public static final String PREFIX_METRICNAME_TIMER = "timer.securities.services.securities.getsecurities.executed";
 
 	/** Der Prefix für die Fehlerzähler. */
-	public static final String PREFIX_METRICNAME_ERRORS = "counter.securities.securitiesservice.failed";
+	public static final String PREFIX_METRICNAME_ERRORS = "counter.securities.services.securities.failed";
 
 	/** Der Prefix für die Fehlerzähler. */
-	public static final String PREFIX_METRICNAME_ERROR = "counter.securities.securitiesservice.failure.";
+	public static final String PREFIX_METRICNAME_ERROR = "counter.securities.services.securities.failure.";
 
 	/** Spring Boot Service für Counter und Meter. */
 	@Autowired
