@@ -9,13 +9,13 @@ Doc Frank Rahn <frank@frank-rahn.de>
 toc::[]
 
 == Build mit Maven
-[source,bash]
+[source,shell]
 .Eclipse Konfiguration erzeugen
 ----
 $ mvn eclipse:clean eclipse:eclipse
 ----
 
-[source,bash]
+[source,shell]
 .Wertpapierverwaltung bauen
 ----
 $ mvn clean install
