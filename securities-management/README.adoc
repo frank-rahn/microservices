@@ -34,7 +34,7 @@ link:server-web[Die Webanwendung der Wertpapierverwaltung.]
 * Spring AOP / AspectJ
 * Spring Data JPA
 ** Hibernate
-** HSQLDB
+** H2
 * Spring MVC
 ** Thymeleaf
 ** Bootstrap / jQuery
