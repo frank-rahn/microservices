@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2015 the original author or authors.
+ * Copyright 2011-2016 Frank W. Rahn and the project authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * Die Startklasse für diesen Server.
- * 
+ *
  * @author Frank W. Rahn
  */
 @SpringBootApplication
@@ -45,7 +45,7 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter imp
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see WebMvcConfigurerAdapter#addArgumentResolvers(List)
 	 */
 	@Override
@@ -60,7 +60,7 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter imp
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see HealthIndicator#health()
 	 */
 	@Override
