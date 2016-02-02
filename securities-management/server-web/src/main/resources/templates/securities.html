@@ -14,33 +14,6 @@
 	<div class="container">
 		<h1 layout:fragment="header">Liste aller Wertpapiere</h1>
 		<div layout:fragment="content">
-			<!--section class="panel panel-default">
-				<div class="panel-heading">
-					<h2 class="panel-title">
-						Filter <a id="collapse" href="#" data-toggle="collapse" data-target="#filter-body"><span class="glyphicon glyphicon-collapse-down pull-right"></span></a>
-					</h2>
-				</div>
-				<div id="filter-body" class="panel-body collapse">
-					<form id="filter" th:action="@{/securities}" action="#" method="get" role="form" class="form-inline">
-						<input type="hidden" name="page" value="0" th:value="${page.number}" />
-						<input type="hidden" name="size" value="10" th:value="${page.size}" />
-						<div class="form-group col-md-4 col-sm-4">
-							<label><input type="checkbox" name="inventory" th:checked="${inventory}" /> Bestand</label>
-						</div>
-						<div class="form-group col-md-4 col-sm-4">
-							<label for="type">Wertpapierart</label>
-							<select class="form-control" name="type">
-								<option value="" th:selected="${type == null}">-</option>
-								<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type.name()}">Aktie</option>
-							</select>
-						</div>
-						<div class="text-center col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Filtern</button>
-						</div>
-					</form>
-				</div>
-			</section-->
-
 			<section class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">Wertpapiere</h2>
@@ -104,16 +77,5 @@
 			</section>
 		</div>
 	</div>
-
-	<!--script>
-		$(document).ready(function(){
-			$("#filter-body").on("hide.bs.collapse", function(){
-				$("#collapse").html('<span class="glyphicon glyphicon-collapse-down"></span>');
-			});
-			$("#filter-body").on("show.bs.collapse", function(){
-				$("#collapse").html('<span class="glyphicon glyphicon-collapse-up"></span>');
-			});
-		});
-	</script-->
 </body>
 </html>
