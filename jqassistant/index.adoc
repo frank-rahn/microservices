@@ -7,9 +7,7 @@ Die folgenden Regelgruppen werden angewendet:
 [role=group,includesConcepts="metric:Top10MethodsPerType,metric:Top10FieldsPerType,metric:Top10TypeFanOut,metric:Top10TypeFanIn",includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="naming:Default"]
 
 - Reporting Metriken
-- <<naming:Default>>
-+
-include::naming.adoc[Namensregeln]
+- link:naming.adoc[Namensregeln]
 - <<dependency:ArtifactCycles>>
 - <<dependency:PackageCycles>>
 
