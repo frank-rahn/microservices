@@ -1,14 +1,13 @@
 [[junit4:default]]
-.Regeln für die Testklassen.
 [role=group,includesConstraints="junit4:TestClassName"]
 
-=== JUnit4 Rules
+=== Regeln für JUnit4
 
-Die folgende Regeln sind für Testklassen definiert:
+Die folgende Regeln sind für die Testklassen definiert:
 
 - <<junit4:TestClassName>>
 
-==== Überprüfung des Klassennamens
+==== Überprüfung der Klassennamen
 
 [[junit4:TestClassName]]
 .Alle JUnit4-Testklassennamen müssen mit "Test" enden.
