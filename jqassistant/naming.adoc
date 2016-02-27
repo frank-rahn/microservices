@@ -1,0 +1,43 @@
+[[naming:Default]]
+[role=group,includesConstraints="naming:EntitiesInModelPackages"]
+
+=== Naming Rules
+
+The following naming rules apply:
+
+- <<naming:EntitiesInModelPackages>>
+- <<naming:PackageNameContainsModuleName>>
+
+
+==== JPA
+
+[[naming:EntitiesInModelPackages]]
+.All JPA entities must be located in packages named "entities".
+[source,cypher,role=constraint,requiresConcepts="jpa2:Entity"]
+----
+MATCH
+  (package:Package)-[:CONTAINS]->(entity:Jpa:Entity)
+WHERE
+  package.name <> "entities"
+RETURN
+  entity as EntityInWrongPackage
+----
+
+
+==== Packages
+
+[[naming:PackageNameContainsModuleName]]
+.All types must be located in packages containing the group (groupId) and name (artifactId) of the Maven module.
+[source,cypher,role=constraint]
+----
+MATCH
+  (:Maven:Project)-[:CREATES]->(artifact:Artifact)
+WITH
+  artifact, artifact.group + "\\." + artifact.name + "\\..*" as prefixPattern
+MATCH
+  (artifact)-[:CONTAINS]->(type:Type)
+WHERE NOT
+  type.fqn =~ prefixPattern
+RETURN
+  type as TypeInInvalidPackage
+----

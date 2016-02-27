@@ -1,0 +1,12 @@
+== Programmierregeln
+Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
+
+Die folgenden Regelgruppen werden angewendet:
+
+[[default]]
+[role=group,includesGroups="naming:Default,junit4:default"]
+- <<naming:Default>>
+- <<test:Default>>
+
+include::naming.adoc[]
+include::junit4.adoc[]

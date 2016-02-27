@@ -8,7 +8,7 @@ Doc Frank Rahn <frank@frank-rahn.de>
 
 In diesem Repository befinden sich Projekte rund um das Thema Microservices.
 
-image:https://img.shields.io/badge/license-Apache_License_2-blue.svg[title="Apache License 2", alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"] image:https://travis-ci.org/frank-rahn/microservices.svg?branch=b1.0.0[title="Build Status", alt="Build Status", link="https://travis-ci.org/frank-rahn/microservices"] image:https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=b1.0.0[title="Coverage Status", alt="Coverage Status", link="https://coveralls.io/github/frank-rahn/microservices?branch=b1.0.0"]
+image:https://img.shields.io/badge/license-Apache_License_2-blue.svg[title="Apache License 2", alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"] image:https://travis-ci.org/frank-rahn/microservices.svg?branch=feature-jqassistant[title="Build Status", alt="Build Status", link="https://travis-ci.org/frank-rahn/microservices"] image:https://coveralls.io/repos/frank-rahn/microservices/badge.svg?branch=b1.0.0[title="Coverage Status", alt="Coverage Status", link="https://coveralls.io/github/frank-rahn/microservices?branch=b1.0.0"]
 
 toc::[]
 
@@ -31,6 +31,9 @@ $ mvn eclipse:clean eclipse:eclipse
 ----
 $ mvn clean install
 ----
+
+== Programmierregeln
+- link:jqassistant/index.adoc[Programmierregeln]
 
 == Homepage des Autors
 https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]

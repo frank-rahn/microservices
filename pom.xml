@@ -95,6 +95,13 @@
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.buschmais.jqassistant.plugin</groupId>
+						<artifactId>jqassistant.plugin.jpa2</artifactId>
+						<version>${jqassistant-maven-plugin.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<plugin>
