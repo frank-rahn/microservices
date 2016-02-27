@@ -1,18 +1,32 @@
 [[naming:Default]]
-[role=group,includesConstraints="naming:EntitiesInModelPackages"]
+[role=group,includesConstraints="naming:EntitiesInModelPackages,naming:TestClassName"]
 
-=== Naming Rules
+=== Namensregeln
 
-The following naming rules apply:
+Die folgende Regeln sind für Namen von Klassen und Packages definiert:
 
+- <<naming:TestClassName>>
 - <<naming:EntitiesInModelPackages>>
 - <<naming:PackageNameContainsModuleName>>
 
+==== Überprüfung der Testklassennamen
 
-==== JPA
+[[naming:TestClassName]]
+.Alle JUnit4-Testklassennamen müssen mit `Test` enden.
+[source,cypher,role=constraint,requiresConcepts="junit4:TestClass"]
+----
+MATCH
+  (c:Junit4:Test:Class)
+WHERE NOT
+  c.name =~ ".*Test"
+RETURN
+  c as InvalidTestClass
+----
+
+==== Überprüfung der Klassennamen von Entities
 
 [[naming:EntitiesInModelPackages]]
-.All JPA entities must be located in packages named "entities".
+.Alle JPA Entities müssen in einem Package `entities` sein.
 [source,cypher,role=constraint,requiresConcepts="jpa2:Entity"]
 ----
 MATCH
