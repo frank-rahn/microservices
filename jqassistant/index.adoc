@@ -6,6 +6,21 @@ Die folgenden Regelgruppen werden angewendet:
 [[default]]
 [role=group,includesConcepts="metric:Top10MethodsPerType,metric:Top10FieldsPerType,metric:Top10TypeFanOut,metric:Top10TypeFanIn",includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="naming:Default"]
 
-include::naming.adoc[]
-
+- Reporting Metriken
 - <<naming:Default>>
++
+include::naming.adoc[Namensregeln]
+- <<dependency:ArtifactCycles>>
+- <<dependency:PackageCycles>>
+
+Noch nicht verwendet werden:
+- junit4:AssertionMustProvideMessage
++
+All assertions must provide a message
++
+- junit4:IgnoreWithoutMessage
++
+All @Ignore annotations must provide a message
+- junit4:TestMethodWithoutAssertion
++
+There must be no test method without assertion
