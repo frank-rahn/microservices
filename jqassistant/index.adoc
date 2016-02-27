@@ -4,7 +4,8 @@ Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 Die folgenden Regelgruppen werden angewendet:
 
 [[default]]
-[role=group,includesGroups="naming:Default"]
-- <<naming:Default>>
+[role=group,includesConcepts="metric:Top10MethodsPerType,metric:Top10FieldsPerType,metric:Top10TypeFanOut,metric:Top10TypeFanIn",includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="naming:Default"]
 
 include::naming.adoc[]
+
+- <<naming:Default>>
