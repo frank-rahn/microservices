@@ -47,7 +47,7 @@ import de.rahn.finances.services.SecuritiesService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SecuritiesManagementApplication.class)
 @WebIntegrationTest({ "server.port=0", "spring.jmx.enabled=false" })
-public class SecuritiesManagementApplicationTests {
+public class SecuritiesManagementApplicationTest {
 
 	/** SYMBOL */
 	private static final String SYMBOL = "301";
