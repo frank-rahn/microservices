@@ -14,6 +14,7 @@ include::naming.adoc[Namensregeln]
 - <<dependency:PackageCycles>>
 
 Noch nicht verwendet werden:
+
 - junit4:AssertionMustProvideMessage
 +
 All assertions must provide a message
