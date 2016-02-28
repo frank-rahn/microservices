@@ -20,7 +20,6 @@ import static javax.persistence.EnumType.STRING;
 
 import javax.persistence.Access;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -34,11 +33,9 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.domain.Persistable;
 
-import de.rahn.finances.domains.entities.util.SecurityTypeConverter;
-
 /**
  * Ein persistentes Wertpapier.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Entity
@@ -78,7 +75,6 @@ public class Security implements Persistable<String> {
 	/** Die Wertpapierart. */
 	@Column(nullable = false)
 	@Enumerated(STRING)
-	@Convert(converter = SecurityTypeConverter.class)
 	@NotNull
 	private SecurityType type;
 
@@ -90,7 +86,7 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see Persistable#getId()
 	 */
 	@Override
@@ -100,7 +96,7 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see Persistable#isNew()
 	 */
 	@Override
@@ -182,7 +178,7 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -201,7 +197,7 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -262,7 +258,7 @@ public class Security implements Persistable<String> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
