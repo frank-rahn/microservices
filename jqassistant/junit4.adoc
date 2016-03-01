@@ -1,0 +1,14 @@
+[[junit4:Default1]]
+[role=group,includesConstraints="junit4:IgnoreWithoutMessage"]
+
+=== Metriken
+
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#junit4:AssertionMustProvideMessage[junit4:AssertionMustProvideMessage] (Deaktiviert)
++
+All assertions must provide a message.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#junit4:IgnoreWithoutMessage[junit4:IgnoreWithoutMessage]
++
+All @Ignore annotations must provide a message.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#junit4:TestMethodWithoutAssertion[junit4:TestMethodWithoutAssertion] (Deaktiviert)
++
+There must be no test method without assertion.

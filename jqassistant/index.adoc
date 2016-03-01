@@ -4,22 +4,10 @@ Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 Die folgenden Regelgruppen werden angewendet:
 
 [[default]]
-[role=group,includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="naming:Default,metric:Default"]
+[role=group,includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="junit4:Default1,naming:Default,metric:Default"]
 
-- link:naming.adoc[Namensregeln]
+- link:junit4.adoc[Regeln für JUnit4]
+- link:naming.adoc[Regeln für Namen von Java-Types]
 - <<dependency:ArtifactCycles>>
 - <<dependency:PackageCycles>>
 - link:metric.adoc[Metriken]
-
-Noch nicht verwendet werden:
-
-- junit4:AssertionMustProvideMessage
-+
-All assertions must provide a message
-+
-- junit4:IgnoreWithoutMessage
-+
-All @Ignore annotations must provide a message
-- junit4:TestMethodWithoutAssertion
-+
-There must be no test method without assertion
