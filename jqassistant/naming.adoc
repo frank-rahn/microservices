@@ -1,5 +1,5 @@
 [[naming:Default]]
-[role=group,includesConstraints="naming:EntitiesInModelPackages,naming:TestClassName"]
+[role=group,includesConstraints="naming:EntitiesInModelPackages,naming:TestClassName,naming:PackageNameContainsModuleName"]
 
 === Namensregeln
 
@@ -30,28 +30,27 @@ RETURN
 [source,cypher,role=constraint,requiresConcepts="jpa2:Entity"]
 ----
 MATCH
-  (package:Package)-[:CONTAINS]->(entity:Jpa:Entity)
+  (p:Package)-[:CONTAINS]->(e:Jpa:Entity)
 WHERE
-  package.name <> "entities"
+  p.name <> "entities"
 RETURN
-  entity as EntityInWrongPackage
+  e as EntityInWrongPackage
 ----
 
-
-==== Packages
+==== Überprüfe die Namen der Packages
 
 [[naming:PackageNameContainsModuleName]]
-.All types must be located in packages containing the group (groupId) and name (artifactId) of the Maven module.
+.Alle Java Types müssen in einem Packages enthalten sein, dessen Name mit der Gruppe (`groupId`) und Artefaktnamen (`artifactId`) des Maven-Modules beginnt.
 [source,cypher,role=constraint]
 ----
 MATCH
-  (:Maven:Project)-[:CREATES]->(artifact:Artifact)
+  (:Maven:Project)-[:CREATES]->(a:Artifact)
 WITH
-  artifact, artifact.group + "\\." + artifact.name + "\\..*" as prefixPattern
+  a, REPLACE(REPLACE(a.group + "." + a.name + ".", "-", "."), ".", "\\.") + ".*" as prefixPattern
 MATCH
-  (artifact)-[:CONTAINS]->(type:Type)
+  (a)-[:CONTAINS]->(t:Type)
 WHERE NOT
-  type.fqn =~ prefixPattern
+  t.fqn =~ prefixPattern
 RETURN
-  type as TypeInInvalidPackage
+  t as TypeInInvalidPackage
 ----
