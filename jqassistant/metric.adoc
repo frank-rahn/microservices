@@ -1,0 +1,25 @@
+[[metric:Default]]
+[role=group,includesConcepts="metric:Top10MethodsPerType,metric:Top10FieldsPerType,metric:Top10TypeFanOut,metric:Top10TypeFanIn,metric:Top10TypesPerArtifact,metric:Top10TypesPerPackage"]
+
+=== Metriken
+
+Die folgende Konzepte für Metriken sind aktiviert:
+
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10MethodsPerType[metric:Top10MethodsPerType]
++
+Returns the top 10 types regarding to the number of declared methods (including constructors).
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10FieldsPerType[metric:Top10FieldsPerType]
++
+Returns the top 10 types regarding to the number of declared fields.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10TypeFanOut[metric:Top10TypeFanOut]
++
+Returns the top 10 types regarding the number of other types they depend on.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10TypeFanIn[metric:Top10TypeFanIn]
++
+Returns the top 10 types regarding the number of other types depending on them.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10TypesPerArtifact[metric:Top10TypesPerArtifact]
++
+Returns the top 10 types regarding the number of other types depending on them.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10TypesPerPackage[metric:Top10TypesPerPackage]
++
+Returns the top 10 types regarding the number of other types depending on them.
