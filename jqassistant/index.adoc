@@ -4,10 +4,9 @@ Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 Die folgenden Regelgruppen werden angewendet:
 
 [[default]]
-[role=group,includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles",includesGroups="junit4:Default1,naming:Default,metric:Default"]
+[role=group,includesGroups="junit4:Default1,naming:Default,dependency:Default,metric:Default"]
 
 - link:junit4.adoc[Regeln für JUnit4]
 - link:naming.adoc[Regeln für Namen von Java-Types]
-- <<dependency:ArtifactCycles>>
-- <<dependency:PackageCycles>>
+- link:dependency.adoc[Regeln der Anhängigkeiten]
 - link:metric.adoc[Metriken]

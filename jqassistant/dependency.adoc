@@ -1,0 +1,13 @@
+[[dependency:Default]]
+[role=group,includesConstraints="dependency:ArtifactCycles,dependency:PackageCycles"]
+
+=== Abhängigkeiten
+
+Die folgenden Regeln für die Abhängigkeiten sind aktiviert:
+
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#dependency:ArtifactCycles[dependency:ArtifactCycles]
++
+There must be no cyclic artifact dependencies.
+- link:http://buschmais.github.io/jqassistant/doc/1.1.2/#dependency:PackageCycles[dependency:PackageCycles]
++
+There must be no cyclic package dependencies.
