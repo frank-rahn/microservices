@@ -3,7 +3,7 @@
 
 === Metriken
 
-Die folgende Konzepte für Metriken sind aktiviert:
+Die folgenden Konzepte für Metriken sind aktiviert:
 
 - link:http://buschmais.github.io/jqassistant/doc/1.1.2/#metric:Top10MethodsPerType[metric:Top10MethodsPerType]
 +
