@@ -1,0 +1,64 @@
+[[spring:Default]]
+[role=group,includesConstraints="",includesConcepts="spring:Service,spring:Controller,spring:Repository"]
+
+=== Regeln für das Spring Framework
+
+Die folgenden Konzepte sind definiert:
+- <<spring:Service>>
+- <<spring:Controller>>
+- <<spring:Repository>>
+
+Die folgenden Regeln sind definiert:
+- <<>>
+
+==== Konzepte
+[[spring:Service]]
+.Kennzeichne alle Java-Types, die mit der Annotation `org.springframework.stereotype.Service` markiert sind, mit dem Labels `Spring` und `Service`
+[source,cypher,role="concept"]
+----
+MATCH
+  (t:Type)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(:Type {fqn: "org.springframework.stereotype.Service"})
+SET
+  t:Spring:Service
+RETURN
+  t as SpringService
+----
+
+[[spring:Controller]]
+.Kennzeichne alle Java-Types, die mit der Annotation `org.springframework.stereotype.Controller` markiert sind, mit den Labels `Spring' und `Controller`
+[source,cypher,role="concept"]
+----
+MATCH
+  (t:Type)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(:Type {fqn: "org.springframework.stereotype.Controller"})
+SET
+  t:Spring:Controller
+RETURN
+  t as SpringController
+----
+
+[[spring:Repository]]
+.Liefere alle Java-Types, die mit den Labels `Spring` und `Repository` gekennzeichnet sind
+[source,cypher,role="concept"]
+----
+MATCH
+  (t:Type)-[:ANNOTATED_BY]->()-[:OF_TYPE]->(:Type {fqn: "org.springframework.stereotype.Repository"})
+SET
+  t:Spring:Repository
+RETURN
+  t as SpringRepository
+UNION
+MATCH
+  (t:Type)-[:EXTENDS|IMPLEMENTS*]->(s:Type)
+WHERE
+  s.fqn =~ "org\\.springframework\\.data\\.repository\\..*Repository"
+  OR s.fqn =~ "org\\.springframework\\.data\\.jpa\\.repository\\..*Repository"
+SET
+  t:Spring:Repository
+RETURN
+  t as SpringRepository
+----
+
+Es werden alle Java-Types mit den Labels `Spring` und `Repository` gekennzeichnet,
+
+- die mit der Annotation `org.springframework.stereotype.Repository` markiert sind
+- die mit dem Marker-Interface `org.springframework.stereotype.Repository` markiert sind

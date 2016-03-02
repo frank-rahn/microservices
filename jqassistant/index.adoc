@@ -4,8 +4,9 @@ Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 Die folgenden Regelgruppen werden angewendet:
 
 [[default]]
-[role=group,includesGroups="test:Default,naming:Default,dependency:Default,metric:Default"]
+[role=group,includesGroups="spring:Default,test:Default,naming:Default,dependency:Default,metric:Default"]
 
+- link:spring.adoc[Regeln für das Spring Framework]
 - link:test.adoc[Regeln für die Testklassen]
 - link:naming.adoc[Regeln für Namen von Java-Types]
 - link:dependency.adoc[Regeln für die Anhängigkeiten]
