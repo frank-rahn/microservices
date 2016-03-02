@@ -27,7 +27,7 @@ RETURN
 ----
 
 [[spring:Controller]]
-.Kennzeichne alle Java-Types, die mit der Annotation `org.springframework.stereotype.Controller` markiert sind, mit den Labels `Spring' und `Controller`
+.Kennzeichne alle Java-Types, die mit der Annotation `org.springframework.stereotype.Controller` markiert sind, mit den Labels `Spring` und `Controller`
 [source,cypher,role="concept"]
 ----
 MATCH
