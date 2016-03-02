@@ -4,11 +4,13 @@
 === Regeln für das Spring Framework
 
 Die folgenden Konzepte sind definiert:
+
 - <<spring:Service>>
 - <<spring:Controller>>
 - <<spring:Repository>>
 
 Die folgenden Regeln sind definiert:
+
 - <<>>
 
 ==== Konzepte
@@ -58,7 +60,9 @@ RETURN
   t as SpringRepository
 ----
 
-Es werden alle Java-Types mit den Labels `Spring` und `Repository` gekennzeichnet,
+Es werden alle Java-Types mit den Labels `Spring` und `Repository` gekennzeichnet, die mit
 
-- die mit der Annotation `org.springframework.stereotype.Repository` markiert sind
-- die mit dem Marker-Interface `org.springframework.stereotype.Repository` markiert sind
+- der Annotation `org.springframework.stereotype.Repository` oder
+- dem Marker-Interface `org.springframework.stereotype.Repository`
+
+markiert sind.
