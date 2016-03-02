@@ -29,7 +29,7 @@ $ mvn eclipse:clean eclipse:eclipse
 [source,bash]
 .Alle Microservices bauen
 ----
-$ mvn clean install
+$ mvn clean install jqassistant:report
 ----
 
 == Programmierregeln

@@ -12,7 +12,7 @@ Die folgende Regeln sind für Namen von Klassen und Packages definiert:
 ==== Überprüfung der Testklassennamen
 
 [[naming:TestClassName]]
-.Alle JUnit4-Testklassennamen müssen mit `Test` enden.
+.Alle JUnit4-Testklassennamen müssen mit `Test` enden
 [source,cypher,role=constraint,requiresConcepts="junit4:TestClass"]
 ----
 MATCH
@@ -26,7 +26,7 @@ RETURN
 ==== Überprüfung der Klassennamen von Entities
 
 [[naming:EntitiesInModelPackages]]
-.Alle JPA Entities müssen in einem Package `entities` sein.
+.Alle JPA Entities müssen in einem Package `entities` sein
 [source,cypher,role=constraint,requiresConcepts="jpa2:Entity"]
 ----
 MATCH
@@ -40,7 +40,7 @@ RETURN
 ==== Überprüfe die Namen der Packages
 
 [[naming:PackageNameContainsModuleName]]
-.Alle Java Types müssen in einem Packages enthalten sein, dessen Name mit der Gruppe (`groupId`) und Artefaktnamen (`artifactId`) des Maven-Modules beginnt.
+.Alle Java Types müssen in einem Packages enthalten sein, dessen Name mit der Gruppe (`groupId`) und Artefaktnamen (`artifactId`) des Maven-Modules beginnt
 [source,cypher,role=constraint]
 ----
 MATCH
