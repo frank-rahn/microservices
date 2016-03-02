@@ -1,9 +1,9 @@
 [[test:Default]]
 [role=group,includesConstraints="junit4:IgnoreWithoutMessage"]
 
-=== Regeln für JUnit4
+=== Regeln für die Testklassen
 
-Die folgenden Regeln für JUnit4 sind aktiviert:
+Die folgenden Regeln für die Testklassen sind aktiviert:
 
 - link:http://buschmais.github.io/jqassistant/doc/1.1.2/#junit4:IgnoreWithoutMessage[junit4:IgnoreWithoutMessage]
 +
