@@ -4,9 +4,9 @@ Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 Die folgenden Regelgruppen werden angewendet:
 
 [[default]]
-[role=group,includesGroups="junit4:Default1,naming:Default,dependency:Default,metric:Default"]
+[role=group,includesGroups="test:Default,naming:Default,dependency:Default,metric:Default"]
 
-- link:junit4.adoc[Regeln für JUnit4]
+- link:test.adoc[Regeln für die Testklassen]
 - link:naming.adoc[Regeln für Namen von Java-Types]
-- link:dependency.adoc[Regeln der Anhängigkeiten]
+- link:dependency.adoc[Regeln für die Anhängigkeiten]
 - link:metric.adoc[Metriken]

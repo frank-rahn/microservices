@@ -1,4 +1,4 @@
-[[junit4:Default1]]
+[[test:Default]]
 [role=group,includesConstraints="junit4:IgnoreWithoutMessage"]
 
 === Regeln für JUnit4
