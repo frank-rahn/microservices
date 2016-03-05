@@ -1,4 +1,13 @@
 == Programmierregeln
+Doc Frank Rahn <frank@frank-rahn.de>
+:toc:
+:toclevels: 3
+:toc-title: Inhaltsverzeichnis
+:toc-placement!:
+:sectanchors:
+
+toc::[]
+
 Dieses Kapitel beschreibt die Programmierregeln für die Microservices.
 
 Die folgenden Regelgruppen werden angewendet:
@@ -11,3 +20,20 @@ Die folgenden Regelgruppen werden angewendet:
 - link:naming.adoc[Regeln für Namen von Java-Types]
 - link:dependency.adoc[Regeln für die Anhängigkeiten]
 - link:metric.adoc[Metriken]
+
+=== Build mit Maven
+[source,bash]
+.Wertpapierverwaltung bauen
+----
+$ mvn clean install
+----
+
+[source,bash]
+.jQAssistant auslösen
+----
+$ mvn jqassistant:reset jqassistant:scan jqassistant:analyze jqassistant:report
+$ mvn jqassistant:server
+----
+
+=== Homepage des Autors
+http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]

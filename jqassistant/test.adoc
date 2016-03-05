@@ -1,5 +1,5 @@
 [[test:Default]]
-[role=group,includesConstraints="junit4:IgnoreWithoutMessage"]
+[role=group,includesConstraints="junit4:IgnoreWithoutMessage,test:TestClassInMain"]
 
 === Regeln für die Testklassen
 
@@ -8,6 +8,21 @@ Die folgenden Regeln für die Testklassen sind aktiviert:
 - link:http://buschmais.github.io/jqassistant/doc/1.1.2/#junit4:IgnoreWithoutMessage[junit4:IgnoreWithoutMessage]
 +
 All @Ignore annotations must provide a message.
+- <<test:TestClassInMain>>
+
+==== Überprüfen, ob es eine Klasse mit einer Test-Methode im produktiven Code gibt
+
+[[test:TestClassInMain]]
+.Keine Klasse im Verzeichnis `src/main/java`, die einen Test enthält
+[source,cypher,role=constraint,requiresConcepts="junit4:TestClass"]
+----
+MATCH
+  (a:Artifact)-[:CONTAINS]->(c:Class:Test:Junit4)
+WHERE
+  a.type <> "test-jar"
+RETURN
+  c as InvalidTestClass
+----
 
 ==== Deaktivierte Regeln
 
