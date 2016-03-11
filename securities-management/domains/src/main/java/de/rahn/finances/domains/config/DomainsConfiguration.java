@@ -21,12 +21,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Die Spring Configuration für die Domains.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Configuration
-@EntityScan(basePackages = { "de.rahn.finances.domains.entities" })
-@EnableJpaRepositories(basePackages = { "de.rahn.finances.domains.repositories" })
+@EntityScan(basePackageClasses = { de.rahn.finances.domains.entities.PackageMarker.class })
+@EnableJpaRepositories(basePackageClasses = { de.rahn.finances.domains.repositories.PackageMarker.class })
 public class DomainsConfiguration {
 	// Leer
 }

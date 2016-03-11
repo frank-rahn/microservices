@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Diese Exception wird geworfen, wenn ein Wertpapier nicht gefunden wird.
- * 
+ *
  * @author Frank W. Rahn
  */
 @ResponseStatus(value = NOT_FOUND)

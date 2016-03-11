@@ -13,20 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.services.config;
-
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-
-import de.rahn.finances.services.securities.PackageMarker;
+package de.rahn.finances.services.securities;
 
 /**
- * Die Spring Configuration für die Services.
+ * Die Package-Marker-Schnittstelle ohne Operationen.
  *
  * @author Frank W. Rahn
  */
-@Configuration
-@ComponentScan(basePackageClasses = { PackageMarker.class })
-public class ServicesConfiguration {
-	// Leer
+public interface PackageMarker {
+	// Ist immer leer
 }
