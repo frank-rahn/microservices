@@ -24,7 +24,7 @@ import de.rahn.finances.domains.entities.Security;
 
 /**
  * Der interne Service für Wertpapiere.
- * 
+ *
  * @author Frank W. Rahn
  */
 public interface SecuritiesService {
@@ -32,33 +32,33 @@ public interface SecuritiesService {
 	/**
 	 * @return die Wertpapiere
 	 */
-		List<Security> getSecurities();
+	List<Security> getSecurities();
 
 	/**
 	 * @return die Wertpapiere
 	 */
-		Page<Security> getSecurities(Pageable pageable);
+	Page<Security> getSecurities(Pageable pageable);
 
 	/**
 	 * @param id der Identifizierer eines Wertpapiers
 	 * @return das Wertpapier
 	 * @throws SecurityNotFoundException, wenn das Wertpapier nicht gefunden wird
 	 */
-		Security getSecurity(String id);
+	Security getSecurity(String id);
 
 	/**
 	 * Speichere das Wertpapier.
-	 * 
+	 *
 	 * @param security das Wertpapier
 	 * @return das Wertpapier
 	 */
-		Security save(Security security);
+	Security save(Security security);
 
 	/**
 	 * Lösche das Wertpapier.
-	 * 
+	 *
 	 * @param security das Wertpapier
 	 */
-		void delete(Security security);
+	void delete(Security security);
 
 }

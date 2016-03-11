@@ -33,7 +33,7 @@ import com.codahale.metrics.Snapshot;
  * Diser Service exportiert die Dropwizard Metriken.<br>
  * <br>
  * In diesem Fall loggt der Service die Metriken periodisch.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Service
