@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.server.web;
+package de.rahn.finances.server.web.ui;
 
 import static java.lang.Boolean.TRUE;
 import static org.hamcrest.Matchers.containsString;
@@ -43,6 +43,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
+import de.rahn.finances.server.web.config.SecuritiesManagementApplication;
 
 /**
  * Einen Test für den {@link SecuritiesController}.

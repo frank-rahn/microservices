@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.server.web;
+package de.rahn.finances.server.web.ui;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -34,9 +34,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import de.rahn.finances.server.web.config.SecuritiesManagementApplication;
+
 /**
  * Einen Test für den {@link ApplicationController}.
- * 
+ *
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
