@@ -13,35 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.server.web;
+package de.rahn.finances.server.web.config;
 
 import java.util.List;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import de.rahn.finances.server.web.ui.PackageMarker;
+
 /**
- * Die Startklasse für diesen Server.
+ * Die Konfiguration für den Webserver.
  *
  * @author Frank W. Rahn
  */
-@SpringBootApplication
+@Configuration
+@ComponentScan(basePackageClasses = { PackageMarker.class })
 @EnableSpringDataWebSupport
-public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter implements HealthIndicator {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(SecuritiesManagementApplication.class, args);
-	}
+public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	/**
 	 * {@inheritDoc}
@@ -54,18 +48,6 @@ public class SecuritiesManagementApplication extends WebMvcConfigurerAdapter imp
 		resolver.setFallbackPageable(new PageRequest(0, 10));
 
 		argumentResolvers.add(resolver);
-
-		super.addArgumentResolvers(argumentResolvers);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see HealthIndicator#health()
-	 */
-	@Override
-	public Health health() {
-		return Health.up().withDetail("test", "UP").build();
 	}
 
 }

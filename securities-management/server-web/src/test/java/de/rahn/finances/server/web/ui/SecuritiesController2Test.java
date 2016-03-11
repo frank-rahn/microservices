@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.server.web;
+package de.rahn.finances.server.web.ui;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doThrow;

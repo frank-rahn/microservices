@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.rahn.finances.server.web;
+package de.rahn.finances.server.web.ui;
 
 import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
 import static de.rahn.finances.domains.entities.SecurityType.stock;
