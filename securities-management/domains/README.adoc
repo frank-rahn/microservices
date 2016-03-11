@@ -9,7 +9,7 @@ Doc Frank Rahn <frank@frank-rahn.de>
 toc::[]
 
 == Das Model der Wertpapierverwaltung
-image:src/main/asciidoc/Securities Management Domain Model.png[Securities Management Domain Model, capture="Securities Management Domain Model"]
+image:src/main/asciidoc/securities-management-domain-model.png[Securities Management Domain Model, capture="Securities Management Domain Model"]
 
 == Build mit Maven
 [source,bash]
@@ -25,4 +25,4 @@ $ mvn clean install
 ----
 
 == Homepage des Autors
-http://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]
+https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=microservices&utm_content=top[Frank W. Rahn]
