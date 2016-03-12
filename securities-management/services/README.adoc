@@ -8,6 +8,9 @@ Doc Frank Rahn <frank@frank-rahn.de>
 
 toc::[]
 
+== Das Model der Wertpapierverwaltung
+image:src/main/asciidoc/securities-management-service-model.png[Securities Management Service Model, capture="Securities Management Service Model"]
+
 == Build mit Maven
 [source,bash]
 .Eclipse Konfiguration erzeugen
