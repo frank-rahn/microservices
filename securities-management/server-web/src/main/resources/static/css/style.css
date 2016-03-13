@@ -36,16 +36,35 @@ body.overlay {
 	background-image: linear-gradient(top, #4c1c58 0%, #593662 100%) !important;
 }
 
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:focus,
 .navbar-brand,
 .navbar-brand:focus,
 .navbar .nav > li > a,
 .navbar .nav > li > a:focus {
 	color: #ffffff;
 }
+
 .navbar-brand:focus {
 	outline: none !important;
 }
 
+.navbar-default .navbar-toggle {
+	border-color: #ffffff;
+}
+
+.navbar-default .navbar-toggle .icon-bar,
+.navbar-default .navbar-toggle:hover {
+	background-color: #ffffff;
+}
+
+.navbar-default .navbar-toggle:focus .icon-bar,
+.navbar-default .navbar-toggle:hover .icon-bar {
+	background-color: #888;
+}
+
+
+.navbar-default .navbar-brand:hover,
 .navbar-brand:hover,
 .navbar .nav > li > a:hover {
 	color: #ffffff;
