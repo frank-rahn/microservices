@@ -35,8 +35,8 @@ import de.rahn.finances.services.SecuritiesService;
  *
  * @author Frank W. Rahn
  */
-@Aspect
 @Component
+@Aspect
 public class SecuritiesServiceMetricsAspect {
 
 	/** Der Prefix für die Aufrufzähler. */
