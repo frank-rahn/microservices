@@ -33,6 +33,9 @@
 		<maven-processor-plugin.version>3.1.0</maven-processor-plugin.version>
 		<jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
 		<coveralls-maven-plugin.version>4.1.0</coveralls-maven-plugin.version>
+
+		<!-- Versionen der Libraries -->
+		<commons-lang3.version>3.4</commons-lang3.version>
 	</properties>
 
 	<organization>
@@ -76,6 +79,17 @@
 			</roles>
 		</developer>
 	</developers>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Libraries -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

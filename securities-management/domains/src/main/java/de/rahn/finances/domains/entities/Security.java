@@ -17,6 +17,10 @@ package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.EnumType.STRING;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 import javax.persistence.Access;
 import javax.persistence.Column;
@@ -104,6 +108,36 @@ public class Security implements Persistable<String> {
 		return id == null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return reflectionHashCode(this, false);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		return reflectionEquals(this, obj, false);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return reflectionToString(this, MULTI_LINE_STYLE);
+	}
+
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
 
 	/**
@@ -174,98 +208,6 @@ public class Security implements Persistable<String> {
 	 */
 	public void setType(SecurityType type) {
 		this.type = type;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (id == null ? 0 : id.hashCode());
-		result = prime * result + (inventory ? 1231 : 1237);
-		result = prime * result + (isin == null ? 0 : isin.hashCode());
-		result = prime * result + (name == null ? 0 : name.hashCode());
-		result = prime * result + (symbol == null ? 0 : symbol.hashCode());
-		result = prime * result + (type == null ? 0 : type.hashCode());
-		result = prime * result + (wkn == null ? 0 : wkn.hashCode());
-		return result;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Security)) {
-			return false;
-		}
-		Security other = (Security) obj;
-		if (id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!id.equals(other.id)) {
-			return false;
-		}
-		if (inventory != other.inventory) {
-			return false;
-		}
-		if (isin == null) {
-			if (other.isin != null) {
-				return false;
-			}
-		} else if (!isin.equals(other.isin)) {
-			return false;
-		}
-		if (name == null) {
-			if (other.name != null) {
-				return false;
-			}
-		} else if (!name.equals(other.name)) {
-			return false;
-		}
-		if (symbol == null) {
-			if (other.symbol != null) {
-				return false;
-			}
-		} else if (!symbol.equals(other.symbol)) {
-			return false;
-		}
-		if (type != other.type) {
-			return false;
-		}
-		if (wkn == null) {
-			if (other.wkn != null) {
-				return false;
-			}
-		} else if (!wkn.equals(other.wkn)) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Security [id=").append(id).append(", name=").append(name).append(", isin=").append(isin).append("]");
-		return builder.toString();
 	}
 
 	/**
