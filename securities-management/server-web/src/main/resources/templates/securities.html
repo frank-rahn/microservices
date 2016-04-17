@@ -45,19 +45,19 @@
 					<div class="text-center" th:if="${page.totalPages gt 0}">
 						<ul class="pagination pagination-sm">
 							<li th:classappend="${page.first} ? 'disabled' : ''">
-								<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{/securities(page=0,size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{${#httpServletRequest.requestURI}(page=0,size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 							<li th:classappend="${page.hasPrevious()}? '' : 'disabled'">
-								<span th:if="${not page.hasPrevious()}"><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${page.hasPrevious()}" th:href="@{/securities(page=${page.number - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<span th:if="${not page.hasPrevious()}"><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${page.hasPrevious()}" th:href="@{${#httpServletRequest.requestURI}(page=${page.number - 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 							<li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}" class="active" th:class="${page.number == i} ? 'active' : ''">
-								<a href="#" th:href="@{/securities(page=${i},size=${page.size})}"><span th:text="${i + 1}">1</span></a>
+								<a href="#" th:href="@{${#httpServletRequest.requestURI}(page=${i},size=${page.size},inventory=${inventory})}"><span th:text="${i + 1}">1</span></a>
 							</li>
 							<li th:classappend="${page.hasNext()} ? '' : 'disabled'">
-								<span th:if="${not page.hasNext()}"><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${page.hasNext()}" th:href="@{/securities(page=${page.number + 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<span th:if="${not page.hasNext()}"><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${page.hasNext()}" th:href="@{${#httpServletRequest.requestURI}(page=${page.number + 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 							<li th:classappend="${page.last} ? 'disabled' : ''">
-								<span th:if="${page.last}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${not page.last}" th:href="@{/securities(page=${page.totalPages - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<span th:if="${page.last}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${not page.last}" th:href="@{${#httpServletRequest.requestURI}(page=${page.totalPages - 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 						</ul>
 					</div>
@@ -78,13 +78,13 @@
 							</tr>
 							<tr th:each="security : ${page}">
 								<td>
-									<a href="security.html" th:href="@{'/security/' + ${security.id}}" th:text="${security.isin}">DE0001234560</a>
+									<a href="security.html" th:href="@{/security/__${security.id}__}" th:text="${security.isin}">DE0001234560</a>
 								</td>
 								<td th:text="${security.wkn}">123456</td>
 								<td th:text="${security.name}">Firma 1 AG</td>
 								<td th:text="${security.symbol}">A01</td>
 								<td th:text="${security.type.description}">Aktie</td>
-								<td><a href="#" data-toggle="delete" th:attr="data-url=@{'/security/' + ${security.id}}"><span class="glyphicon glyphicon-trash" /></a></td>
+								<td><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash" /></a></td>
 							</tr>
 						</tbody>
 					</table>
