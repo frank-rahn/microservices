@@ -29,13 +29,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
 
 /**
  * Die Implementierung des {@link SecuritiesService}.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Service
@@ -48,7 +49,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see SecuritiesService#getSecurities()
 	 */
 	@Override
@@ -58,7 +59,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see SecuritiesService#getSecurity(String)
 	 */
 	@Override
@@ -74,17 +75,21 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see SecuritiesService#getSecurities(Pageable)
+	 *
+	 * @see SecuritiesService#getSecurities(boolean, SecurityType, Pageable)
 	 */
 	@Override
-	public Page<Security> getSecurities(Pageable pageable) {
-		return repository.findByInventoryOrType(pageable, false, null);
+	public Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable) {
+		if (type == null) {
+			return repository.findByInventory(pageable, inventory);
+		}
+
+		return repository.findByInventoryAndType(pageable, inventory, type);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see SecuritiesService#save(Security)
 	 */
 	@Override
@@ -95,7 +100,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see SecuritiesService#delete(Security)
 	 */
 	@Override

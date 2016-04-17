@@ -27,6 +27,7 @@ import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -90,8 +91,9 @@ public class SecuritiesServiceImplTest {
 		when(repository.findOne(null)).thenThrow(new IllegalArgumentException());
 		when(repository.findOne(testSecurity.getId())).thenReturn(testSecurity);
 
-		when(repository.findByInventoryOrType(any(Pageable.class), eq(false), eq(null))).thenReturn(pageable2);
-		when(repository.findByInventoryOrType(null, false, null)).thenReturn(pageable1);
+		when(repository.findByInventory(any(Pageable.class), eq(true))).thenReturn(pageable2);
+		when(repository.findByInventory(null, true)).thenReturn(pageable1);
+		when(repository.findByInventoryAndType(isNull(Pageable.class), eq(false), eq(stock))).thenReturn(pageable1);
 
 		when(repository.save(testSecurity)).thenReturn(testSecurity);
 
@@ -162,6 +164,13 @@ public class SecuritiesServiceImplTest {
 		assertThat(page, notNullValue());
 		assertThat(page.getNumberOfElements(), is(0));
 		assertThat(page.getContent(), empty());
+
+		page = classUnderTests.getSecurities(false, stock, null);
+		assertThat(page, notNullValue());
+		assertThat(page.getNumberOfElements(), is(1));
+		assertThat(page.getContent(), notNullValue());
+		assertThat(page.getContent().size(), is(1));
+		assertThat(page.getContent(), contains(testSecurity));
 	}
 
 	/**
