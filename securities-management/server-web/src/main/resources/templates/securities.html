@@ -16,25 +16,48 @@
 		<div layout:fragment="content">
 			<section class="panel panel-default">
 				<div class="panel-heading">
+					<h2 class="panel-title">
+						Filter <a id="collapse" href="#" data-toggle="collapse" data-target="#filter-body"><span class="glyphicon glyphicon-collapse-down pull-right"></span></a>
+					</h2>
+				</div>
+				<div id="filter-body" class="panel-body collapse">
+					<div class="form-group col-md-4 col-sm-4">
+						<label><input id="inventory" type="checkbox" th:checked="${inventory}" /> Bestand</label>
+					</div>
+					<div class="form-group col-md-4 col-sm-4">
+						<label for="type">Wertpapierart</label>
+						<select id="type" class="form-control">
+							<option value="" th:selected="${type == null}">-</option>
+							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type?.name()}">Aktie</option>
+						</select>
+					</div>
+					<div class="text-center col-md-4 col-sm-4">
+						<div id="filter-btn" th:attr="data-url=@{/securities},data-page=${page.number},data-size=${page.size}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Filtern</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="panel panel-default">
+				<div class="panel-heading">
 					<h2 class="panel-title">Wertpapiere</h2>
 				</div>
 				<div class="panel-body">
 					<div class="text-center" th:if="${page.totalPages gt 0}">
 						<ul class="pagination pagination-sm">
 							<li th:classappend="${page.first} ? 'disabled' : ''">
-								<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{/securities(page=0,size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{${#httpServletRequest.requestURI}(page=0,size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 							<li th:classappend="${page.hasPrevious()}? '' : 'disabled'">
-								<span th:if="${not page.hasPrevious()}"><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${page.hasPrevious()}" th:href="@{/securities(page=${page.number - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<span th:if="${not page.hasPrevious()}"><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${page.hasPrevious()}" th:href="@{${#httpServletRequest.requestURI}(page=${page.number - 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 							<li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}" class="active" th:class="${page.number == i} ? 'active' : ''">
-								<a href="#" th:href="@{/securities(page=${i},size=${page.size})}"><span th:text="${i + 1}">1</span></a>
+								<a href="#" th:href="@{${#httpServletRequest.requestURI}(page=${i},size=${page.size},inventory=${inventory})}"><span th:text="${i + 1}">1</span></a>
 							</li>
 							<li th:classappend="${page.hasNext()} ? '' : 'disabled'">
-								<span th:if="${not page.hasNext()}"><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${page.hasNext()}" th:href="@{/securities(page=${page.number + 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<span th:if="${not page.hasNext()}"><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${page.hasNext()}" th:href="@{${#httpServletRequest.requestURI}(page=${page.number + 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 							<li th:classappend="${page.last} ? 'disabled' : ''">
-								<span th:if="${page.last}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${not page.last}" th:href="@{/securities(page=${page.totalPages - 1},size=${page.size})}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<span th:if="${page.last}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></span><a href="#" th:if="${not page.last}" th:href="@{${#httpServletRequest.requestURI}(page=${page.totalPages - 1},size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 						</ul>
 					</div>
@@ -51,17 +74,17 @@
 						</thead>
 						<tbody>
 							<tr th:if="${page.numberOfElements == 0}">
-								<td colspan="6">Keine Wertpapiere</td>
+								<td colspan="6">Keine Wertpapiere zum gewählten Filter vorhanden.</td>
 							</tr>
 							<tr th:each="security : ${page}">
 								<td>
-									<a href="security.html" th:href="@{'/security/' + ${security.id}}" th:text="${security.isin}">DE0001234560</a>
+									<a href="security.html" th:href="@{/security/__${security.id}__}" th:text="${security.isin}">DE0001234560</a>
 								</td>
 								<td th:text="${security.wkn}">123456</td>
 								<td th:text="${security.name}">Firma 1 AG</td>
 								<td th:text="${security.symbol}">A01</td>
 								<td th:text="${security.type.description}">Aktie</td>
-								<td><a href="#" data-toggle="delete" th:attr="data-url=@{'/security/' + ${security.id}}"><span class="glyphicon glyphicon-trash" /></a></td>
+								<td><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash" /></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -77,5 +100,8 @@
 			</section>
 		</div>
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

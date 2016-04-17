@@ -21,6 +21,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
 
 /**
  * Der interne Service für Wertpapiere.
@@ -35,9 +36,26 @@ public interface SecuritiesService {
 	List<Security> getSecurities();
 
 	/**
-	 * @return die Wertpapiere
+	 * @return alle Wertpapiere mit einem Bestand
 	 */
-	Page<Security> getSecurities(Pageable pageable);
+	default Page<Security> getSecurities(Pageable pageable) {
+		return getSecurities(true, pageable);
+	}
+
+	/**
+	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
+	 * @return alle Wertpapiere
+	 */
+	default Page<Security> getSecurities(boolean inventory, Pageable pageable) {
+		return getSecurities(inventory, null, pageable);
+	}
+
+	/**
+	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
+	 * @param type die gewünschte Art des Wertpapiers, <code>null</code> liefert alle
+	 * @return alle Wertpapiere
+	 */
+	Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable);
 
 	/**
 	 * @param id der Identifizierer eines Wertpapiers

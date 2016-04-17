@@ -34,9 +34,18 @@ public interface SecuritiesRepository extends JpaRepository<Security, String> {
 	 *
 	 * @param pageable die Information über die Paginierung
 	 * @param inventory Filter: <code>true</code>, nur der aktuelle Bestand wird angezeigt
+	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
+	 */
+	Page<Security> findByInventory(Pageable pageable, boolean inventory);
+
+	/**
+	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.
+	 *
+	 * @param pageable die Information über die Paginierung
+	 * @param inventory Filter: <code>true</code>, nur der aktuelle Bestand wird angezeigt
 	 * @param type Filter: nur die Wertpapiere dieser Art anzeigen
 	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
 	 */
-	Page<Security> findByInventoryOrType(Pageable pageable, boolean inventory, SecurityType type);
+	Page<Security> findByInventoryAndType(Pageable pageable, boolean inventory, SecurityType type);
 
 }
