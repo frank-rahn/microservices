@@ -16,8 +16,6 @@
 package de.rahn.finances.server.web.ui;
 
 import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
-import static de.rahn.finances.domains.entities.SecurityType.stock;
-import static java.lang.Boolean.TRUE;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
@@ -41,6 +39,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
@@ -49,7 +48,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
 
 /**
  * Der Controller für die Verwaltung der Wertpapiere.
- * 
+ *
  * @author Frank W. Rahn
  */
 @Controller
@@ -72,17 +71,31 @@ public class SecuritiesController {
 	/**
 	 * @return die Liste der anzuzeigenden Wertpapiere
 	 */
-	@RequestMapping(value = "/securities", method = { GET, POST })
-	public String securities(Pageable pageable, Model model) {
-		LOGGER.info("Methode aufgerufen: securities({})", pageable);
+	@RequestMapping(value = "/securities", method = GET)
+	public String securities(@RequestParam(name = "inventory", defaultValue = "true") boolean inventory, Pageable pageable,
+		Model model) {
+		LOGGER.info("Methode aufgerufen: securities({}, {})", inventory, pageable);
 
-		model.addAttribute("inventory", TRUE).addAttribute("type", stock).addAttribute("page", service.getSecurities(pageable));
+		model.addAttribute("inventory", inventory).addAttribute("page", service.getSecurities(inventory, pageable));
+		return "securities";
+	}
+
+	/**
+	 * @return die Liste der anzuzeigenden Wertpapiere
+	 */
+	@RequestMapping(value = "/securities/{type}", method = GET)
+	public String securities(@PathVariable("type") SecurityType type,
+		@RequestParam(name = "inventory", required = false) boolean inventory, Pageable pageable, Model model) {
+		LOGGER.info("Methode aufgerufen: securities({}, {}, {})", type, inventory, pageable);
+
+		model.addAttribute("inventory", inventory).addAttribute("type", type).addAttribute("page",
+			service.getSecurities(inventory, type, pageable));
 		return "securities";
 	}
 
 	/**
 	 * Zeige die Maske zum erfassen eines Wertpapieres an.
-	 * 
+	 *
 	 * @return das Model mit dem leeren Wertpapier
 	 */
 	@RequestMapping(value = "/security", method = GET)
@@ -95,7 +108,7 @@ public class SecuritiesController {
 
 	/**
 	 * Ermittle das anzuzeigene Wertpapier.
-	 * 
+	 *
 	 * @param id die Id des Wertpapiers
 	 * @return das Model mit dem Wertpapier
 	 */
@@ -109,7 +122,7 @@ public class SecuritiesController {
 
 	/**
 	 * Speichere das Wertpapier.
-	 * 
+	 *
 	 * @param security das geänderte Wertpapier
 	 * @return die nächste anzuzeigende View
 	 */
@@ -134,7 +147,7 @@ public class SecuritiesController {
 
 	/**
 	 * Lösche das Wertpapier.
-	 * 
+	 *
 	 * @param id die Id des Wertpapiers
 	 * @return der Status
 	 */

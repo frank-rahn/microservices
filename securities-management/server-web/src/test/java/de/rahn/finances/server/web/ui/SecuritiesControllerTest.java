@@ -15,10 +15,13 @@
  */
 package de.rahn.finances.server.web.ui;
 
+import static de.rahn.finances.domains.entities.SecurityType.stock;
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -42,7 +45,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.domains.entities.SecurityType;
 import de.rahn.finances.server.web.config.SecuritiesManagementApplication;
 
 /**
@@ -78,22 +80,24 @@ public class SecuritiesControllerTest {
 	}
 
 	/**
-	 * Test method for {@link SecuritiesController#securities(Pageable, Model)} .
+	 * Test method for {@link SecuritiesController#securities(boolean, Pageable, Model)} .
 	 */
 	@Test
 	public void testSecurities_01() throws Exception {
 		mockMvc.perform(get("/securities")).andExpect(status().isOk())
-			.andExpect(content().string(containsString("DE0001000010"))).andExpect(model().attribute("inventory", TRUE))
-			.andExpect(model().attribute("type", SecurityType.stock)).andExpect(model().attribute("page", notNullValue()));
+			.andExpect(content().string(containsString("Keine Wertpapiere"))).andExpect(model().attribute("inventory", TRUE))
+			.andExpect(model().attribute("type", nullValue())).andExpect(model().attribute("page", notNullValue()));
 	}
 
 	/**
-	 * Test method for {@link SecuritiesController#securities(Pageable, Model)} .
+	 * Test method for {@link SecuritiesController#securities(boolean, Pageable, Model)} .
 	 */
 	@Test
 	public void testSecurities_02() throws Exception {
-		mockMvc.perform(get("/securities").param("page", "0").param("size", "10")).andExpect(status().isOk())
-			.andExpect(content().string(containsString("DE0001000010")));
+		mockMvc.perform(get("/securities").param("page", "0").param("size", "10").param("inventory", "off"))
+			.andExpect(status().isOk()).andExpect(content().string(containsString("DE0001000010")))
+			.andExpect(model().attribute("inventory", FALSE)).andExpect(model().attribute("type", nullValue()))
+			.andExpect(model().attribute("page", notNullValue()));
 	}
 
 	/**
@@ -101,8 +105,21 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testSecurities_03() throws Exception {
-		mockMvc.perform(get("/securities").param("page", "1").param("size", "10")).andExpect(status().isOk())
-			.andExpect(content().string(containsString("DE0002000089")));
+		mockMvc.perform(get("/securities").param("page", "1").param("size", "10").param("inventory", "off"))
+			.andExpect(status().isOk()).andExpect(content().string(containsString("DE0002000089")))
+			.andExpect(model().attribute("inventory", FALSE)).andExpect(model().attribute("type", nullValue()))
+			.andExpect(model().attribute("page", notNullValue()));
+	}
+
+	/**
+	 * Test method for {@link SecuritiesController#securities(Pageable, Model)} .
+	 */
+	@Test
+	public void testSecurities_04() throws Exception {
+		mockMvc.perform(get("/securities/" + stock.name()).param("page", "0").param("size", "10").param("inventory", "on"))
+			.andExpect(status().isOk()).andExpect(content().string(containsString("Keine Wertpapiere")))
+			.andExpect(model().attribute("inventory", TRUE)).andExpect(model().attribute("type", stock))
+			.andExpect(model().attribute("page", notNullValue()));
 	}
 
 	/**

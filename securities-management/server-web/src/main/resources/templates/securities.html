@@ -21,23 +21,19 @@
 					</h2>
 				</div>
 				<div id="filter-body" class="panel-body collapse">
-					<form id="filter" th:action="@{/securities}" action="#" method="get" role="form" class="form-inline">
-						<input type="hidden" name="page" value="0" th:value="${page.number}" />
-						<input type="hidden" name="size" value="10" th:value="${page.size}" />
-						<div class="form-group col-md-4 col-sm-4">
-							<label><input type="checkbox" name="inventory" th:checked="${inventory}" /> Bestand</label>
-						</div>
-						<div class="form-group col-md-4 col-sm-4">
-							<label for="type">Wertpapierart</label>
-							<select class="form-control" name="type">
-								<option value="" th:selected="${type == null}">-</option>
-								<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type.name()}">Aktie</option>
-							</select>
-						</div>
-						<div class="text-center col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Filtern</button>
-						</div>
-					</form>
+					<div class="form-group col-md-4 col-sm-4">
+						<label><input id="inventory" type="checkbox" th:checked="${inventory}" /> Bestand</label>
+					</div>
+					<div class="form-group col-md-4 col-sm-4">
+						<label for="type">Wertpapierart</label>
+						<select id="type" class="form-control">
+							<option value="" th:selected="${type == null}">-</option>
+							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type?.name()}">Aktie</option>
+						</select>
+					</div>
+					<div class="text-center col-md-4 col-sm-4">
+						<div id="filter-btn" th:attr="data-url=@{/securities},data-page=${page.number},data-size=${page.size}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Filtern</div>
+					</div>
 				</div>
 			</section>
 
@@ -78,7 +74,7 @@
 						</thead>
 						<tbody>
 							<tr th:if="${page.numberOfElements == 0}">
-								<td colspan="6">Keine Wertpapiere</td>
+								<td colspan="6">Keine Wertpapiere zum gewählten Filter vorhanden.</td>
 							</tr>
 							<tr th:each="security : ${page}">
 								<td>
@@ -105,15 +101,7 @@
 		</div>
 	</div>
 
-	<script>
-		$(document).ready(function(){
-			$("#filter-body").on("hide.bs.collapse", function(){
-				$("#collapse").html('<span class="glyphicon glyphicon-collapse-down"></span>');
-			});
-			$("#filter-body").on("show.bs.collapse", function(){
-				$("#collapse").html('<span class="glyphicon glyphicon-collapse-up"></span>');
-			});
-		});
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
