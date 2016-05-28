@@ -51,6 +51,8 @@ public interface SecuritiesService {
 	}
 
 	/**
+	 * Falls die angeforderte Seite ausserhalb des zuslässigen Bereiches liegt, wird die letzte Seite geliefert.
+	 * 
 	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
 	 * @param type die gewünschte Art des Wertpapiers, <code>null</code> liefert alle
 	 * @return alle Wertpapiere

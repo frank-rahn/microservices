@@ -59,6 +59,8 @@ import de.rahn.finances.services.SecurityNotFoundException;
 @RunWith(MockitoJUnitRunner.class)
 public class SecuritiesServiceImplTest {
 
+	private static final Pageable zeroPage = new PageRequest(0, 10);
+
 	@Mock
 	private SecuritiesRepository repository;
 
@@ -84,6 +86,7 @@ public class SecuritiesServiceImplTest {
 
 		PageImpl<Security> pageable1 = new PageImpl<>(allSecurity, new PageRequest(0, 1), allSecurity.size() + 1);
 		PageImpl<Security> pageable2 = new PageImpl<>(emptyList(), new PageRequest(1, 1), allSecurity.size() + 1);
+		PageImpl<Security> pageable3 = new PageImpl<>(emptyList(), zeroPage, 0);
 
 		when(repository.findAll()).thenReturn(allSecurity);
 
@@ -93,6 +96,7 @@ public class SecuritiesServiceImplTest {
 
 		when(repository.findByInventory(any(Pageable.class), eq(true))).thenReturn(pageable2);
 		when(repository.findByInventory(null, true)).thenReturn(pageable1);
+		when(repository.findByInventory(zeroPage, true)).thenReturn(pageable3);
 		when(repository.findByInventoryAndType(isNull(Pageable.class), eq(false), eq(stock))).thenReturn(pageable1);
 
 		when(repository.save(testSecurity)).thenReturn(testSecurity);
@@ -161,6 +165,16 @@ public class SecuritiesServiceImplTest {
 		assertThat(pageable, notNullValue());
 
 		page = classUnderTests.getSecurities(pageable);
+		assertThat(page, notNullValue());
+		assertThat(page.getNumberOfElements(), is(0));
+		assertThat(page.getContent(), empty());
+
+		page = classUnderTests.getSecurities(zeroPage);
+		assertThat(page, notNullValue());
+		assertThat(page.getNumberOfElements(), is(0));
+		assertThat(page.getContent(), empty());
+
+		page = classUnderTests.getSecurities(new PageRequest(10, 10));
 		assertThat(page, notNullValue());
 		assertThat(page.getNumberOfElements(), is(0));
 		assertThat(page.getContent(), empty());

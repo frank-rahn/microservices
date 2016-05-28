@@ -25,6 +25,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -80,11 +81,23 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 */
 	@Override
 	public Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable) {
+		Page<Security> page;
 		if (type == null) {
-			return repository.findByInventory(pageable, inventory);
+			page = repository.findByInventory(pageable, inventory);
+		} else {
+			page = repository.findByInventoryAndType(pageable, inventory, type);
 		}
 
-		return repository.findByInventoryAndType(pageable, inventory, type);
+		if (pageable != null) {
+			if (page.getTotalPages() == 0 && pageable.getPageNumber() > 0
+				|| page.getTotalPages() != 0 && page.getTotalPages() <= pageable.getPageNumber()) {
+				// Angeforderte Page ausserhalb des zulässigen Bereiches
+				int maxPage = page.getTotalPages() == 0 ? 0 : page.getTotalPages() - 1;
+				return getSecurities(inventory, type, new PageRequest(maxPage, pageable.getPageSize(), pageable.getSort()));
+			}
+		}
+
+		return page;
 	}
 
 	/**
