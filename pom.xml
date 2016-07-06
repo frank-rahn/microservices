@@ -84,6 +84,14 @@
 				<groupId>com.buschmais.jqassistant.scm</groupId>
 				<artifactId>jqassistant-maven-plugin</artifactId>
 				<version>${jqassistant-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>scan</goal>
+							<goal>analyze</goal>
+						</goals>
+					</execution>
+				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>com.buschmais.jqassistant.plugin</groupId>
