@@ -15,15 +15,13 @@
  */
 package de.rahn.finances.server.web.config;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.OK;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.context.embedded.LocalServerPort;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -38,19 +36,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = RANDOM_PORT)
 public class HealthConfigurationTest {
 
-	@LocalServerPort
-	private int port;
+	@Autowired
+	private TestRestTemplate testRestTemplate;
 
 	/**
 	 * Teste die Health-Endpoints.
 	 */
 	@Test
 	public void testHealth() {
-		ResponseEntity<String> answer =
-			new TestRestTemplate().getForEntity("http://localhost:" + port + "/manage/health", String.class);
+		ResponseEntity<String> answer = testRestTemplate.getForEntity("/manage/health", String.class);
 
-		assertThat(answer.getStatusCode(), is(OK));
-		assertThat(answer.getBody(), containsString("\"test\" : \"good\""));
+		assertThat(answer.getStatusCode()).isEqualTo(OK);
+		assertThat(answer.getBody()).contains("\"test\" : \"good\"");
 	}
 
 }
