@@ -17,18 +17,16 @@ package de.rahn.finances.server.web.config;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Der Test zur Klasse {@link SecuritiesManagementApplication}.
  *
  * @author Frank W. Rahn
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SecuritiesManagementApplication.class)
-@WebIntegrationTest({ "server.port=0", "spring.jmx.enabled=false" })
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SecuritiesManagementApplication.class)
 public class SecuritiesManagementApplicationTest {
 
 	/**

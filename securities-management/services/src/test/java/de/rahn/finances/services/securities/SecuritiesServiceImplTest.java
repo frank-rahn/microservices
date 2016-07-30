@@ -91,7 +91,7 @@ public class SecuritiesServiceImplTest {
 		when(repository.findAll()).thenReturn(allSecurity);
 
 		when(repository.findOne(anyString())).thenReturn(null);
-		when(repository.findOne(null)).thenThrow(new IllegalArgumentException());
+		when(repository.findOne((String) null)).thenThrow(new IllegalArgumentException());
 		when(repository.findOne(testSecurity.getId())).thenReturn(testSecurity);
 
 		when(repository.findByInventory(any(Pageable.class), eq(true))).thenReturn(pageable2);

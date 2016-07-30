@@ -18,28 +18,27 @@ package de.rahn.finances.server.web.config;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.OK;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.TestRestTemplate;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.context.embedded.LocalServerPort;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Der Test zur Klasse {@link HealthConfiguration}.
  *
  * @author Frank W. Rahn
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SecuritiesManagementApplication.class)
-@WebIntegrationTest({ "server.port=0", "spring.jmx.enabled=false" })
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = RANDOM_PORT)
 public class HealthConfigurationTest {
 
-	@Value("${local.server.port}")
+	@LocalServerPort
 	private int port;
 
 	/**

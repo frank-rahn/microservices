@@ -21,15 +21,15 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.services.SecuritiesService;
@@ -39,9 +39,8 @@ import de.rahn.finances.services.SecuritiesService;
  *
  * @author Frank W. Rahn
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SecuritiesManagementApplication.class)
-@WebIntegrationTest({ "server.port=0", "spring.jmx.enabled=false" })
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = NONE)
 public class WebMvcConfigurationTest {
 
 	/** SYMBOL */
