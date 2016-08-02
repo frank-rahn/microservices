@@ -15,9 +15,7 @@
  */
 package de.rahn.finances.commons.metrics;
 
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -27,9 +25,10 @@ import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.codahale.metrics.Counter;
 import com.codahale.metrics.Histogram;
@@ -38,18 +37,21 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import com.codahale.metrics.UniformReservoir;
 
+import de.rahn.finances.commons.config.CommonsConfiguration;
+
 /**
  * Test, des Exporters.
- * 
+ *
  * @author Frank W. Rahn
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = CommonsConfiguration.class)
 public class MetricsExporterServiceTest {
 
-	@Mock
+	@MockBean
 	private MetricRegistry registry;
 
-	@InjectMocks
+	@Autowired
 	private MetricsExporterService exporter = new MetricsExporterService();
 
 	private <V> SortedMap<String, V> singletonMap(String name, V value) {
@@ -70,8 +72,6 @@ public class MetricsExporterServiceTest {
 		when(registry.getHistograms()).thenReturn(singletonMap("histogram", new Histogram(new UniformReservoir())));
 		when(registry.getMeters()).thenReturn(singletonMap("meter", new Meter()));
 		when(registry.getTimers()).thenReturn(singletonMap("timer", new Timer()));
-
-		exporter.initialize();
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class MetricsExporterServiceTest {
 	public void testExportMetrics() {
 		exporter.exportMetrics();
 
-		assertThat(registry.getMetrics(), notNullValue());
-		assertThat(registry.getMetrics().keySet(), empty());
+		assertThat(registry.getMetrics()).isNotNull();
+		assertThat(registry.getMetrics().keySet()).isEmpty();
 	}
 
 }
