@@ -15,26 +15,24 @@
  */
 package de.rahn.finances.services.config;
 
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.springframework.boot.SpringApplication.run;
-import static org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.VALIDATOR_BEAN_NAME;
+import static org.junit.rules.ExpectedException.none;
+import static org.mockito.Mockito.when;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.actuate.metrics.CounterService;
+import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 
+import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
-import de.rahn.finances.services.config.ServicesConfigurationTest.Appication;
 
 /**
  * Test der Spring Configuration.
@@ -42,45 +40,20 @@ import de.rahn.finances.services.config.ServicesConfigurationTest.Appication;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Appication.class)
+@SpringBootTest(classes = ServicesConfiguration.class)
 public class ServicesConfigurationTest {
 
-	@SpringBootApplication
-	@Import(ServicesConfiguration.class)
-	static class Appication {
-		public static void main(String[] args) throws Exception {
-			run(Appication.class, args);
-		}
+	@Rule
+	public ExpectedException thrown = none();
 
-		/**
-		 * @return eine NO_OPT {@link Validator}
-		 */
-		@Bean(name = VALIDATOR_BEAN_NAME)
-		public Validator validator() {
-			return new Validator() {
+	@MockBean
+	public SecuritiesRepository repository;
 
-				/**
-				 * {@inheritDoc}
-				 *
-				 * @see Validator#validate(Object, Errors)
-				 */
-				@Override
-				public void validate(Object target, Errors errors) {
-					// Leer
-				}
+	@MockBean
+	public CounterService counter;
 
-				/**
-				 * {@inheritDoc}
-				 *
-				 * @see Validator#supports(Class)
-				 */
-				@Override
-				public boolean supports(Class<?> clazz) {
-					return false;
-				}
-			};
-		}
-	}
+	@MockBean
+	public GaugeService gauge;
 
 	@Autowired
 	private SecuritiesService service;
@@ -88,9 +61,12 @@ public class ServicesConfigurationTest {
 	/**
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
-	@Test(expected = SecurityNotFoundException.class)
+	@Test
 	public void testSpringConfiguration_01() {
-		assertThat(service, notNullValue());
+		when(repository.findOne("4711")).thenReturn(null);
+
+		thrown.expect(SecurityNotFoundException.class);
+		thrown.expectMessage("4711");
 
 		service.getSecurity("4711");
 	}
