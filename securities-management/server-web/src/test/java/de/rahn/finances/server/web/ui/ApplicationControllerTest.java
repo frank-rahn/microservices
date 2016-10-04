@@ -20,20 +20,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
-import de.rahn.finances.server.web.config.SecuritiesManagementApplication;
+import de.rahn.finances.server.web.config.WebMvcConfiguration;
+import de.rahn.finances.services.SecuritiesService;
 
 /**
  * Einen Test für den {@link ApplicationController}.
@@ -41,23 +39,15 @@ import de.rahn.finances.server.web.config.SecuritiesManagementApplication;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = SecuritiesManagementApplication.class,
-	initializers = ConfigFileApplicationContextInitializer.class)
-@WebAppConfiguration
+@ContextConfiguration(classes = WebMvcConfiguration.class)
+@WebMvcTest(ApplicationController.class)
 public class ApplicationControllerTest {
 
+	@MockBean
+	private SecuritiesService securitiesService;
+
 	@Autowired
-	private WebApplicationContext webApplicationContext;
-
 	private MockMvc mockMvc;
-
-	/**
-	 * Initialisiere diesen Test.
-	 */
-	@Before
-	public void setUp() throws Exception {
-		mockMvc = webAppContextSetup(webApplicationContext).build();
-	}
 
 	/**
 	 * Test method for {@link ApplicationController#index()}.

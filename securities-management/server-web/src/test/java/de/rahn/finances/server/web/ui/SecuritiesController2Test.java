@@ -49,8 +49,11 @@ public class SecuritiesController2Test {
 	public void testSecurityDelete() {
 		final String id = "4711";
 
-		final Security security = new Security();
-		security.setId(id);
+		final Security security = new Security() {
+			{
+				setId(id);
+			}
+		};
 
 		when(service.getSecurity(id)).thenReturn(security);
 		doThrow(new NullPointerException()).when(service).delete(security);
