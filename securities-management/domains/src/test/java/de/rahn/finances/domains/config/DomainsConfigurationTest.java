@@ -40,7 +40,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import de.rahn.finances.domains.config.DomainsConfigurationTest.Appication;
+import de.rahn.finances.domains.config.DomainsConfigurationTest.Application;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 
@@ -50,14 +50,14 @@ import de.rahn.finances.domains.repositories.SecuritiesRepository;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Appication.class)
+@SpringBootTest(classes = Application.class)
 public class DomainsConfigurationTest {
 
 	@SpringBootApplication
 	@Import(DomainsConfiguration.class)
-	static class Appication {
+	static class Application {
 		public static void main(String[] args) throws Exception {
-			run(Appication.class, args);
+			run(Application.class, args);
 		}
 
 		/**
