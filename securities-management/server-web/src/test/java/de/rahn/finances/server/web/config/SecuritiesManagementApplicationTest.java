@@ -34,6 +34,7 @@ public class SecuritiesManagementApplicationTest {
 	 */
 	@Test
 	public void contextLoads() {
+		// leer
 	}
 
 }
