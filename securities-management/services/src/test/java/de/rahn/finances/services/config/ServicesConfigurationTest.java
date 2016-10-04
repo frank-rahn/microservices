@@ -43,6 +43,9 @@ import de.rahn.finances.services.SecurityNotFoundException;
 @SpringBootTest(classes = ServicesConfiguration.class)
 public class ServicesConfigurationTest {
 
+	/** Security ID */
+	private static final String ID = "4711";
+
 	@Rule
 	public ExpectedException thrown = none();
 
@@ -63,12 +66,12 @@ public class ServicesConfigurationTest {
 	 */
 	@Test
 	public void testSpringConfiguration_01() {
-		when(repository.findOne("4711")).thenReturn(null);
+		when(repository.findOne(ID)).thenReturn(null);
 
 		thrown.expect(SecurityNotFoundException.class);
-		thrown.expectMessage("4711");
+		thrown.expectMessage(ID);
 
-		service.getSecurity("4711");
+		service.getSecurity(ID);
 	}
 
 }
