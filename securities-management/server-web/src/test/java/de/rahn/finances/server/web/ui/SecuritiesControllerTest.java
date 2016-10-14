@@ -178,7 +178,7 @@ public class SecuritiesControllerTest {
 	}
 
 	/**
-	 * Test method for {@link SecuritiesController#securities(Pageable, Model)} .
+	 * Test method for {@link SecuritiesController#securities(boolean, Pageable, Model)} .
 	 */
 	@Test
 	public void testSecurities_03() throws Exception {
