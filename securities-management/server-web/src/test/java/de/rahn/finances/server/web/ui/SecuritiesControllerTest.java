@@ -23,6 +23,7 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -96,10 +97,10 @@ public class SecuritiesControllerTest {
 	 */
 	@Before
 	public void setup() {
-		when(securitiesService.getSecurities(any())).thenAnswer(invocation -> {
+		when(securitiesService.getSecurities(anyBoolean(), any())).thenAnswer(invocation -> {
 			List<Security> securitiesList = new ArrayList<>();
 
-			Pageable pageable = invocation.getArgumentAt(0, Pageable.class);
+			Pageable pageable = invocation.getArgumentAt(1, Pageable.class);
 
 			if (pageable == null || pageable.getPageNumber() == 0) {
 				for (int i = 0; i < 10; i++) {
@@ -152,7 +153,7 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testAttributeModelSecurityTypeList() throws Exception {
-		when(securitiesService.getSecurities(any())).thenReturn(new PageImpl<>(emptyList()));
+		when(securitiesService.getSecurities(anyBoolean(), any())).thenReturn(new PageImpl<>(emptyList()));
 
 		mockMvc.perform(get("/securities")).andExpect(status().isOk())
 			.andExpect(model().attribute("securityTypeList", notNullValue()));
@@ -164,8 +165,7 @@ public class SecuritiesControllerTest {
 	@Test
 	public void testSecurities_01() throws Exception {
 		mockMvc.perform(get("/securities")).andExpect(status().isOk()).andExpect(content().string(containsString(ISIN1 + "0")))
-			.andExpect(model().attribute("inventory", TRUE)).andExpect(model().attribute("type", stock))
-			.andExpect(model().attribute("page", notNullValue()));
+			.andExpect(model().attribute("inventory", TRUE)).andExpect(model().attribute("page", notNullValue()));
 	}
 
 	/**
