@@ -55,6 +55,13 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
+		<!-- Developer Tools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 		<!-- Tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
