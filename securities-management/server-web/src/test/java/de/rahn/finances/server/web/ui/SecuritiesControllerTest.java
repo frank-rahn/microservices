@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyBoolean;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -36,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Before;
@@ -54,6 +56,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.util.NestedServletException;
 
 import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
 import de.rahn.finances.server.web.config.WebMvcConfiguration;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
@@ -184,6 +187,25 @@ public class SecuritiesControllerTest {
 	public void testSecurities_03() throws Exception {
 		mockMvc.perform(get("/securities").param("page", "1").param("size", "10")).andExpect(status().isOk())
 			.andExpect(content().string(containsString(ISIN2 + "9")));
+	}
+
+	/**
+	 * Test method for {@link SecuritiesController#securities(SecurityType, boolean, Pageable, Model)} .
+	 */
+	@Test
+	public void testSecuritiesWithPathSecurityType() throws Exception {
+		when(securitiesService.getSecurities(anyBoolean(), eq(stock), any(Pageable.class)))
+			.thenReturn(new PageImpl<>(Collections.singletonList(new Security() {
+				{
+					setId(ID_FOUND);
+					setIsin(ISIN1 + "0");
+					setType(stock);
+					setInventory(true);
+				}
+			})));
+
+		mockMvc.perform(get("/securities/{type}", stock).param("page", "0").param("size", "10")).andExpect(status().isOk())
+			.andExpect(content().string(containsString(ISIN1 + "0")));
 	}
 
 	/**
