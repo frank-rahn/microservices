@@ -26,7 +26,7 @@ import java.util.Map.Entry;
 
 /**
  * Die Art eines Wertpapiers.
- * 
+ *
  * @author Frank W. Rahn
  */
 public enum SecurityType {
@@ -41,14 +41,14 @@ public enum SecurityType {
 	private String description;
 
 	/**
-	 * @param description der Name der Art des Wertpapiers
+	 * @param description die Beschreibung der Art des Wertpapiers
 	 */
 	private SecurityType(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * @param description der Name der gesuchten Art des Wertpapiers
+	 * @param description die Beschreibung der gesuchten Art des Wertpapiers
 	 * @return die Aufzählung
 	 * @throws NullPointerException falls die <code>description</code> <code>null</code> ist
 	 * @throws IllegalArgumentException falls keine Aufzählung gefunden wird
