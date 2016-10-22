@@ -17,17 +17,24 @@ package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
 import static javax.persistence.EnumType.STRING;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Access;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -88,6 +95,11 @@ public class Security implements Persistable<String> {
 	@NotNull
 	private boolean inventory = false;
 
+	/** Die Buchungen zu diesem Wertpapier. */
+	@OneToMany(mappedBy = "security", cascade = { CascadeType.ALL })
+	@OrderBy(value = "date")
+	private List<Entry> entries;
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,6 +148,94 @@ public class Security implements Persistable<String> {
 	@Override
 	public String toString() {
 		return reflectionToString(this, MULTI_LINE_STYLE);
+	}
+
+	/**
+	 * @param entryId Suche die Buchung mit der angegeben Id
+	 * @return die gefundene Buchung oder <code>null</code>
+	 * @throws IllegalArgumentException falls die Buchungs-Id ungültig ist
+	 */
+	public Entry getEntry(String entryId) {
+
+		if (isBlank(entryId)) {
+			throw new IllegalArgumentException("Illegal id: " + entryId);
+		}
+
+		if (entries != null) {
+			for (Entry entry : entries) {
+				if (entryId.equals(entry.getId())) {
+					return entry;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * @param entry Füge die Buchung dem Wertpapier hinzu
+	 * @return die hinzugefügte Buchung
+	 */
+	public Entry addEntry(Entry entry) {
+		entry.setSecurity(this);
+		entry.setId(null);
+
+		if (entries == null) {
+			entries = new ArrayList<>();
+		}
+
+		entries.add(entry);
+		return entry;
+	}
+
+	/**
+	 * @param entry Ersetze die angegebene Buchung
+	 * @return die ursprüngliche Buchung
+	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
+	 */
+	public Entry replaceEntry(Entry entry) {
+		if (entries != null && !entry.isNew()) {
+			int index = entries.indexOf(entry);
+			if (index >= 0) {
+				entry.setSecurity(this);
+				return entries.set(index, entry);
+			}
+		}
+
+		throw new IllegalArgumentException("Entry in Security not found: " + entry);
+	}
+
+	/**
+	 * @param entry Entferne die Buchung aus dem Wertpapier
+	 * @return die ursprüngliche Buchung
+	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
+	 */
+	public Entry removeEntry(Entry entry) {
+		entry.setSecurity(null);
+
+		if (entries != null) {
+			if (entries.remove(entry)) {
+				return entry;
+			}
+		}
+
+		throw new IllegalArgumentException("Entry in Security not found: " + entry);
+	}
+
+	/**
+	 * @param entryId Entferne die Buchung aus dem Wertpapier
+	 * @return die ursprüngliche Buchung
+	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
+	 * @throws IllegalArgumentException falls die Buchungs-Id ungültig ist
+	 */
+	public Entry removeEntry(String entryId) {
+		Entry entry = getEntry(entryId);
+
+		if (entry != null) {
+			return removeEntry(entry);
+		}
+
+		throw new IllegalArgumentException("Entry in Security not found: " + entryId);
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
@@ -229,6 +329,20 @@ public class Security implements Persistable<String> {
 	 */
 	public void setInventory(boolean inventory) {
 		this.inventory = inventory;
+	}
+
+	/**
+	 * @return the entries
+	 */
+	public List<Entry> getEntries() {
+		return entries;
+	}
+
+	/**
+	 * @param entries the entries to set
+	 */
+	public void setEntries(List<Entry> entries) {
+		this.entries = entries;
 	}
 
 }
