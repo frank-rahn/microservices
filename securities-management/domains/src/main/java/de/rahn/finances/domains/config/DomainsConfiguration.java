@@ -17,6 +17,7 @@ package de.rahn.finances.domains.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -25,7 +26,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @author Frank W. Rahn
  */
 @Configuration
-@EntityScan(basePackageClasses = { de.rahn.finances.domains.entities.PackageMarker.class })
+@EntityScan(basePackageClasses = { de.rahn.finances.domains.entities.PackageMarker.class, Jsr310JpaConverters.class })
 @EnableJpaRepositories(basePackageClasses = { de.rahn.finances.domains.repositories.PackageMarker.class })
 public class DomainsConfiguration {
 	// Leer
