@@ -1,4 +1,4 @@
-insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df001', 'DE0001000010', '100001', 'Firma 1 AG', 'A01', 'stock')
+insert into SEC(id, isin, wkn, name, symbol, type, inventory) values ('067e6162-3b6f-4ae2-a171-2470b63df001', 'DE0001000010', '100001', 'Firma 1 AG', 'A01', 'stock', true)
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df002', 'DE0001000020', '100002', 'Firma 2 AG', 'A02', 'stock')
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df003', 'DE0001000030', '100003', 'Firma 3 AG', 'A03', 'stock')
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df004', 'DE0001000040', '100004', 'Firma 4 AG', 'A04', 'stock')
@@ -20,3 +20,6 @@ insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df019', 'DE0002000079', '200007', 'Fonds 7 LU', 'F07', 'fonds')
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df020', 'DE0002000089', '200008', 'Fonds 8 LU', 'F08', 'fonds')
 insert into SEC(id, isin, wkn, name, symbol, type) values ('067e6162-3b6f-4ae2-a171-2470b63df021', 'DE0002000099', '200009', 'Fonds 9 LU', 'F09', 'fonds')
+
+insert into entry (id, amount, date, number_of, price, security_id, type) values ('067e6162-3b6f-4ae2-a172-2470b63df001', 152.415568, '2016-10-23', 123.4567, 1.234567, '067e6162-3b6f-4ae2-a171-2470b63df001', 'buy')
+insert into entry (id, amount, date, number_of, price, security_id, type) values ('067e6162-3b6f-4ae2-a172-2470b63df002', 9.9, '2016-10-23', 1, 9.9, '067e6162-3b6f-4ae2-a171-2470b63df001', 'charges')

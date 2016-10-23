@@ -58,6 +58,7 @@ public class Security implements Persistable<String> {
 
 	@Id
 	@GeneratedValue(generator = "uuid")
+	@Column(length = 36)
 	private String id;
 
 	/** Der Name des Wertpapiers. */

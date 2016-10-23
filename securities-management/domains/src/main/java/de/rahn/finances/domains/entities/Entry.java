@@ -16,6 +16,7 @@
 package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
+import static javax.persistence.EnumType.STRING;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
@@ -27,6 +28,7 @@ import java.time.LocalDate;
 import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -49,6 +51,7 @@ public class Entry implements Persistable<String> {
 
 	@Id
 	@GeneratedValue(generator = "uuid")
+	@Column(length = 36)
 	private String id;
 
 	/** Das Datum des Eintrages. */
@@ -62,17 +65,18 @@ public class Entry implements Persistable<String> {
 	private BigDecimal numberOf;
 
 	/** Die Gesamtsumme. */
-	@Column(precision = 16, scale = 4, nullable = false)
+	@Column(precision = 16, scale = 6, nullable = false)
 	@NotNull
 	private BigDecimal amount;
 
 	/** Der Einzelpreis bzw. Kurs. */
-	@Column(precision = 16, scale = 4, nullable = false)
+	@Column(precision = 16, scale = 6, nullable = false)
 	@NotNull
 	private BigDecimal price;
 
 	/** Der Typ der Buchung. */
 	@Column(nullable = false)
+	@Enumerated(STRING)
 	@NotNull
 	private EntryType type;
 
