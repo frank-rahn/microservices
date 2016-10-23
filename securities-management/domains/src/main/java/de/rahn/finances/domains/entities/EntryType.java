@@ -54,12 +54,12 @@ public enum EntryType {
 	}
 
 	/**
-	 * @param description die Beschreibung der gesuchten Art der Buchung
+	 * @param description Die Beschreibung der gesuchten Art der Buchung
 	 * @return die Aufzählung
 	 * @throws NullPointerException falls die <code>description</code> <code>null</code> ist
 	 * @throws IllegalArgumentException falls keine Aufzählung gefunden wird
 	 */
-	public static EntryType searchText(String description) {
+	public static EntryType searchType(String description) {
 		if (description == null) {
 			throw new NullPointerException("Der Parameter 'description' ist null");
 		}
