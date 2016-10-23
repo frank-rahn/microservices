@@ -28,6 +28,8 @@ import static org.springframework.boot.context.properties.ConfigurationPropertie
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +99,7 @@ public class DomainsConfigurationTest {
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
 	@Test
+	@Transactional
 	public void testSpringConfiguration_01() {
 		assertThat(repository, notNullValue());
 
