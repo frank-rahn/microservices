@@ -23,6 +23,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import de.rahn.finances.server.web.ui.PackageMarker;
@@ -36,6 +37,17 @@ import de.rahn.finances.server.web.ui.PackageMarker;
 @ComponentScan(basePackageClasses = { PackageMarker.class })
 @EnableSpringDataWebSupport
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see WebMvcConfigurerAdapter#addViewControllers(ViewControllerRegistry)
+	 */
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/info").setViewName("info");
+	}
 
 	/**
 	 * {@inheritDoc}

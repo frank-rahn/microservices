@@ -34,14 +34,14 @@ import de.rahn.finances.server.web.config.WebMvcConfiguration;
 import de.rahn.finances.services.SecuritiesService;
 
 /**
- * Einen Test für den {@link ApplicationController}.
+ * Einen Test für die einfache Konfiguration der direkten Seitenaufrufe.
  *
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = WebMvcConfiguration.class)
-@WebMvcTest(ApplicationController.class)
-public class ApplicationControllerTest {
+@WebMvcTest
+public class SimpleViewControllerTest {
 
 	@MockBean
 	private SecuritiesService securitiesService;
@@ -50,7 +50,7 @@ public class ApplicationControllerTest {
 	private MockMvc mockMvc;
 
 	/**
-	 * Test method for {@link ApplicationController#index()}.
+	 * Test der Index-Seite.
 	 */
 	@Test
 	public void testIndex() throws Exception {
@@ -59,7 +59,7 @@ public class ApplicationControllerTest {
 	}
 
 	/**
-	 * Test method for {@link ApplicationController#info()}.
+	 * Test der Info-Seite.
 	 */
 	@Test
 	public void testInfo() throws Exception {
