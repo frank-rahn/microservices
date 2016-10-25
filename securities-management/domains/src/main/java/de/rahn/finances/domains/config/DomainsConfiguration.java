@@ -16,9 +16,13 @@
 package de.rahn.finances.domains.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import de.rahn.finances.domains.security.SpringSecurityAuditorAwareBean;
 
 /**
  * Die Spring Configuration für die Domains.
@@ -28,6 +32,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EntityScan(basePackageClasses = { de.rahn.finances.domains.entities.PackageMarker.class, Jsr310JpaConverters.class })
 @EnableJpaRepositories(basePackageClasses = { de.rahn.finances.domains.repositories.PackageMarker.class })
+@EnableJpaAuditing
 public class DomainsConfiguration {
-	// Leer
+
+	/**
+	 * @return Über diese Bean holt sich Spring Data JPA den aktuellen Benutzer
+	 */
+	@Bean
+	public SpringSecurityAuditorAwareBean auditorAwareBean() {
+		return new SpringSecurityAuditorAwareBean();
+	}
+
 }
