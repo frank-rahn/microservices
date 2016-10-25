@@ -45,7 +45,7 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Access(FIELD)
 @Table
-public class Entry implements Persistable<String> {
+public class Entry extends Audit implements Persistable<String> {
 
 	private static final long serialVersionUID = 1L;
 

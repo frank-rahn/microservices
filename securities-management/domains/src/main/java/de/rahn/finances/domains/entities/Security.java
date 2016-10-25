@@ -52,7 +52,7 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Access(FIELD)
 @Table(name = "SEC")
-public class Security implements Persistable<String> {
+public class Security extends Audit implements Persistable<String> {
 
 	private static final long serialVersionUID = 1L;
 

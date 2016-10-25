@@ -10,6 +10,11 @@ USE `finances`;
 DROP TABLE IF EXISTS `SEC`;
 CREATE TABLE IF NOT EXISTS `SEC` (
   `id` varchar(36) NOT NULL,
+  `create_by` varchar(255),
+  `create_date` timestamp,
+  `last_modified_date` timestamp,
+  `last_modifiedby` varchar(255),
+  `version` bigint NOT NULL,
   `inventory` bit DEFALT FALSE NOT NULL,
   `isin` varchar(12) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -28,6 +33,11 @@ ALTER TABLE `SEC` ADD CONSTRAINT `UK_K4Y19WXR5JJ87TGHD9T44JTKJ` UNIQUE (`wkn`);
 DROP TABLE IF EXISTS `Entry`;
 CREATE TABLE IF NOT EXISTS `Entry` (
   `id` varchar(36) NOT NULL,
+  `create_by` varchar(255),
+  `create_date` timestamp,
+  `last_modified_date` timestamp,
+  `last_modifiedby` varchar(255),
+  `version` bigint NOT NULL,
   `amount` decimal(16,6) NOT NULL,
   `date` datetime NOT NULL,
   `number_of` decimal(16,4) NOT NULL,
