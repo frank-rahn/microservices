@@ -16,25 +16,25 @@
 		<div layout:fragment="content">
 			<section>
 				<div class="alert alert-danger" th:if="${path}">
-					<b>Seite:</b> <a href="#" th:href="${path}" th:text="${path}">URL path</a>
+					<b>Seite:</b> <a href="#" th:href="${path}" th:text="${path}">The URL path when the exception was raised</a>
 				</div>
 				<div class="alert alert-danger" th:if="${timestamp}">
-					<b>Zeitpunkt:</b> <span th:text="${timestamp}">Timestamp</span>
+					<b>Zeitpunkt:</b> <span th:text="${#dates.format(timestamp)}">The time that the errors were extracted</span>
 				</div>
 				<div class="alert alert-danger" th:if="${status}">
-					<b>Status:</b> <span th:text="${status}">Status Code</span> <span th:if="${error}" th:text="'('+${error}+')'">(Reason)</span>
+					<b>Status:</b> <span th:text="${status}">The status code</span> <span th:if="${error}" th:text="'('+${error}+')'">(The error reason)</span>
 				</div>
 				<div class="alert alert-danger" th:if="${message} and ${message.length() != 0}">
-					<b>Meldung:</b> <span th:text="${message}">Message</span>
+					<b>Meldung:</b> <span th:text="${message}">The exception message</span>
 				</div>
 				<div class="alert alert-danger" th:if="${errors}">
-					<b>Meldung:</b> <span th:text="${errors}">Errors</span>
+					<b>Fehler:</b> <span th:text="${errors}">Any <code>ObjectError</code> from a <code>BindingResult</code> exception</span>
 				</div>
-				<div class="alert alert-danger" th:if="${ex} or ${exception}">
-					<b>Ausnahme:</b> <span th:if="${ex}" th:text="${ex}">Exception</span> <span th:if="${exception}" th:text="${exception}">Exception</span>
-					<pre th:if="${trace}" th:text="${trace}">Stack-Trace</pre>
+				<div class="alert alert-danger" th:if="${exception}">
+					<b>Ausnahme:</b> <span th:text="${exception}">The class name of the root exception</span>
+					<pre th:if="${trace}" th:text="${trace}">The exception stack trace</pre>
 				</div>
-				<div class="alert alert-danger" th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+				<div class="alert alert-danger" th:unless="${exception} or (${message} and ${message.length() != 0})">
 					<b>Unbekannte Ursache</b>
 				</div>
 			</section>
