@@ -16,10 +16,13 @@
 package de.rahn.finances.domains.security;
 
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
+ * Diese Spring bean ermittelt den Namen des aktuellen angemeldeten Benutzers von Spring Security.
+ *
  * @author Frank W. Rahn
  */
 @Component
@@ -31,7 +34,14 @@ public class SpringSecurityAuditorAwareBean implements AuditorAware<String> {
 	 * @see org.springframework.data.domain.AuditorAware#getCurrentAuditor()
 	 */
 	public String getCurrentAuditor() {
-		return SecurityContextHolder.getContext().getAuthentication().getName();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		if (authentication == null || !authentication.isAuthenticated()) {
+			// Es gibt keinen angemeldeten Benutzer
+			return null;
+		}
+
+		return authentication.getName();
 	}
 
 }
