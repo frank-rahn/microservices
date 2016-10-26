@@ -22,7 +22,6 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.springframework.beans.BeanUtils.copyProperties;
 import static org.springframework.boot.SpringApplication.run;
 import static org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.VALIDATOR_BEAN_NAME;
 
@@ -146,11 +145,6 @@ public class DomainsConfigurationTest {
 		assertThat(security.getType(), is(testSecurity.getType()));
 		assertThat(security.getWkn(), is(testSecurity.getWkn()));
 		assertThat(security.isInventory(), is(testSecurity.isInventory()));
-		assertThat(security, is(testSecurity));
-
-		security = new Security();
-		copyProperties(testSecurity, security);
-
 		assertThat(security, is(testSecurity));
 	}
 
