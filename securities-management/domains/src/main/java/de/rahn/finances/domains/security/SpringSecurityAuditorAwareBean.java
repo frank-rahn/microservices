@@ -38,7 +38,7 @@ public class SpringSecurityAuditorAwareBean implements AuditorAware<String> {
 
 		if (authentication == null || !authentication.isAuthenticated()) {
 			// Es gibt keinen angemeldeten Benutzer
-			return null;
+			return "anonymous";
 		}
 
 		return authentication.getName();
