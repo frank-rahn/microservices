@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html
 	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
 >
 <head>
@@ -15,13 +16,17 @@
 		<h1 layout:fragment="header">Fehler in der Anwendung</h1>
 		<div layout:fragment="content">
 			<section>
-				<div class="alert alert-danger" th:if="${path}">
+				<div class="alert alert-success" sec:authorize="isAuthenticated()">
+					<b>Angemeldeter Benutzer:</b> <span sec:authentication="name">The logged user</span><br />
+					<b>Seine Rollen:</b> <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+				</div>
+				<div class="alert alert-info" th:if="${path}">
 					<b>Seite:</b> <a href="#" th:href="${path}" th:text="${path}">The URL path when the exception was raised</a>
 				</div>
-				<div class="alert alert-danger" th:if="${timestamp}">
+				<div class="alert alert-info" th:if="${timestamp}">
 					<b>Zeitpunkt:</b> <span th:text="${#dates.format(timestamp)}">The time that the errors were extracted</span>
 				</div>
-				<div class="alert alert-danger" th:if="${status}">
+				<div class="alert alert-warning" th:if="${status}">
 					<b>Status:</b> <span th:text="${status}">The status code</span> <span th:if="${error}" th:text="'('+${error}+')'">(The error reason)</span>
 				</div>
 				<div class="alert alert-danger" th:if="${message} and ${message.length() != 0}">

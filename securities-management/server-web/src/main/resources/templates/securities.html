@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html
 	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
 >
 <head>
@@ -69,7 +70,7 @@
 								<th>Bezeichnung</th>
 								<th>Kurzname</th>
 								<th>Wertpapierart</th>
-								<th>&nbsp;</th>
+								<th sec:authorize="hasRole('ROLE_ADMIN')">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -84,11 +85,11 @@
 								<td th:text="${security.name}">Firma 1 AG</td>
 								<td th:text="${security.symbol}">A01</td>
 								<td th:text="${security.type.description}">Aktie</td>
-								<td><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash" /></a></td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash" /></a></td>
 							</tr>
 						</tbody>
 					</table>
-					<div>Ein neues <a href="security.html" th:href="@{/security}">Wertpapier anlegen</a>.</div>
+					<div sec:authorize="hasRole('ROLE_ADMIN')">Ein neues <a href="security.html" th:href="@{/security}">Wertpapier anlegen</a>.</div>
 				</div>
 				<div class="panel-footer">
 					Auf jeder Seite werden maximal <span th:text="${page.size}">20</span> Wertpapiere von insgesamt <span th:text="${page.totalElements}">21</span> Wertpapieren dargestellt.
