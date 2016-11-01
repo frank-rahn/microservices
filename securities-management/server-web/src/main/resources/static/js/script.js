@@ -14,14 +14,19 @@ function modalMessage(titel, text) {
 $(document).on('click.bs.delete.data-api', '[data-toggle="delete"]', function(event) {
 	var $this = $(this);
 	var href = $this.data("url");
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 
 	if ($this.is('a')) {
 		event.preventDefault();
 	}
 
 	$.ajax({
+		type : 'DELETE',
 		url : href,
-		type : 'DELETE'
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader(header, token);
+		}
 	}).fail(function(xhr, textStatus, errorThrown) {
 		var r = $.parseJSON(xhr.responseText);
 		alertMessage("danger", r.message);
