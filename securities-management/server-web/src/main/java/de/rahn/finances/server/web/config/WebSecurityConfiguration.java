@@ -40,7 +40,7 @@ public class WebSecurityConfiguration {
 	 * @see WebSecurityConfigurerAdapter#configure(AuthenticationManagerBuilder)
 	 */
 	@Autowired
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
 		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
 			// User mit erweiterten Rechten
@@ -72,13 +72,13 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 			http
-				//
+				// Konfiguration der Requests auf dise URL
 				.antMatcher("/manage/*")
 					.authorizeRequests()
 						// Alle Request benötigen einen User mit der Rolle USER
 						.anyRequest().hasRole("USER")
 				// Konfiguration HTTP Basic Authentication
-				.and().httpBasic().realmName("Management")
+				.and().httpBasic().realmName("Management-API")
 			;
 			// @formatter:on
 		}
