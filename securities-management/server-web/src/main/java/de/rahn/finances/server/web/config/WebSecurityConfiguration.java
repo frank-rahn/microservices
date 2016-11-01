@@ -55,13 +55,13 @@ public class WebSecurityConfiguration {
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration ist für das Management der Anwendung (/manage/*) mit HTTP Basic Authentication.
+	 * Diese WebSecurity-Konfiguration ist für das Management-API der Anwendung (/manage/*) mit HTTP Basic Authentication.
 	 *
 	 * @author Frank W. Rahn
 	 */
 	@Configuration
 	@Order(1)
-	public class ManagementWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+	public class ManagementAPIWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		/**
 		 * {@inheritDoc}
@@ -86,12 +86,46 @@ public class WebSecurityConfiguration {
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration für die Anwendung mit Form Based-Authentication.
+	 * Diese WebSecurity-Konfiguration ist für die H2 Console (/h2-console/*).<br>
+	 * Die Konsole kommt mit einer eigenen Security daher.
 	 *
 	 * @author Frank W. Rahn
 	 */
 	@Configuration
 	@Order(2)
+	public class H2ConsoleWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+		/**
+		 * {@inheritDoc}
+		 *
+		 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
+		 */
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			// @formatter:off
+			http
+				// Konfiguration der Requests auf dise URL
+				.antMatcher("/h2-console/**")
+					.authorizeRequests()
+						// Alle dürfen auf die Console zugreifen
+						.anyRequest().permitAll()
+				// Konfiguration CSRF abschalten
+				.and().csrf().disable()
+				// Konfiguration X-Frame-Options abschalten
+				.headers().frameOptions().disable()
+			;
+			// @formatter:on
+		}
+
+	}
+
+	/**
+	 * Diese WebSecurity-Konfiguration für die Anwendung mit Form Based-Authentication.
+	 *
+	 * @author Frank W. Rahn
+	 */
+	@Configuration
+	@Order(3)
 	public class FormLoginWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		/**
@@ -129,4 +163,5 @@ public class WebSecurityConfiguration {
 			// @formatter:on
 		}
 	}
+
 }
