@@ -170,7 +170,7 @@ public class Security extends Audit implements Persistable<String> {
 			}
 		}
 
-		return null;
+		throw new IllegalArgumentException("Entry in Security not found. Id=" + entryId);
 	}
 
 	/**
@@ -190,20 +190,52 @@ public class Security extends Audit implements Persistable<String> {
 	}
 
 	/**
-	 * @param entry Ersetze die angegebene Buchung
+	 * Ersetze die alte Buchung duch die neue Buchung.
+	 *
+	 * @param oldEntry die alte Buchung
+	 * @param newEntry die neue Buchung (darf nicht gespeichert sein)
 	 * @return die ursprüngliche Buchung
 	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
 	 */
-	public Entry replaceEntry(Entry entry) {
-		if (entries != null && !entry.isNew()) {
-			int index = entries.indexOf(entry);
+	public Entry replaceEntry(Entry oldEntry, Entry newEntry) {
+		if (oldEntry == null || oldEntry.isNew()) {
+			throw new IllegalArgumentException("Old Entry is new. Entry=" + oldEntry);
+		}
+
+		if (newEntry == null || !newEntry.isNew()) {
+			throw new IllegalArgumentException("New Entry isn't new. Entry=" + newEntry);
+		}
+
+		if (entries != null) {
+			int index = entries.indexOf(oldEntry);
 			if (index >= 0) {
-				entry.setSecurity(this);
-				return entries.set(index, entry);
+				newEntry.setSecurity(this);
+
+				Entry removedEntry = entries.set(index, newEntry);
+				removedEntry.setSecurity(null);
+				return removedEntry;
 			}
 		}
 
-		throw new IllegalArgumentException("Entry in Security not found: " + entry);
+		throw new IllegalArgumentException("Entry in Security not found. Entry=" + oldEntry);
+	}
+
+	/**
+	 * Ersetze die alte Buchung duch die neue Buchung.
+	 *
+	 * @param oldEntryId die Id der alte Buchung
+	 * @param newEntry die neue Buchung (darf nicht gespeichert sein)
+	 * @return die ursprüngliche Buchung
+	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
+	 */
+	public Entry replaceEntry(String oldEntryId, Entry newEntry) {
+		Entry oldEntry = getEntry(oldEntryId);
+
+		if (oldEntry != null) {
+			return replaceEntry(oldEntry, newEntry);
+		}
+
+		throw new IllegalArgumentException("Entry in Security not found. Id=" + oldEntryId);
 	}
 
 	/**
@@ -212,15 +244,17 @@ public class Security extends Audit implements Persistable<String> {
 	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
 	 */
 	public Entry removeEntry(Entry entry) {
-		entry.setSecurity(null);
+		if (entry != null) {
+			entry.setSecurity(null);
 
-		if (entries != null) {
-			if (entries.remove(entry)) {
-				return entry;
+			if (entries != null) {
+				if (entries.remove(entry)) {
+					return entry;
+				}
 			}
 		}
 
-		throw new IllegalArgumentException("Entry in Security not found: " + entry);
+		throw new IllegalArgumentException("Entry in Security not found. Entry=" + entry);
 	}
 
 	/**
@@ -236,7 +270,7 @@ public class Security extends Audit implements Persistable<String> {
 			return removeEntry(entry);
 		}
 
-		throw new IllegalArgumentException("Entry in Security not found: " + entryId);
+		throw new IllegalArgumentException("Entry in Security not found. Id=" + entryId);
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
