@@ -32,6 +32,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -52,6 +53,8 @@ public class SecurityTest {
 
 	/** ID_SECURITY */
 	private static final String ID_SECURITY = "8ad72f6f-2a39-4846-8940-f6139f3d5597";
+
+	private static final LocalDate NOW = now();
 
 	private Security classUnderTest;
 
@@ -76,7 +79,7 @@ public class SecurityTest {
 			{
 				setId(ID_ENTRY_BUY);
 				setSecurity(classUnderTest);
-				setDate(now());
+				setDate(NOW);
 				setNumberOf(TEN);
 				setPrice(new BigDecimal("12.345678"));
 				setAmount(new BigDecimal("1234.5678"));
@@ -86,7 +89,7 @@ public class SecurityTest {
 			{
 				setId(ID_ENTRY_CHATGES);
 				setSecurity(classUnderTest);
-				setDate(now());
+				setDate(NOW);
 				setNumberOf(ONE);
 				setPrice(new BigDecimal("9.90"));
 				setAmount(new BigDecimal("9.90"));
@@ -112,6 +115,11 @@ public class SecurityTest {
 
 		assertThat(entry, notNullValue());
 		assertThat(entry, is(classUnderTest.getEntries().get(0)));
+		assertThat(entry.getType(), is(buy));
+		assertThat(entry.getDate(), is(NOW));
+		assertThat(entry.getNumberOf(), is(TEN));
+		assertThat(entry.getPrice(), is(new BigDecimal("12.345678")));
+		assertThat(entry.getAmount(), is(new BigDecimal("1234.5678")));
 	}
 
 	/**
