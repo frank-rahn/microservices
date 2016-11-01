@@ -15,7 +15,9 @@
  */
 package de.rahn.finances.server.web.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,15 +32,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  */
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration {
 
 	/**
-	 * {@inheritDoc}
+	 * Die globale Spring Security Konfiguration.
 	 *
 	 * @see WebSecurityConfigurerAdapter#configure(AuthenticationManagerBuilder)
 	 */
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	@Autowired
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
 		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
 			// User mit erweiterten Rechten
@@ -53,32 +55,78 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Diese WebSecurity-Konfiguration ist für das Management der Anwendung (/manage/*) mit HTTP Basic Authentication.
 	 *
-	 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
+	 * @author Frank W. Rahn
 	 */
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http
-			.authorizeRequests()
-				.anyRequest().hasRole("USER")
-				// Konfiguration der Login-Seite
-				.and().formLogin().loginPage("/login")
+	@Configuration
+	@Order(1)
+	public class ManagementWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+		/**
+		 * {@inheritDoc}
+		 *
+		 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
+		 */
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			// @formatter:off
+			http
+				//
+				.antMatcher("/manage/*")
+					.authorizeRequests()
+						// Alle Request benötigen einen User mit der Rolle USER
+						.anyRequest().hasRole("USER")
+				// Konfiguration HTTP Basic Authentication
+				.and().httpBasic().realmName("Management")
+			;
+			// @formatter:on
+		}
+
+	}
+
+	/**
+	 * Diese WebSecurity-Konfiguration für die Anwendung mit Form Based-Authentication.
+	 *
+	 * @author Frank W. Rahn
+	 */
+	@Configuration
+	@Order(2)
+	public class FormLoginWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+		/**
+		 * {@inheritDoc}
+		 *
+		 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
+		 */
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			// @formatter:off
+			http
+				// Konfiguration der berechtigten Requests
+				.authorizeRequests()
+					// Alle Request benötigen einen User mit der Rolle USER
+					.anyRequest().hasRole("USER")
+				// Konfiguration des Form Based Authentication
+				.and().formLogin()
+					// Die URL der Login-Seite
+					.loginPage("/login")
 					// Alle dürfen auf die Login-Seite zugreifen
 					.permitAll()
 					// Diese Seite wird nach einem Fehler bei der Anmeldung angezeigt (Default)
 					//.failureUrl("/login?error")
 				// Konfiguration des Logouts
-				.and().logout().permitAll()
+				.and().logout()
+					// Alle dürfen sich abmelden
+					.permitAll()
 					// Beim Logout alle gesetzten Cookies wieder löschen
 					.deleteCookies()
 					// Diese Seite wird nach einem Fehler bei der Abmeldung angezeigt (Default)
 					//.logoutSuccessUrl("/login?logout")
 					// Request Mapper für /logout zum abmelden
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		;
-		// @formatter:on
+			;
+			// @formatter:on
+		}
 	}
-
 }

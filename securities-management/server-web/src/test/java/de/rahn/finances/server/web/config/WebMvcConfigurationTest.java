@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.MOCK;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ import de.rahn.finances.services.SecuritiesService;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = NONE)
+@SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = MOCK)
 public class WebMvcConfigurationTest {
 
 	/** SYMBOL */

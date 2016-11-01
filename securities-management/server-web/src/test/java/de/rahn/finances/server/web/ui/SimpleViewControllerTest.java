@@ -26,11 +26,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import de.rahn.finances.server.web.config.WebMvcConfiguration;
+import de.rahn.finances.server.web.config.WebSecurityConfiguration;
 import de.rahn.finances.services.SecuritiesService;
 
 /**
@@ -39,8 +41,9 @@ import de.rahn.finances.services.SecuritiesService;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = WebMvcConfiguration.class)
-@WebMvcTest
+@ContextConfiguration(classes = { WebMvcConfiguration.class, WebSecurityConfiguration.class })
+@WithMockUser(roles = "USER")
+@WebMvcTest(secure = true)
 public class SimpleViewControllerTest {
 
 	@MockBean

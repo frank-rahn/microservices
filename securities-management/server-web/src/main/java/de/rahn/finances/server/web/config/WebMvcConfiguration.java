@@ -15,8 +15,14 @@
  */
 package de.rahn.finances.server.web.config;
 
+import static org.springframework.boot.autoconfigure.condition.SearchStrategy.CURRENT;
+
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
+import org.springframework.boot.autoconfigure.web.ErrorAttributes;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
@@ -61,6 +67,12 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 		resolver.setFallbackPageable(new PageRequest(0, 10));
 
 		argumentResolvers.add(resolver);
+	}
+
+	@Bean
+	@ConditionalOnMissingBean(value = ErrorAttributes.class, search = CURRENT)
+	public DefaultErrorAttributes errorAttributes() {
+		return new DefaultErrorAttributes();
 	}
 
 }

@@ -28,6 +28,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -48,6 +49,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -58,6 +60,7 @@ import org.springframework.web.util.NestedServletException;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
 import de.rahn.finances.server.web.config.WebMvcConfiguration;
+import de.rahn.finances.server.web.config.WebSecurityConfiguration;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
 
@@ -67,8 +70,9 @@ import de.rahn.finances.services.SecurityNotFoundException;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = WebMvcConfiguration.class)
-@WebMvcTest(SecuritiesController.class)
+@ContextConfiguration(classes = { WebMvcConfiguration.class, WebSecurityConfiguration.class })
+@WithMockUser(roles = "USER")
+@WebMvcTest(controllers = { SecuritiesController.class }, secure = true)
 public class SecuritiesControllerTest {
 
 	/** ID_NOT_FOUND */
@@ -246,7 +250,8 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testSecurityPost_01() throws Exception {
-		mockMvc.perform(post("/security")).andExpect(status().isOk()).andExpect(content().string(containsString("Speichern")))
+		mockMvc.perform(post("/security").with(csrf())).andExpect(status().isOk())
+			.andExpect(content().string(containsString("Speichern")))
 			.andExpect(content().string(containsString("may not be null")));
 	}
 
@@ -255,7 +260,7 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testSecurityPost_02() throws Exception {
-		mockMvc.perform(post("/security").param("isin", "")).andExpect(status().isOk())
+		mockMvc.perform(post("/security").with(csrf()).param("isin", "")).andExpect(status().isOk())
 			.andExpect(content().string(containsString("Speichern")))
 			.andExpect(content().string(containsString("muss genau 12 Zeichen lang sein")));
 	}
@@ -266,7 +271,7 @@ public class SecuritiesControllerTest {
 	@Test
 	public void testSecurityPost_03() throws Exception {
 		mockMvc
-			.perform(post("/security").param("isin", ISIN_SAVE).param("wkn", "200010").param("name", "Fonds 10 LU")
+			.perform(post("/security").with(csrf()).param("isin", ISIN_SAVE).param("wkn", "200010").param("name", "Fonds 10 LU")
 				.param("symbol", "F10").param("type", "fonds"))
 			.andExpect(status().isFound()).andExpect(content().string(not(containsString("Speichern"))))
 			.andExpect(view().name("redirect:/securities"));
@@ -278,8 +283,8 @@ public class SecuritiesControllerTest {
 	@Test
 	public void testSecurityPost_04() throws Exception {
 		mockMvc
-			.perform(post("/security").param("isin", ISIN_NOT_SAVE).param("wkn", "100001").param("name", "Firma 1 AG")
-				.param("symbol", "A01").param("type", "stock"))
+			.perform(post("/security").with(csrf()).param("isin", ISIN_NOT_SAVE).param("wkn", "100001")
+				.param("name", "Firma 1 AG").param("symbol", "A01").param("type", "stock"))
 			.andExpect(status().isOk()).andExpect(content().string(containsString("could not execute statement")))
 			.andExpect(view().name("security"));
 	}
@@ -291,7 +296,7 @@ public class SecuritiesControllerTest {
 	public void testSecurityDelete_01() throws Exception {
 		doNothing().when(securitiesService).delete(any(Security.class));
 
-		mockMvc.perform(delete("/security/{id}", ID_FOUND)).andExpect(status().isNoContent());
+		mockMvc.perform(delete("/security/{id}", ID_FOUND).with(csrf().asHeader())).andExpect(status().isNoContent());
 	}
 
 	/**
@@ -301,7 +306,7 @@ public class SecuritiesControllerTest {
 	public void testSecurityDelete_02() throws Exception {
 		doThrow(new SecurityNotFoundException("02")).when(securitiesService).delete(any(Security.class));
 
-		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND)).andExpect(status().isNoContent());
+		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND).with(csrf().asHeader())).andExpect(status().isNoContent());
 	}
 
 	/**
@@ -311,7 +316,7 @@ public class SecuritiesControllerTest {
 	public void testSecurityDelete_03() throws Exception {
 		doThrow(new SecurityNotFoundException("03")).when(securitiesService).delete(any(Security.class));
 
-		mockMvc.perform(delete("/security/{id}", ID_FOUND + "-4711")).andExpect(status().isNoContent());
+		mockMvc.perform(delete("/security/{id}", ID_FOUND + "-4711").with(csrf().asHeader())).andExpect(status().isNoContent());
 	}
 
 	/**
@@ -321,7 +326,8 @@ public class SecuritiesControllerTest {
 	public void testSecurityDelete_04() throws Exception {
 		doThrow(new NullPointerException("04")).when(securitiesService).delete(any(Security.class));
 
-		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND + "-not-delete")).andExpect(status().isNoContent());
+		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND + "-not-delete").with(csrf().asHeader()))
+			.andExpect(status().isNoContent());
 
 		fail("Es hätte eine Exception geworfen werden müssen");
 	}
