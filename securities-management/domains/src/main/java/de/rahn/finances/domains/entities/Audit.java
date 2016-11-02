@@ -16,6 +16,7 @@
 package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
+import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME;
 
 import java.time.LocalDateTime;
 
@@ -29,6 +30,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Mit dieser Klasse wird das Auditing von Sprng Data JPA ermöglicht.
@@ -46,6 +48,7 @@ public abstract class Audit {
 
 	/** Dieses Feld enthält das Datum, wann dieses Entität angelegt wurde. */
 	@CreatedDate
+	@DateTimeFormat(iso = DATE_TIME)
 	private LocalDateTime createDate;
 
 	/** Dieses Feld enthält den Namen des Benutzers, der dieses Entität angelegt hat. */
@@ -54,11 +57,12 @@ public abstract class Audit {
 
 	/** Dieses Feld enthält den Zeitstempel, wann dieses Entität zu letzt geändert wurde. */
 	@LastModifiedDate
+	@DateTimeFormat(iso = DATE_TIME)
 	private LocalDateTime lastModifiedDate;
 
 	/** Dieses Feld enthält den Namen des Benutzers, der dieses Entität zu letzt geändert hat. */
 	@LastModifiedBy
-	private String lastModifiedby;
+	private String lastModifiedBy;
 
 	/* Ab hier generiert: Getter ... */
 
@@ -91,6 +95,13 @@ public abstract class Audit {
 	}
 
 	/**
+	 * @param createBy the createBy to set
+	 */
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	/**
 	 * @return the lastModifiedDate
 	 */
 	public LocalDateTime getLastModifiedDate() {
@@ -98,10 +109,24 @@ public abstract class Audit {
 	}
 
 	/**
-	 * @return the lastModifiedby
+	 * @param lastModifiedDate the lastModifiedDate to set
 	 */
-	public String getLastModifiedby() {
-		return lastModifiedby;
+	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	/**
+	 * @return the lastModifiedBy
+	 */
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	/**
+	 * @param lastModifiedBy the lastModifiedBy to set
+	 */
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
 	}
 
 }

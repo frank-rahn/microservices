@@ -92,3 +92,13 @@ pre {
 	max-height: 450px;
 	overflow: scroll;
 }
+
+a.collapse-toggle:after {
+	font-family: 'Glyphicons Halflings';
+	content: "\e114";
+	float: right;
+}
+
+a.collapse-toggle.collapsed:after {
+	content: "\e080";
+}

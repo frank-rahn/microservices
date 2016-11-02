@@ -21,6 +21,7 @@ import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
+import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -36,6 +37,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Persistable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Eine Buchung.
@@ -57,6 +59,7 @@ public class Entry extends Audit implements Persistable<String> {
 	/** Das Datum des Eintrages. */
 	@Column(nullable = false)
 	@NotNull
+	@DateTimeFormat(iso = DATE)
 	private LocalDate date;
 
 	/** Die Anzahl oder Stückzahl. */
