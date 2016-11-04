@@ -18,6 +18,7 @@ package de.rahn.finances.server.web.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,7 +36,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfiguration {
 
 	/**
-	 * Die globale Spring Security Konfiguration.
+	 * Die globale Konfiguration für Spring Security.<br>
+	 * Hier wird der {@link AuthenticationProvider} für InMemory definiert.
 	 *
 	 * @see WebSecurityConfigurerAdapter#configure(AuthenticationManagerBuilder)
 	 */
@@ -43,14 +45,18 @@ public class WebSecurityConfiguration {
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
 		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
-			// User mit erweiterten Rechten
+				// User mit erweiterten Rechten
 				.withUser("admin").password("admin").roles("USER", "ADMIN")
-			// User mit Leserecheten
-			.and().withUser("user").password("user").roles("USER")
-			// User mit keinen Rechten
-			.and().withUser("gast").password("gast").roles("GAST")
-			// So jetzt in den Builder
-			.and().configure(auth);
+			.and()
+				// User nur mit Leserecheten
+				.withUser("user").password("user").roles("USER")
+			.and()
+				// User mit einem ungültigem Rechten
+				.withUser("gast").password("gast").roles("GAST")
+			.and()
+				// Jetzt dem AuthenticationManagerBuilder übergeben "auth.authenticationProvider(provider);"
+				.configure(auth)
+		;
 		// @formatter:on
 	}
 
@@ -77,8 +83,11 @@ public class WebSecurityConfiguration {
 					.authorizeRequests()
 						// Alle Request benötigen einen User mit der Rolle USER
 						.anyRequest().hasRole("USER")
-				// Konfiguration HTTP Basic Authentication
-				.and().httpBasic().realmName("Management-API")
+			;
+
+			http
+				// Konfiguration der HTTP Basic Authentication
+				.httpBasic().realmName("Management-API")
 			;
 			// @formatter:on
 		}
@@ -109,10 +118,16 @@ public class WebSecurityConfiguration {
 					.authorizeRequests()
 						// Alle dürfen auf die Console zugreifen
 						.anyRequest().permitAll()
-				// Konfiguration CSRF abschalten
-				.and().csrf().disable()
-				// Konfiguration X-Frame-Options abschalten
-				.headers().frameOptions().disable()
+			;
+
+			http
+				// Konfiguration "CSRF" abschalten
+				.csrf().disable()
+			;
+
+			http.headers()
+				// HTTP Header Konfiguration "X-Frame-Options" abschalten
+				.frameOptions().disable()
 			;
 			// @formatter:on
 		}
@@ -141,22 +156,28 @@ public class WebSecurityConfiguration {
 				.authorizeRequests()
 					// Alle Request benötigen einen User mit der Rolle USER
 					.anyRequest().hasRole("USER")
-				// Konfiguration des Form Based Authentication
-				.and().formLogin()
+			;
+
+			http
+				// Konfiguration der Form Based Authentication
+				.formLogin()
 					// Die URL der Login-Seite
 					.loginPage("/login")
 					// Alle dürfen auf die Login-Seite zugreifen
 					.permitAll()
 					// Diese Seite wird nach einem Fehler bei der Anmeldung angezeigt (Default)
 					//.failureUrl("/login?error")
-				// Konfiguration des Logouts
-				.and().logout()
+			;
+
+			http
+				// Konfiguration der Abmeldung
+				.logout()
 					// Alle dürfen sich abmelden
 					.permitAll()
-					// Beim Logout alle gesetzten Cookies wieder löschen
-					.deleteCookies()
 					// Diese Seite wird nach einem Fehler bei der Abmeldung angezeigt (Default)
 					//.logoutSuccessUrl("/login?logout")
+					// Beim Logout alle gesetzten Cookies wieder löschen
+					.deleteCookies()
 					// Request Mapper für /logout zum abmelden
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			;
