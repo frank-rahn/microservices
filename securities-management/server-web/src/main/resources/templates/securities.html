@@ -23,11 +23,11 @@
 				</div>
 				<div id="filter-body" class="panel-body collapse">
 					<div class="form-group col-md-4 col-sm-4">
-						<label><input id="inventory" type="checkbox" th:checked="${inventory}" /> Bestand</label>
+						<label><input id="inventory" name="inventory" type="checkbox" th:checked="${inventory}" /> Bestand</label>
 					</div>
 					<div class="form-group col-md-4 col-sm-4">
 						<label for="type">Wertpapierart</label>
-						<select id="type" class="form-control">
+						<select id="type" name="type" class="form-control">
 							<option value="" th:selected="${type == null}">-</option>
 							<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}" th:selected="${e.key==type?.name()}">Aktie</option>
 						</select>

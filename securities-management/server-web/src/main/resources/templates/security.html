@@ -61,14 +61,10 @@
 									</select>
 									<div th:if="${#fields.hasErrors('type')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{type}">Fehler in der Wertpapierart</span></div>
 								</div>
-								<div class="form-group" th:classappend="${#fields.hasErrors('inventory')}? 'has-error has-feedback'" th:if="*{!#strings.isEmpty(id)}">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" th:checked="*{inventory}" checked="checked" disabled="disabled" /> Gibt es zu diesem Wertpapier einen Bestand?
-										</label>
-										<input type="hidden" th:field="*{inventory}" />
-									</div>
-									<div th:if="${#fields.hasErrors('inventory')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{inventory}">Fehler in der Angabe zum Bestand</span></div>
+								<div class="form-group" th:if="*{!#strings.isEmpty(id)}">
+									<p th:if="*{inventory}">Es gibt zu diesem Wertpapier <b>einen Bestand</b>!</p>
+									<p th:unless="*{inventory}">Es gibt zu diesem Wertpapier <b>keinen Bestand</b>.</p>
+									<input type="hidden" th:field="*{inventory}" />
 								</div>
 								<div class="text-center">
 									<a class="btn btn-default" href="securities.html" th:href="@{/securities}">Abbrechen</a>
@@ -94,7 +90,7 @@
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('createDate')}? 'has-error has-feedback'">
 									<label for="createDate" class="control-label">Angelegt am:</label>
-									<input type="text" class="form-control" th:field="*{createDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('createDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<input type="datetime-local" class="form-control" th:field="*{createDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('createDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('createDate')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{createDate}">Fehler im Datum</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('createBy')}? 'has-error has-feedback'">
@@ -104,7 +100,7 @@
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('lastModifiedDate')}? 'has-error has-feedback'">
 									<label for="lastModifiedDate" class="control-label">Geändert am:</label>
-									<input type="text" class="form-control" th:field="*{lastModifiedDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('lastModifiedDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<input type="datetime-local" class="form-control" th:field="*{lastModifiedDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('lastModifiedDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('lastModifiedDate')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{lastModifiedDate}">Fehler im Datum</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('lastModifiedBy')}? 'has-error has-feedback'">
