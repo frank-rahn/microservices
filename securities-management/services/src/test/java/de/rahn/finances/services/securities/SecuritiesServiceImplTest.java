@@ -94,10 +94,10 @@ public class SecuritiesServiceImplTest {
 		when(repository.findOne((String) null)).thenThrow(new IllegalArgumentException());
 		when(repository.findOne(testSecurity.getId())).thenReturn(testSecurity);
 
-		when(repository.findByInventory(any(Pageable.class), eq(true))).thenReturn(pageable2);
-		when(repository.findByInventory(null, true)).thenReturn(pageable1);
-		when(repository.findByInventory(zeroPage, true)).thenReturn(pageable3);
-		when(repository.findByInventoryAndType(isNull(Pageable.class), eq(false), eq(stock))).thenReturn(pageable1);
+		when(repository.findByInventoryOrderByIsin(any(Pageable.class), eq(true))).thenReturn(pageable2);
+		when(repository.findByInventoryOrderByIsin(null, true)).thenReturn(pageable1);
+		when(repository.findByInventoryOrderByIsin(zeroPage, true)).thenReturn(pageable3);
+		when(repository.findByInventoryAndTypeOrderByIsin(isNull(Pageable.class), eq(false), eq(stock))).thenReturn(pageable1);
 
 		when(repository.save(testSecurity)).thenReturn(testSecurity);
 

@@ -36,7 +36,7 @@ public interface SecuritiesRepository extends JpaRepository<Security, String> {
 	 * @param inventory Filter: <code>true</code>, nur der aktuelle Bestand wird angezeigt
 	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
 	 */
-	Page<Security> findByInventory(Pageable pageable, boolean inventory);
+	Page<Security> findByInventoryOrderByIsin(Pageable pageable, boolean inventory);
 
 	/**
 	 * Liefere die {@link Page} der Wertpapiere unter der Berücksichtigung der Filterparameter.
@@ -46,6 +46,6 @@ public interface SecuritiesRepository extends JpaRepository<Security, String> {
 	 * @param type Filter: nur die Wertpapiere dieser Art anzeigen
 	 * @return Eine Seite der Liste aller gefilterten Wertpapiere
 	 */
-	Page<Security> findByInventoryAndType(Pageable pageable, boolean inventory, SecurityType type);
+	Page<Security> findByInventoryAndTypeOrderByIsin(Pageable pageable, boolean inventory, SecurityType type);
 
 }

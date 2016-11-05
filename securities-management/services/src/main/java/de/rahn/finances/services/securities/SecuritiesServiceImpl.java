@@ -83,9 +83,9 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	public Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable) {
 		Page<Security> page;
 		if (type == null) {
-			page = repository.findByInventory(pageable, inventory);
+			page = repository.findByInventoryOrderByIsin(pageable, inventory);
 		} else {
-			page = repository.findByInventoryAndType(pageable, inventory, type);
+			page = repository.findByInventoryAndTypeOrderByIsin(pageable, inventory, type);
 		}
 
 		if (pageable != null) {
