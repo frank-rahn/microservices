@@ -67,8 +67,7 @@
 									<input type="hidden" th:field="*{inventory}" />
 								</div>
 								<div class="text-center">
-									<a class="btn btn-default" href="securities.html" th:href="@{/securities}">Abbrechen</a>
-									<button type="submit" class="btn btn-danger">Speichern</button>
+									<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-save"></span> Speichern</button>
 								</div>
 							</div>
 						</div>
@@ -126,9 +125,9 @@
 							<table class="table table-bordered table-striped table-hover">
 								<thead>
 									<tr>
-										<th>Datum</th>
-										<th>Anzahl</th>
-										<th>Einzelpreis</th>
+										<th>Datum der Buchung</th>
+										<th>Anzahl / Stückzahl</th>
+										<th>Einzelpreis / Kurs</th>
 										<th>Gesamtsumme</th>
 										<th>Buchungsart</th>
 									</tr>
