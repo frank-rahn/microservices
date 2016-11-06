@@ -85,7 +85,6 @@ public class Entry extends Audit implements Persistable<String> {
 
 	/** Das zugehörige Wertpapier. */
 	@ManyToOne(optional = false)
-	@NotNull
 	private Security security;
 
 	/**
