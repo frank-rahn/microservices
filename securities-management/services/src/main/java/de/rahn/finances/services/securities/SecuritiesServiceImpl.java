@@ -29,9 +29,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import de.rahn.finances.domains.entities.Entry;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
+import de.rahn.finances.domains.repositories.EntriesRepository;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
+import de.rahn.finances.services.EntryNotFoundException;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
 
@@ -46,7 +49,10 @@ import de.rahn.finances.services.SecurityNotFoundException;
 public class SecuritiesServiceImpl implements SecuritiesService {
 
 	@Autowired
-	private SecuritiesRepository repository;
+	private SecuritiesRepository securitiesRepository;
+
+	@Autowired
+	private EntriesRepository entriesRepository;
 
 	/**
 	 * {@inheritDoc}
@@ -55,7 +61,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 */
 	@Override
 	public List<Security> getSecurities() {
-		return repository.findAll();
+		return securitiesRepository.findAll();
 	}
 
 	/**
@@ -65,7 +71,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 */
 	@Override
 	public Security getSecurity(String id) {
-		Security security = repository.findOne(id);
+		Security security = securitiesRepository.findOne(id);
 
 		if (security == null) {
 			throw new SecurityNotFoundException(id);
@@ -83,9 +89,9 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	public Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable) {
 		Page<Security> page;
 		if (type == null) {
-			page = repository.findByInventoryOrderByIsin(pageable, inventory);
+			page = securitiesRepository.findByInventoryOrderByIsin(pageable, inventory);
 		} else {
-			page = repository.findByInventoryAndTypeOrderByIsin(pageable, inventory, type);
+			page = securitiesRepository.findByInventoryAndTypeOrderByIsin(pageable, inventory, type);
 		}
 
 		if (pageable != null) {
@@ -108,7 +114,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Override
 	@Transactional(REQUIRED)
 	public Security save(Security security) {
-		return repository.save(security);
+		return securitiesRepository.save(security);
 	}
 
 	/**
@@ -119,7 +125,35 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Override
 	@Transactional(REQUIRED)
 	public void delete(Security security) {
-		repository.delete(security);
+		securitiesRepository.delete(security);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see SecuritiesService#getEntry(java.lang.String)
+	 */
+	@Override
+	@Transactional(REQUIRED)
+	public Entry getEntry(String id) {
+		Entry entry = entriesRepository.findOne(id);
+
+		if (entry == null) {
+			throw new EntryNotFoundException(id);
+		}
+
+		return entry;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see SecuritiesService#save(Entry)
+	 */
+	@Override
+	@Transactional(REQUIRED)
+	public Entry save(Entry entry) {
+		return entriesRepository.save(entry);
 	}
 
 }

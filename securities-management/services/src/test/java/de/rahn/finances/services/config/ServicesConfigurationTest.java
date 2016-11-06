@@ -30,6 +30,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import de.rahn.finances.domains.repositories.EntriesRepository;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
@@ -50,7 +51,10 @@ public class ServicesConfigurationTest {
 	public ExpectedException thrown = none();
 
 	@MockBean
-	public SecuritiesRepository repository;
+	public SecuritiesRepository securitiesRepository;
+
+	@MockBean
+	public EntriesRepository entriesRepository;
 
 	@MockBean
 	public CounterService counter;
@@ -66,7 +70,7 @@ public class ServicesConfigurationTest {
 	 */
 	@Test
 	public void testSpringConfiguration_01() {
-		when(repository.findOne(ID)).thenReturn(null);
+		when(securitiesRepository.findOne(ID)).thenReturn(null);
 
 		thrown.expect(SecurityNotFoundException.class);
 		thrown.expectMessage(ID);

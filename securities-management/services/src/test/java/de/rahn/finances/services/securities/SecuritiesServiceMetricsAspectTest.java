@@ -112,7 +112,7 @@ public class SecuritiesServiceMetricsAspectTest {
 		when(service.getSecurities()).thenReturn(allSecurity);
 		when(service.getSecurities(any(Pageable.class))).thenReturn(page);
 		when(service.save(testSecurity)).thenReturn(testSecurity);
-		when(service.save(null)).thenThrow(new SecurityNotFoundException(""));
+		when(service.save((Security) null)).thenThrow(new SecurityNotFoundException(""));
 
 		doAnswer(invocation -> {
 			counters.add((String) invocation.getArguments()[0]);
@@ -181,7 +181,7 @@ public class SecuritiesServiceMetricsAspectTest {
 	@Test
 	public void testSave_02() {
 		try {
-			serviceProxy.save(null);
+			serviceProxy.save((Security) null);
 			fail("Hier hätte eine Exception geworfen werden sollen");
 		} catch (SecurityNotFoundException expected) {
 			// Erwarted

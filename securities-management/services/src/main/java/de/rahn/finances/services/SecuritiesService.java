@@ -20,6 +20,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import de.rahn.finances.domains.entities.Entry;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
 
@@ -31,11 +32,16 @@ import de.rahn.finances.domains.entities.SecurityType;
 public interface SecuritiesService {
 
 	/**
+	 * Liefere alle Wertpapiere.
+	 *
 	 * @return die Wertpapiere
 	 */
 	List<Security> getSecurities();
 
 	/**
+	 * Liefere alle Wertpapiere die einen Bestand haben.
+	 *
+	 * @param pageable die gewünschte {@link Page}
 	 * @return alle Wertpapiere mit einem Bestand
 	 */
 	default Page<Security> getSecurities(Pageable pageable) {
@@ -43,7 +49,10 @@ public interface SecuritiesService {
 	}
 
 	/**
+	 * Liefere alle Wertpapiere in Abhängigkeit zum Bestand.
+	 *
 	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
+	 * @param pageable die gewünschte {@link Page}
 	 * @return alle Wertpapiere
 	 */
 	default Page<Security> getSecurities(boolean inventory, Pageable pageable) {
@@ -52,7 +61,7 @@ public interface SecuritiesService {
 
 	/**
 	 * Falls die angeforderte Seite ausserhalb des zuslässigen Bereiches liegt, wird die letzte Seite geliefert.
-	 * 
+	 *
 	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
 	 * @param type die gewünschte Art des Wertpapiers, <code>null</code> liefert alle
 	 * @return alle Wertpapiere
@@ -60,6 +69,8 @@ public interface SecuritiesService {
 	Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable);
 
 	/**
+	 * Leifere das Wertpapier.
+	 *
 	 * @param id der Identifizierer eines Wertpapiers
 	 * @return das Wertpapier
 	 * @throws SecurityNotFoundException, wenn das Wertpapier nicht gefunden wird
@@ -80,5 +91,22 @@ public interface SecuritiesService {
 	 * @param security das Wertpapier
 	 */
 	void delete(Security security);
+
+	/**
+	 * Liefere die Buchung.
+	 *
+	 * @param id der Identifizierer einer Buchung
+	 * @return die Buchung
+	 * @throws EntryNotFoundException, wenn die Buchung nicht gefunden wird
+	 */
+	Entry getEntry(String id);
+
+	/**
+	 * Speichere die Buchung.
+	 *
+	 * @param entry die zuspeicherne Buchung
+	 * @return die Buchung
+	 */
+	Entry save(Entry entry);
 
 }
