@@ -12,59 +12,58 @@
 </head>
 <body>
 	<div class="container">
-		<h1 layout:fragment="header">Wertpapier</h1>
+		<h1 layout:fragment="header">Buchung</h1>
 		<div layout:fragment="content">
-			<form th:object="${security}" th:action="@{/security}" action="#" method="post" role="form">
-				<div th:if="${#fields.hasErrors('${security}')}" class="alert alert-danger" role="alert">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p th:errors="${security}">Allgemeiner Fehler</p>
+			<form th:object="${entry}" th:action="@{/entry/__${entry.id}__}" action="#" method="post" role="form">
+				<div th:if="${#fields.hasErrors('${entry}')}" class="alert alert-danger" role="alert">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p th:errors="${entry}">Allgemeiner Fehler</p>
 				</div>
 				<div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
 					<section class="panel panel-default">
-						<div id="security-heading" class="panel-heading" role="tab">
+						<div id="entry-heading" class="panel-heading" role="tab">
 							<h2 class="panel-title">
-								<a class="collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#security" aria-expanded="false" aria-controls="security" role="button">
-									Wertpapier <span th:if="*{!#strings.isEmpty(id)}"><b><span th:text="*{name}">Firma A AG</span></b> (<span th:text="*{isin}">DE0001234560</span>)</span>
+								<a class="collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#entry" aria-expanded="ture" aria-controls="entry" role="button">
+									Buchung
 								</a>
 							</h2>
 						</div>
-						<div id="security" class="panel-collapse collapse" th:classappend="*{#strings.isEmpty(id)}? 'in'" aria-labelledby="security-heading" role="tabpanel">
+						<div id="entry" class="panel-collapse collapse in" aria-labelledby="entry-heading" role="tabpanel">
 							<div class="panel-body">
 								<div class="form-group" th:classappend="${#fields.hasErrors('id')}? 'has-error has-feedback'">
 									<label for="id" class="control-label">ID:</label>
 									<input type="text" class="form-control" th:field="*{id}" value="8ad72f6f-2a39-4846-8940-f6139f3d5597" placeholder="Wird automatisch vergeben" readonly="readonly"/><span th:if="${#fields.hasErrors('id')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('id')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{id}">Fehler in der ID</span></div>
 								</div>
-								<div class="form-group" th:classappend="${#fields.hasErrors('isin')}? 'has-error has-feedback'">
-									<label for="isin" class="control-label">ISIN:</label>
-									<input type="text" class="form-control" th:field="*{isin}" value="DE0001234560" /><span th:if="${#fields.hasErrors('isin')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
-									<div th:if="${#fields.hasErrors('isin')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{isin}">Fehler in der ISIN</span></div>
+								<div class="form-group" th:classappend="${#fields.hasErrors('date')}? 'has-error has-feedback'">
+									<label for="date" class="control-label">Datum der Buchung:</label>
+									<input type="date" class="form-control" th:field="*{date}" value="2016-11-01" /><span th:if="${#fields.hasErrors('date')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<div th:if="${#fields.hasErrors('date')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{date}">Fehler im Buchungsdatum</span></div>
 								</div>
-								<div class="form-group" th:classappend="${#fields.hasErrors('wkn')}? 'has-error has-feedback'">
-									<label for="wkn" class="control-label">Wertpapier-Kennnummer:</label>
-									<input type="text" class="form-control" th:field="*{wkn}" value="123456" /><span th:if="${#fields.hasErrors('wkn')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
-									<div th:if="${#fields.hasErrors('wkn')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{wkn}">Fehler in der Wertpapier-Kennnummer</span></div>
+								<div class="form-group" th:classappend="${#fields.hasErrors('numberOf')}? 'has-error has-feedback'">
+									<label for="numberOf" class="control-label">Anzahl der Anteile oder Stückzahl:</label>
+									<input type="text" class="form-control" th:field="*{numberOf}" value="1.2345" /><span th:if="${#fields.hasErrors('numberOf')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<div th:if="${#fields.hasErrors('numberOf')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{numberOf}">Fehler in der Anzahl</span></div>
 								</div>
-								<div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error has-feedback'">
-									<label for="name" class="control-label">Name des Wertpapiers:</label>
-									<input type="text" class="form-control" th:field="*{name}" value="Firma A AG" /><span th:if="${#fields.hasErrors('name')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
-									<div th:if="${#fields.hasErrors('name')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{name}">Fehler im Name</span></div>
+								<div class="form-group" th:classappend="${#fields.hasErrors('price')}? 'has-error has-feedback'">
+									<label for="price" class="control-label">Einzelpreis oder Kurs:</label>
+									<div class="input-group">
+										<input type="text" class="form-control" th:field="*{price}" value="1.234567" /><span class="input-group-addon">€</span>
+									</div>
+									<div th:if="${#fields.hasErrors('price')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{price}">Fehler im Preis</span></div>
 								</div>
-								<div class="form-group" th:classappend="${#fields.hasErrors('symbol')}? 'has-error has-feedback'">
-									<label for="symbol" class="control-label">Symbol des Wertpapiers:</label>
-									<input type="text" class="form-control" th:field="*{symbol}" value="A01" /><span th:if="${#fields.hasErrors('symbol')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
-									<div th:if="${#fields.hasErrors('symbol')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{symbol}">Fehler im Symbol</span></div>
+								<div class="form-group" th:classappend="${#fields.hasErrors('amount')}? 'has-error has-feedback'">
+									<label for="amount" class="control-label">Gesamtsumme der Buchung:</label>
+									<div class="input-group">
+										<input type="text" class="form-control" th:field="*{amount}" value="1.524073" /><span class="input-group-addon">€</span>
+									</div>
+									<div th:if="${#fields.hasErrors('amount')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{amount}">Fehler in der Gesamtsumme</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('type')}? 'has-error has-feedback'">
-									<label for="type" class="control-label">Wertpapierart:</label>
+									<label for="type" class="control-label">Buchungsart:</label>
 									<select class="form-control" th:field="*{type}">
-										<option value="stock" th:each="e: ${securityTypeList}" th:value="${e.key}" th:text="${e.value}">Aktie</option>
+										<option value="buy" th:each="e: ${entryTypeList}" th:value="${e.key}" th:text="${e.value}">Wertpapier Kauf</option>
 									</select>
-									<div th:if="${#fields.hasErrors('type')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{type}">Fehler in der Wertpapierart</span></div>
-								</div>
-								<div class="form-group" th:if="*{!#strings.isEmpty(id)}">
-									<p th:if="*{inventory}">Es gibt zu diesem Wertpapier <b>einen Bestand</b>!</p>
-									<p th:unless="*{inventory}">Es gibt zu diesem Wertpapier <b>keinen Bestand</b>.</p>
-									<input type="hidden" th:field="*{inventory}" />
+									<div th:if="${#fields.hasErrors('type')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{type}">Fehler in der Buchungsart</span></div>
 								</div>
 								<div class="text-center">
 									<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-save"></span> Speichern</button>
@@ -83,7 +82,7 @@
 						<div id="audit" class="panel-collapse collapse" aria-labelledby="audit-heading" role="tabpanel">
 							<div class="panel-body">
 								<div class="form-group" th:classappend="${#fields.hasErrors('version')}? 'has-error has-feedback'">
-									<label for="version" class="control-label">Version des Wertpapiers:</label>
+									<label for="version" class="control-label">Version der Buchung</label>
 									<input type="text" class="form-control" th:field="*{version}" value="1" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('version')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('version')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{version}">Fehler in der Version</span></div>
 								</div>
@@ -110,50 +109,11 @@
 							</div>
 						</div>
 					</section>
-					<section class="panel panel-default" th:if="*{!#strings.isEmpty(id)}">
-						<div class="panel-heading" id="audit-heading" role="tab">
-							<h2 class="panel-title">
-								<a class="collapse-toggle" data-toggle="collapse" data-parent="#accordion" href="#entries" aria-expanded="true" aria-controls="entries" role="button">
-									Buchungen
-								</a>
-							</h2>
-						</div>
-						<div id="entries" class="panel-collapse collapse in" aria-labelledby="entries-heading" role="tabpanel">
-							<div class="panel-body">
-								<p class="text-center">Pagination kommt hier hin</p>
-							</div>
-							<table class="table table-bordered table-striped table-hover">
-								<thead>
-									<tr>
-										<th>Datum der Buchung</th>
-										<th>Anzahl / Stückzahl</th>
-										<th>Einzelpreis / Kurs</th>
-										<th>Gesamtsumme</th>
-										<th>Buchungsart</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:if="*{entries==null or entries.empty}">
-										<td colspan="5">Keine Buchungen vorhanden.</td>
-									</tr>
-									<tr th:each="entry : *{entries}">
-										<td>
-											<a href="entry.html" th:href="@{/entry/__${entry.id}__}" th:text="${entry.date}">2016-10-23</a>
-										</td>
-										<td class="text-right" th:text="${#numbers.formatDecimal(entry.numberOf,1,'POINT',4,'COMMA')}">123,4567</td>
-										<td class="text-right" th:text="${#numbers.formatDecimal(entry.price,1,'POINT',6,'COMMA')+' €'}">1,234567 €</td>
-										<td class="text-right" th:text="${#numbers.formatDecimal(entry.amount,1,'POINT',6,'COMMA')+' €'}">152,415568 €</td>
-										<td th:text="${entry.type.description}">Wertpapier Kauf</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</section>
 				</div>
 			</form>
 
 			<section>
-				<p><a class="btn btn-default" href="securities.html" th:href="@{/securities}"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</a></p>
+				<p><a class="btn btn-default" href="security.html" th:href="@{/security/__${entry.security.id}__}"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</a></p>
 			</section>
 		</div>
 	</div>
