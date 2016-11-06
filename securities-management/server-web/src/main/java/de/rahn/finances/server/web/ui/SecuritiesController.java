@@ -18,9 +18,6 @@ package de.rahn.finances.server.web.ui;
 import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -36,9 +33,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import de.rahn.finances.domains.entities.Security;
@@ -71,10 +70,10 @@ public class SecuritiesController {
 	/**
 	 * @return die Liste der anzuzeigenden Wertpapiere
 	 */
-	@RequestMapping(value = "/securities", method = GET)
+	@GetMapping(path = "/securities")
 	public String securities(@RequestParam(name = "inventory", defaultValue = "true") boolean inventory, Pageable pageable,
 		Model model) {
-		LOGGER.info("Methode aufgerufen: securities({}, {})", inventory, pageable);
+		LOGGER.info("GetRequest: securities({}, {})", inventory, pageable);
 
 		model.addAttribute("inventory", inventory).addAttribute("page", service.getSecurities(inventory, pageable));
 		return "securities";
@@ -83,10 +82,10 @@ public class SecuritiesController {
 	/**
 	 * @return die Liste der anzuzeigenden Wertpapiere
 	 */
-	@RequestMapping(value = "/securities/{type}", method = GET)
+	@GetMapping(path = "/securities/{type}")
 	public String securities(@PathVariable("type") SecurityType type,
 		@RequestParam(name = "inventory", required = false) boolean inventory, Pageable pageable, Model model) {
-		LOGGER.info("Methode aufgerufen: securities({}, {}, {})", type, inventory, pageable);
+		LOGGER.info("GetRequest: securities({}, {}, {})", type, inventory, pageable);
 
 		model.addAttribute("inventory", inventory).addAttribute("type", type).addAttribute("page",
 			service.getSecurities(inventory, type, pageable));
@@ -98,9 +97,9 @@ public class SecuritiesController {
 	 *
 	 * @return das Model mit dem leeren Wertpapier
 	 */
-	@RequestMapping(value = "/security", method = GET)
+	@GetMapping(path = "/security")
 	public String security(Model model) {
-		LOGGER.info("Methode aufgerufen: security()");
+		LOGGER.info("GetRequest: security()");
 
 		model.addAttribute("security", new Security());
 		return "security";
@@ -112,9 +111,9 @@ public class SecuritiesController {
 	 * @param id die Id des Wertpapiers
 	 * @return das Model mit dem Wertpapier
 	 */
-	@RequestMapping(value = "/security/{id}", method = GET)
+	@GetMapping(path = "/security/{id}")
 	public String security(@PathVariable("id") String id, Model model) {
-		LOGGER.info("Methode aufgerufen: security({})", id);
+		LOGGER.info("GetRequest: security({})", id);
 
 		model.addAttribute("security", service.getSecurity(id));
 		return "security";
@@ -126,9 +125,9 @@ public class SecuritiesController {
 	 * @param security das geänderte Wertpapier
 	 * @return die nächste anzuzeigende View
 	 */
-	@RequestMapping(value = "/security", method = POST)
+	@PostMapping(path = "/security")
 	public String security(@Valid @ModelAttribute("security") Security security, BindingResult bindingResult) {
-		LOGGER.info("Methode aufgerufen: security({})", security);
+		LOGGER.info("PostRequest: security({})", security);
 
 		if (bindingResult.hasErrors()) {
 			return "security";
@@ -151,9 +150,9 @@ public class SecuritiesController {
 	 * @param id die Id des Wertpapiers
 	 * @return der Status
 	 */
-	@RequestMapping(value = "/security/{id}", method = DELETE)
+	@DeleteMapping(path = "/security/{id}")
 	public ResponseEntity<Void> securityDelete(@PathVariable("id") String id) {
-		LOGGER.info("Methode aufgerufen: securityDelete({})", id);
+		LOGGER.info("DeleteRequest: securityDelete({})", id);
 
 		try {
 			service.delete(service.getSecurity(id));
