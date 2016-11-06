@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  * @author Frank W. Rahn
  */
-@ResponseStatus(value = NOT_FOUND)
+@ResponseStatus(code = NOT_FOUND)
 public class SecurityNotFoundException extends RuntimeException {
 
 	public static final String MESSAGE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
