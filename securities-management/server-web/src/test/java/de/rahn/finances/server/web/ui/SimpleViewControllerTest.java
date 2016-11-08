@@ -70,4 +70,12 @@ public class SimpleViewControllerTest {
 			.andExpect(content().string(containsString("Management-API")));
 	}
 
+	/**
+	 * Test der Error-Seite.
+	 */
+	@Test
+	public void testError() throws Exception {
+		mockMvc.perform(get("/error")).andExpect(status().is5xxServerError());
+	}
+
 }
