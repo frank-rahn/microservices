@@ -37,6 +37,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -113,6 +114,13 @@ public class DomainsConfigurationTest {
 		assertThat(all.get(0).getName(), is("Firma 1 AG"));
 		assertThat(all.get(0).getSymbol(), is("A01"));
 		assertThat(all.get(0).getType(), is(stock));
+		assertThat(all.get(0).isInventory(), is(true));
+
+		assertThat(all.get(0).getVersion(), is(0L));
+		assertThat(all.get(0).getCreateBy(), is("generator"));
+		assertThat(all.get(0).getCreateDate(), notNullValue());
+		assertThat(all.get(0).getLastModifiedBy(), is("generator"));
+		assertThat(all.get(0).getLastModifiedDate(), notNullValue());
 
 		assertThat(all.get(0).hashCode(), not(all.get(1).hashCode()));
 		assertThat(all.get(0).toString(), not(all.get(1).toString()));
@@ -123,6 +131,8 @@ public class DomainsConfigurationTest {
 	 * Test, ob ein {@link ApplicationContext} erstellt werden kann.
 	 */
 	@Test
+	@Transactional
+	@WithMockUser(username = "frank")
 	public void testSpringConfiguration_02() {
 		assertThat(repository, notNullValue());
 
@@ -146,6 +156,12 @@ public class DomainsConfigurationTest {
 		assertThat(security.getWkn(), is(testSecurity.getWkn()));
 		assertThat(security.isInventory(), is(testSecurity.isInventory()));
 		assertThat(security, is(testSecurity));
+
+		assertThat(security.getVersion(), is(0L));
+		assertThat(security.getCreateBy(), is("frank"));
+		assertThat(security.getCreateDate(), notNullValue());
+		assertThat(security.getLastModifiedBy(), is("frank"));
+		assertThat(security.getLastModifiedDate(), notNullValue());
 	}
 
 }
