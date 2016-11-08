@@ -20,14 +20,16 @@ import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Mockito.when;
+import static org.springframework.context.annotation.FilterType.REGEX;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -57,13 +59,12 @@ public class SecuritiesServiceImplSecurityTest {
 
 	private Security testSecurity = new Security();
 
-	@Configuration
-	@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+	@TestConfiguration()
+	@ComponentScan(basePackageClasses = { de.rahn.finances.services.securities.PackageMarker.class },
+		excludeFilters = { @Filter(type = REGEX, pattern = { ".*Aspect" }) })
+	@EnableGlobalMethodSecurity(prePostEnabled = true)
 	static class Config {
-		@Bean
-		public SecuritiesService securitiesService() {
-			return new SecuritiesServiceImpl();
-		}
+		// Leer
 	}
 
 	/**

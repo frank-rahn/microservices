@@ -28,6 +28,7 @@ import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import de.rahn.finances.domains.repositories.EntriesRepository;
@@ -41,7 +42,8 @@ import de.rahn.finances.services.SecurityNotFoundException;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ServicesConfiguration.class)
+@SpringBootTest(classes = { ServicesConfiguration.class })
+@WithMockUser(roles = { "USER" })
 public class ServicesConfigurationTest {
 
 	/** Security ID */
