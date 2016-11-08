@@ -56,7 +56,7 @@ public class EntriesController {
 	 * @return die Liste der {@link EntryType}s für die Auswahllisten
 	 */
 	@ModelAttribute("entryTypeList")
-	public List<java.util.Map.Entry<String, String>> securityTypeList() {
+	public List<java.util.Map.Entry<String, String>> entryTypeList() {
 		return getKeyValueEntries();
 	}
 
@@ -82,7 +82,7 @@ public class EntriesController {
 	 * @return ein Redirect auf die View des Wertpapiers zu dem die neue Buchung gehört
 	 */
 	@PostMapping(path = "/entry/{id}")
-	public String newEntry(@PathVariable("id") String id, @Valid @ModelAttribute("entry") Entry entry,
+	public String saveEntry(@PathVariable("id") String id, @Valid @ModelAttribute("entry") Entry entry,
 		BindingResult bindingResult) {
 		LOGGER.info("PostRequest: entry({}, {})", id, entry);
 
