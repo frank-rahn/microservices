@@ -27,6 +27,7 @@ import org.springframework.context.annotation.Description;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import de.rahn.finances.domains.entities.Entry;
@@ -45,6 +46,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
  */
 @Service
 @Transactional(SUPPORTS)
+@PreAuthorize("hasRole('USER')")
 @Description("Die Implementierung des SecuritiesService")
 public class SecuritiesServiceImpl implements SecuritiesService {
 

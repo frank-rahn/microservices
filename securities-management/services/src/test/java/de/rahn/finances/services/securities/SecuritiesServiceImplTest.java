@@ -19,12 +19,8 @@ import static de.rahn.finances.domains.entities.EntryType.buy;
 import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.util.Collections.emptyList;
 import static java.util.UUID.randomUUID;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
@@ -131,9 +127,7 @@ public class SecuritiesServiceImplTest {
 	public void testGetSecurities() {
 		List<Security> allSecurity = classUnderTests.getSecurities();
 
-		assertThat(allSecurity, notNullValue());
-		assertThat(allSecurity.size(), is(1));
-		assertThat(allSecurity, contains(testSecurity));
+		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity);
 	}
 
 	/**
@@ -163,8 +157,7 @@ public class SecuritiesServiceImplTest {
 	public void testGetSecurity_id_known() {
 		Security security = classUnderTests.getSecurity(testSecurity.getId());
 
-		assertThat(security, notNullValue());
-		assertThat(security, is(testSecurity));
+		assertThat(security).isNotNull().isEqualTo(testSecurity);
 	}
 
 	/**
@@ -174,36 +167,32 @@ public class SecuritiesServiceImplTest {
 	public void testGetSecuritiesPageable() {
 		Page<Security> page = classUnderTests.getSecurities(null);
 
-		assertThat(page, notNullValue());
-		assertThat(page.getNumberOfElements(), is(1));
-		assertThat(page.getContent(), notNullValue());
-		assertThat(page.getContent().size(), is(1));
-		assertThat(page.getContent(), contains(testSecurity));
+		assertThat(page).isNotNull();
+		assertThat(page.getNumberOfElements()).isEqualTo(1);
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
 
 		Pageable pageable = page.nextPageable();
-		assertThat(pageable, notNullValue());
+		assertThat(pageable).isNotNull();
 
 		page = classUnderTests.getSecurities(pageable);
-		assertThat(page, notNullValue());
-		assertThat(page.getNumberOfElements(), is(0));
-		assertThat(page.getContent(), empty());
+		assertThat(page).isNotNull();
+		assertThat(page.getNumberOfElements()).isEqualTo(0);
+		assertThat(page.getContent()).isEmpty();
 
 		page = classUnderTests.getSecurities(zeroPage);
-		assertThat(page, notNullValue());
-		assertThat(page.getNumberOfElements(), is(0));
-		assertThat(page.getContent(), empty());
+		assertThat(page).isNotNull();
+		assertThat(page.getNumberOfElements()).isEqualTo(0);
+		assertThat(page.getContent()).isEmpty();
 
 		page = classUnderTests.getSecurities(new PageRequest(10, 10));
-		assertThat(page, notNullValue());
-		assertThat(page.getNumberOfElements(), is(0));
-		assertThat(page.getContent(), empty());
+		assertThat(page).isNotNull();
+		assertThat(page.getNumberOfElements()).isEqualTo(0);
+		assertThat(page.getContent()).isEmpty();
 
 		page = classUnderTests.getSecurities(false, stock, null);
-		assertThat(page, notNullValue());
-		assertThat(page.getNumberOfElements(), is(1));
-		assertThat(page.getContent(), notNullValue());
-		assertThat(page.getContent().size(), is(1));
-		assertThat(page.getContent(), contains(testSecurity));
+		assertThat(page).isNotNull();
+		assertThat(page.getNumberOfElements()).isEqualTo(1);
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
 	}
 
 	/**
@@ -213,7 +202,7 @@ public class SecuritiesServiceImplTest {
 	public void testSaveSecurity() {
 		Security security = classUnderTests.save(testSecurity);
 
-		assertThat(security, is(testSecurity));
+		assertThat(security).isEqualTo(testSecurity);
 	}
 
 	/**
@@ -241,8 +230,7 @@ public class SecuritiesServiceImplTest {
 	public void testGetEntry_id_known() {
 		Entry entry = classUnderTests.getEntry(testEntry.getId());
 
-		assertThat(entry, notNullValue());
-		assertThat(entry, is(testEntry));
+		assertThat(entry).isNotNull().isEqualTo(testEntry);
 	}
 
 	/**
@@ -272,7 +260,7 @@ public class SecuritiesServiceImplTest {
 	public void testSaveEntry() {
 		Entry entry = classUnderTests.save(testEntry);
 
-		assertThat(entry, is(testEntry));
+		assertThat(entry).isEqualTo(testEntry);
 	}
 
 }

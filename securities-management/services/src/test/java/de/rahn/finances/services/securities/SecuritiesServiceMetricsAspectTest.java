@@ -23,11 +23,8 @@ import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspec
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_EVENTS;
 import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_TIMER;
 import static java.util.UUID.randomUUID;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Matchers.anyString;
@@ -37,7 +34,6 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -133,14 +129,12 @@ public class SecuritiesServiceMetricsAspectTest {
 	public void testGetSecurities() {
 		List<Security> allSecurity = serviceProxy.getSecurities();
 
-		assertThat(allSecurity, notNullValue());
-		assertThat(allSecurity.size(), is(1));
-		assertThat(allSecurity, contains(testSecurity));
+		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity);
 
-		assertThat(counters.size(), is(3));
-		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_EVENTS));
-		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
-		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALL));
+		assertThat(counters).hasSize(3);
+		assertThat(counters.get(0)).startsWith(PREFIX_METRICNAME_EVENTS);
+		assertThat(counters.get(1)).startsWith(PREFIX_METRICNAME_CALLS);
+		assertThat(counters.get(2)).startsWith(PREFIX_METRICNAME_CALL);
 	}
 
 	/**
@@ -150,13 +144,11 @@ public class SecuritiesServiceMetricsAspectTest {
 	public void testGetSecuritiesPageable() {
 		Page<Security> page = serviceProxy.getSecurities(new PageRequest(0, 10));
 
-		assertThat(page, notNullValue());
-		assertThat(page.getContent(), notNullValue());
-		assertThat(page.getContent().size(), is(1));
-		assertThat(page.getContent(), contains(testSecurity));
+		assertThat(page).isNotNull();
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
 
-		assertThat(gauges.size(), is(1));
-		assertThat(gauges.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_TIMER));
+		assertThat(gauges).hasSize(1);
+		assertThat(gauges.get(0)).startsWith(PREFIX_METRICNAME_TIMER);
 	}
 
 	/**
@@ -166,13 +158,12 @@ public class SecuritiesServiceMetricsAspectTest {
 	public void testSave_01() {
 		Security security = serviceProxy.save(testSecurity);
 
-		assertThat(security, notNullValue());
-		assertThat(security, is(testSecurity));
+		assertThat(security).isNotNull().isEqualTo(testSecurity);
 
-		assertThat(counters.size(), is(3));
-		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_EVENTS));
-		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_CALLS));
-		assertThat(counters.get(2), CoreMatchers.startsWith(PREFIX_METRICNAME_CALL));
+		assertThat(counters).hasSize(3);
+		assertThat(counters.get(0)).startsWith(PREFIX_METRICNAME_EVENTS);
+		assertThat(counters.get(1)).startsWith(PREFIX_METRICNAME_CALLS);
+		assertThat(counters.get(2)).startsWith(PREFIX_METRICNAME_CALL);
 	}
 
 	/**
@@ -187,9 +178,9 @@ public class SecuritiesServiceMetricsAspectTest {
 			// Erwarted
 		}
 
-		assertThat(counters.size(), is(2));
-		assertThat(counters.get(0), CoreMatchers.startsWith(PREFIX_METRICNAME_ERRORS));
-		assertThat(counters.get(1), CoreMatchers.startsWith(PREFIX_METRICNAME_ERROR));
+		assertThat(counters).hasSize(2);
+		assertThat(counters.get(0)).startsWith(PREFIX_METRICNAME_ERRORS);
+		assertThat(counters.get(1)).startsWith(PREFIX_METRICNAME_ERROR);
 	}
 
 }
