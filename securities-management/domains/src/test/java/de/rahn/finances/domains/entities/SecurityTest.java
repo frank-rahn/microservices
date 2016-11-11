@@ -1,12 +1,9 @@
 /*
  * Copyright 2011-2016 Frank W. Rahn and the project authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
  * http://www.apache.org/licenses/LICENSE-2.0
- *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -62,6 +59,7 @@ public class SecurityTest {
 	 * Initialisiere den Test.
 	 */
 	@Before
+	@SuppressWarnings("serial")
 	public void setUp() {
 		classUnderTest = new Security() {
 			{
@@ -196,6 +194,7 @@ public class SecurityTest {
 	 * Test method for {@link Security#replaceEntry(String, Entry)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
+	@SuppressWarnings("serial")
 	public void testReplaceEntry_4() {
 		classUnderTest.replaceEntry(ID_ENTRY_BUY, new Entry() {
 			{
@@ -209,6 +208,7 @@ public class SecurityTest {
 	 */
 	@Test
 	public void testReplaceEntry_5() {
+		@SuppressWarnings("serial")
 		final Entry newEntry = new Entry() {
 			{
 				setType(dividend);

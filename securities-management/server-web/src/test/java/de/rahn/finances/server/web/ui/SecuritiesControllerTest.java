@@ -1,12 +1,9 @@
 /*
  * Copyright 2011-2016 Frank W. Rahn and the project authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
  * http://www.apache.org/licenses/LICENSE-2.0
- *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -102,6 +99,7 @@ public class SecuritiesControllerTest {
 	/**
 	 * Initialisiere die Testgrößen.
 	 */
+	@SuppressWarnings("serial")
 	@Before
 	public void setup() {
 		when(securitiesService.getSecurities(anyBoolean(), any())).thenAnswer(invocation -> {
@@ -197,6 +195,7 @@ public class SecuritiesControllerTest {
 	 * Test method for {@link SecuritiesController#securities(SecurityType, boolean, Pageable, Model)} .
 	 */
 	@Test
+	@SuppressWarnings("serial")
 	public void testSecuritiesWithPathSecurityType() throws Exception {
 		when(securitiesService.getSecurities(anyBoolean(), eq(stock), any(Pageable.class)))
 			.thenReturn(new PageImpl<>(Collections.singletonList(new Security() {
