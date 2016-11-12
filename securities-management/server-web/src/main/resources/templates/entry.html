@@ -5,9 +5,10 @@
 >
 <head>
 	<meta charset="utf-8" />
-	<title>Wertpapier</title>
+	<title>Buchung</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
@@ -36,7 +37,7 @@
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('date')}? 'has-error has-feedback'">
 									<label for="date" class="control-label">Datum der Buchung:</label>
-									<input type="date" class="form-control" th:field="*{date}" value="2016-11-01" /><span th:if="${#fields.hasErrors('date')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<input type="text" class="form-control" th:field="*{date}" value="2016-11-01" /><span th:if="${#fields.hasErrors('date')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('date')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{date}">Fehler im Buchungsdatum</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('numberOf')}? 'has-error has-feedback'">
@@ -47,14 +48,14 @@
 								<div class="form-group" th:classappend="${#fields.hasErrors('price')}? 'has-error has-feedback'">
 									<label for="price" class="control-label">Einzelpreis oder Kurs:</label>
 									<div class="input-group">
-										<input type="text" class="form-control" th:field="*{price}" value="1.234567" /><span class="input-group-addon">€</span>
+										<input type="text" class="form-control" th:field="*{price}" value="1.234567" /><span class="input-group-addon glyphicon glyphicon-euro"></span>
 									</div>
 									<div th:if="${#fields.hasErrors('price')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{price}">Fehler im Preis</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('amount')}? 'has-error has-feedback'">
 									<label for="amount" class="control-label">Gesamtsumme der Buchung:</label>
 									<div class="input-group">
-										<input type="text" class="form-control" th:field="*{amount}" value="1.524073" /><span class="input-group-addon">€</span>
+										<input type="text" class="form-control" th:field="*{amount}" value="1.524073" /><span class="input-group-addon glyphicon glyphicon-euro"></span>
 									</div>
 									<div th:if="${#fields.hasErrors('amount')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{amount}">Fehler in der Gesamtsumme</span></div>
 								</div>
@@ -88,7 +89,7 @@
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('createDate')}? 'has-error has-feedback'">
 									<label for="createDate" class="control-label">Angelegt am:</label>
-									<input type="datetime-local" class="form-control" th:field="*{createDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('createDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<input type="text" class="form-control" th:field="*{createDate}" value="2016-09-12 11:30" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('createDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('createDate')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{createDate}">Fehler im Datum</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('createBy')}? 'has-error has-feedback'">
@@ -98,7 +99,7 @@
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('lastModifiedDate')}? 'has-error has-feedback'">
 									<label for="lastModifiedDate" class="control-label">Geändert am:</label>
-									<input type="datetime-local" class="form-control" th:field="*{lastModifiedDate}" value="2016-09-12" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('lastModifiedDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+									<input type="text" class="form-control" th:field="*{lastModifiedDate}" value="2016-09-12 17:00" placeholder="Wird automatisch vergeben" readonly="readonly" /><span th:if="${#fields.hasErrors('lastModifiedDate')}" class="glyphicon glyphicon-remove form-control-feedback"></span>
 									<div th:if="${#fields.hasErrors('lastModifiedDate')}" class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span th:errors="*{lastModifiedDate}">Fehler im Datum</span></div>
 								</div>
 								<div class="form-group" th:classappend="${#fields.hasErrors('lastModifiedBy')}? 'has-error has-feedback'">
@@ -120,5 +121,11 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" layout:fragment="script">
+		$("#date").datepicker({
+			dateFormat: "yy-mm-dd"
+		}).attachDatepickerInputKeys();
+	</script>
 </body>
 </html>

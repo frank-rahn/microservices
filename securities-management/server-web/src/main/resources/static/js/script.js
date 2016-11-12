@@ -1,3 +1,30 @@
+// Default Einstellungen für den jQuery UI Datepicker
+$.datepicker.setDefaults({
+	beforeShow: function(input) {
+		$(input).css({
+			"position": "relative",
+			"z-index": 1051
+		});
+	},
+	showButtonPanel: true,
+	showWeek: true,
+	closeText: 'Schließen',
+	prevText: '&#x3C;Zurück',
+	nextText: 'Vor&#x3E;',
+	currentText: 'Heute',
+	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+	monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
+	dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+	dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+	dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+	dateFormat: "dd.mm.yy",
+	weekHeader: 'KW',
+	firstDay: 1,
+	isRTL: false,
+	showMonthAfterYear: false,
+	yearSuffix: ''
+});
+
 function alertMessage(stat, text) {
 	$("#placeholder").html(
 			'<div class="alert alert-' + stat
