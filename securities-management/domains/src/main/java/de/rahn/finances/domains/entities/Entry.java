@@ -13,6 +13,8 @@
 package de.rahn.finances.domains.entities;
 
 import static javax.persistence.AccessType.FIELD;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
@@ -81,7 +83,7 @@ public class Entry extends Audit implements Persistable<String> {
 	private EntryType type;
 
 	/** Das zugehörige Wertpapier. */
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = { MERGE, REFRESH })
 	private Security security;
 
 	/**
