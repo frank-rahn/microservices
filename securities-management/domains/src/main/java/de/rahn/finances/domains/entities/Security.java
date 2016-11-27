@@ -1,12 +1,9 @@
 /*
  * Copyright 2011-2016 Frank W. Rahn and the project authors.
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
  * http://www.apache.org/licenses/LICENSE-2.0
- *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -187,6 +184,32 @@ public class Security extends Audit implements Persistable<String> {
 
 		entries.add(entry);
 		return entry;
+	}
+
+	/**
+	 * Übernehme die Änderung der Buchung.
+	 *
+	 * @param entry die geänderte Buchung
+	 * @return die aktualisierte Buchung
+	 */
+	public Entry updateEntry(Entry entry) {
+		if (entry == null || entry.isNew()) {
+			throw new IllegalArgumentException("Entry is new. Entry=" + entry);
+		}
+
+		Entry oldEntry = getEntry(entry.getId());
+
+		if (oldEntry != null) {
+			int index = entries.indexOf(oldEntry);
+			if (index >= 0) {
+				entry.setSecurity(this);
+
+				entries.set(index, entry);
+				return entry;
+			}
+		}
+
+		throw new IllegalArgumentException("Entry in Security not found. Entry=" + entry);
 	}
 
 	/**
