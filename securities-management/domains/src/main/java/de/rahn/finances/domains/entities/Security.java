@@ -187,32 +187,6 @@ public class Security extends Audit implements Persistable<String> {
 	}
 
 	/**
-	 * Übernehme die Änderung der Buchung.
-	 *
-	 * @param entry die geänderte Buchung
-	 * @return die aktualisierte Buchung
-	 */
-	public Entry updateEntry(Entry entry) {
-		if (entry == null || entry.isNew()) {
-			throw new IllegalArgumentException("Entry is new. Entry=" + entry);
-		}
-
-		Entry oldEntry = getEntry(entry.getId());
-
-		if (oldEntry != null) {
-			int index = entries.indexOf(oldEntry);
-			if (index >= 0) {
-				entry.setSecurity(this);
-
-				entries.set(index, entry);
-				return entry;
-			}
-		}
-
-		throw new IllegalArgumentException("Entry in Security not found. Entry=" + entry);
-	}
-
-	/**
 	 * Ersetze die alte Buchung duch die neue Buchung.
 	 *
 	 * @param oldEntry die alte Buchung

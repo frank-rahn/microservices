@@ -158,7 +158,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 			if (originalEntry == null) {
 				throw new EntryNotFoundException(entry.getId());
 			}
-			originalEntry.getSecurity().updateEntry(entry);
+			return entriesRepository.save(originalEntry.update(entry));
 		}
 
 		return entriesRepository.save(entry);

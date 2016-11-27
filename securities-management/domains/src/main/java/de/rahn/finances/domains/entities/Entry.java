@@ -87,6 +87,34 @@ public class Entry extends Audit implements Persistable<String> {
 	private Security security;
 
 	/**
+	 * Übernehme die Änderungen.
+	 * 
+	 * @param entry die Buchung mit den Änderungen
+	 * @return die geänderte Buchung
+	 */
+	public Entry update(Entry entry) {
+		if (entry == null || entry.isNew()) {
+			throw new IllegalArgumentException("Entry is new. Entry=" + entry);
+		}
+
+		if (isNew()) {
+			throw new IllegalStateException("This Entry is new. Entry=" + this);
+		}
+
+		if (!id.equals(entry.getId())) {
+			throw new IllegalArgumentException("The Entries do not belong together. Entry: id=" + id + ", id=" + entry.getId());
+		}
+
+		date = entry.date;
+		numberOf = entry.numberOf;
+		amount = entry.amount;
+		price = entry.price;
+		type = entry.type;
+
+		return this;
+	}
+
+	/**
 	 * {@inheritDoc}
 	 *
 	 * @see Persistable#getId()
