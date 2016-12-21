@@ -95,7 +95,7 @@ public class Security extends Audit implements Persistable<String> {
 
 	/** Die Buchungen zu diesem Wertpapier. */
 	@OneToMany(mappedBy = "security", cascade = { CascadeType.ALL })
-	@OrderBy(value = "date")
+	@OrderBy(value = "date DESC")
 	private List<Entry> entries;
 
 	/**
