@@ -82,8 +82,6 @@ public class EntriesController {
 	public String saveEntry(@Valid @ModelAttribute("entry") Entry entry, BindingResult bindingResult) {
 		LOGGER.info("PostRequest: entry({})", entry);
 
-		// Entry hat kein Security (Die Id des Wertpapiers wird aber benötigt!!!!!!!)
-
 		if (bindingResult.hasErrors()) {
 			return "entry";
 		}
