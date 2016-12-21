@@ -78,10 +78,11 @@ public class EntriesController {
 	 * @param entry die Buchung aus dem Formular
 	 * @return ein Redirect auf die View des Wertpapiers zu dem die neue Buchung gehört
 	 */
-	@PostMapping(path = "/entry/{id}")
-	public String saveEntry(@PathVariable("id") String id, @Valid @ModelAttribute("entry") Entry entry,
-		BindingResult bindingResult) {
-		LOGGER.info("PostRequest: entry({}, {})", id, entry);
+	@PostMapping(path = "/entry")
+	public String saveEntry(@Valid @ModelAttribute("entry") Entry entry, BindingResult bindingResult) {
+		LOGGER.info("PostRequest: entry({})", entry);
+
+		// Entry hat kein Security (Die Id des Wertpapiers wird aber benötigt!!!!!!!)
 
 		if (bindingResult.hasErrors()) {
 			return "entry";

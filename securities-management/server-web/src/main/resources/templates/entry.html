@@ -15,7 +15,7 @@
 	<div class="container">
 		<h1 layout:fragment="header">Buchung</h1>
 		<div layout:fragment="content">
-			<form th:object="${entry}" th:action="@{/entry/__${entry.id}__}" action="#" method="post" role="form">
+			<form th:object="${entry}" th:action="@{/entry}" action="#" method="post" role="form">
 				<div th:if="${#fields.hasErrors('${entry}')}" class="alert alert-danger" role="alert">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p th:errors="${entry}">Allgemeiner Fehler</p>
 				</div>

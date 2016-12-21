@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.junit.Before;
@@ -108,10 +110,19 @@ public class EntriesControllerTest {
 		when(securitiesService.getEntry(ID_ENTRY)).thenReturn(ENTRY);
 
 		when(securitiesService.save(any(Security.class))).thenAnswer(invocation -> {
-			String isin = invocation.getArgumentAt(0, Security.class).getIsin();
+			Security security = invocation.getArgumentAt(0, Security.class);
+			String isin = security.getIsin();
 			assertThat(isin).isEqualTo(ISIN);
 
-			return null;
+			return SEC;
+		});
+
+		when(securitiesService.save(any(Entry.class))).thenAnswer(invocation -> {
+			Entry entry = invocation.getArgumentAt(0, Entry.class);
+			String id = entry.getId();
+			assertThat(id).isEqualTo(ID_ENTRY);
+
+			return ENTRY;
 		});
 	}
 
@@ -138,7 +149,11 @@ public class EntriesControllerTest {
 	 */
 	@Test
 	public void testSaveEntry_01() throws Exception {
-		mockMvc.perform(post("/entry/" + ID_ENTRY).with(csrf())).andExpect(status().isOk()).andExpect(view().name("entry"));
+		mockMvc.perform(post("/entry/").with(csrf()).param("id", ID_ENTRY).param("amount", "1.0")
+			.param("date", LocalDate.now().toString()).param("numberOf", "1.0").param("price", "1.0").param("type", "buy")
+			.param("lastModifiedBy", "user").param("lastModifiedDate", LocalDateTime.now().toString()).param("createBy", "user")
+			.param("createDate", LocalDateTime.now().toString()).contentType(APPLICATION_FORM_URLENCODED))
+			.andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/security/" + ID));
 	}
 
 }
