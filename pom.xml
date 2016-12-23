@@ -104,28 +104,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<!-- Workaround for http://jira.codehaus.org/browse/MECLIPSE-94 -->
-					<eclipseProjectDir>.</eclipseProjectDir>
-					<additionalProjectnatures>
-						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-					</additionalProjectnatures>
-					<additionalBuildcommands>
-						<buildCommand>
-							<name>org.eclipse.m2e.core.maven2Builder</name>
-						</buildCommand>
-						<buildCommand>
-							<name>org.springframework.ide.eclipse.core.springbuilder</name>
-						</buildCommand>
-					</additionalBuildcommands>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
@@ -143,19 +121,6 @@
 				<configuration>
 					<generateBackupPoms>false</generateBackupPoms>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.bsc.maven</groupId>
-				<artifactId>maven-processor-plugin</artifactId>
-				<version>${maven-processor-plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.hibernate</groupId>
-						<artifactId>hibernate-jpamodelgen</artifactId>
-						<version>${hibernate.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 			<plugin>

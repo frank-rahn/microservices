@@ -39,32 +39,28 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.bsc.maven</groupId>
-				<artifactId>maven-processor-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>process</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
-							<processors>
-								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-							</processors>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessors>
+						<annotationProcessor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
