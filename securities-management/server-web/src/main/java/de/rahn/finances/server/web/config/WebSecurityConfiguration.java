@@ -82,7 +82,7 @@ public class WebSecurityConfiguration {
 				.antMatcher("/manage/*")
 					.authorizeRequests()
 						// Alle Request benötigen einen User mit der Rolle USER
-						.anyRequest().hasRole("USER")
+						.anyRequest().hasRole("ADMIN")
 			;
 
 			http
