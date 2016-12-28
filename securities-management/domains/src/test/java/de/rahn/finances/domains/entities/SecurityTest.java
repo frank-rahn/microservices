@@ -197,8 +197,18 @@ public class SecurityTest {
 	 * Test method for {@link Security#replaceEntry(String, Entry)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	@SuppressWarnings("serial")
 	public void testReplaceEntry_4() {
+		Entry oldEntry = classUnderTest.getEntry(ID_ENTRY_BUY);
+		classUnderTest.setEntries(null);
+		classUnderTest.replaceEntry(oldEntry, new Entry());
+	}
+
+	/**
+	 * Test method for {@link Security#replaceEntry(String, Entry)}.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	@SuppressWarnings("serial")
+	public void testReplaceEntry_5() {
 		classUnderTest.replaceEntry(ID_ENTRY_BUY, new Entry() {
 			{
 				setId("xxx");
@@ -210,7 +220,7 @@ public class SecurityTest {
 	 * Test method for {@link Security#replaceEntry(String, Entry)}.
 	 */
 	@Test
-	public void testReplaceEntry_5() {
+	public void testReplaceEntry_6() {
 		@SuppressWarnings("serial")
 		final Entry newEntry = new Entry() {
 			{

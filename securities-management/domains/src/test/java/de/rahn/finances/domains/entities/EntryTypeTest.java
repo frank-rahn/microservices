@@ -61,6 +61,7 @@ public class EntryTypeTest {
 
 		assertThat(type, notNullValue());
 		assertThat(type, is(interest));
+		assertThat(type.isExpense(), is(interest.isExpense()));
 	}
 
 	/**
