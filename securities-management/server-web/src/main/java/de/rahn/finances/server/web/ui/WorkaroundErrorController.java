@@ -22,11 +22,11 @@ import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a>. Durch diesen Bug wird auf
- * der Error-Seite kein Security Context zu Verfügung gestellt. Angeblich nur wenn spring-boot-actuator im Klassenpfad ist ...
+ * Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a>.<br>
+ * Durch diesen Bug wird auf der Error-Seite kein Security Context zu Verfügung gestellt.<br>
+ * Angeblich nur wenn <code>spring-boot-actuator</code> im Klassenpfad ist ...
  *
  * @author Frank W. Rahn
  */
@@ -43,11 +43,6 @@ public class WorkaroundErrorController extends BasicErrorController {
 				setIncludeStacktrace(ALWAYS);
 			}
 		});
-	}
-
-	@RequestMapping(value = "/error")
-	public String error() {
-		return "error";
 	}
 
 	/**
