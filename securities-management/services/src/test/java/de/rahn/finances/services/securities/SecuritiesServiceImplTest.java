@@ -257,7 +257,18 @@ public class SecuritiesServiceImplTest {
 	 * Test method for {@link SecuritiesServiceImpl#save(Entry)}.
 	 */
 	@Test
-	public void testSaveEntry() {
+	public void testSaveEntry_1() {
+		Entry entry = classUnderTests.save(testEntry);
+
+		assertThat(entry).isEqualTo(testEntry);
+	}
+
+	/**
+	 * Test method for {@link SecuritiesServiceImpl#save(Entry)}.
+	 */
+	@Test
+	public void testSaveEntry_2() {
+		testEntry.setId(null);
 		Entry entry = classUnderTests.save(testEntry);
 
 		assertThat(entry).isEqualTo(testEntry);
