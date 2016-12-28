@@ -49,6 +49,7 @@ import de.rahn.finances.domains.entities.Entry;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.server.web.config.WebMvcConfiguration;
 import de.rahn.finances.server.web.config.WebSecurityConfiguration;
+import de.rahn.finances.services.EntryNotFoundException;
 import de.rahn.finances.services.SecuritiesService;
 
 /**
@@ -67,6 +68,9 @@ public class EntriesControllerTest {
 
 	/** ID */
 	private static final String ID_ENTRY = "067e6162-3b6f-4ae2-a172-2470b63df001";
+
+	/** ID falsch */
+	private static final String ID_ENTRY_UNKNOWN = "falsche-Id";
 
 	/** ISIN */
 	private static final String ISIN = "DE0001000010";
@@ -121,6 +125,10 @@ public class EntriesControllerTest {
 		when(securitiesService.save(any(Entry.class))).thenAnswer(invocation -> {
 			Entry entry = invocation.getArgumentAt(0, Entry.class);
 			String id = entry.getId();
+			if (ID_ENTRY_UNKNOWN.equals(id)) {
+				throw new EntryNotFoundException(id);
+			}
+
 			assertThat(id).isEqualTo(ID_ENTRY);
 
 			return ENTRY;
@@ -175,7 +183,7 @@ public class EntriesControllerTest {
 	 */
 	@Test(expected = NestedServletException.class)
 	public void testSaveEntry_03() throws Exception {
-		mockMvc.perform(post("/entry/").with(csrf()).param("id", "falsche-Id").param("amount", "1.0")
+		mockMvc.perform(post("/entry/").with(csrf()).param("id", ID_ENTRY_UNKNOWN).param("amount", "1.0")
 			.param("date", LocalDate.now().toString()).param("numberOf", "1.0").param("price", "1.0").param("type", "buy")
 			.param("lastModifiedBy", "user").param("lastModifiedDate", LocalDateTime.now().toString()).param("createBy", "user")
 			.param("createDate", LocalDateTime.now().toString()).contentType(APPLICATION_FORM_URLENCODED))
