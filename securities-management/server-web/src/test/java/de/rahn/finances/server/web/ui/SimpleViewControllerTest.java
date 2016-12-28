@@ -16,6 +16,7 @@
 package de.rahn.finances.server.web.ui;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.http.MediaType.TEXT_HTML;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -75,7 +76,8 @@ public class SimpleViewControllerTest {
 	 */
 	@Test
 	public void testError() throws Exception {
-		mockMvc.perform(get("/error")).andExpect(status().is5xxServerError());
+		mockMvc.perform(get("/error").accept(TEXT_HTML)).andExpect(status().is5xxServerError())
+			.andExpect(content().string(containsString("[ROLE_USER]")));
 	}
 
 }
