@@ -43,6 +43,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.util.NestedServletException;
 
 import de.rahn.finances.domains.entities.Entry;
 import de.rahn.finances.domains.entities.Security;
@@ -154,6 +155,31 @@ public class EntriesControllerTest {
 			.param("lastModifiedBy", "user").param("lastModifiedDate", LocalDateTime.now().toString()).param("createBy", "user")
 			.param("createDate", LocalDateTime.now().toString()).contentType(APPLICATION_FORM_URLENCODED))
 			.andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/security/" + ID));
+	}
+
+	/**
+	 * Test method for {@link EntriesController#saveEntry(String, Entry, BindingResult)} .
+	 */
+	@Test(expected = NestedServletException.class)
+	public void testSaveEntry_02() throws Exception {
+		mockMvc
+			.perform(post("/entry/").with(csrf()).param("id", ID_ENTRY).param("date", LocalDate.now().toString())
+				.param("numberOf", "1.0").param("price", "1.0").param("type", "buy").param("lastModifiedBy", "user")
+				.param("lastModifiedDate", LocalDateTime.now().toString()).param("createBy", "user")
+				.param("createDate", LocalDateTime.now().toString()).contentType(APPLICATION_FORM_URLENCODED))
+			.andExpect(status().is5xxServerError());
+	}
+
+	/**
+	 * Test method for {@link EntriesController#saveEntry(String, Entry, BindingResult)} .
+	 */
+	@Test(expected = NestedServletException.class)
+	public void testSaveEntry_03() throws Exception {
+		mockMvc.perform(post("/entry/").with(csrf()).param("id", "falsche-Id").param("amount", "1.0")
+			.param("date", LocalDate.now().toString()).param("numberOf", "1.0").param("price", "1.0").param("type", "buy")
+			.param("lastModifiedBy", "user").param("lastModifiedDate", LocalDateTime.now().toString()).param("createBy", "user")
+			.param("createDate", LocalDateTime.now().toString()).contentType(APPLICATION_FORM_URLENCODED))
+			.andExpect(status().is5xxServerError());
 	}
 
 }
