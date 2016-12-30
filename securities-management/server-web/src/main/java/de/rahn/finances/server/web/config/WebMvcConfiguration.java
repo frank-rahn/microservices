@@ -33,6 +33,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import de.rahn.finances.server.web.ui.PackageMarker;
+import de.rahn.finances.server.web.ui.WorkaroundErrorController;
 
 /**
  * Die Konfiguration für den Webserver.
@@ -69,6 +70,14 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 		argumentResolvers.add(resolver);
 	}
 
+	/**
+	 * <strong>Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a></strong>.<br>
+	 * <br>
+	 * Dieses Bean wird für den {@link WorkaroundErrorController} benötigt und wird nur erzeugt, wenn es durch die
+	 * Autokonfiguration von Spring Boot nicht bereitgestellt wird.
+	 * 
+	 * @see WorkaroundErrorController
+	 */
 	@Bean
 	@ConditionalOnMissingBean(value = ErrorAttributes.class, search = CURRENT)
 	public DefaultErrorAttributes errorAttributes() {

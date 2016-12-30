@@ -24,7 +24,8 @@ import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.stereotype.Controller;
 
 /**
- * Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a>.<br>
+ * <strong>Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a></strong>.<br>
+ * <br>
  * Durch diesen Bug wird auf der Error-Seite kein Security Context zu Verfügung gestellt.<br>
  * Angeblich nur wenn <code>spring-boot-actuator</code> im Klassenpfad ist ...
  *
