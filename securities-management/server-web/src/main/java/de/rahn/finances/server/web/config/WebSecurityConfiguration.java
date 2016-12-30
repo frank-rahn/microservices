@@ -44,6 +44,7 @@ public class WebSecurityConfiguration {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
+
 		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
 				// User mit erweiterten Rechten
 				.withUser("admin").password("admin").roles("USER", "ADMIN")
@@ -57,6 +58,7 @@ public class WebSecurityConfiguration {
 				// Jetzt dem AuthenticationManagerBuilder übergeben "auth.authenticationProvider(provider);"
 				.configure(auth)
 		;
+
 		// @formatter:on
 	}
 
@@ -77,18 +79,19 @@ public class WebSecurityConfiguration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
-			http
-				// Konfiguration der Requests auf dise URL
-				.antMatcher("/manage/*")
-					.authorizeRequests()
-						// Alle Request benötigen einen User mit der Rolle USER
-						.anyRequest().hasRole("ADMIN")
+
+			// Konfiguration der Requests auf dise URL
+			http.antMatcher("/manage/*")
+				.authorizeRequests()
+					// Alle Request benötigen einen User mit der Rolle USER
+					.anyRequest().hasRole("ADMIN")
 			;
 
-			http
-				// Konfiguration der HTTP Basic Authentication
-				.httpBasic().realmName("Management-API")
+			// Konfiguration der HTTP Basic Authentication
+			http.httpBasic()
+				.realmName("Management-API")
 			;
+
 			// @formatter:on
 		}
 
@@ -112,30 +115,33 @@ public class WebSecurityConfiguration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
-			http
-				// Konfiguration der Requests auf dise URL
-				.antMatcher("/h2-console/**")
-					.authorizeRequests()
-						// Alle dürfen auf die Console zugreifen
-						.anyRequest().permitAll()
+
+			// Konfiguration der Requests auf dise URL
+			http.antMatcher("/h2-console/**")
+				.authorizeRequests()
+					// Alle dürfen auf die Console zugreifen
+					.anyRequest().permitAll()
 			;
 
-			http
-				// Konfiguration "CSRF" abschalten
-				.csrf().disable()
-			;
-
+			// Konfiguration der HTTP Header-Attribute
 			http.headers()
-				// HTTP Header Konfiguration "X-Frame-Options" abschalten
+				// Attribut "X-Frame-Options" abschalten
 				.frameOptions().disable()
 			;
+
+			// Konfiguration des CSRF-Supports
+			http.csrf()
+				// Den CSRF-Support abschalten
+				.disable()
+			;
+
 			// @formatter:on
 		}
 
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration für die Anwendung mit Form Based-Authentication.
+	 * Diese WebSecurity-Konfiguration für die Anwendung mit form-based Authentication.
 	 *
 	 * @author Frank W. Rahn
 	 */
@@ -151,36 +157,35 @@ public class WebSecurityConfiguration {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
-			http
-				// Konfiguration der berechtigten Requests
-				.authorizeRequests()
-					// Alle Request benötigen einen User mit der Rolle USER
-					.anyRequest().hasRole("USER")
+
+			// Konfiguration der berechtigten Requests
+			http.authorizeRequests()
+				// Alle Request benötigen einen User mit der Rolle USER
+				.anyRequest().hasRole("USER")
 			;
 
-			http
-				// Konfiguration der Form Based Authentication
-				.formLogin()
-					// Die URL der Login-Seite
-					.loginPage("/login")
-					// Alle dürfen auf die Login-Seite zugreifen
-					.permitAll()
-					// Diese Seite wird nach einem Fehler bei der Anmeldung angezeigt (Default)
-					//.failureUrl("/login?error")
+			// Konfiguration der Form-based Authentication
+			http.formLogin()
+				// Die URL der Login-Seite
+				.loginPage("/login")
+				// Alle dürfen auf die Login-Seite zugreifen
+				.permitAll()
+				// Diese Seite wird nach einem Fehler bei der Anmeldung angezeigt (Default)
+				//.failureUrl("/login?error")
 			;
 
-			http
-				// Konfiguration der Abmeldung
-				.logout()
-					// Alle dürfen sich abmelden
-					.permitAll()
-					// Diese Seite wird nach einem Fehler bei der Abmeldung angezeigt (Default)
-					//.logoutSuccessUrl("/login?logout")
-					// Beim Logout alle gesetzten Cookies wieder löschen
-					.deleteCookies()
-					// Request Mapper für /logout zum abmelden
-					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			// Konfiguration der Abmeldung
+			http.logout()
+				// Alle dürfen sich abmelden
+				.permitAll()
+				// Diese Seite wird nach einem Fehler bei der Abmeldung angezeigt (Default)
+				//.logoutSuccessUrl("/login?logout")
+				// Beim Logout alle gesetzten Cookies wieder löschen
+				.deleteCookies()
+				// Request Mapper für /logout zum abmelden
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			;
+
 			// @formatter:on
 		}
 	}
