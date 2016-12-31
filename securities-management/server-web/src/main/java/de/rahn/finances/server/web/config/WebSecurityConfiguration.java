@@ -146,7 +146,6 @@ public class WebSecurityConfiguration {
 	 * @author Frank W. Rahn
 	 */
 	@Configuration
-	@Order(3)
 	public class FormLoginWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		/**
