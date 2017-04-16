@@ -89,6 +89,7 @@ public class WebSecurityConfiguration {
 
 			// Konfiguration der HTTP Basic Authentication
 			http.httpBasic()
+				// Vergabe des Realm Namens
 				.realmName("Management-API")
 			;
 
@@ -98,7 +99,7 @@ public class WebSecurityConfiguration {
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration ist für die H2 Console (/h2-console/*).<br>
+	 * Diese WebSecurity-Konfiguration ist für die Konsole der Datenbank (H2) (/h2-console/*).<br>
 	 * Die Konsole kommt mit einer eigenen Security daher.
 	 *
 	 * @author Frank W. Rahn
