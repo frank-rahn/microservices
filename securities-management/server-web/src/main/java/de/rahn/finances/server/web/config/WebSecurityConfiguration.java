@@ -47,7 +47,7 @@ public class WebSecurityConfiguration {
 
 		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
 				// User mit erweiterten Rechten
-				.withUser("admin").password("admin").roles("USER", "ADMIN")
+				.withUser("admin").password("admin").roles("USER", "ADMIN", "ACTUATOR")
 			.and()
 				// User nur mit Leserecheten
 				.withUser("user").password("user").roles("USER")
