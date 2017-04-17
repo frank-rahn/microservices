@@ -16,23 +16,31 @@
 		<div layout:fragment="content">
 			<section>
 				<h2>Management-API</h2>
-				<div class="well">
-					<p><a href="#" th:href="@{/manage/info}" data-toggle="managementapi">Informationen über die Anwendung</a></p>
-					<p><a href="#" th:href="@{/manage/health}" data-toggle="managementapi">Health-Informationen</a></p>
-					<p><a href="#" th:href="@{/manage/mappings}" data-toggle="managementapi">Request-Mapping</a></p>
-					<p><a href="#" th:href="@{/manage/env}" data-toggle="managementapi">Environment</a></p>
-					<p><a href="#" th:href="@{/manage/configprops}" data-toggle="managementapi">Konfiguration der Properties</a></p>
-					<p><a href="#" th:href="@{/manage/autoconfig}" data-toggle="managementapi">Auto-konfigurierbaren Properties</a></p>
-					<p><a href="#" th:href="@{/manage/metrics}" data-toggle="managementapi">Metriken</a></p>
-					<p><a href="#" th:href="@{/manage/dump}" data-toggle="managementapi">Führe einen Thread-Dump aus</a></p>
-					<p><a href="#" th:href="@{/manage/trace}" data-toggle="managementapi">Trace-Informationen über die letzten Requests</a></p>
-					<p><a href="#" th:href="@{/manage/beans}" data-toggle="managementapi">Alle Spring-Beans auflisten</a></p>
+				<div class="list-group">
+					<a class="list-group-item" href="#" th:href="@{/manage}" data-toggle="managementapi">Zeige die Hypermedia-Übersicht (spring-boot-starter-hateoas)</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/info}" data-toggle="managementapi">Informationen über die Anwendung</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/health}" data-toggle="managementapi">Health-Informationen</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/mappings}" data-toggle="managementapi">Request-Mapping</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/env}" data-toggle="managementapi">Environment</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/configprops}" data-toggle="managementapi">Konfiguration der Properties</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/autoconfig}" data-toggle="managementapi">Auto-konfigurierbaren Properties</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/metrics}" data-toggle="managementapi">Zeige die Metriken</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/dump}" data-toggle="managementapi">Führe einen Thread-Dump aus</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/heapdump}" target="_blank">Führe einen Heap-Dump aus (Download des GZip des HPROF Dups)</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/trace}" data-toggle="managementapi">Trace-Informationen über die letzten 100 Requests</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/beans}" data-toggle="managementapi">Alle Spring-Beans auflisten</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/auditevents}" data-toggle="managementapi">Zeige die Audit Ereignisse</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/loggers}" data-toggle="managementapi">Konfiguration der Loggers</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/logfile}" target="_blank">Zeige den Inhalt des Logfiles</a>
+					<a class="list-group-item" href="#" th:href="@{/manage/jolokia}" data-toggle="managementapi">Zeige den JMX-Inhalt</a>
+					<a class="list-group-item disabled" href="#" th:href="@{/manage/flyway}" data-toggle="managementapi">Zeige das Ergebnis einer Flyway-Datenbankmigration</a>
+					<a class="list-group-item disabled" href="#" th:href="@{/manage/liquibase}" data-toggle="managementapi">Zeige das Ergebnis einer Liquibase-Datenbankmigration</a>
 				</div>
 			</section>
 			<section>
 				<h2>Datenbank</h2>
-				<div class="well">
-					<p><a href="/h2-console" th:href="@{/h2-console}" target="_blanck">Konsole</a></p>
+				<div class="list-group">
+					<a class="list-group-item" href="/h2-console" th:href="@{/h2-console}" target="_blanck">Konsole der Datenbank H2</a>
 				</div>
 			</section>
 			<div id="modal" class="modal fade" tabindex="-1" role="dialog">
