@@ -154,11 +154,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	public Entry save(Entry entry) {
 		if (!entry.isNew() && entry.getSecurity() == null) {
 			// Das Wertpapier wieder hinzufügen
-			Entry originalEntry = getEntry(entry.getId());
-			if (originalEntry == null) {
-				throw new EntryNotFoundException(entry.getId());
-			}
-			return entriesRepository.save(originalEntry.update(entry));
+			return entriesRepository.save(getEntry(entry.getId()).update(entry));
 		}
 
 		return entriesRepository.save(entry);

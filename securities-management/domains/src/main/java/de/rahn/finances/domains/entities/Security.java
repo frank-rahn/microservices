@@ -226,13 +226,7 @@ public class Security extends Audit implements Persistable<String> {
 	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
 	 */
 	public Entry replaceEntry(String oldEntryId, Entry newEntry) {
-		Entry oldEntry = getEntry(oldEntryId);
-
-		if (oldEntry != null) {
-			return replaceEntry(oldEntry, newEntry);
-		}
-
-		throw new IllegalArgumentException("Entry in Security not found. Id=" + oldEntryId);
+		return replaceEntry(getEntry(oldEntryId), newEntry);
 	}
 
 	/**
@@ -261,13 +255,7 @@ public class Security extends Audit implements Persistable<String> {
 	 * @throws IllegalArgumentException falls die Buchungs-Id ungültig ist
 	 */
 	public Entry removeEntry(String entryId) {
-		Entry entry = getEntry(entryId);
-
-		if (entry != null) {
-			return removeEntry(entry);
-		}
-
-		throw new IllegalArgumentException("Entry in Security not found. Id=" + entryId);
+		return removeEntry(getEntry(entryId));
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
