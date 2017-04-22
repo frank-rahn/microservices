@@ -12,7 +12,7 @@ toc::[]
 image:src/main/asciidoc/securities-management-service-model.png[Securities Management Service Model, capture="Securities Management Service Model"]
 
 == Build mit Maven
-Für die Konfiguration von Eclipse bitte das Eclipse-Plugin http://www.eclipse.org/m2e/[M2Eclipse, role="external", window="_blank"] verwenden.
+Für die Konfiguration von Eclipse bitte das Eclipse-Plugin http://www.eclipse.org/m2e/[M2Eclipse] verwenden.
 
 [source,bash]
 .Wertpapierverwaltung bauen
