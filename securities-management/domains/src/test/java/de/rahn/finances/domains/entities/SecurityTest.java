@@ -33,6 +33,7 @@ import static org.junit.Assert.assertThat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -45,6 +46,12 @@ import org.junit.Test;
  */
 public class SecurityTest {
 
+	/** AUDIT_USER */
+	private static final String AUDIT_USER = "UnitTest";
+
+	/** AUDIT_NOW */
+	private static final LocalDateTime AUDIT_NOW = LocalDateTime.now();
+
 	/** ID_ENTRY_CHATGES */
 	private static final String ID_ENTRY_CHATGES = "8ad72f6f-2a39-4846-8943-f6139f3d5597";
 
@@ -54,6 +61,7 @@ public class SecurityTest {
 	/** ID_SECURITY */
 	private static final String ID_SECURITY = "8ad72f6f-2a39-4846-8940-f6139f3d5597";
 
+	/** NOW */
 	private static final LocalDate NOW = now();
 
 	private Security classUnderTest;
@@ -73,6 +81,10 @@ public class SecurityTest {
 				setSymbol("A01");
 				setType(stock);
 				setInventory(true);
+				setCreateBy(AUDIT_USER);
+				setCreateDate(AUDIT_NOW);
+				setLastModifiedBy(AUDIT_USER);
+				setLastModifiedDate(AUDIT_NOW);
 			}
 		};
 
@@ -85,6 +97,10 @@ public class SecurityTest {
 				setPrice(new BigDecimal("12.345678"));
 				setAmount(new BigDecimal("1234.5678"));
 				setType(buy);
+				setCreateBy(AUDIT_USER);
+				setCreateDate(AUDIT_NOW);
+				setLastModifiedBy(AUDIT_USER);
+				setLastModifiedDate(AUDIT_NOW);
 			}
 		}, new Entry() {
 			{
@@ -95,6 +111,10 @@ public class SecurityTest {
 				setPrice(new BigDecimal("9.90"));
 				setAmount(new BigDecimal("9.90"));
 				setType(charges);
+				setCreateBy(AUDIT_USER);
+				setCreateDate(AUDIT_NOW);
+				setLastModifiedBy(AUDIT_USER);
+				setLastModifiedDate(AUDIT_NOW);
 			}
 		})));
 	}
