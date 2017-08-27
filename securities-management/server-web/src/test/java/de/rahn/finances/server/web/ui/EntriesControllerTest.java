@@ -75,14 +75,12 @@ public class EntriesControllerTest {
 	/** ISIN */
 	private static final String ISIN = "DE0001000010";
 
-	@SuppressWarnings("serial")
 	private static final Entry ENTRY = new Entry() {
 		{
 			setId(ID_ENTRY);
 		}
 	};
 
-	@SuppressWarnings("serial")
 	private static final Security SEC = new Security() {
 		{
 			setId(ID);

@@ -152,7 +152,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Override
 	@Transactional(REQUIRED)
 	public Entry save(Entry entry) {
-		if (!entry.isNew() && entry.getSecurity() == null) {
+		if (entry.getId() != null && entry.getSecurity() == null) {
 			// Das Wertpapier wieder hinzufügen
 			return entriesRepository.save(getEntry(entry.getId()).update(entry));
 		}

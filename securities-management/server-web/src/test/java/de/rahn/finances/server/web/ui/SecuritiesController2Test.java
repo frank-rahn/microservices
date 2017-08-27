@@ -46,7 +46,6 @@ public class SecuritiesController2Test {
 	public void testSecurityDelete() {
 		final String id = "4711";
 
-		@SuppressWarnings("serial")
 		final Security security = new Security() {
 			{
 				setId(id);

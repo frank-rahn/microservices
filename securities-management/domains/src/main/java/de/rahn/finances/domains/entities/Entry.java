@@ -35,7 +35,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.domain.Persistable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -46,9 +45,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Access(FIELD)
 @Table
-public class Entry extends Audit implements Persistable<String> {
-
-	private static final long serialVersionUID = 1L;
+public class Entry extends Audit {
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -88,16 +85,16 @@ public class Entry extends Audit implements Persistable<String> {
 
 	/**
 	 * Übernehme die Änderungen.
-	 * 
+	 *
 	 * @param entry die Buchung mit den Änderungen
 	 * @return die geänderte Buchung
 	 */
 	public Entry update(Entry entry) {
-		if (entry == null || entry.isNew()) {
+		if (entry == null || entry.getId() == null) {
 			throw new IllegalArgumentException("Entry is new. Entry=" + entry);
 		}
 
-		if (isNew()) {
+		if (id == null) {
 			throw new IllegalStateException("This Entry is new. Entry=" + this);
 		}
 
@@ -112,26 +109,6 @@ public class Entry extends Audit implements Persistable<String> {
 		type = entry.type;
 
 		return this;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see Persistable#getId()
-	 */
-	@Override
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see Persistable#isNew()
-	 */
-	@Override
-	public boolean isNew() {
-		return id == null;
 	}
 
 	/**
@@ -165,6 +142,13 @@ public class Entry extends Audit implements Persistable<String> {
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 
 	/**
 	 * @return the date

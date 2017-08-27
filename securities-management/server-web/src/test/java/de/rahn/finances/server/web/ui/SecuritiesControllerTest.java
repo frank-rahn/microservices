@@ -99,7 +99,6 @@ public class SecuritiesControllerTest {
 	/**
 	 * Initialisiere die Testgrößen.
 	 */
-	@SuppressWarnings("serial")
 	@Before
 	public void setup() {
 		when(securitiesService.getSecurities(anyBoolean(), any())).thenAnswer(invocation -> {
@@ -195,7 +194,6 @@ public class SecuritiesControllerTest {
 	 * Test method for {@link SecuritiesController#securities(SecurityType, boolean, Pageable, Model)} .
 	 */
 	@Test
-	@SuppressWarnings("serial")
 	public void testSecuritiesWithPathSecurityType() throws Exception {
 		when(securitiesService.getSecurities(anyBoolean(), eq(stock), any(Pageable.class)))
 			.thenReturn(new PageImpl<>(Collections.singletonList(new Security() {

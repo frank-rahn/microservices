@@ -80,19 +80,16 @@ public class WebMvcConfigurationTest {
 		security.setSymbol(SYMBOL);
 		security.setType(loan);
 
-		assertThat(security.isNew(), is(true));
 		assertThat(security.getId(), nullValue());
 
 		security = service.save(security);
 
 		assertThat(security, notNullValue());
-		assertThat(security.isNew(), is(false));
 		assertThat(security.getId(), notNullValue());
 
 		security = service.getSecurity(security.getId());
 
 		assertThat(security, notNullValue());
-		assertThat(security.isNew(), is(false));
 		assertThat(security.getId(), notNullValue());
 		assertThat(security.getIsin(), is(ISIN));
 		assertThat(security.getWkn(), is(WKN));

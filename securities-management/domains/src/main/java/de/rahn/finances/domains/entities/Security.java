@@ -39,7 +39,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.domain.Persistable;
 
 /**
  * Ein persistentes Wertpapier.
@@ -49,9 +48,7 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Access(FIELD)
 @Table(name = "SEC")
-public class Security extends Audit implements Persistable<String> {
-
-	private static final long serialVersionUID = 1L;
+public class Security extends Audit {
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -97,26 +94,6 @@ public class Security extends Audit implements Persistable<String> {
 	@OneToMany(mappedBy = "security", cascade = { CascadeType.ALL })
 	@OrderBy(value = "date DESC")
 	private List<Entry> entries;
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see Persistable#getId()
-	 */
-	@Override
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see Persistable#isNew()
-	 */
-	@Override
-	public boolean isNew() {
-		return id == null;
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -195,11 +172,11 @@ public class Security extends Audit implements Persistable<String> {
 	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
 	 */
 	public Entry replaceEntry(Entry oldEntry, Entry newEntry) {
-		if (oldEntry == null || oldEntry.isNew()) {
+		if (oldEntry == null || oldEntry.getId() == null) {
 			throw new IllegalArgumentException("Old Entry is new. Entry=" + oldEntry);
 		}
 
-		if (newEntry == null || !newEntry.isNew()) {
+		if (newEntry == null || !(newEntry.getId() == null)) {
 			throw new IllegalArgumentException("New Entry isn't new. Entry=" + newEntry);
 		}
 
@@ -259,6 +236,13 @@ public class Security extends Audit implements Persistable<String> {
 	}
 
 	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 
 	/**
 	 * @return the isin

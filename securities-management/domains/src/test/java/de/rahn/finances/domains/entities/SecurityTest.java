@@ -70,7 +70,6 @@ public class SecurityTest {
 	 * Initialisiere den Test.
 	 */
 	@Before
-	@SuppressWarnings("serial")
 	public void setUp() {
 		classUnderTest = new Security() {
 			{
@@ -227,7 +226,6 @@ public class SecurityTest {
 	 * Test method for {@link Security#replaceEntry(String, Entry)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	@SuppressWarnings("serial")
 	public void testReplaceEntry_5() {
 		classUnderTest.replaceEntry(ID_ENTRY_BUY, new Entry() {
 			{
@@ -241,7 +239,6 @@ public class SecurityTest {
 	 */
 	@Test
 	public void testReplaceEntry_6() {
-		@SuppressWarnings("serial")
 		final Entry newEntry = new Entry() {
 			{
 				setType(dividend);

@@ -107,7 +107,6 @@ public class DomainsConfigurationTest {
 
 		assertThat(all, notNullValue());
 		assertThat(all, hasSize(greaterThan(0)));
-		assertThat(all.get(0).isNew(), is(false));
 		assertThat(all.get(0).getId(), is("067e6162-3b6f-4ae2-a171-2470b63df001"));
 		assertThat(all.get(0).getIsin(), is("DE0001000010"));
 		assertThat(all.get(0).getWkn(), is("100001"));
@@ -147,7 +146,6 @@ public class DomainsConfigurationTest {
 		Security security = repository.save(testSecurity);
 
 		assertThat(security, notNullValue());
-		assertThat(security.isNew(), is(testSecurity.isNew()));
 		assertThat(security.getId(), is(testSecurity.getId()));
 		assertThat(security.getIsin(), is(testSecurity.getIsin()));
 		assertThat(security.getName(), is(testSecurity.getName()));
