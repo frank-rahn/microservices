@@ -18,13 +18,15 @@ package de.rahn.finances.services.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import de.rahn.finances.services.securities.ServicePackageMarker;
+
 /**
  * Die Spring Configuration für die Services.
  *
  * @author Frank W. Rahn
  */
 @Configuration
-@ComponentScan(basePackageClasses = { de.rahn.finances.services.securities.PackageMarker.class })
+@ComponentScan(basePackageClasses = { ServicePackageMarker.class })
 public class ServicesConfiguration {
 	// Leer
 }

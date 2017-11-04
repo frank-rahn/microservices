@@ -60,7 +60,7 @@ public class SecuritiesServiceImplSecurityTest {
 	private Security testSecurity = new Security();
 
 	@TestConfiguration()
-	@ComponentScan(basePackageClasses = { de.rahn.finances.services.securities.PackageMarker.class },
+	@ComponentScan(basePackageClasses = { ServicePackageMarker.class },
 		excludeFilters = { @Filter(type = REGEX, pattern = { ".*Aspect" }) })
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
 	static class Config {

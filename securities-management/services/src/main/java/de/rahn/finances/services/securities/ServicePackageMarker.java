@@ -20,6 +20,6 @@ package de.rahn.finances.services.securities;
  *
  * @author Frank W. Rahn
  */
-public interface PackageMarker {
+public interface ServicePackageMarker {
 	// Ist immer leer
 }
