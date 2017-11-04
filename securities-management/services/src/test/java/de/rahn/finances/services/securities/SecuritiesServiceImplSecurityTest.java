@@ -59,7 +59,7 @@ public class SecuritiesServiceImplSecurityTest {
 
 	private Security testSecurity = new Security();
 
-	@TestConfiguration()
+	@TestConfiguration
 	@ComponentScan(basePackageClasses = { ServicePackageMarker.class },
 		excludeFilters = { @Filter(type = REGEX, pattern = { ".*Aspect" }) })
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
