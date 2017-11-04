@@ -47,11 +47,21 @@ import de.rahn.finances.services.SecurityNotFoundException;
 @Description("Die Implementierung des SecuritiesService")
 public class SecuritiesServiceImpl implements SecuritiesService {
 
-	@Autowired
 	private SecuritiesRepository securitiesRepository;
 
 	@Autowired
 	private EntriesRepository entriesRepository;
+
+	/**
+	 * Konstruktor.
+	 */
+	@Autowired
+	public SecuritiesServiceImpl(SecuritiesRepository securitiesRepository, EntriesRepository entriesRepository) {
+		super();
+
+		this.securitiesRepository = securitiesRepository;
+		this.entriesRepository = entriesRepository;
+	}
 
 	/**
 	 * {@inheritDoc}

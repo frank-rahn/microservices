@@ -35,7 +35,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.data.domain.Page;
@@ -67,8 +66,7 @@ public class SecuritiesServiceImplTest {
 	@Mock
 	private EntriesRepository entriesRepository;
 
-	@InjectMocks
-	private SecuritiesServiceImpl classUnderTests = new SecuritiesServiceImpl();
+	private SecuritiesServiceImpl classUnderTests;
 
 	private Security testSecurity = new Security();
 
@@ -79,6 +77,8 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		classUnderTests = new SecuritiesServiceImpl(securitiesRepository, entriesRepository);
+
 		testSecurity.setId(randomUUID().toString());
 		testSecurity.setIsin("DE0000000000");
 		testSecurity.setWkn("000000");
