@@ -15,13 +15,11 @@
  */
 package de.rahn.finances.server.web.config;
 
-import static org.springframework.boot.autoconfigure.condition.SearchStrategy.CURRENT;
-
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
-import org.springframework.boot.autoconfigure.web.ErrorAttributes;
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +31,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import de.rahn.finances.server.web.ui.EntriesController;
 import de.rahn.finances.server.web.ui.SecuritiesController;
-import de.rahn.finances.server.web.ui.WorkaroundErrorController;
 import de.rahn.finances.services.SecuritiesService;
 
 /**
@@ -72,26 +69,18 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	/**
 	 * <strong>Workaround für <a href="https://github.com/spring-projects/spring-boot/issues/5638">Bug 5638</a></strong>.<br>
+	 * Durch diesen Bug wird auf der Error-Seite kein Security Context zu Verfügung gestellt.<br>
+	 * Angeblich nur wenn <code>spring-boot-actuator</code> im Klassenpfad ist ...<br>
 	 * <br>
-	 * Dieses Bean wird für den {@link WorkaroundErrorController} benötigt und wird nur erzeugt, wenn es durch die
-	 * Autokonfiguration von Spring Boot nicht bereitgestellt wird.
-	 *
-	 * @see WorkaroundErrorController
+	 * Erzeuge einen Controller für die Fehlerseite.
 	 */
 	@Bean
-	@ConditionalOnMissingBean(value = ErrorAttributes.class, search = CURRENT)
-	public DefaultErrorAttributes errorAttributes() {
-		return new DefaultErrorAttributes();
-	}
+	public BasicErrorController basicErrorController() {
+		ErrorProperties errorProperties = new ErrorProperties();
+		errorProperties.setIncludeStacktrace(ErrorProperties.IncludeStacktrace.ALWAYS);
+		errorProperties.setPath("/__dummyErrorPath");
 
-	/**
-	 * Erzeuge den Controller für den Workaround.
-	 *
-	 * @see WorkaroundErrorController
-	 */
-	@Bean
-	public WorkaroundErrorController workaroundErrorController(ErrorAttributes errorAttributes) {
-		return new WorkaroundErrorController(errorAttributes);
+		return new BasicErrorController(new DefaultErrorAttributes(), errorProperties);
 	}
 
 	/**
