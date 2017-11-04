@@ -22,6 +22,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import de.rahn.finances.domains.entities.EntityPackageMarker;
 import de.rahn.finances.domains.security.SpringSecurityAuditorAwareBean;
 
 /**
@@ -30,7 +31,7 @@ import de.rahn.finances.domains.security.SpringSecurityAuditorAwareBean;
  * @author Frank W. Rahn
  */
 @Configuration
-@EntityScan(basePackageClasses = { de.rahn.finances.domains.entities.PackageMarker.class, Jsr310JpaConverters.class })
+@EntityScan(basePackageClasses = { EntityPackageMarker.class, Jsr310JpaConverters.class })
 @EnableJpaRepositories(basePackageClasses = { de.rahn.finances.domains.repositories.PackageMarker.class })
 @EnableJpaAuditing
 public class DomainsConfiguration {

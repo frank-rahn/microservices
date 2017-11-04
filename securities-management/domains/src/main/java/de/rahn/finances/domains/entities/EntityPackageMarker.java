@@ -20,6 +20,6 @@ package de.rahn.finances.domains.entities;
  *
  * @author Frank W. Rahn
  */
-public interface PackageMarker {
+public interface EntityPackageMarker {
 	// Ist immer leer
 }
