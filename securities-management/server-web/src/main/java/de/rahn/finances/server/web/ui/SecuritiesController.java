@@ -17,7 +17,7 @@ package de.rahn.finances.server.web.ui;
 
 import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.ResponseEntity.noContent;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -164,12 +164,12 @@ public class SecuritiesController {
 		try {
 			service.delete(service.getSecurity(id));
 		} catch (SecurityNotFoundException exception) {
-			// Alles Gut, da Wertpapier schon gelöscht ist
+			// Alles Gut, da Wertpapier schon gelöscht ist => ignorieren
 		} catch (Exception exception) {
 			throw new IllegalArgumentException("Das Wertpapier zur ID '" + id + "' konnte nicht gelöscht werden.", exception);
 		}
 
-		return new ResponseEntity<>(NO_CONTENT);
+		return noContent().build();
 	}
 
 }
