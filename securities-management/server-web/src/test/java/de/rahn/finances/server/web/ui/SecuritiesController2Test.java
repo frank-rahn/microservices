@@ -16,9 +16,9 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -36,8 +36,12 @@ public class SecuritiesController2Test {
 	@Mock
 	private SecuritiesService service;
 
-	@InjectMocks
-	private SecuritiesController controller = new SecuritiesController();
+	private SecuritiesController controller;
+
+	@Before
+	public void setUp() {
+		controller = new SecuritiesController(service);
+	}
 
 	/**
 	 * Test method for {@link SecuritiesController#securityDelete(String)}.

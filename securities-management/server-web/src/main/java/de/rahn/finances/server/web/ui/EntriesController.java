@@ -46,8 +46,15 @@ public class EntriesController {
 
 	private static final Logger LOGGER = getLogger(EntriesController.class);
 
-	@Autowired
 	private SecuritiesService service;
+
+	/**
+	 * Konstruktor.
+	 */
+	@Autowired
+	public EntriesController(SecuritiesService service) {
+		this.service = service;
+	}
 
 	/**
 	 * @return die Liste der {@link EntryType}s für die Auswahllisten

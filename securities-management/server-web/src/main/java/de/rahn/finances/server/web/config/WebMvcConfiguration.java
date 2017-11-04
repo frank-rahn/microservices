@@ -23,7 +23,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -32,8 +31,10 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import de.rahn.finances.server.web.ui.PackageMarker;
+import de.rahn.finances.server.web.ui.EntriesController;
+import de.rahn.finances.server.web.ui.SecuritiesController;
 import de.rahn.finances.server.web.ui.WorkaroundErrorController;
+import de.rahn.finances.services.SecuritiesService;
 
 /**
  * Die Konfiguration für den Webserver.
@@ -41,7 +42,6 @@ import de.rahn.finances.server.web.ui.WorkaroundErrorController;
  * @author Frank W. Rahn
  */
 @Configuration
-@ComponentScan(basePackageClasses = { PackageMarker.class })
 @EnableSpringDataWebSupport
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
@@ -75,13 +75,39 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 	 * <br>
 	 * Dieses Bean wird für den {@link WorkaroundErrorController} benötigt und wird nur erzeugt, wenn es durch die
 	 * Autokonfiguration von Spring Boot nicht bereitgestellt wird.
-	 * 
+	 *
 	 * @see WorkaroundErrorController
 	 */
 	@Bean
 	@ConditionalOnMissingBean(value = ErrorAttributes.class, search = CURRENT)
 	public DefaultErrorAttributes errorAttributes() {
 		return new DefaultErrorAttributes();
+	}
+
+	/**
+	 * Erzeuge den Controller für den Workaround.
+	 *
+	 * @see WorkaroundErrorController
+	 */
+	@Bean
+	public WorkaroundErrorController workaroundErrorController(ErrorAttributes errorAttributes) {
+		return new WorkaroundErrorController(errorAttributes);
+	}
+
+	/**
+	 * Erzeuge den Controller für die Wertpapiere.
+	 */
+	@Bean
+	public SecuritiesController securitiesController(SecuritiesService service) {
+		return new SecuritiesController(service);
+	}
+
+	/**
+	 * Erzeuge den Controller für die Buchungen.
+	 */
+	@Bean
+	public EntriesController entriesController(SecuritiesService service) {
+		return new EntriesController(service);
 	}
 
 }

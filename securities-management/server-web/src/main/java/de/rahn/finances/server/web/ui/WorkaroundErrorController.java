@@ -35,7 +35,7 @@ import org.springframework.stereotype.Controller;
 public class WorkaroundErrorController extends BasicErrorController {
 
 	/**
-	 * {@inheritDoc}
+	 * Konstruktor mit Initialisierung.
 	 */
 	@Autowired
 	public WorkaroundErrorController(ErrorAttributes errorAttributes) {

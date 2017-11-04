@@ -56,8 +56,15 @@ public class SecuritiesController {
 
 	private static final Logger LOGGER = getLogger(SecuritiesController.class);
 
-	@Autowired
 	private SecuritiesService service;
+
+	/**
+	 * Konstruktor.
+	 */
+	@Autowired
+	public SecuritiesController(SecuritiesService service) {
+		this.service = service;
+	}
 
 	/**
 	 * @return die Liste der {@link SecurityType}s für die Auswahllisten
