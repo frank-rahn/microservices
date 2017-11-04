@@ -19,8 +19,6 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import javax.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -41,7 +39,6 @@ public class MetricsExporterService {
 
 	private static final Logger LOGGER = getLogger("reporting-metrics");
 
-	@Autowired
 	private MetricRegistry registry;
 
 	private double rateFactor;
@@ -53,10 +50,14 @@ public class MetricsExporterService {
 	private String durationUnit;
 
 	/**
-	 * Initialisiere den Reporter.
+	 * Der Konstruktor initialisiert den Reporter.
 	 */
-	@PostConstruct
-	public void initialize() {
+	@Autowired
+	public MetricsExporterService(MetricRegistry registry) {
+		super();
+
+		this.registry = registry;
+
 		rateFactor = SECONDS.toSeconds(1);
 		rateUnit = "second";
 		durationFactor = 1.0 / MILLISECONDS.toNanos(1);

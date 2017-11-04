@@ -52,7 +52,7 @@ public class MetricsExporterServiceTest {
 	private MetricRegistry registry;
 
 	@Autowired
-	private MetricsExporterService exporter = new MetricsExporterService();
+	private MetricsExporterService exporter;
 
 	private <V> SortedMap<String, V> singletonMap(String name, V value) {
 		TreeMap<String, V> map = new TreeMap<>();
