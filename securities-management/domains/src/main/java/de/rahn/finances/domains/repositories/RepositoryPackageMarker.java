@@ -20,6 +20,6 @@ package de.rahn.finances.domains.repositories;
  *
  * @author Frank W. Rahn
  */
-public interface PackageMarker {
+public interface RepositoryPackageMarker {
 	// Ist immer leer
 }
