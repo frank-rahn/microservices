@@ -31,13 +31,25 @@ link:server-web[Die Webanwendung der Wertpapierverwaltung.]
 * Spring Boot
 ** Spring Boot Actuator
 *** Dropwizard Metrics
-* Spring AOP / AspectJ
+** Spring Boot Dev Tools
+** Spring Boot Validation
+*** Hibernate Validator
+**** Java Bean Validation
+** Spring Boot Web
+*** Apache Tomcat
+* Spring AOP
+** AspectJ
 * Spring Data JPA
 ** Hibernate
 ** H2
+* Spring Security
+* Spring HATEOAS
 * Spring MVC
 ** Thymeleaf
-** Bootstrap / jQuery
+*** Thymeleaf Extras Java8 Time
+*** Thymeleaf Extras Spring Security
+** Bootstrap
+** jQuery
 
 == Build mit Maven
 Für die Konfiguration von Eclipse bitte das Eclipse-Plugin http://www.eclipse.org/m2e/[M2Eclipse] verwenden.
