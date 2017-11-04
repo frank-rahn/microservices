@@ -61,7 +61,7 @@ public class WebSecurityConfiguration {
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration ist für das Management-API der Anwendung (/manage/*) mit HTTP Basic Authentication.
+	 * Diese WebSecurity-Konfiguration ist für das Management-API der Anwendung (/manage/*) mit HTTP-basic Authentication.
 	 *
 	 * @author Frank W. Rahn
 	 */
@@ -98,7 +98,7 @@ public class WebSecurityConfiguration {
 
 	/**
 	 * Diese WebSecurity-Konfiguration ist für die Konsole der Datenbank (H2) (/h2-console/*).<br>
-	 * Die Konsole kommt mit einer eigenen Security daher.
+	 * Die Konsole kommt mit einer eigenen Security, daher wird hier <code>permitAll()</code> gesetzt.
 	 *
 	 * @author Frank W. Rahn
 	 */
@@ -140,7 +140,7 @@ public class WebSecurityConfiguration {
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration für die Anwendung mit form-based Authentication.
+	 * Diese WebSecurity-Konfiguration für die Anwendung mit Form-based Authentication.
 	 *
 	 * @author Frank W. Rahn
 	 */
