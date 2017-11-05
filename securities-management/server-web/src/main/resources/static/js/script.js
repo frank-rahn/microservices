@@ -1,30 +1,71 @@
 // Default Einstellungen für den jQuery UI Datepicker
-$.datepicker.setDefaults({
-	beforeShow: function(input) {
-		$(input).css({
-			"position": "relative",
-			"z-index": 1051
-		});
-	},
-	showButtonPanel: true,
-	showWeek: true,
-	closeText: 'Schließen',
-	prevText: '&#x3C;Zurück',
-	nextText: 'Vor&#x3E;',
-	currentText: 'Heute',
-	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
-	monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
-	dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
-	dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-	dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
-	dateFormat: "dd.mm.yy",
-	weekHeader: 'KW',
-	firstDay: 1,
-	isRTL: false,
-	showMonthAfterYear: false,
-	yearSuffix: ''
-});
+if ($.datepicker) {
+	$.datepicker.setDefaults({
+		beforeShow: function(input) {
+			$(input).css({
+				'position': 'relative',
+				'z-index': 1051
+			});
+		},
+		showButtonPanel: true,
+		showWeek: true,
+		closeText: 'Schließen',
+		prevText: '&#x3C; Zurück',
+		nextText: 'Vor &#x3E;',
+		currentText: 'Heute',
+		monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+		monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
+		dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+		dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		dateFormat: 'dd.mm.yy',
+		weekHeader: 'KW',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+	});
+}
 
+// Default Einstellungen für die DataTable
+if ($.fn.dataTable) {
+	$.extend(true, $.fn.dataTable.defaults, {
+		language: {
+			emptyTable: 'Keine Daten in der Tabelle vorhanden',
+			info: '_START_ bis _END_ von _TOTAL_ Einträgen',
+			infoEmpty: '0 bis 0 von 0 Einträgen',
+			infoFiltered: '(gefiltert von _MAX_ Einträgen)',
+			infoPostFix: '',
+			infoThousands: '.',
+			decimal: ',',
+			lengthMenu: '_MENU_ Einträge anzeigen',
+			loadingRecords: 'Wird geladen...',
+			processing: 'Bitte warten...',
+			search: 'Suchen',
+			zeroRecords: 'Keine Einträge vorhanden.',
+			paginate: {
+				first: '<span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span> Erste',
+				previous: '<span class="glyphicon glyphicon-chevron-left"></span> Zurück',
+				next: 'Nächste <span class="glyphicon glyphicon-chevron-right"></span>',
+				last: 'Letzte <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>'
+			},
+			aria: {
+				sortAscending: ': aktivieren, um Spalte aufsteigend zu sortieren',
+				sortDescending: ': aktivieren, um Spalte absteigend zu sortieren'
+			},
+			select: {
+				rows: {
+					_: '%d Zeilen ausgewählt',
+					0: 'Zum Auswählen auf eine Zeile klicken',
+					1: '1 Zeile ausgewählt'
+				}
+			}
+		},
+		lengthMenu: [5, 10, 25, 50, 100]
+	});
+}
+
+// Meldungen
 function alertMessage(stat, text) {
 	$("#placeholder").html(
 			'<div class="alert alert-' + stat

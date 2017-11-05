@@ -8,6 +8,7 @@
 	<title>Wertpapier</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css" />
 	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
@@ -119,10 +120,7 @@
 							</h2>
 						</div>
 						<div id="entries" class="panel-collapse collapse in" aria-labelledby="entries-heading" role="tabpanel">
-							<div class="panel-body">
-								<p class="text-center">Pagination kommt hier hin</p>
-							</div>
-							<table class="table table-bordered table-striped table-hover">
+							<table id="tab_entries" class="table table-bordered table-striped table-hover" data-page-length='5'>
 								<thead>
 									<tr>
 										<th>Datum der Buchung</th>
@@ -133,9 +131,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:if="*{entries==null or entries.empty}">
-										<td colspan="5">Keine Buchungen vorhanden.</td>
-									</tr>
 									<tr th:each="entry : *{entries}">
 										<td>
 											<a href="entry.html" th:href="@{/entry/__${entry.id}__}" th:text="${entry.date}">2016-10-23</a>
@@ -160,5 +155,10 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
+	<script src="../static/js/script.js"></script>
+	<script type="text/javascript" layout:fragment="script">
+		$('#tab_entries').DataTable();
+	</script>
 </body>
 </html>
