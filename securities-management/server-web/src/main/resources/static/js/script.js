@@ -44,10 +44,10 @@ if ($.fn.dataTable) {
 			search: 'Suchen',
 			zeroRecords: 'Keine Einträge vorhanden.',
 			paginate: {
-				first: '<span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span> Erste',
-				previous: '<span class="glyphicon glyphicon-chevron-left"></span> Zurück',
-				next: 'Nächste <span class="glyphicon glyphicon-chevron-right"></span>',
-				last: 'Letzte <span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>'
+				first: '<span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>',
+				previous: '<span class="glyphicon glyphicon-chevron-left"></span>',
+				next: '<span class="glyphicon glyphicon-chevron-right"></span>',
+				last: '<span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>'
 			},
 			aria: {
 				sortAscending: ': aktivieren, um Spalte aufsteigend zu sortieren',
@@ -61,7 +61,8 @@ if ($.fn.dataTable) {
 				}
 			}
 		},
-		lengthMenu: [5, 10, 25, 50, 100]
+		lengthMenu: [5, 10, 25, 50, 100],
+		pagingType: 'full_numbers'
 	});
 }
 
