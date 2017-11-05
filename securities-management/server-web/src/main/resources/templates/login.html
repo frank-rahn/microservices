@@ -27,7 +27,7 @@
 					<h1 class="panel-title">Anmeldung</h1>
 				</div>
 				<div class="panel-body">
-					<form th:action="@{/login}" action="#" method="post" role="form">
+					<form th:action="@{/login}" action="#" method="post" role="form" id="form">
 						<div class="form-group" th:classappend="${param.error}? 'has-error has-feedback'">
 							<label for="username" class="control-label">Benutzername:</label>
 							<div class="input-group">
@@ -48,10 +48,49 @@
 					</form>
 				</div>
 			</section>
+			<section class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">Anmeldemöglichkeiten</h2>
+				</div>
+				<table class="table table-responsive table-bordered table-striped table-hover">
+					<caption>Die folgende Benutzer sind codierte.</caption>
+					<thead>
+						<tr>
+							<th>Benutzername</th>
+							<th>Passwort</th>
+							<th>Rollen</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="cursor:pointer;" onclick="login('admin','admin')">admin</td>
+							<td>admin</td>
+							<td><abbr title="Administrator" class="initialism">ADMIN</abbr>, <abbr title="Normaler Benutzer" class="initialism">USER</abbr>, <abbr title="Informationsrecht" class="initialism">ACTUATOR</abbr></td>
+						</tr>
+						<tr>
+							<td style="cursor:pointer;" onclick="login('user','user')">user</td>
+							<td>user</td>
+							<td><abbr title="Normaler Benutzer" class="initialism">USER</abbr></td>
+						</tr>
+						<tr>
+							<td style="cursor:pointer;" onclick="login('gast','gast')">gast</td>
+							<td>gast</td>
+							<td><abbr title="Gastrecht" class="initialism">GAST</abbr></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
 		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script layout:fragment="script">
+		function login(user, password) {
+			$('#username').val(user);
+			$('#password').val(password);
+			$('#form').submit();
+		}
+	</script>
 </body>
 </html>
