@@ -44,7 +44,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="text-center" th:if="${page.totalPages gt 0}">
-						<ul class="pagination pagination-sm">
+						<ul class="pagination">
 							<li th:classappend="${page.first} ? 'disabled' : ''">
 								<span th:if="${page.first}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></span><a href="#" th:if="${not page.first}" th:href="@{${#httpServletRequest.requestURI}(page=0,size=${page.size},inventory=${inventory})}"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
