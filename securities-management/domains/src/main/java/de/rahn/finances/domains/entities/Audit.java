@@ -88,6 +88,13 @@ public abstract class Audit {
 	}
 
 	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(long version) {
+		this.version = version;
+	}
+
+	/**
 	 * @return the createBy
 	 */
 	public String getCreateBy() {
