@@ -16,6 +16,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>de.rahn.finances</groupId>
+			<artifactId>domains</artifactId>
+		</dependency>
+
+		<!-- Spring Starter -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -24,11 +30,7 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>de.rahn.finances</groupId>
-			<artifactId>domains</artifactId>
-		</dependency>
-
+		<!-- Tests -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
