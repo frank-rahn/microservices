@@ -77,7 +77,7 @@ public class SecuritiesRepositoryTest {
 		security = entityManager.persist(security);
 		entityManager.flush();
 
-		security = repository.findOne(security.getId());
+		security = repository.findById(security.getId()).orElse(null);
 
 		assertThat(security).isNotNull();
 		assertThat(security.getId()).isNotEmpty();

@@ -88,7 +88,7 @@ public class SecuritiesRepositoryParameterizedTest {
 	 */
 	@Test
 	public void testFindOne() {
-		Security security = repository.findOne(id);
+		Security security = repository.findById(id).orElse(null);
 
 		assertThat(security).isNotNull();
 		assertThat(security.getId()).isEqualTo(id);
