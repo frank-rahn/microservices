@@ -40,9 +40,10 @@ body.overlay {
 .navbar-default .navbar-brand:focus,
 .navbar-brand,
 .navbar-brand:focus,
+.navbar-brand:hover,
 .navbar .nav > li > a,
 .navbar .nav > li > a:focus {
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .navbar-brand:focus {
@@ -64,8 +65,6 @@ body.overlay {
 }
 
 
-.navbar-default .navbar-brand:hover,
-.navbar-brand:hover,
 .navbar .nav > li > a:hover {
 	color: #ffffff;
 	background-color: #593662;
