@@ -12,6 +12,8 @@
  */
 package de.rahn.finances.domains.security;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,15 +33,15 @@ public class SpringSecurityAuditorAwareBean implements AuditorAware<String> {
 	 * @see org.springframework.data.domain.AuditorAware#getCurrentAuditor()
 	 */
 	@Override
-	public String getCurrentAuditor() {
+	public Optional<String> getCurrentAuditor() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		if (authentication == null || !authentication.isAuthenticated()) {
 			// Es gibt keinen angemeldeten Benutzer
-			return "anonymous";
+			return Optional.of("anonymous");
 		}
 
-		return authentication.getName();
+		return Optional.of(authentication.getName());
 	}
 
 }
