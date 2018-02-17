@@ -24,11 +24,11 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.stereotype.Component;
 
 import de.rahn.finances.services.SecuritiesService;
+
+import io.micrometer.core.instrument.MeterRegistry;
 
 /**
  * Ein Aspekt für die Metriken des {@link SecuritiesService}.
@@ -57,13 +57,9 @@ public class SecuritiesServiceMetricsAspect {
 	/** Der Prefix für die Fehlerzähler. */
 	public static final String PREFIX_METRICNAME_ERROR = "counter.securities.services.securities.failure.";
 
-	/** Spring Boot Service für Counter und Meter. */
+	/** Spring Boot Service für Counter und Gauge. */
 	@Autowired
-	private CounterService counterService;
-
-	/** Spring Boot Service für Guage, Timer und Histogram. */
-	@Autowired
-	private GaugeService gaugeService;
+	private MeterRegistry meterRegistry;
 
 	/**
 	 * Für den Zugriff auf die Schnittstelle.
@@ -78,9 +74,9 @@ public class SecuritiesServiceMetricsAspect {
 	 */
 	@AfterReturning(pointcut = "execution(* de.rahn.finances.services.SecuritiesService.get*(..))")
 	public void afterCallingSecuritiesServiceRead() {
-		counterService.increment(PREFIX_METRICNAME_EVENTS);
-		counterService.increment(PREFIX_METRICNAME_CALLS);
-		counterService.increment(PREFIX_METRICNAME_CALL + "read");
+		meterRegistry.counter(PREFIX_METRICNAME_EVENTS).increment();
+		meterRegistry.counter(PREFIX_METRICNAME_CALLS).increment();
+		meterRegistry.counter(PREFIX_METRICNAME_CALL + "read").increment();
 	}
 
 	/**
@@ -89,9 +85,9 @@ public class SecuritiesServiceMetricsAspect {
 	@AfterReturning(
 		pointcut = "execution(* de.rahn.finances.services.SecuritiesService.save(..)) || execution(* de.rahn.finances.services.SecuritiesService.delete(..))")
 	public void afterCallingSecuritiesServiceModified() {
-		counterService.increment(PREFIX_METRICNAME_EVENTS);
-		counterService.increment(PREFIX_METRICNAME_CALLS);
-		counterService.increment(PREFIX_METRICNAME_CALL + "modified");
+		meterRegistry.counter(PREFIX_METRICNAME_EVENTS).increment();
+		meterRegistry.counter(PREFIX_METRICNAME_CALLS).increment();
+		meterRegistry.counter(PREFIX_METRICNAME_CALL + "modified").increment();
 	}
 
 	/**
@@ -99,8 +95,8 @@ public class SecuritiesServiceMetricsAspect {
 	 */
 	@AfterThrowing(pointcut = "onSecuritiesService()", throwing = "exception")
 	public void afterThrowsException(Exception exception) {
-		counterService.increment(PREFIX_METRICNAME_ERRORS);
-		counterService.increment(PREFIX_METRICNAME_ERROR + exception.getClass().getSimpleName().toLowerCase());
+		meterRegistry.counter(PREFIX_METRICNAME_ERRORS).increment();
+		meterRegistry.counter(PREFIX_METRICNAME_ERROR + exception.getClass().getSimpleName().toLowerCase()).increment();
 	}
 
 	@Around("execution(org.springframework.data.domain.Page de.rahn.finances.services.SecuritiesService.getSecurities(org.springframework.data.domain.Pageable))")
@@ -109,7 +105,7 @@ public class SecuritiesServiceMetricsAspect {
 
 		Object returnValue = joinPoint.proceed();
 
-		gaugeService.submit(PREFIX_METRICNAME_TIMER, currentTimeMillis() - start);
+		meterRegistry.gauge(PREFIX_METRICNAME_TIMER, currentTimeMillis() - start);
 
 		return returnValue;
 	}

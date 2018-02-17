@@ -25,9 +25,8 @@ import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspec
 import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyDouble;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
 
@@ -39,10 +38,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
-import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -51,6 +48,9 @@ import org.springframework.data.domain.Pageable;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
+
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 
 /**
  * Der Test für den Aspekt {@link SecuritiesServiceMetricsAspect}.
@@ -64,10 +64,7 @@ public class SecuritiesServiceMetricsAspectTest {
 	private SecuritiesService service;
 
 	@Mock
-	private CounterService counterService;
-
-	@Mock
-	private GaugeService gaugeService;
+	private MeterRegistry meterRegistry;
 
 	@InjectMocks
 	private SecuritiesServiceMetricsAspect classUnderTests = new SecuritiesServiceMetricsAspect();
@@ -103,7 +100,7 @@ public class SecuritiesServiceMetricsAspectTest {
 		List<Security> allSecurity = new ArrayList<>();
 		allSecurity.add(testSecurity);
 
-		PageImpl<Security> page = new PageImpl<>(allSecurity, new PageRequest(0, 1), allSecurity.size());
+		PageImpl<Security> page = new PageImpl<>(allSecurity, PageRequest.of(0, 1), allSecurity.size());
 
 		when(service.getSecurities()).thenReturn(allSecurity);
 		when(service.getSecurities(any(Pageable.class))).thenReturn(page);
@@ -112,14 +109,29 @@ public class SecuritiesServiceMetricsAspectTest {
 
 		doAnswer(invocation -> {
 			counters.add((String) invocation.getArguments()[0]);
-			return null;
+			return new Counter() {
 
-		}).when(counterService).increment(anyString());
+				@Override
+				public Id getId() {
+					return null;
+				}
+
+				@Override
+				public void increment(double amount) {
+				}
+
+				@Override
+				public double count() {
+					return 0;
+				}
+			};
+
+		}).when(meterRegistry).counter(anyString());
 		doAnswer(invocation -> {
 			gauges.add((String) invocation.getArguments()[0]);
 			return null;
 
-		}).when(gaugeService).submit(anyString(), anyDouble());
+		}).when(meterRegistry).gauge(anyString(), any());
 	}
 
 	/**
@@ -142,7 +154,7 @@ public class SecuritiesServiceMetricsAspectTest {
 	 */
 	@Test
 	public void testGetSecuritiesPageable() {
-		Page<Security> page = serviceProxy.getSecurities(new PageRequest(0, 10));
+		Page<Security> page = serviceProxy.getSecurities(PageRequest.of(0, 10));
 
 		assertThat(page).isNotNull();
 		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);

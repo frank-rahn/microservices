@@ -18,13 +18,13 @@ package de.rahn.finances.services.config;
 import static org.junit.rules.ExpectedException.none;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +35,8 @@ import de.rahn.finances.domains.repositories.EntriesRepository;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
+
+import io.micrometer.core.instrument.MeterRegistry;
 
 /**
  * Test der Spring Configuration.
@@ -59,10 +61,7 @@ public class ServicesConfigurationTest {
 	public EntriesRepository entriesRepository;
 
 	@MockBean
-	public CounterService counter;
-
-	@MockBean
-	public GaugeService gauge;
+	public MeterRegistry meterRegistry;
 
 	@Autowired
 	private SecuritiesService service;
@@ -72,7 +71,7 @@ public class ServicesConfigurationTest {
 	 */
 	@Test
 	public void testSpringConfiguration_01() {
-		when(securitiesRepository.findOne(ID)).thenReturn(null);
+		when(securitiesRepository.findById(ID)).thenReturn(Optional.empty());
 
 		thrown.expect(SecurityNotFoundException.class);
 		thrown.expectMessage(ID);
