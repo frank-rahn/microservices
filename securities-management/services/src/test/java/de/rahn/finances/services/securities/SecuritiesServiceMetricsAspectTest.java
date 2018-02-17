@@ -108,7 +108,7 @@ public class SecuritiesServiceMetricsAspectTest {
 		when(service.save((Security) null)).thenThrow(new SecurityNotFoundException(""));
 
 		doAnswer(invocation -> {
-			counters.add((String) invocation.getArguments()[0]);
+			counters.add(invocation.getArgument(0));
 			return new Counter() {
 
 				@Override
@@ -128,7 +128,7 @@ public class SecuritiesServiceMetricsAspectTest {
 
 		}).when(meterRegistry).counter(anyString());
 		doAnswer(invocation -> {
-			gauges.add((String) invocation.getArguments()[0]);
+			gauges.add(invocation.getArgument(0));
 			return null;
 
 		}).when(meterRegistry).gauge(anyString(), any());

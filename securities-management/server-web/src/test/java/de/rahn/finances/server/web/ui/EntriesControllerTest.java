@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -113,7 +113,7 @@ public class EntriesControllerTest {
 		when(securitiesService.getEntry(ID_ENTRY)).thenReturn(ENTRY);
 
 		when(securitiesService.save(any(Security.class))).thenAnswer(invocation -> {
-			Security security = invocation.getArgumentAt(0, Security.class);
+			Security security = invocation.getArgument(0);
 			String isin = security.getIsin();
 			assertThat(isin).isEqualTo(ISIN);
 
@@ -121,7 +121,7 @@ public class EntriesControllerTest {
 		});
 
 		when(securitiesService.save(any(Entry.class))).thenAnswer(invocation -> {
-			Entry entry = invocation.getArgumentAt(0, Entry.class);
+			Entry entry = invocation.getArgument(0);
 			String id = entry.getId();
 			if (ID_ENTRY_UNKNOWN.equals(id)) {
 				throw new EntryNotFoundException(id);

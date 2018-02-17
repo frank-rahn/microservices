@@ -19,9 +19,9 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyBoolean;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -105,7 +105,7 @@ public class SecuritiesControllerTest {
 		when(securitiesService.getSecurities(anyBoolean(), any())).thenAnswer(invocation -> {
 			List<Security> securitiesList = new ArrayList<>();
 
-			Pageable pageable = invocation.getArgumentAt(1, Pageable.class);
+			Pageable pageable = invocation.getArgument(1);
 
 			if (pageable == null || pageable.getPageNumber() == 0) {
 				addTenGeneratedSecurityToSecurities(securitiesList, ISIN1);
@@ -129,7 +129,8 @@ public class SecuritiesControllerTest {
 		when(securitiesService.getSecurity(ID_NOT_FOUND)).thenThrow(new SecurityNotFoundException(ID_NOT_FOUND));
 
 		when(securitiesService.save(any(Security.class))).thenAnswer(invocation -> {
-			String isin = invocation.getArgumentAt(0, Security.class).getIsin();
+			Security security = invocation.getArgument(0);
+			String isin = security.getIsin();
 
 			if (ISIN_NOT_SAVE.equals(isin)) {
 				throw new RuntimeException("could not execute statement");
