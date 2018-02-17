@@ -17,7 +17,6 @@ package de.rahn.finances.domains.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
