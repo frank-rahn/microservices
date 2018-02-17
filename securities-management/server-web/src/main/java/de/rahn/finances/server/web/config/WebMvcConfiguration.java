@@ -17,9 +17,9 @@ package de.rahn.finances.server.web.config;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.web.BasicErrorController;
-import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +27,7 @@ import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import de.rahn.finances.server.web.ui.EntriesController;
 import de.rahn.finances.server.web.ui.SecuritiesController;
@@ -40,12 +40,12 @@ import de.rahn.finances.services.SecuritiesService;
  */
 @Configuration
 @EnableSpringDataWebSupport
-public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see WebMvcConfigurerAdapter#addViewControllers(ViewControllerRegistry)
+	 * @see WebMvcConfigurer#addViewControllers(ViewControllerRegistry)
 	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -57,12 +57,12 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see WebMvcConfigurerAdapter#addArgumentResolvers(List)
+	 * @see WebMvcConfigurer#addArgumentResolvers(List)
 	 */
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
-		resolver.setFallbackPageable(new PageRequest(0, 10));
+		resolver.setFallbackPageable(PageRequest.of(0, 10));
 
 		argumentResolvers.add(resolver);
 	}
