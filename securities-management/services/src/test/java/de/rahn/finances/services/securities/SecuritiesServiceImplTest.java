@@ -18,25 +18,26 @@ package de.rahn.finances.services.securities;
 import static de.rahn.finances.domains.entities.EntryType.buy;
 import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.isNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -58,7 +59,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
 @RunWith(MockitoJUnitRunner.class)
 public class SecuritiesServiceImplTest {
 
-	private static final Pageable zeroPage = new PageRequest(0, 10);
+	private static final Pageable zeroPage = PageRequest.of(0, 10);
 
 	@Mock
 	private SecuritiesRepository securitiesRepository;
@@ -68,56 +69,60 @@ public class SecuritiesServiceImplTest {
 
 	private SecuritiesServiceImpl classUnderTests;
 
-	private final Security testSecurity = new Security();
+	private Optional<Security> testSecurity;
 
-	private final Entry testEntry = new Entry();
+	private Optional<Entry> testEntry;
 
 	/**
 	 * Initialisierung
 	 */
 	@Before
-	public void setUp() {
+	public void setUp() throws Exception {
 		classUnderTests = new SecuritiesServiceImpl(securitiesRepository, entriesRepository);
 
-		testSecurity.setId(randomUUID().toString());
-		testSecurity.setIsin("DE0000000000");
-		testSecurity.setWkn("000000");
-		testSecurity.setSymbol("ABC");
-		testSecurity.setName("ABC AG");
-		testSecurity.setType(stock);
+		Security security = new Security();
+		security.setId(randomUUID().toString());
+		security.setIsin("DE0000000000");
+		security.setWkn("000000");
+		security.setSymbol("ABC");
+		security.setName("ABC AG");
+		security.setType(stock);
 
-		List<Security> allSecurity = new ArrayList<>();
-		allSecurity.add(testSecurity);
+		testSecurity = Optional.of(security);
 
-		PageImpl<Security> pageable1 = new PageImpl<>(allSecurity, new PageRequest(0, 1), allSecurity.size() + 1);
-		PageImpl<Security> pageable2 = new PageImpl<>(emptyList(), new PageRequest(1, 1), allSecurity.size() + 1);
+		List<Security> allSecurity = singletonList(security);
+
+		PageImpl<Security> pageable1 = new PageImpl<>(allSecurity, PageRequest.of(0, 1), allSecurity.size() + 1);
+		PageImpl<Security> pageable2 = new PageImpl<>(emptyList(), PageRequest.of(1, 1), allSecurity.size() + 1);
 		PageImpl<Security> pageable3 = new PageImpl<>(emptyList(), zeroPage, 0);
 
 		when(securitiesRepository.findAll()).thenReturn(allSecurity);
 
-		when(securitiesRepository.findOne(anyString())).thenReturn(null);
-		when(securitiesRepository.findOne((String) null)).thenThrow(new IllegalArgumentException());
-		when(securitiesRepository.findOne(testSecurity.getId())).thenReturn(testSecurity);
+		when(securitiesRepository.findById(anyString())).thenReturn(Optional.empty());
+		when(securitiesRepository.findById((String) null)).thenThrow(new IllegalArgumentException());
+		when(securitiesRepository.findById(security.getId())).thenReturn(testSecurity);
 
 		when(securitiesRepository.findByInventoryOrderByIsin(any(Pageable.class), eq(true))).thenReturn(pageable2);
 		when(securitiesRepository.findByInventoryOrderByIsin(null, true)).thenReturn(pageable1);
 		when(securitiesRepository.findByInventoryOrderByIsin(zeroPage, true)).thenReturn(pageable3);
-		when(securitiesRepository.findByInventoryAndTypeOrderByIsin(isNull(Pageable.class), eq(false), eq(stock)))
-			.thenReturn(pageable1);
+		when(securitiesRepository.findByInventoryAndTypeOrderByIsin(isNull(), eq(false), eq(stock))).thenReturn(pageable1);
 
-		when(securitiesRepository.save(testSecurity)).thenReturn(testSecurity);
+		when(securitiesRepository.save(security)).thenReturn(security);
 
 		doThrow(new IllegalArgumentException()).when(securitiesRepository).delete((Security) null);
-		doNothing().when(securitiesRepository).delete(testSecurity);
+		doNothing().when(securitiesRepository).delete(security);
 
-		testEntry.setId(randomUUID().toString());
-		testEntry.setType(buy);
+		Entry entry = new Entry();
+		entry.setId(randomUUID().toString());
+		entry.setType(buy);
 
-		when(entriesRepository.findOne(anyString())).thenReturn(null);
-		when(entriesRepository.findOne((String) null)).thenThrow(new IllegalArgumentException());
-		when(entriesRepository.findOne(testEntry.getId())).thenReturn(testEntry);
+		testEntry = Optional.of(entry);
 
-		when(entriesRepository.save(testEntry)).thenReturn(testEntry);
+		when(entriesRepository.findById(anyString())).thenReturn(Optional.empty());
+		when(entriesRepository.findById((String) null)).thenThrow(new IllegalArgumentException());
+		when(entriesRepository.findById(entry.getId())).thenReturn(testEntry);
+
+		when(entriesRepository.save(entry)).thenReturn(entry);
 	}
 
 	/**
@@ -127,7 +132,7 @@ public class SecuritiesServiceImplTest {
 	public void testGetSecurities() {
 		List<Security> allSecurity = classUnderTests.getSecurities();
 
-		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity);
+		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity.get());
 	}
 
 	/**
@@ -155,9 +160,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testGetSecurity_id_known() {
-		Security security = classUnderTests.getSecurity(testSecurity.getId());
+		Security security = classUnderTests.getSecurity(testSecurity.get().getId());
 
-		assertThat(security).isNotNull().isEqualTo(testSecurity);
+		assertThat(security).isNotNull().isEqualTo(testSecurity.get());
 	}
 
 	/**
@@ -169,7 +174,7 @@ public class SecuritiesServiceImplTest {
 
 		assertThat(page).isNotNull();
 		assertThat(page.getNumberOfElements()).isEqualTo(1);
-		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity.get());
 
 		Pageable pageable = page.nextPageable();
 		assertThat(pageable).isNotNull();
@@ -184,7 +189,7 @@ public class SecuritiesServiceImplTest {
 		assertThat(page.getNumberOfElements()).isEqualTo(0);
 		assertThat(page.getContent()).isEmpty();
 
-		page = classUnderTests.getSecurities(new PageRequest(10, 10));
+		page = classUnderTests.getSecurities(PageRequest.of(10, 10));
 		assertThat(page).isNotNull();
 		assertThat(page.getNumberOfElements()).isEqualTo(0);
 		assertThat(page.getContent()).isEmpty();
@@ -192,7 +197,7 @@ public class SecuritiesServiceImplTest {
 		page = classUnderTests.getSecurities(false, stock, null);
 		assertThat(page).isNotNull();
 		assertThat(page.getNumberOfElements()).isEqualTo(1);
-		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity.get());
 	}
 
 	/**
@@ -200,9 +205,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveSecurity() {
-		Security security = classUnderTests.save(testSecurity);
+		Security security = classUnderTests.save(testSecurity.get());
 
-		assertThat(security).isEqualTo(testSecurity);
+		assertThat(security).isEqualTo(testSecurity.get());
 	}
 
 	/**
@@ -220,7 +225,7 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testDelete_with() {
-		classUnderTests.delete(testSecurity);
+		classUnderTests.delete(testSecurity.get());
 	}
 
 	/**
@@ -228,9 +233,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testGetEntry_id_known() {
-		Entry entry = classUnderTests.getEntry(testEntry.getId());
+		Entry entry = classUnderTests.getEntry(testEntry.get().getId());
 
-		assertThat(entry).isNotNull().isEqualTo(testEntry);
+		assertThat(entry).isNotNull().isEqualTo(testEntry.get());
 	}
 
 	/**
@@ -258,9 +263,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveEntry_1() {
-		Entry entry = classUnderTests.save(testEntry);
+		Entry entry = classUnderTests.save(testEntry.get());
 
-		assertThat(entry).isEqualTo(testEntry);
+		assertThat(entry).isEqualTo(testEntry.get());
 	}
 
 	/**
@@ -268,10 +273,11 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveEntry_2() {
-		testEntry.setId(null);
-		Entry entry = classUnderTests.save(testEntry);
+		Entry saveEntry = testEntry.get();
+		saveEntry.setId(null);
+		Entry savedEntry = classUnderTests.save(saveEntry);
 
-		assertThat(entry).isEqualTo(testEntry);
+		assertThat(savedEntry).isEqualTo(saveEntry);
 	}
 
 }

@@ -79,13 +79,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	 */
 	@Override
 	public Security getSecurity(String id) {
-		Security security = securitiesRepository.findOne(id);
-
-		if (security == null) {
-			throw new SecurityNotFoundException(id);
-		}
-
-		return security;
+		return securitiesRepository.findById(id).orElseThrow(() -> new SecurityNotFoundException(id));
 	}
 
 	/**
@@ -107,7 +101,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 				|| page.getTotalPages() != 0 && page.getTotalPages() <= pageable.getPageNumber()) {
 				// Angeforderte Page außerhalb des zulässigen Bereiches
 				int maxPage = page.getTotalPages() == 0 ? 0 : page.getTotalPages() - 1;
-				return getSecurities(inventory, type, new PageRequest(maxPage, pageable.getPageSize(), pageable.getSort()));
+				return getSecurities(inventory, type, PageRequest.of(maxPage, pageable.getPageSize(), pageable.getSort()));
 			}
 		}
 
@@ -144,13 +138,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	@Override
 	@Transactional(REQUIRED)
 	public Entry getEntry(String id) {
-		Entry entry = entriesRepository.findOne(id);
-
-		if (entry == null) {
-			throw new EntryNotFoundException(id);
-		}
-
-		return entry;
+		return entriesRepository.findById(id).orElseThrow(() -> new EntryNotFoundException(id));
 	}
 
 	/**

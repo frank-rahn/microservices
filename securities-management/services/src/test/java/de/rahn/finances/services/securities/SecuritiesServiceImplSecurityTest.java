@@ -57,7 +57,7 @@ public class SecuritiesServiceImplSecurityTest {
 	@Autowired
 	private SecuritiesService classUnderTests;
 
-	private final Security testSecurity = new Security();
+	private Optional<Security> testSecurity;
 
 	@TestConfiguration
 	@ComponentScan(basePackageClasses = { ServicePackageMarker.class },
@@ -71,15 +71,18 @@ public class SecuritiesServiceImplSecurityTest {
 	 * Initialisiere diesen Test
 	 */
 	@Before
-	public void setUp() {
-		testSecurity.setId(randomUUID().toString());
-		testSecurity.setIsin("DE0000000000");
-		testSecurity.setWkn("000000");
-		testSecurity.setSymbol("ABC");
-		testSecurity.setName("ABC AG");
-		testSecurity.setType(stock);
+	public void setUp() throws Exception {
+		Security security = new Security();
+		security.setId(randomUUID().toString());
+		security.setIsin("DE0000000000");
+		security.setWkn("000000");
+		security.setSymbol("ABC");
+		security.setName("ABC AG");
+		security.setType(stock);
 
-		when(securitiesRepository.findOne(testSecurity.getId())).thenReturn(testSecurity);
+		testSecurity = Optional.of(security);
+
+		when(securitiesRepository.findById(security.getId())).thenReturn(testSecurity);
 	}
 
 	/**
@@ -88,7 +91,7 @@ public class SecuritiesServiceImplSecurityTest {
 	@Test
 	@WithMockUser
 	public void testGetSecurityWithRoleUser() {
-		Security security = classUnderTests.getSecurity(testSecurity.getId());
+		Security security = classUnderTests.getSecurity(testSecurity.get().getId());
 
 		assertThat(security).isNotNull().isEqualTo(testSecurity);
 	}
@@ -99,7 +102,7 @@ public class SecuritiesServiceImplSecurityTest {
 	@Test(expected = AccessDeniedException.class)
 	@WithMockUser(roles = { "Blubber" })
 	public void testGetSecurityWithRoleBlubber() {
-		classUnderTests.getSecurity(testSecurity.getId());
+		classUnderTests.getSecurity(testSecurity.get().getId());
 
 		fail("Hier hätte eine Exception geworfen werden müssen");
 	}
