@@ -93,7 +93,7 @@ public class SecuritiesServiceImplSecurityTest {
 	public void testGetSecurityWithRoleUser() {
 		Security security = classUnderTests.getSecurity(testSecurity.get().getId());
 
-		assertThat(security).isNotNull().isEqualTo(testSecurity);
+		assertThat(security).isNotNull().isEqualTo(testSecurity.get());
 	}
 
 	/**
