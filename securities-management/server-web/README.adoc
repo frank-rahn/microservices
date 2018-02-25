@@ -11,9 +11,9 @@ Frank Rahn <frank@frank-rahn.de>
 * Eclipse Java EE IDE for Web Developers, Version Neon Release (v4.6.3)
 
 == Verwendete Bibliotheken
-* Spring Boot
+* Spring Boot 2
 ** Spring Boot Actuator
-*** Dropwizard Metrics
+*** Micrometer
 ** Spring Boot Dev Tools
 ** Spring Boot Validation
 *** Hibernate Validator

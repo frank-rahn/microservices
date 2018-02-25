@@ -25,10 +25,10 @@ link:server-web[Die Webanwendung der Wertpapierverwaltung.]
 * Eclipse Java EE IDE for Web Developers, Version Neon Release (v4.6.3)
 
 == Verwendete Bibliotheken
-* Spring Boot
+* Spring Boot 2
 ** Spring Boot Actuator
-*** Dropwizard Metrics
-** Spring Boot Dev Tools
+*** Micrometer
+** Spring Boot DevTools
 ** Spring Boot Validation
 *** Hibernate Validator
 **** Java Bean Validation
