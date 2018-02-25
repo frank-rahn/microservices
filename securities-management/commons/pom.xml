@@ -15,14 +15,10 @@
 	<description>Die Utilities der Wertpapierverwaltung.</description>
 
 	<dependencies>
-		<!-- Libraries -->
+		<!-- Spring Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.dropwizard.metrics</groupId>
-			<artifactId>metrics-core</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
 

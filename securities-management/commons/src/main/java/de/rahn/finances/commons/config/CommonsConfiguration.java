@@ -19,9 +19,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import com.codahale.metrics.MetricRegistry;
-
 import de.rahn.finances.commons.metrics.MetricsExporterService;
+
+import io.micrometer.core.instrument.MeterRegistry;
 
 /**
  * Die Spring Configuration für die Utilities.
@@ -36,7 +36,7 @@ public class CommonsConfiguration {
 	 * @return den Exporter für die Metriken
 	 */
 	@Bean
-	public MetricsExporterService metricsExporterService(MetricRegistry registry) {
+	public MetricsExporterService metricsExporterService(MeterRegistry registry) {
 		return new MetricsExporterService(registry);
 	}
 

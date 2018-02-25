@@ -18,8 +18,7 @@ package de.rahn.finances.commons.config;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
-import org.springframework.boot.actuate.autoconfigure.MetricsDropwizardAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -31,8 +30,7 @@ import de.rahn.finances.commons.metrics.MetricsExporterService;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(
-	classes = { CommonsConfiguration.class, MetricRepositoryAutoConfiguration.class, MetricsDropwizardAutoConfiguration.class })
+@SpringBootTest(classes = { CommonsConfiguration.class, MetricsAutoConfiguration.class })
 public class CommonsConfigurationTest {
 
 	@Autowired

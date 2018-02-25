@@ -15,8 +15,9 @@
  */
 package de.rahn.finances.commons.metrics;
 
+import static java.util.Arrays.stream;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import org.slf4j.Logger;
@@ -24,8 +25,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.Snapshot;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.DistributionSummary;
+import io.micrometer.core.instrument.FunctionCounter;
+import io.micrometer.core.instrument.FunctionTimer;
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.LongTaskTimer;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 
 /**
  * Dieser Service exportiert die Dropwizard Metriken.<br>
@@ -39,102 +46,64 @@ public class MetricsExporterService {
 
 	private static final Logger LOGGER = getLogger("reporting-metrics");
 
-	private final MetricRegistry registry;
-
-	private final double rateFactor;
-
-	private final String rateUnit;
-
-	private final double durationFactor;
-
-	private final String durationUnit;
+	private final MeterRegistry registry;
 
 	/**
 	 * Der Konstruktor initialisiert den Reporter.
 	 */
 	@Autowired
-	public MetricsExporterService(MetricRegistry registry) {
+	public MetricsExporterService(MeterRegistry registry) {
 		super();
 
 		this.registry = registry;
-
-		rateFactor = SECONDS.toSeconds(1);
-		rateUnit = "second";
-		durationFactor = 1.0 / MILLISECONDS.toNanos(1);
-		durationUnit = "milliseconds";
 	}
 
 	/**
 	 * Schreibe jede volle Stunde die aktuellen Metriken und setze sie zurück.
 	 */
 	@Scheduled(cron = "0 0 * * * ?")
-	public void exportMetrics() {
-		StringBuilder builder = new StringBuilder();
+	public String[] exportMetrics() {
+		String[] logs = registry.getMeters().stream().map(m -> {
+			String name = "name=" + m.getId().getName() + ", tags=" + m.getId().getTags();
 
-		registry.getGauges().forEach((s, m) -> {
-			registry.remove(s);
+			if (m instanceof Counter) {
+				Counter counter = (Counter) m;
+				return "metric=COUNTER,             " + name + ", count=" + counter.count();
+			} else if (m instanceof FunctionCounter) {
+				FunctionCounter counter = (FunctionCounter) m;
+				return "metric=FUNCTIONCOUNTER,     " + name + ", count=" + counter.count();
+			} else if (m instanceof Gauge) {
+				Gauge gauge = (Gauge) m;
+				return "metric=GAUGE,               " + name + ", value=" + gauge.value();
+			} else if (m instanceof Timer) {
+				Timer timer = (Timer) m;
+				return "metric=TIMER,               " + name + ", baseTimeUnit=" + timer.baseTimeUnit() + ", count="
+					+ timer.count() + ", mean=" + timer.mean(MILLISECONDS) + " ms, max=" + timer.max(MILLISECONDS)
+					+ " ms, total-time=" + timer.totalTime(MILLISECONDS) + " ms, median (50 %)="
+					+ timer.percentile(0.5, MILLISECONDS) + " ms, percentile (95 %)=" + timer.percentile(0.95, MILLISECONDS)
+					+ " ms";
+			} else if (m instanceof FunctionTimer) {
+				FunctionTimer timer = (FunctionTimer) m;
+				return "metric=FUNCTIONTIMER,       " + name + ", baseTimeUnit=" + timer.baseTimeUnit() + ", count="
+					+ timer.count() + ", mean=" + timer.mean(MILLISECONDS) + " ms, total-time=" + timer.totalTime(MILLISECONDS)
+					+ " ms";
+			} else if (m instanceof LongTaskTimer) {
+				LongTaskTimer timer = (LongTaskTimer) m;
+				return "metric=LONGTASKTIMER,       " + name + ", activeTask=" + timer.activeTasks() + ", duration="
+					+ timer.duration(MILLISECONDS) + " ms";
+			} else if (m instanceof DistributionSummary) {
+				DistributionSummary summary = (DistributionSummary) m;
+				return "metric=DISTRIBUTIONSUMMARY, " + name + ", count=" + summary.count() + ", mean=" + summary.mean()
+					+ ", max=" + summary.max() + ", total-amount=" + summary.totalAmount() + ", median (50%)="
+					+ summary.percentile(0.5) + ", percentile (95 %)=" + summary.percentile(0.95);
+			} else {
+				return "metric=OTHER,               " + name;
+			}
+		}).sorted((a, b) -> a.compareTo(b)).toArray(String[]::new);
 
-			builder.append("metric=GAUGE,     name=").append(s).append(", value=").append(m.getValue()).append('\n');
-		});
+		LOGGER.info("\n***** Metrics Report *****\n" + stream(logs).collect(joining("\n")) + "\n***************************");
 
-		registry.getCounters().forEach((s, m) -> {
-			registry.remove(s);
-
-			builder.append("metric=COUNTER,   name=").append(s).append(", count=").append(m.getCount()).append('\n');
-		});
-
-		registry.getHistograms().forEach((s, m) -> {
-			registry.remove(s);
-
-			Snapshot snapshot = m.getSnapshot();
-
-			builder.append("metric=HISTOGRAM, name=").append(s).append(", count=").append(m.getCount()).append(", min=")
-				.append(snapshot.getMin()).append(", max=").append(snapshot.getMax()).append(", mean=")
-				.append(snapshot.getMean()).append(", stddev=").append(snapshot.getStdDev()).append(", median=")
-				.append(snapshot.getMedian()).append(", 75%=").append(snapshot.get75thPercentile()).append(", 95%=")
-				.append(snapshot.get95thPercentile()).append(", 98%=").append(snapshot.get98thPercentile()).append(", 99%=")
-				.append(snapshot.get99thPercentile()).append(", 99.9%=").append(snapshot.get999thPercentile()).append('\n');
-		});
-
-		registry.getMeters().forEach((s, m) -> {
-			registry.remove(s);
-
-			builder.append("metric=METER,     name=").append(s).append(", count=").append(m.getCount()).append(", mean-rate=")
-				.append(convertRate(m.getMeanRate())).append(", 1-minute-rate=").append(convertRate(m.getOneMinuteRate()))
-				.append(", 5-minute-rate=").append(convertRate(m.getFiveMinuteRate())).append(", 15-minute-rate=")
-				.append(convertRate(m.getFifteenMinuteRate())).append(", rate-unit=events/").append(rateUnit).append('\n');
-		});
-
-		registry.getTimers().forEach((s, m) -> {
-			registry.remove(s);
-
-			Snapshot snapshot = m.getSnapshot();
-
-			builder.append("metric=TIMER,     name=").append(s).append(", count=").append(m.getCount()).append(", mean-rate=")
-				.append(convertRate(m.getMeanRate())).append(", 1-minute-rate=").append(convertRate(m.getOneMinuteRate()))
-				.append(", 5-minute-rate=").append(convertRate(m.getFiveMinuteRate())).append(", 15-minute-rate=")
-				.append(convertRate(m.getFifteenMinuteRate())).append(", rate-unit=calls/").append(rateUnit).append(", min=")
-				.append(convertDuration(snapshot.getMin())).append(", max=").append(convertDuration(snapshot.getMax()))
-				.append(", mean=").append(convertDuration(snapshot.getMean())).append(", stddev=")
-				.append(convertDuration(snapshot.getStdDev())).append(", median=").append(convertDuration(snapshot.getMedian()))
-				.append(", 75%=").append(convertDuration(snapshot.get75thPercentile())).append(", 95%=")
-				.append(convertDuration(snapshot.get95thPercentile())).append(", 98%=")
-				.append(convertDuration(snapshot.get98thPercentile())).append(", 99%=")
-				.append(convertDuration(snapshot.get99thPercentile())).append(", 99.9%=")
-				.append(convertDuration(snapshot.get999thPercentile())).append(", duration-unit=").append(durationUnit)
-				.append('\n');
-		});
-
-		if (builder.length() > 0) {
-			LOGGER.info(builder.insert(0, "\n***** Metrics Report *****\n").append("***************************").toString());
-		}
+		return logs;
 	}
 
-	private double convertDuration(double duration) {
-		return duration * durationFactor;
-	}
-
-	private double convertRate(double rate) {
-		return rate * rateFactor;
-	}
 }

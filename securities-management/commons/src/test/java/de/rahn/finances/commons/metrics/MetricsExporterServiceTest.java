@@ -15,29 +15,21 @@
  */
 package de.rahn.finances.commons.metrics;
 
+import static java.util.Collections.emptyList;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
 
-import java.util.SortedMap;
-import java.util.TreeMap;
-
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.codahale.metrics.Counter;
-import com.codahale.metrics.Histogram;
-import com.codahale.metrics.Meter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.Timer;
-import com.codahale.metrics.UniformReservoir;
-
 import de.rahn.finances.commons.config.CommonsConfiguration;
+
+import io.micrometer.core.instrument.MeterRegistry;
 
 /**
  * Test, des Exporters.
@@ -45,44 +37,147 @@ import de.rahn.finances.commons.config.CommonsConfiguration;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = CommonsConfiguration.class)
+@SpringBootTest(classes = { CommonsConfiguration.class, MetricsAutoConfiguration.class })
 public class MetricsExporterServiceTest {
 
-	@MockBean
-	private MetricRegistry registry;
+	@Autowired
+	private MeterRegistry registry;
 
 	@Autowired
 	private MetricsExporterService exporter;
 
-	private <V> SortedMap<String, V> singletonMap(String name, V value) {
-		TreeMap<String, V> map = new TreeMap<>();
-		map.put(name, value);
-
-		return map;
-	}
-
 	/**
-	 * Initialisiere diesen Test
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
 	 */
-	@Before
-	public void setUp() {
-		when(registry.remove(anyString())).thenReturn(true);
-		when(registry.getGauges()).thenReturn(singletonMap("gauges", () -> 4711));
-		when(registry.getCounters()).thenReturn(singletonMap("counter", new Counter()));
-		when(registry.getHistograms()).thenReturn(singletonMap("histogram", new Histogram(new UniformReservoir())));
-		when(registry.getMeters()).thenReturn(singletonMap("meter", new Meter()));
-		when(registry.getTimers()).thenReturn(singletonMap("timer", new Timer()));
+	@Test
+	public void testExportMetrics_Counter() {
+		final String name = "test-counter";
+		registry.counter(name).increment();
+		registry.counter(name).increment();
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=COUNTER,             name=" + name + ", tags=[]"));
 	}
 
 	/**
 	 * Test method for {@link MetricsExporterService#exportMetrics()}.
 	 */
 	@Test
-	public void testExportMetrics() {
-		exporter.exportMetrics();
+	public void testExportMetrics_Timer() {
+		final String name = "test-timer";
+		registry.timer(name).record(1000, MILLISECONDS);
+		registry.timer(name).record(2000, MILLISECONDS);
 
-		assertThat(registry.getMetrics()).isNotNull();
-		assertThat(registry.getMetrics().keySet()).isEmpty();
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=TIMER,               name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_Gauge() {
+		final String name = "test-gauge";
+		registry.gauge(name, 1);
+		registry.gauge(name, 2);
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_Summary() {
+		final String name = "test-summary";
+		registry.summary(name).record(1);
+		registry.summary(name).record(2);
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=DISTRIBUTIONSUMMARY, name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_LongTaskTimer() {
+		final String name = "test-longtasktimer";
+		registry.more().longTaskTimer(name).record(() -> {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException exception) {
+				throw new RuntimeException(exception.getLocalizedMessage());
+			}
+		});
+		registry.more().longTaskTimer(name).record(() -> {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException exception) {
+				throw new RuntimeException(exception.getLocalizedMessage());
+			}
+		});
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=LONGTASKTIMER,       name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_TimeGauge() {
+		final String name = "test-timegauge";
+		registry.more().timeGauge(name, emptyList(), "1000", MILLISECONDS, Double::parseDouble);
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_FunctionCounter() {
+		final String name = "test-functioncounter";
+		registry.more().counter(name, emptyList(), 1000);
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONCOUNTER,     name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	public void testExportMetrics_FunctionTimer() {
+		final String name = "test-functiontimer";
+		registry.more().timer(name, emptyList(), "1000", Long::parseLong, Double::parseDouble, MILLISECONDS);
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONTIMER,       name=" + name + ", tags=[]"));
+	}
+
+	/**
+	 * Test method for {@link MetricsExporterService#exportMetrics()}.
+	 */
+	@Test
+	@Ignore
+	public void testExportMetrics_Other() {
+		final String name = "test-other";
+
+		String[] logs = exporter.exportMetrics();
+
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=OTHER,               name=" + name + ", tags=[]"));
 	}
 
 }
