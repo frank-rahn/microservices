@@ -45,7 +45,7 @@ public class HealthConfigurationTest {
 	@Test
 	public void testHealth() {
 		ResponseEntity<String> answer =
-			testRestTemplate.withBasicAuth("admin", "admin").getForEntity("/manage/health", String.class);
+			testRestTemplate.withBasicAuth("admin", "admin").getForEntity("/actuator/health", String.class);
 
 		assertThat(answer.getStatusCode()).isEqualTo(OK);
 		assertThat(answer.getBody()).contains("\"test\" : \"good\"");
