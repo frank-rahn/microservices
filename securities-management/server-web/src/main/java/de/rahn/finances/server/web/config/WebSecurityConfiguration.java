@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -41,27 +40,18 @@ public class WebSecurityConfiguration {
 	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		// @formatter:off
+		// User mit erweiterten Rechten
+		auth.inMemoryAuthentication().withUser("admin").password("{noop}admin").roles("USER", "ADMIN", "ACTUATOR");
 
-		new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
-				// User mit erweiterten Rechten
-				.withUser("admin").password("admin").roles("USER", "ADMIN", "ACTUATOR")
-			.and()
-				// User nur mit Leserechten
-				.withUser("user").password("user").roles("USER")
-			.and()
-				// User mit einem ungültigem Rechten
-				.withUser("gast").password("gast").roles("GAST")
-			.and()
-				// Jetzt dem AuthenticationManagerBuilder übergeben "auth.authenticationProvider(provider);"
-				.configure(auth)
-		;
+		// User nur mit Leserechten
+		auth.inMemoryAuthentication().withUser("user").password("{noop}user").roles("USER");
 
-		// @formatter:on
+		// User mit einem ungültigem Rechten
+		auth.inMemoryAuthentication().withUser("gast").password("{noop}gast").roles("GAST");
 	}
 
 	/**
-	 * Diese WebSecurity-Konfiguration ist für das Management-API der Anwendung (/manage/*) mit HTTP-basic Authentication.
+	 * Diese WebSecurity-Konfiguration ist für das Management-API der Anwendung (/actuator/*) mit HTTP-basic Authentication.
 	 *
 	 * @author Frank W. Rahn
 	 */
@@ -78,11 +68,12 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 
-			// Konfiguration der Requests auf diese URL
-			http.antMatcher("/manage/*")
+			// Konfiguration der Requests auf dise URL
+			http.antMatcher("/actuator/*")
 				.authorizeRequests()
-					// Alle Request benötigen einen User mit der Rolle USER
-					.anyRequest().hasRole("ADMIN")
+					.anyRequest()
+						// Alle Request benötigen einen User mit der Rolle USER
+						.hasRole("ADMIN")
 			;
 
 			// Konfiguration der HTTP Basic Authentication
