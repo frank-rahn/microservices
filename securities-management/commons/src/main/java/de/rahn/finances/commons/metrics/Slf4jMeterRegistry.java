@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Frank W. Rahn and the project authors.
+ * Copyright 2011-2018 Frank W. Rahn and the project authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,8 @@ import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.DistributionSummary;
@@ -31,39 +30,25 @@ import io.micrometer.core.instrument.FunctionCounter;
 import io.micrometer.core.instrument.FunctionTimer;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.LongTaskTimer;
-import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 
 /**
- * Dieser Service exportiert die Dropwizard Metriken.<br>
- * <br>
- * In diesem Fall loggt der Service die Metriken periodisch.
+ * Diese Komponente exportiert die Metriken periodisch nach SLF4J.
  *
  * @author Frank W. Rahn
  */
-@Service
-public class MetricsExporterService {
+@Component
+public class Slf4jMeterRegistry extends SimpleMeterRegistry {
 
 	private static final Logger LOGGER = getLogger("reporting-metrics");
 
-	private final MeterRegistry registry;
-
 	/**
-	 * Der Konstruktor initialisiert den Reporter.
-	 */
-	@Autowired
-	public MetricsExporterService(MeterRegistry registry) {
-		super();
-
-		this.registry = registry;
-	}
-
-	/**
-	 * Schreibe jede volle Stunde die aktuellen Metriken und setze sie zurück.
+	 * Schreibe jede volle Stunde die aktuellen Metriken in den Log.
 	 */
 	@Scheduled(cron = "0 0 * * * ?")
 	public String[] exportMetrics() {
-		String[] logs = registry.getMeters().stream().map(m -> {
+		String[] logs = getMeters().stream().map(m -> {
 			String name = "name=" + m.getId().getName() + ", tags=" + m.getId().getTags();
 
 			if (m instanceof Counter) {

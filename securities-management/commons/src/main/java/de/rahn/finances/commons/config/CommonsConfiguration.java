@@ -19,9 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import de.rahn.finances.commons.metrics.MetricsExporterService;
-
-import io.micrometer.core.instrument.MeterRegistry;
+import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
 
 /**
  * Die Spring Configuration für die Utilities.
@@ -36,8 +34,8 @@ public class CommonsConfiguration {
 	 * @return den Exporter für die Metriken
 	 */
 	@Bean
-	public MetricsExporterService metricsExporterService(MeterRegistry registry) {
-		return new MetricsExporterService(registry);
+	public Slf4jMeterRegistry slf4jMeterRegistry() {
+		return new Slf4jMeterRegistry();
 	}
 
 }

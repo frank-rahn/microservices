@@ -18,11 +18,10 @@ package de.rahn.finances.commons.config;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import de.rahn.finances.commons.metrics.MetricsExporterService;
+import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
 
 /**
  * Test der Spring Configuration.
@@ -30,11 +29,11 @@ import de.rahn.finances.commons.metrics.MetricsExporterService;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { CommonsConfiguration.class, MetricsAutoConfiguration.class })
+@SpringBootTest(classes = { CommonsConfiguration.class })
 public class CommonsConfigurationTest {
 
 	@Autowired
-	private MetricsExporterService exporter;
+	private Slf4jMeterRegistry exporter;
 
 	/**
 	 * Rufe ein Bean aus der Configuration auf.
