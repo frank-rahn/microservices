@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -252,7 +253,7 @@ public class SecuritiesControllerTest {
 	public void testSecurityPost_01() throws Exception {
 		mockMvc.perform(post("/security").with(csrf())).andExpect(status().isOk())
 			.andExpect(content().string(containsString("Speichern")))
-			.andExpect(content().string(containsString("may not be null")));
+			.andExpect(content().string(containsString("must not be null")));
 	}
 
 	/**
@@ -294,6 +295,7 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testSecurityDelete_01() throws Exception {
+		doThrow(new NullPointerException("testSecurityDelete_01")).when(securitiesService).delete(isNull());
 		doNothing().when(securitiesService).delete(any(Security.class));
 
 		mockMvc.perform(delete("/security/{id}", ID_FOUND).with(csrf().asHeader())).andExpect(status().isNoContent());
@@ -304,7 +306,8 @@ public class SecuritiesControllerTest {
 	 */
 	@Test
 	public void testSecurityDelete_02() throws Exception {
-		doThrow(new SecurityNotFoundException("02")).when(securitiesService).delete(any(Security.class));
+		doThrow(new NullPointerException("testSecurityDelete_02")).when(securitiesService).delete(isNull());
+		doThrow(new SecurityNotFoundException("testSecurityDelete_02")).when(securitiesService).delete(any(Security.class));
 
 		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND).with(csrf().asHeader())).andExpect(status().isNoContent());
 	}
@@ -312,21 +315,12 @@ public class SecuritiesControllerTest {
 	/**
 	 * Test method for {@link SecuritiesController#securityDelete(String)}.
 	 */
-	@Test
-	public void testSecurityDelete_03() throws Exception {
-		doThrow(new SecurityNotFoundException("03")).when(securitiesService).delete(any(Security.class));
-
-		mockMvc.perform(delete("/security/{id}", ID_FOUND + "-4711").with(csrf().asHeader())).andExpect(status().isNoContent());
-	}
-
-	/**
-	 * Test method for {@link SecuritiesController#securityDelete(String)}.
-	 */
 	@Test(expected = NestedServletException.class)
-	public void testSecurityDelete_04() throws Exception {
-		doThrow(new NullPointerException("04")).when(securitiesService).delete(any(Security.class));
+	public void testSecurityDelete_03() throws Exception {
+		doThrow(new NullPointerException("testSecurityDelete_03")).when(securitiesService).delete(isNull());
+		doThrow(new NullPointerException("testSecurityDelete_03")).when(securitiesService).delete(isNull());
 
-		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND + "-not-delete").with(csrf().asHeader()))
+		mockMvc.perform(delete("/security/{id}", ID_NOT_FOUND + "-4711").with(csrf().asHeader()))
 			.andExpect(status().isNoContent());
 
 		fail("Es hätte eine Exception geworfen werden müssen");
