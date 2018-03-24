@@ -147,6 +147,12 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 
+			// Konfiguration der freien Ressources
+			http.authorizeRequests()
+				// Die Login-Seite benötigen die globalen Ressourcen der Seite
+				.antMatchers("/css/style.css", "/js/script.js").permitAll()
+			;
+
 			// Konfiguration der berechtigten Requests
 			http.authorizeRequests()
 				// Alle Request benötigen einen User mit der Rolle USER
@@ -171,7 +177,7 @@ public class WebSecurityConfiguration {
 				//.logoutSuccessUrl("/login?logout")
 				// Beim Logout alle gesetzten Cookies wieder löschen
 				.deleteCookies()
-				// Request Mapper für /logout zum abmelden
+				// Request Mapper für /logout zum Abmelden
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			;
 
