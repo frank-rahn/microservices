@@ -88,10 +88,10 @@ pre {
 
 a.collapse-toggle:after {
 	font-family: 'Glyphicons Halflings';
-	content: "\e114";
-	float: right;
+	content: "\e114\202f";
+	float: left;
 }
 
 a.collapse-toggle.collapsed:after {
-	content: "\e080";
+	content: "\e080\202f";
 }
