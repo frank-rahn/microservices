@@ -22,10 +22,8 @@
 				<div id="accordion" class="panel-group" aria-multiselectable="true" role="tablist">
 					<section class="panel panel-default">
 						<div id="security-heading" class="panel-heading" role="tab">
-							<h2 class="panel-title">
-								<a class="collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#security" aria-expanded="false" aria-controls="security" role="button">
-									Wertpapier <span th:if="*{!#strings.isEmpty(id)}"><b><span th:text="*{name}">Firma A AG</span></b> (<span th:text="*{isin}">DE0001234560</span>)</span>
-								</a>
+							<h2 class="panel-title collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#security" aria-expanded="false" aria-controls="security" role="button">
+								Wertpapier <span th:if="*{!#strings.isEmpty(id)}"><b><span th:text="*{name}">Firma A AG</span></b> (<span th:text="*{isin}">DE0001234560</span>)</span>
 							</h2>
 						</div>
 						<div id="security" class="panel-collapse collapse" th:classappend="*{#strings.isEmpty(id)}? 'in'" aria-labelledby="security-heading" role="tabpanel">
@@ -113,10 +111,8 @@
 					</section>
 					<section class="panel panel-default" th:if="*{!#strings.isEmpty(id)}">
 						<div class="panel-heading" id="entries-heading" role="tab">
-							<h2 class="panel-title">
-								<a class="collapse-toggle" data-toggle="collapse" data-parent="#accordion" href="#entries" aria-expanded="true" aria-controls="entries" role="button">
+							<h2 class="panel-title collapse-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#entries" aria-expanded="true" aria-controls="entries" role="button">
 									Buchungen
-								</a>
 							</h2>
 						</div>
 						<div id="entries" class="panel-collapse collapse in" aria-labelledby="entries-heading" role="tabpanel">
