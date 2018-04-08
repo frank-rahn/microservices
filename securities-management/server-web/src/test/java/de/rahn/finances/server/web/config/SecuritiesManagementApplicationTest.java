@@ -12,10 +12,11 @@
  */
 package de.rahn.finances.server.web.config;
 
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -24,8 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SecuritiesManagementApplication.class)
-@TestPropertySource(locations = "classpath:application-dev.properties")
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class SecuritiesManagementApplicationTest {
 
 	/**

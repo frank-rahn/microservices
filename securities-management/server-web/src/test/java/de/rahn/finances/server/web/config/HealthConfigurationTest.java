@@ -22,6 +22,7 @@ import static org.springframework.http.HttpStatus.OK;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.web.server.LocalManagementPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -33,19 +34,22 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = RANDOM_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class HealthConfigurationTest {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;
+
+	@LocalManagementPort
+	private int port;
 
 	/**
 	 * Teste die Health-Endpoints.
 	 */
 	@Test
 	public void testHealth() {
-		ResponseEntity<String> answer =
-			testRestTemplate.withBasicAuth("admin", "admin").getForEntity("/actuator/health", String.class);
+		ResponseEntity<String> answer = testRestTemplate.withBasicAuth("admin", "admin")
+			.getForEntity("http://localhost:" + port + "/actuator/health", String.class);
 
 		assertThat(answer.getStatusCode()).isEqualTo(OK);
 		assertThat(answer.getBody()).contains("\"test\" : \"good\"");
