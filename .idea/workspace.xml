@@ -2,8 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/config/DomainsConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/config/DomainsConfigurationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/EntriesRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/EntriesRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/SecuritiesManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/SecuritiesManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/EntriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/EntriesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SimpleViewControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SimpleViewControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/securities-management/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -12,11 +40,24 @@
     <ignored path="$PROJECT_DIR$/securities-management/server-web/target/" />
     <ignored path="$PROJECT_DIR$/securities-management/commons/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DebuggerManager">
     <breakpoint_any converted="true">
@@ -58,8 +99,17 @@
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="microservices" />
+  </component>
   <component name="FileEditorManager">
     <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>SecuritiesRepository</find>
+      <find>audit-heading</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,6 +118,33 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" />
+        <option value="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/SecuritiesManagementApplication.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/EntriesController.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SimpleViewControllerTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/config/DomainsConfigurationTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/EntriesRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspect.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -90,18 +167,7 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Securities Management Server Web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Securities Management Server Web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Securities Management Server Web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-          <item name="org.springframework.boot:spring-boot-starter-test:1.5.11.RELEASE" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
+          <item name="Profiles" type="6783ec58:MavenProjectsStructure$ProfilesNode" />
         </path>
       </expand>
       <select />
@@ -110,9 +176,6 @@
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_INTERNAL" />
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1971" />
     <option name="y" value="53" />
@@ -120,11 +183,75 @@
     <option name="height" value="1111" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectUserFactors">
+    <factor id="binaryFeature:liftShorter" />
+    <factor id="binaryFeature:liftShorterClasses" />
+    <factor id="binaryFeature:middleMatching" />
+    <factor id="binaryFeature:nonGeneric" />
+    <factor id="binaryFeature:prox_inResolveScope" />
+    <factor id="binaryFeature:prox_openedInEditor" />
+    <factor id="binaryFeature:prox_sameDirectory" />
+    <factor id="binaryFeature:prox_sameLogicalRoot" />
+    <factor id="binaryFeature:prox_sdkOrLibrary" />
+    <factor id="binaryFeature:templates" />
+    <factor id="categoricalFeature:accessible" />
+    <factor id="categoricalFeature:expectedType" />
+    <factor id="categoricalFeature:kind" />
+    <factor id="categoricalFeature:prox_groovyReferenceListWeigher" />
+    <factor id="categoricalFeature:prox_javaInheritance" />
+    <factor id="categoricalFeature:prox_referenceList" />
+    <factor id="categoricalFeature:recursion" />
+    <factor id="completionFinishedType">
+      <dailyData date="30-5-2018">
+        <observation name="cancelled" value="1,0" />
+      </dailyData>
+    </factor>
+    <factor id="completionType" />
+    <factor id="completionUsage">
+      <dailyData date="30-5-2018">
+        <observation name="count" value="1,0" />
+      </dailyData>
+    </factor>
+    <factor id="doubleFeature:explicitProximity" />
+    <factor id="doubleFeature:grouping" />
+    <factor id="doubleFeature:mostUsed" />
+    <factor id="doubleFeature:nameEnd" />
+    <factor id="doubleFeature:position" />
+    <factor id="doubleFeature:prefix" />
+    <factor id="doubleFeature:priority" />
+    <factor id="doubleFeature:prox_explicitlyImported" />
+    <factor id="doubleFeature:prox_knownElement" />
+    <factor id="doubleFeature:prox_sameModule" />
+    <factor id="doubleFeature:prox_samePsiMember" />
+    <factor id="doubleFeature:query_length" />
+    <factor id="doubleFeature:result_length" />
+    <factor id="doubleFeature:sameWords" />
+    <factor id="doubleFeature:shorter" />
+    <factor id="doubleFeature:simple" />
+    <factor id="doubleFeature:sorter" />
+    <factor id="doubleFeature:statics" />
+    <factor id="doubleFeature:stats" />
+    <factor id="itemPosition" />
+    <factor id="mnemonicsUsage" />
+    <factor id="prefixLength" />
+    <factor id="timeBetweenTyping" />
+  </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Changed Files" proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Changed Files">
           <expand>
@@ -169,6 +296,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -179,24 +307,18 @@
             <path>
               <item name="microservices" type="58d84e3e:PackageViewProjectNode" />
               <item name="server-web" type="616d4139:PackageViewModuleNode" />
-              <item name="templates" type="1f31426a:PackageElementNode" />
+              <item name="de.rahn.finances.server.web" type="1f31426a:PackageElementNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
             <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="microservices" type="58d84e3e:PackageViewProjectNode" />
+              <item name="server-web" type="616d4139:PackageViewModuleNode" />
+              <item name="de.rahn.finances.server.web" type="1f31426a:PackageElementNode" />
+              <item name="ui" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -220,11 +342,12 @@
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36401325" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="spring" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -239,71 +362,106 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527712355697" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527712355687" />
+      </method>
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="SecuritiesManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="server-web" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="de.rahn.finances.server.web.config.SecuritiesManagementApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SpringBeansView">
@@ -321,7 +479,17 @@
       <updated>1523196432052</updated>
       <workItem from="1523196433511" duration="386000" />
       <workItem from="1523209358687" duration="209000" />
-      <workItem from="1523211530742" duration="2519000" />
+      <workItem from="1523211530742" duration="4087000" />
+      <workItem from="1523465758514" duration="451000" />
+      <workItem from="1523466230288" duration="461000" />
+      <workItem from="1523466709532" duration="263000" />
+      <workItem from="1523813552730" duration="130000" />
+      <workItem from="1523813701875" duration="5527000" />
+      <workItem from="1523991313621" duration="40000" />
+      <workItem from="1523991370034" duration="91000" />
+      <workItem from="1524396969161" duration="1001000" />
+      <workItem from="1527711607422" duration="99000" />
+      <workItem from="1527711733054" duration="623000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -337,47 +505,65 @@
       <option name="project" value="LOCAL" />
       <updated>1523213989853</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update IntelliJ Config">
+      <created>1523214289226</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523214289226</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3114000" />
+    <option name="totallyTimeSpent" value="13368000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="1968" y="-11" width="1873" height="1212" extended-state="6" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.329863" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4947669" weight="0.2750685" />
+      <window_info id="Structure" order="1" sideWeight="0.5052331" side_tool="true" weight="0.2750685" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="1" sideWeight="0.5009542" side_tool="true" weight="0.2547945" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32919848" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32919848" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919848" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32919848" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.32919848" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919848" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4990458" visible="true" weight="0.25369862" />
-      <window_info anchor="right" id="Bean Validation" order="3" />
-      <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5009542" side_tool="true" weight="0.26849315" />
+      <window_info id="Web" order="7" sideWeight="0.5019084" side_tool="true" weight="0.26849315" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32919848" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32919848" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32919848" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919848" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32919848" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32919848" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3282588" />
+      <window_info anchor="bottom" id="Docker" order="13" weight="0.32919848" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32919848" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32919848" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.329863" />
+      <window_info anchor="right" id="Database" order="6" weight="0.329863" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.329863" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,128 +615,371 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="Typo im Target-Name" />
     <MESSAGE value="Version von Spring Boot hochgezogen (auf 1.5.11)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version von Spring Boot hochgezogen (auf 1.5.11)" />
+    <MESSAGE value="Update IntelliJ Config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update IntelliJ Config" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.adoc">
-      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="10" column="509" lean-forward="true" selection-start-line="10" selection-start-column="509" selection-end-line="10" selection-end-column="509" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="95" column="40" lean-forward="true" selection-start-line="95" selection-start-column="40" selection-end-line="95" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="25" column="149" selection-start-line="25" selection-start-column="149" selection-end-line="25" selection-end-column="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test-autoconfigure/1.5.12.RELEASE/spring-boot-test-autoconfigure-1.5.12.RELEASE-sources.jar!/org/springframework/boot/test/autoconfigure/web/servlet/WebMvcTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-591">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="62" column="11" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-test/4.2.5.RELEASE/spring-security-test-4.2.5.RELEASE-sources.jar!/org/springframework/security/test/context/support/WithMockUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SimpleViewControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/config/DomainsConfigurationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+          <folding>
+            <element signature="e#2438#2439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/EntriesRepositoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/config/CommonsConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Audit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.11.RELEASE/spring-data-commons-1.13.11.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.11.RELEASE/spring-data-commons-1.13.11.RELEASE-sources.jar!/org/springframework/data/repository/PagingAndSortingRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="33" column="94" selection-start-line="33" selection-start-column="80" selection-end-line="33" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.11.11.RELEASE/spring-data-jpa-1.11.11.RELEASE-sources.jar!/org/springframework/data/jpa/repository/JpaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/SecuritiesRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="29" column="59" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="85" column="51" selection-start-line="85" selection-start-column="51" selection-end-line="85" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTypeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="71" column="56" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.3.6.Final/hibernate-validator-5.3.6.Final-sources.jar!/org/hibernate/validator/constraints/br/CNPJ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-sources.jar!/javax/validation/constraints/AssertTrue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.3.6.Final/hibernate-validator-5.3.6.Final-sources.jar!/org/hibernate/validator/constraints/br/CPF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.3.6.Final/hibernate-validator-5.3.6.Final-sources.jar!/org/hibernate/validator/constraints/EAN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-sources.jar!/javax/validation/constraints/Future.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.3.6.Final/hibernate-validator-5.3.6.Final-sources.jar!/org/hibernate/validator/constraints/ParameterScriptAssert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.3.6.Final/hibernate-validator-5.3.6.Final-sources.jar!/org/hibernate/validator/internal/constraintvalidators/hv/br/CNPJValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="114" column="62" selection-start-line="114" selection-start-column="62" selection-end-line="114" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/WebMvcConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="143" column="12" selection-start-line="143" selection-start-column="12" selection-end-line="143" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/SecuritiesManagementApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/EntriesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/server-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="uml://MAVEN/de.rahn.finances:server-web:1.2.0-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>de.rahn.finances:server-web:1.2.0-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="" y="">de.rahn.finances:server-web:1.2.0-SNAPSHOT</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-actuator:jar:1.5.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-actuator:jar:1.5.11.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.8.11.1</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-actuator:jar:1.5.11.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.8.11.1/com.fasterxml.jackson.core:jackson-annotations:jar:2.8.0</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-actuator:jar:1.5.11.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.8.11.1/com.fasterxml.jackson.core:jackson-core:jar:2.8.11</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-actuator:jar:1.5.11.RELEASE/org.springframework:spring-context:jar:4.3.15.RELEASE</node>
-            <node x="" y="">de.rahn.finances:commons:jar:1.2.0-SNAPSHOT/io.dropwizard.metrics:metrics-core:jar:3.1.5</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.11.RELEASE/org.apache.tomcat:tomcat-jdbc:jar:8.5.29</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.11.RELEASE/org.apache.tomcat:tomcat-jdbc:jar:8.5.29/org.apache.tomcat:tomcat-juli:jar:8.5.29</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-jdbc:jar:1.5.11.RELEASE/org.springframework:spring-jdbc:jar:4.3.15.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final/org.hibernate.javax.persistence:hibernate-jpa-2.1-api:jar:1.0.0.Final</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final/antlr:antlr:jar:2.7.7</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final/org.jboss:jandex:jar:2.0.0.Final</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final/dom4j:dom4j:jar:1.6.1</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-core:jar:5.0.12.Final/org.hibernate.common:hibernate-commons-annotations:jar:5.0.1.Final</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.hibernate:hibernate-entitymanager:jar:5.0.12.Final</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/javax.transaction:javax.transaction-api:jar:1.2</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.data:spring-data-jpa:jar:1.11.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.data:spring-data-jpa:jar:1.11.11.RELEASE/org.springframework.data:spring-data-commons:jar:1.13.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.data:spring-data-jpa:jar:1.11.11.RELEASE/org.springframework:spring-orm:jar:4.3.15.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework.data:spring-data-jpa:jar:1.11.11.RELEASE/org.springframework:spring-tx:jar:4.3.15.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-data-jpa:jar:1.5.11.RELEASE/org.springframework:spring-aspects:jar:4.3.15.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-validation:jar:1.5.11.RELEASE</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.springframework.boot:spring-boot-starter-validation:jar:1.5.11.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.29</node>
-            <node x="" y="">de.rahn.finances:services:jar:1.2.0-SNAPSHOT/de.rahn.finances:domains:jar:1.2.0-SNAPSHOT/org.apache.commons:commons-lang3:jar:3.7</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE/ch.qos.logback:logback-classic:jar:1.1.11</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE/ch.qos.logback:logback-classic:jar:1.1.11/ch.qos.logback:logback-core:jar:1.1.11</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE/org.slf4j:jcl-over-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-actuator:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:1.5.11.RELEASE/org.slf4j:log4j-over-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework:spring-aop:jar:4.3.15.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework:spring-aop:jar:4.3.15.RELEASE/org.springframework:spring-beans:jar:4.3.15.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework.security:spring-security-config:jar:4.2.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework.security:spring-security-web:jar:4.2.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework.security:spring-security-web:jar:4.2.5.RELEASE/org.springframework:spring-expression:jar:4.3.15.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-security:jar:1.5.11.RELEASE/org.springframework.security:spring-security-web:jar:4.2.5.RELEASE/org.springframework:spring-web:jar:4.3.15.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:1.5.11.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.29</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:1.5.11.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.29/org.apache.tomcat:tomcat-annotations-api:jar:8.5.29</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:1.5.11.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.29</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.hibernate:hibernate-validator:jar:5.3.6.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.hibernate:hibernate-validator:jar:5.3.6.Final/javax.validation:validation-api:jar:1.1.0.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.hibernate:hibernate-validator:jar:5.3.6.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.hibernate:hibernate-validator:jar:5.3.6.Final/com.fasterxml:classmate:jar:1.3.4</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-starter-web:jar:1.5.11.RELEASE/org.springframework:spring-webmvc:jar:4.3.15.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/org.thymeleaf:thymeleaf-spring4:jar:2.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:jar:1.4.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:1.5.11.RELEASE/nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:jar:1.4.0/org.codehaus.groovy:groovy:jar:2.4.15</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-hateoas:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-hateoas:jar:1.5.11.RELEASE/org.springframework.hateoas:spring-hateoas:jar:0.23.0.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-hateoas:jar:1.5.11.RELEASE/org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-springsecurity4:jar:2.1.3.RELEASE</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-springsecurity4:jar:2.1.3.RELEASE/org.slf4j:slf4j-api:jar:1.7.25</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-java8time:jar:2.1.0.RELEASE</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-java8time:jar:2.1.0.RELEASE/org.thymeleaf:thymeleaf:jar:2.1.6.RELEASE</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-java8time:jar:2.1.0.RELEASE/org.thymeleaf:thymeleaf:jar:2.1.6.RELEASE/ognl:ognl:jar:3.0.8</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-java8time:jar:2.1.0.RELEASE/org.thymeleaf:thymeleaf:jar:2.1.6.RELEASE/org.javassist:javassist:jar:3.21.0-GA</node>
-            <node x="" y="">org.thymeleaf.extras:thymeleaf-extras-java8time:jar:2.1.0.RELEASE/org.thymeleaf:thymeleaf:jar:2.1.6.RELEASE/org.unbescape:unbescape:jar:1.1.0.RELEASE</node>
-            <node x="" y="">org.jolokia:jolokia-core:jar:1.3.7</node>
-            <node x="" y="">org.jolokia:jolokia-core:jar:1.3.7/com.googlecode.json-simple:json-simple:jar:1.1.1</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-aop:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-aop:jar:1.5.11.RELEASE/org.aspectj:aspectjweaver:jar:1.8.13</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot:jar:1.5.11.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:1.5.11.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:1.5.11.RELEASE</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="3804.0" y="628.0" />
-          <SelectedNodes />
-          <Categories />
-          <VISIBILITY>Compile</VISIBILITY>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.adoc">
+      <provider selected="true" editor-type-id="split-provider[text-editor;AsciiDocPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="42" column="104" selection-start-line="42" selection-start-column="104" selection-end-line="42" selection-end-column="104" />
+        <state relative-caret-position="124">
+          <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -622,7 +1051,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.36401325" />
               </list>
             </option>
           </splitter-proportions>
