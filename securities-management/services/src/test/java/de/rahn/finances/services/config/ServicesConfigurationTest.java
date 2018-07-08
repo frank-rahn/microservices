@@ -50,7 +50,7 @@ public class ServicesConfigurationTest {
 	private static final String ID = "4711";
 
 	@Rule
-	public ExpectedException thrown = none();
+	public final ExpectedException thrown = none();
 
 	@MockBean
 	public SecuritiesRepository securitiesRepository;

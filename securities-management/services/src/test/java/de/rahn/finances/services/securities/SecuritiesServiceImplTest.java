@@ -68,15 +68,15 @@ public class SecuritiesServiceImplTest {
 
 	private SecuritiesServiceImpl classUnderTests;
 
-	private Security testSecurity = new Security();
+	private final Security testSecurity = new Security();
 
-	private Entry testEntry = new Entry();
+	private final Entry testEntry = new Entry();
 
 	/**
-	 * @throws Exception
+	 * Initialisierung
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		classUnderTests = new SecuritiesServiceImpl(securitiesRepository, entriesRepository);
 
 		testSecurity.setId(randomUUID().toString());

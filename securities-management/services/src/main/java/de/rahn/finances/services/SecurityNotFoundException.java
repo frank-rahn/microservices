@@ -26,7 +26,7 @@ public class SecurityNotFoundException extends RuntimeException {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 
-	public static final String MESSAGE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
+	private static final String MESSAGE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
 
 	private static String format(String id) {
 		return String.format(MESSAGE, id);

@@ -57,7 +57,7 @@ public class SecuritiesServiceImplSecurityTest {
 	@Autowired
 	private SecuritiesService classUnderTests;
 
-	private Security testSecurity = new Security();
+	private final Security testSecurity = new Security();
 
 	@TestConfiguration
 	@ComponentScan(basePackageClasses = { ServicePackageMarker.class },
@@ -68,10 +68,10 @@ public class SecuritiesServiceImplSecurityTest {
 	}
 
 	/**
-	 * @throws Exception
+	 * Initialisiere diesen Test
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		testSecurity.setId(randomUUID().toString());
 		testSecurity.setIsin("DE0000000000");
 		testSecurity.setWkn("000000");

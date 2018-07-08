@@ -70,6 +70,7 @@ public class SecuritiesServiceMetricsAspect {
 	 */
 	@Pointcut("this(de.rahn.finances.services.SecuritiesService)")
 	private void onSecuritiesService() {
+		// leer
 	}
 
 	/**

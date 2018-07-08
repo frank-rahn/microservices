@@ -74,17 +74,17 @@ public class SecuritiesServiceMetricsAspectTest {
 
 	private SecuritiesService serviceProxy;
 
-	private Security testSecurity = new Security();
+	private final Security testSecurity = new Security();
 
-	private List<String> counters = new ArrayList<>();
+	private final List<String> counters = new ArrayList<>();
 
-	private List<String> gauges = new ArrayList<>();
+	private final List<String> gauges = new ArrayList<>();
 
 	/**
-	 * @throws Exception
+	 * Initialisierung
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		counters.clear();
 		gauges.clear();
 
