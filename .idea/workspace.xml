@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="">
+    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="Auf Spring Boot 1.5.14 aktualisiert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" afterDir="false" />
@@ -111,22 +110,26 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="0-SNAPSHOT" value="1" />
+          <entry key="js" value="1" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="JavaScript" value="1" />
           <entry key="UML" value="1" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="txt" value="2" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -136,7 +139,20 @@
     <favorites_list name="microservices" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/js/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+              <folding>
+                <element signature="e#113#120#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -236,13 +252,13 @@
     <factor id="categoricalFeature:recursion" />
     <factor id="completionFinishedType">
       <dailyData date="8-7-2018">
-        <observation name="cancelled" value="2,0" />
+        <observation name="cancelled" value="3,0" />
       </dailyData>
     </factor>
     <factor id="completionType" />
     <factor id="completionUsage">
       <dailyData date="8-7-2018">
-        <observation name="count" value="2,0" />
+        <observation name="count" value="3,0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity" />
@@ -305,7 +321,7 @@
     <property name="RequestMappingsPanelWidth2" value="583" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1531053987719" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1531055559438" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="options.lastSelected" value="reference.settingsdialog.project.gradle" />
@@ -317,7 +333,7 @@
     <property name="project.structure.side.proportion" value="0.36401325" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="spring" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -412,7 +428,7 @@
       <workItem from="1527711607422" duration="99000" />
       <workItem from="1527711733054" duration="906000" />
       <workItem from="1531053501102" duration="84000" />
-      <workItem from="1531053606206" duration="704000" />
+      <workItem from="1531053606206" duration="1952000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -442,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527712571481</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Auf Spring Boot 1.5.14 aktualisiert">
+      <created>1531054385788</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531054385788</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14439000" />
+    <option name="totallyTimeSpent" value="15687000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,6 +482,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1968" y="-11" width="1873" height="1212" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49381542" weight="0.2750685" />
       <window_info id="Structure" order="1" sideWeight="0.5061846" side_tool="true" weight="0.2750685" />
@@ -480,10 +504,10 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32919848" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32919848" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.3282588" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3282588" />
       <window_info anchor="bottom" id="Docker" order="13" weight="0.32919848" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32919848" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.32919848" />
+      <window_info active="true" anchor="bottom" id="Messages" order="15" visible="true" weight="0.3282588" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -550,16 +574,10 @@
     <MESSAGE value="Version von Spring Boot hochgezogen (auf 1.5.11)" />
     <MESSAGE value="Update IntelliJ Config" />
     <MESSAGE value="Auf Spring Boot 1.5.13 aktualisiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auf Spring Boot 1.5.13 aktualisiert" />
+    <MESSAGE value="Auf Spring Boot 1.5.14 aktualisiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auf Spring Boot 1.5.14 aktualisiert" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="25" column="149" selection-start-line="25" selection-start-column="149" selection-end-line="25" selection-end-column="149" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1019,6 +1037,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2808">
           <caret line="156" column="17" lean-forward="true" selection-start-line="156" selection-start-column="17" selection-end-line="156" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+          <folding>
+            <element signature="e#113#120#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

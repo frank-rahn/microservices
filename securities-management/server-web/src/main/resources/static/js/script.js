@@ -114,7 +114,7 @@ $(document).on('click.bs.managementapi.data-api', '[data-toggle="managementapi"]
 	}
 
 	$.getJSON(href, function(data, textStatus, xhr) {
-		if (textStatus == "success") {
+		if (textStatus === "success") {
 			modalMessage(title, xhr.responseText);
 			$("#placeholder").alert("close");
 		} else {
