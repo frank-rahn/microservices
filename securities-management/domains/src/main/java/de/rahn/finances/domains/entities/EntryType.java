@@ -48,7 +48,7 @@ public enum EntryType {
 	 * @param description die Beschreibung der Art der Buchung
 	 * @param expense Belastet diese Art der Buchung das Konto?
 	 */
-	private EntryType(String description, boolean expense) {
+	EntryType(String description, boolean expense) {
 		this.description = description;
 		this.expense = expense;
 	}

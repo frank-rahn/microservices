@@ -43,7 +43,7 @@ public enum SecurityType {
 	/**
 	 * @param description die Beschreibung der Art des Wertpapiers
 	 */
-	private SecurityType(String description) {
+	SecurityType(String description) {
 		this.description = description;
 	}
 
