@@ -60,7 +60,7 @@ import de.rahn.finances.services.SecuritiesService;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { WebMvcConfiguration.class, WebSecurityConfiguration.class })
 @WithMockUser(username = "user", roles = "USER")
-@WebMvcTest(controllers = { EntriesController.class }, secure = true)
+@WebMvcTest(controllers = { EntriesController.class })
 public class EntriesControllerTest {
 
 	/** ID */

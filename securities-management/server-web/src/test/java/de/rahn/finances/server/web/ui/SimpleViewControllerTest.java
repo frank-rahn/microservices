@@ -44,7 +44,7 @@ import de.rahn.finances.services.SecuritiesService;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { WebMvcConfiguration.class, WebSecurityConfiguration.class })
 @WithMockUser(roles = "USER")
-@WebMvcTest(secure = true)
+@WebMvcTest
 public class SimpleViewControllerTest {
 
 	@MockBean

@@ -69,7 +69,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { WebMvcConfiguration.class, WebSecurityConfiguration.class })
 @WithMockUser(roles = "USER")
-@WebMvcTest(controllers = { SecuritiesController.class }, secure = true)
+@WebMvcTest(controllers = { SecuritiesController.class })
 public class SecuritiesControllerTest {
 
 	/** ID_NOT_FOUND */
