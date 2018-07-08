@@ -52,8 +52,8 @@ public class SecurityTest {
 	/** AUDIT_NOW */
 	private static final LocalDateTime AUDIT_NOW = LocalDateTime.now();
 
-	/** ID_ENTRY_CHATGES */
-	private static final String ID_ENTRY_CHATGES = "8ad72f6f-2a39-4846-8943-f6139f3d5597";
+	/** ID_ENTRY_CHARGES */
+	private static final String ID_ENTRY_CHARGES = "8ad72f6f-2a39-4846-8943-f6139f3d5597";
 
 	/** ID_ENTRY_BUY */
 	private static final String ID_ENTRY_BUY = "8ad72f6f-2a39-4846-8942-f6139f3d5597";
@@ -103,7 +103,7 @@ public class SecurityTest {
 			}
 		}, new Entry() {
 			{
-				setId(ID_ENTRY_CHATGES);
+				setId(ID_ENTRY_CHARGES);
 				setSecurity(classUnderTest);
 				setDate(NOW);
 				setNumberOf(ONE);

@@ -52,7 +52,7 @@ public class Entry extends Audit {
 	@Column(length = 36)
 	private String id;
 
-	/** Das Datum des Eintrages. */
+	/** Das Datum des Eintrags. */
 	@Column(nullable = false)
 	@NotNull
 	@DateTimeFormat(iso = DATE)

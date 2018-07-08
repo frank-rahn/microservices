@@ -95,7 +95,7 @@ public enum EntryType {
 	}
 
 	/**
-	 * @return Lifere ein {@link Entry} für diese Aufzählung
+	 * @return Liefere ein {@link Entry} für diese Aufzählung
 	 */
 	public Entry<String, String> getListEntry() {
 		return new SimpleEntry<>(name(), getDescription());

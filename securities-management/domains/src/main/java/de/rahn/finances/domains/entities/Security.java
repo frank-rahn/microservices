@@ -128,7 +128,7 @@ public class Security extends Audit {
 	/**
 	 * @param entryId Suche die Buchung mit der angegeben Id
 	 * @return die gefundene Buchung oder <code>null</code>
-	 * @throws IllegalArgumentException falls die Buchungs-Id ungültig ist
+	 * @throws IllegalArgumentException falls die Buchung-Id ungültig ist
 	 */
 	public Entry getEntry(String entryId) {
 
@@ -164,7 +164,7 @@ public class Security extends Audit {
 	}
 
 	/**
-	 * Ersetze die alte Buchung duch die neue Buchung.
+	 * Ersetze die alte Buchung durch die neue Buchung.
 	 *
 	 * @param oldEntry die alte Buchung
 	 * @param newEntry die neue Buchung (darf nicht gespeichert sein)
@@ -229,7 +229,7 @@ public class Security extends Audit {
 	 * @param entryId Entferne die Buchung aus dem Wertpapier
 	 * @return die ursprüngliche Buchung
 	 * @throws IllegalArgumentException falls die Buchung nicht gefunden wurde
-	 * @throws IllegalArgumentException falls die Buchungs-Id ungültig ist
+	 * @throws IllegalArgumentException falls die Buchung-Id ungültig ist
 	 */
 	public Entry removeEntry(String entryId) {
 		return removeEntry(getEntry(entryId));
