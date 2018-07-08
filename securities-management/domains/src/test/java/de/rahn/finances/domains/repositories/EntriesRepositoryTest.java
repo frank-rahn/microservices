@@ -44,7 +44,7 @@ public class EntriesRepositoryTest {
 	private EntriesRepository repository;
 
 	@Test
-	public void findAll() throws Exception {
+	public void findAll() {
 
 		List<Entry> entries = repository.findAll();
 

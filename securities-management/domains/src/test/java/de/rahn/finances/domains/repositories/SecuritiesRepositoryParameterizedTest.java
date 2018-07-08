@@ -83,7 +83,7 @@ public class SecuritiesRepositoryParameterizedTest {
 	public String id;
 
 	/**
-	 * Test method for {@link SecuritiesRepository#findOne(String).
+	 * Test method for {@link SecuritiesRepository#findOne(String)}.
 	 */
 	@Test
 	public void testFindOne() {

@@ -35,10 +35,10 @@ public enum SecurityType {
 
 	/** Die Liste der Key-Value-Entries dieser Aufzählung. */
 	private static final List<Entry<String, String>> ENTRIES = unmodifiableList(
-		stream(values()).sorted(comparing(SecurityType::getDescription)).map(s -> s.getListEntry()).collect(toList()));
+		stream(values()).sorted(comparing(SecurityType::getDescription)).map(SecurityType::getListEntry).collect(toList()));
 
 	/** Die Beschreibung der Art des Wertpapiers. */
-	private String description;
+	private final String description;
 
 	/**
 	 * @param description die Beschreibung der Art des Wertpapiers

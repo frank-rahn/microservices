@@ -26,7 +26,7 @@ import org.junit.Test;
  */
 public class EntryTest {
 
-	private Entry classUnderTest = new Entry();
+	private final Entry classUnderTest = new Entry();
 
 	/**
 	 * Test method for {@link Entry#update(Entry)}.

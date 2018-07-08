@@ -56,7 +56,7 @@ public class SecuritiesRepositoryTest {
 	private SecuritiesRepository repository;
 
 	@Test
-	public void findAll() throws Exception {
+	public void findAll() {
 		Security security = new Security();
 		security.setName("Name");
 		security.setWkn("123456");

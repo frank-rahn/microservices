@@ -36,13 +36,13 @@ public enum EntryType {
 
 	/** Die Liste der Key-Value-Entries dieser Aufzählung. */
 	private static final List<Entry<String, String>> ENTRIES = unmodifiableList(
-		stream(values()).sorted(comparing(EntryType::getDescription)).map(s -> s.getListEntry()).collect(toList()));
+		stream(values()).sorted(comparing(EntryType::getDescription)).map(EntryType::getListEntry).collect(toList()));
 
 	/** Die Beschreibung der Art der Buchung. */
-	private String description;
+	private final String description;
 
 	/** Belastet diese Art der Buchung das Konto? */
-	private boolean expense;
+	private final boolean expense;
 
 	/**
 	 * @param description die Beschreibung der Art der Buchung
