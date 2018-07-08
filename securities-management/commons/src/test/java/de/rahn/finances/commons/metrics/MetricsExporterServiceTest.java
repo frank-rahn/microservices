@@ -62,10 +62,10 @@ public class MetricsExporterServiceTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * Initialisiere diesen Test
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		when(registry.remove(anyString())).thenReturn(true);
 		when(registry.getGauges()).thenReturn(singletonMap("gauges", () -> 4711));
 		when(registry.getCounters()).thenReturn(singletonMap("counter", new Counter()));

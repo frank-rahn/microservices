@@ -39,15 +39,15 @@ public class MetricsExporterService {
 
 	private static final Logger LOGGER = getLogger("reporting-metrics");
 
-	private MetricRegistry registry;
+	private final MetricRegistry registry;
 
-	private double rateFactor;
+	private final double rateFactor;
 
-	private String rateUnit;
+	private final String rateUnit;
 
-	private double durationFactor;
+	private final double durationFactor;
 
-	private String durationUnit;
+	private final String durationUnit;
 
 	/**
 	 * Der Konstruktor initialisiert den Reporter.
