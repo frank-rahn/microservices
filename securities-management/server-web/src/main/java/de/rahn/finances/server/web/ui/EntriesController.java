@@ -46,7 +46,7 @@ public class EntriesController {
 
 	private static final Logger LOGGER = getLogger(EntriesController.class);
 
-	private SecuritiesService service;
+	private final SecuritiesService service;
 
 	/**
 	 * Konstruktor.

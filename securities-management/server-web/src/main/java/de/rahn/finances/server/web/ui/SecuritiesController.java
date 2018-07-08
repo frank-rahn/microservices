@@ -56,7 +56,7 @@ public class SecuritiesController {
 
 	private static final Logger LOGGER = getLogger(SecuritiesController.class);
 
-	private SecuritiesService service;
+	private final SecuritiesService service;
 
 	/**
 	 * Konstruktor.

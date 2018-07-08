@@ -152,7 +152,7 @@ public class EntriesControllerTest {
 	}
 
 	/**
-	 * Test method for {@link EntriesController#saveEntry(String, Entry, BindingResult)} .
+	 * Test method for {@link EntriesController#saveEntry(Entry, BindingResult)} .
 	 */
 	@Test
 	public void testSaveEntry_01() throws Exception {
@@ -164,7 +164,7 @@ public class EntriesControllerTest {
 	}
 
 	/**
-	 * Test method for {@link EntriesController#saveEntry(String, Entry, BindingResult)} .
+	 * Test method for {@link EntriesController#saveEntry(Entry, BindingResult)} .
 	 */
 	@Test(expected = NestedServletException.class)
 	public void testSaveEntry_02() throws Exception {
@@ -177,7 +177,7 @@ public class EntriesControllerTest {
 	}
 
 	/**
-	 * Test method for {@link EntriesController#saveEntry(String, Entry, BindingResult)} .
+	 * Test method for {@link EntriesController#saveEntry(Entry, BindingResult)} .
 	 */
 	@Test(expected = NestedServletException.class)
 	public void testSaveEntry_03() throws Exception {
