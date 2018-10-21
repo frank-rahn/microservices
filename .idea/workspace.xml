@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="Rechtschreibung korrigiert.">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" afterDir="false" />
+    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="ADOC Dokumentation verbessert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/commons/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/domains/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/README.adoc" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/securities-management/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -81,12 +74,12 @@
     <session id="478071264">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -114,14 +107,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="19" />
-          <entry key="txt" value="623" />
+          <entry key="txt" value="658" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="19" />
-          <entry key="PLAIN_TEXT" value="623" />
+          <entry key="PLAIN_TEXT" value="658" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -498,8 +491,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -567,6 +558,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -698,6 +691,7 @@
       <workItem from="1539961426042" duration="433000" />
       <workItem from="1539971707958" duration="221000" />
       <workItem from="1539971947448" duration="304000" />
+      <workItem from="1540141356712" duration="179000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -783,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531061644951</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ADOC Dokumentation verbessert">
+      <created>1540141485484</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1540141485484</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22879000" />
+    <option name="totallyTimeSpent" value="23058000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,8 +802,8 @@
   <component name="ToolWindowManager">
     <frame x="1968" y="-11" width="1873" height="1212" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48905805" visible="true" weight="0.28821918" />
-      <window_info id="Structure" order="1" sideWeight="0.510942" side_tool="true" visible="true" weight="0.28821918" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48810658" visible="true" weight="0.29150686" />
+      <window_info id="Structure" order="1" sideWeight="0.51189345" side_tool="true" visible="true" weight="0.29150686" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -898,7 +899,8 @@
     <MESSAGE value="Konstruktor wird automatisch private." />
     <MESSAGE value="Rechtschreibung korrigiert." />
     <MESSAGE value="In der Annotation @WebMvcTest den Parameter secure = true entfernt, &#10;dieser Parameter ist default gesetzt, falls Spring Security im Classpath ist." />
-    <option name="LAST_COMMIT_MESSAGE" value="In der Annotation @WebMvcTest den Parameter secure = true entfernt, &#10;dieser Parameter ist default gesetzt, falls Spring Security im Classpath ist." />
+    <MESSAGE value="ADOC Dokumentation verbessert" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADOC Dokumentation verbessert" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/login.html">
