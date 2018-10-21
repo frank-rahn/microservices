@@ -1,12 +1,9 @@
 = Die Domänen der Wertpapierverwaltung
-Doc Frank Rahn <frank@frank-rahn.de>
+Frank Rahn <frank@frank-rahn.de>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
-:toc-placement!:
 :sectanchors:
-
-toc::[]
 
 == Das Model der Wertpapierverwaltung
 image:src/main/asciidoc/securities-management-domain-model.png[Securities Management Domain Model, capture="Securities Management Domain Model"]

@@ -1,17 +1,14 @@
 = Die Utilities der Wertpapierverwaltung
-Doc Frank Rahn <frank@frank-rahn.de>
+Frank Rahn <frank@frank-rahn.de>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
-:toc-placement!:
 :sectanchors:
-
-toc::[]
 
 == Build mit Maven
 Für die Konfiguration von Eclipse bitte das Eclipse-Plugin http://www.eclipse.org/m2e/[M2Eclipse] verwenden.
 
-[source,shell]
+[source,bash]
 .Wertpapierverwaltung bauen
 ----
 $ mvn clean install

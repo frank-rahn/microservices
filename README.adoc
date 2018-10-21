@@ -1,5 +1,5 @@
 = Microservices
-Doc Frank Rahn <frank@frank-rahn.de>
+Frank Rahn <frank@frank-rahn.de>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis

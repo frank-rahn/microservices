@@ -1,12 +1,9 @@
 = Die Webanwendung der Wertpapierverwaltung als Microservices
-Doc Frank Rahn <frank@frank-rahn.de>
+Frank Rahn <frank@frank-rahn.de>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
-:toc-placement!:
 :sectanchors:
-
-toc::[]
 
 == Requirements
 * Java SE 8
