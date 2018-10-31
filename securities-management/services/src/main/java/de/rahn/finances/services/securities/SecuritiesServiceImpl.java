@@ -105,7 +105,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 		if (pageable != null) {
 			if (page.getTotalPages() == 0 && pageable.getPageNumber() > 0
 				|| page.getTotalPages() != 0 && page.getTotalPages() <= pageable.getPageNumber()) {
-				// Angeforderte Page ausserhalb des zulässigen Bereiches
+				// Angeforderte Page außerhalb des zulässigen Bereiches
 				int maxPage = page.getTotalPages() == 0 ? 0 : page.getTotalPages() - 1;
 				return getSecurities(inventory, type, new PageRequest(maxPage, pageable.getPageSize(), pageable.getSort()));
 			}

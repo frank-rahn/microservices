@@ -47,7 +47,7 @@ public class WebSecurityConfiguration {
 				// User mit erweiterten Rechten
 				.withUser("admin").password("admin").roles("USER", "ADMIN", "ACTUATOR")
 			.and()
-				// User nur mit Leserecheten
+				// User nur mit Leserechten
 				.withUser("user").password("user").roles("USER")
 			.and()
 				// User mit einem ungültigem Rechten
@@ -78,7 +78,7 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 
-			// Konfiguration der Requests auf dise URL
+			// Konfiguration der Requests auf diese URL
 			http.antMatcher("/manage/*")
 				.authorizeRequests()
 					// Alle Request benötigen einen User mit der Rolle USER
@@ -115,7 +115,7 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 
-			// Konfiguration der Requests auf dise URL
+			// Konfiguration der Requests auf diese URL
 			http.antMatcher("/h2-console/**")
 				.authorizeRequests()
 					// Alle dürfen auf die Console zugreifen

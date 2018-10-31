@@ -28,7 +28,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Snapshot;
 
 /**
- * Diser Service exportiert die Dropwizard Metriken.<br>
+ * Dieser Service exportiert die Dropwizard Metriken.<br>
  * <br>
  * In diesem Fall loggt der Service die Metriken periodisch.
  *

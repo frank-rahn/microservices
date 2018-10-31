@@ -33,7 +33,7 @@ public class SecurityNotFoundException extends RuntimeException {
 	}
 
 	/**
-	 * @param id Die ID des Wertpapieres, welches nicht gefunden wurde
+	 * @param id Die ID des Wertpapiers, welches nicht gefunden wurde
 	 * @see RuntimeException#RuntimeException(String)
 	 */
 	public SecurityNotFoundException(String id) {

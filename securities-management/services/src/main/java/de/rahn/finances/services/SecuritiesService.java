@@ -60,7 +60,7 @@ public interface SecuritiesService {
 	}
 
 	/**
-	 * Falls die angeforderte Seite ausserhalb des zuslässigen Bereiches liegt, wird die letzte Seite geliefert.
+	 * Falls die angeforderte Seite außerhalb des zulässigen Bereiches liegt, wird die letzte Seite geliefert.
 	 *
 	 * @param inventory Gibt es zum Wertpapier hat einen Bestand?
 	 * @param type die gewünschte Art des Wertpapiers, <code>null</code> liefert alle
@@ -69,7 +69,7 @@ public interface SecuritiesService {
 	Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable);
 
 	/**
-	 * Leifere das Wertpapier.
+	 * Liefere das Wertpapier.
 	 *
 	 * @param id der Identifizierer eines Wertpapiers
 	 * @return das Wertpapier
@@ -104,7 +104,7 @@ public interface SecuritiesService {
 	/**
 	 * Speichere die Buchung.
 	 *
-	 * @param entry die zuspeicherne Buchung
+	 * @param entry die zu speichernde Buchung
 	 * @return die Buchung
 	 */
 	Entry save(Entry entry);

@@ -33,7 +33,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * Mit dieser Klasse wird das Auditing von Sprng Data JPA ermöglicht.
+ * Mit dieser Klasse wird das Auditing von Spring Data JPA ermöglicht.
  *
  * @author Frank W. Rahn
  */

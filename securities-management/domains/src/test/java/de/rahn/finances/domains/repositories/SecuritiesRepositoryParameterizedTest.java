@@ -17,6 +17,7 @@ package de.rahn.finances.domains.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class SecuritiesRepositoryParameterizedTest {
 	private SecuritiesRepository repository;
 
 	/** Test Fixture: WKN des Wertpapiers */
-	@Parameter(0)
+	@Parameter
 	public String wkn;
 
 	/** Test Fixture: ID des Wertpapiers */
@@ -83,7 +84,7 @@ public class SecuritiesRepositoryParameterizedTest {
 	public String id;
 
 	/**
-	 * Test method for {@link SecuritiesRepository#findOne(String)}.
+	 * Test method for {@link SecuritiesRepository#findOne(Serializable)}.
 	 */
 	@Test
 	public void testFindOne() {

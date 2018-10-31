@@ -39,7 +39,7 @@ public class CommonsConfigurationTest {
 	private MetricsExporterService exporter;
 
 	/**
-	 * Rufe ein Bean aus der Configuartion auf.
+	 * Rufe ein Bean aus der Configuration auf.
 	 */
 	@Test
 	public void testSpringConfiguration() {
