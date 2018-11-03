@@ -36,6 +36,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.repositories.EntriesRepository;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 
@@ -49,6 +50,9 @@ public class SecuritiesServiceImplSecurityTest {
 
 	@MockBean
 	private SecuritiesRepository securitiesRepository;
+
+	@MockBean
+	private EntriesRepository entriesRepository;
 
 	@Autowired
 	private SecuritiesService classUnderTests;

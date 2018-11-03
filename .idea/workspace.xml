@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="Neue Version Spring Boot 1.5.17">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" afterDir="false" />
+    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/securities.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/securities.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/securities-management/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -136,7 +124,7 @@
           <entry key="html" value="9" />
           <entry key="java" value="138" />
           <entry key="properties" value="2" />
-          <entry key="txt" value="709" />
+          <entry key="txt" value="882" />
           <entry key="xml" value="17" />
         </counts>
       </usages-collector>
@@ -145,7 +133,7 @@
           <entry key="CSS" value="102" />
           <entry key="HTML" value="9" />
           <entry key="JAVA" value="138" />
-          <entry key="PLAIN_TEXT" value="709" />
+          <entry key="PLAIN_TEXT" value="882" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="17" />
         </counts>
@@ -613,57 +601,6 @@
               <item name="microservices" type="462c0819:PsiDirectoryNode" />
               <item name="securities-management" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservices" type="462c0819:PsiDirectoryNode" />
-              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
-              <item name="server-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -685,7 +622,7 @@
     <property name="RequestMappingsPanelWidth2" value="583" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541279597352" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541280371023" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="/usr/share/hunspell/de_DE_frami.dic" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
@@ -804,7 +741,7 @@
       <workItem from="1541015125079" duration="4965000" />
       <workItem from="1541261398214" duration="299000" />
       <workItem from="1541261719136" duration="80000" />
-      <workItem from="1541274988279" duration="4606000" />
+      <workItem from="1541274988279" duration="5379000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -911,11 +848,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541020041411</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt">
+      <created>1541279869150</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1541279869150</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33008000" />
+    <option name="totallyTimeSpent" value="33781000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -929,7 +873,7 @@
   <component name="ToolWindowManager">
     <frame x="1967" y="-2" width="1873" height="1202" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48233047" visible="true" weight="0.30487138" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48233047" visible="true" weight="0.30487138" />
       <window_info id="Structure" order="1" sideWeight="0.51766956" side_tool="true" visible="true" weight="0.30487138" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1030,7 +974,8 @@
     <MESSAGE value="ADOC Dokumentation verbessert" />
     <MESSAGE value="Typos entfernt" />
     <MESSAGE value="Neue Version Spring Boot 1.5.17" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neue Version Spring Boot 1.5.17" />
+    <MESSAGE value="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt" />
+    <option name="LAST_COMMIT_MESSAGE" value="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/package-info.java">
