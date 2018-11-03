@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="Typos entfernt">
+    <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="Neue Version Spring Boot 1.5.17">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/frank.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/config/CommonsConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/config/CommonsConfigurationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Audit.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Audit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/SecuritiesRepositoryParameterizedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/WebSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecuritiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecuritiesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/SecurityNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/securities.html" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/securities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/securities-management/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,28 +86,29 @@
     <session id="478071264">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="0-SNAPSHOT" value="1" />
           <entry key="adoc" value="1" />
+          <entry key="css" value="2" />
           <entry key="ddl" value="1" />
           <entry key="dic" value="1" />
           <entry key="factories" value="4" />
-          <entry key="html" value="2" />
-          <entry key="java" value="84" />
+          <entry key="html" value="12" />
+          <entry key="java" value="97" />
           <entry key="js" value="1" />
           <entry key="properties" value="2" />
           <entry key="sql" value="2" />
-          <entry key="txt" value="1" />
+          <entry key="txt" value="2" />
           <entry key="xml" value="16" />
           <entry key="yml" value="2" />
         </counts>
@@ -115,11 +116,12 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="AsciiDoc" value="1" />
+          <entry key="CSS" value="2" />
           <entry key="Dictionary" value="1" />
-          <entry key="HTML" value="2" />
-          <entry key="JAVA" value="84" />
+          <entry key="HTML" value="12" />
+          <entry key="JAVA" value="97" />
           <entry key="JavaScript" value="1" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="2" />
           <entry key="SQL" value="3" />
           <entry key="UML" value="1" />
@@ -130,16 +132,20 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="31" />
+          <entry key="css" value="102" />
+          <entry key="html" value="9" />
+          <entry key="java" value="138" />
           <entry key="properties" value="2" />
-          <entry key="txt" value="676" />
+          <entry key="txt" value="709" />
           <entry key="xml" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="31" />
-          <entry key="PLAIN_TEXT" value="676" />
+          <entry key="CSS" value="102" />
+          <entry key="HTML" value="9" />
+          <entry key="JAVA" value="138" />
+          <entry key="PLAIN_TEXT" value="709" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="17" />
         </counts>
@@ -157,6 +163,8 @@
       <find>SecuritiesRepository</find>
       <find>audit-heading</find>
       <find>Parameter</find>
+      <find>WithMockUser</find>
+      <find>entriesRepository</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,27 +173,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" />
-        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/SecuritiesManagementApplication.java" />
-        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" />
         <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html" />
-        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/EntriesController.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/EntryTest.java" />
-        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java" />
-        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SimpleViewControllerTest.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/config/DomainsConfigurationTest.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/repositories/EntriesRepositoryTest.java" />
         <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java" />
-        <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java" />
         <option value="$PROJECT_DIR$/securities-management/domains/src/test/java/de/rahn/finances/domains/entities/SecurityTest.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/WebSecurityConfiguration.java" />
@@ -201,6 +201,16 @@
         <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java" />
         <option value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspect.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" />
       </list>
     </option>
   </component>
@@ -598,6 +608,62 @@
               <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
               <item name="microservices" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="server-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -619,7 +685,8 @@
     <property name="RequestMappingsPanelWidth2" value="583" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541019922930" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541279597352" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="/usr/share/hunspell/de_DE_frami.dic" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -632,7 +699,7 @@
     <property name="project.structure.side.proportion" value="0.43057606" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -734,7 +801,10 @@
       <workItem from="1539971707958" duration="221000" />
       <workItem from="1539971947448" duration="304000" />
       <workItem from="1540141356712" duration="179000" />
-      <workItem from="1541015125079" duration="4796000" />
+      <workItem from="1541015125079" duration="4965000" />
+      <workItem from="1541261398214" duration="299000" />
+      <workItem from="1541261719136" duration="80000" />
+      <workItem from="1541274988279" duration="4606000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -827,11 +897,25 @@
       <option name="project" value="LOCAL" />
       <updated>1540141485484</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Typos entfernt">
+      <created>1541019983928</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1541019983928</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Neue Version Spring Boot 1.5.17">
+      <created>1541020041411</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1541020041411</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27854000" />
+    <option name="totallyTimeSpent" value="33008000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -845,14 +929,15 @@
   <component name="ToolWindowManager">
     <frame x="1967" y="-2" width="1873" height="1202" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48710603" visible="true" weight="0.29501915" />
-      <window_info id="Structure" order="1" sideWeight="0.512894" side_tool="true" visible="true" weight="0.29501915" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48233047" visible="true" weight="0.30487138" />
+      <window_info id="Structure" order="1" sideWeight="0.51766956" side_tool="true" visible="true" weight="0.30487138" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5009542" side_tool="true" weight="0.26849315" />
       <window_info id="Web" order="7" sideWeight="0.5019084" side_tool="true" weight="0.26849315" />
+      <window_info anchor="bottom" id="Dependency Viewer" weight="0.3295129" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32919848" />
@@ -863,11 +948,11 @@
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3285578" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919848" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32760268" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32919848" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.3285578" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3282588" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32760268" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" weight="0.3282588" />
-      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32919848" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3285578" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.32760268" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -944,167 +1029,12 @@
     <MESSAGE value="In der Annotation @WebMvcTest den Parameter secure = true entfernt, &#10;dieser Parameter ist default gesetzt, falls Spring Security im Classpath ist." />
     <MESSAGE value="ADOC Dokumentation verbessert" />
     <MESSAGE value="Typos entfernt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Typos entfernt" />
+    <MESSAGE value="Neue Version Spring Boot 1.5.17" />
+    <option name="LAST_COMMIT_MESSAGE" value="Neue Version Spring Boot 1.5.17" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE-2.0.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/MetricsExporterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-245">
-          <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/config/CommonsConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/config/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#741#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/resources/META-INF/spring.factories">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/config/CommonsConfigurationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/test/java/de/rahn/finances/commons/metrics/MetricsExporterServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-159">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/metrics/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/dist/mysql.ddl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-776" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/config/DomainsConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/config/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#773#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntityPackageMarker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
-          <folding>
-            <element signature="e#3605#3606#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#4437#4438#0" expanded="true" />
-            <element signature="e#4457#4458#0" expanded="true" />
-            <element signature="e#4640#4641#0" expanded="true" />
-            <element signature="e#4659#4660#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/EntryType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#854#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
-          <folding>
-            <element signature="e#3366#3367#0" expanded="true" />
-            <element signature="e#3414#3415#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/EntriesRepository.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1114,13 +1044,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#769#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/RepositoryPackageMarker.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1137,22 +1061,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/security/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/security/SpringSecurityAuditorAwareBean.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1238,13 +1150,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#754#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/EntryNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1261,13 +1167,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#820#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/config/ServicesConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1277,13 +1177,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/config/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#772#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/securities/SecuritiesServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1310,12 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1193">
           <caret line="134" column="4" selection-start-line="134" selection-start-column="4" selection-end-line="134" selection-end-column="4" />
-          <folding>
-            <element signature="e#2552#2553#0" expanded="true" />
-            <element signature="e#2587#2588#0" expanded="true" />
-            <element signature="e#3531#3532#0" expanded="true" />
-            <element signature="e#3574#3575#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1323,6 +1211,142 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE-2.0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/SecuritiesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="144" column="25" lean-forward="true" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/ui/EntriesControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-801">
+          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="28" column="157" selection-start-line="28" selection-start-column="157" selection-end-line="28" selection-end-column="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceMetricsAspectTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="177" column="23" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-test/4.2.9.RELEASE/spring-security-test-4.2.9.RELEASE-sources.jar!/org/springframework/security/test/context/support/WithMockUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/entry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="197" column="35" selection-start-line="197" selection-start-column="35" selection-end-line="197" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/security.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/SecuritiesManagementApplicationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/SecurityType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
+          <folding>
+            <element signature="e#2718#2719#0" expanded="true" />
+            <element signature="e#2775#2776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/resources/templates/securities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="31" column="151" selection-start-line="31" selection-start-column="151" selection-end-line="31" selection-end-column="151" />
         </state>
       </provider>
     </entry>

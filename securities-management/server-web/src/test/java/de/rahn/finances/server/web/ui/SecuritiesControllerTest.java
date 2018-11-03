@@ -37,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -107,24 +108,10 @@ public class SecuritiesControllerTest {
 			Pageable pageable = invocation.getArgumentAt(1, Pageable.class);
 
 			if (pageable == null || pageable.getPageNumber() == 0) {
-				for (int i = 0; i < 10; i++) {
-					Security security = new Security();
-					security.setIsin(ISIN1 + i);
-					security.setType(stock);
-					security.setInventory(true);
-
-					securitiesList.add(security);
-				}
+				addTenGeneratedSecurityToSecurities(securitiesList, ISIN1);
 			}
 			if (pageable == null || pageable.getPageNumber() == 1) {
-				for (int i = 0; i < 10; i++) {
-					Security security = new Security();
-					security.setIsin(ISIN2 + i);
-					security.setType(stock);
-					security.setInventory(true);
-
-					securitiesList.add(security);
-				}
+				addTenGeneratedSecurityToSecurities(securitiesList, ISIN2);
 			}
 
 			return new PageImpl<>(securitiesList);
@@ -149,6 +136,21 @@ public class SecuritiesControllerTest {
 			}
 
 			return null;
+		});
+	}
+
+	/**
+	 * Generiere 10 Wertpapiere und hänge sie der Liste an.
+	 * @param securities die Liste
+	 * @param isin die ISIN des Wertpapiers
+	 */
+	private static void addTenGeneratedSecurityToSecurities(List<Security> securities, String isin) {
+		IntStream.range(0, 10).forEach(i -> {
+			Security security = new Security();
+			security.setIsin(isin + i);
+			security.setType(stock);
+			security.setInventory(true);
+			securities.add(security);
 		});
 	}
 

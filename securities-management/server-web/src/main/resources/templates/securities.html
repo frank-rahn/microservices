@@ -85,7 +85,7 @@
 								<td th:text="${security.name}">Firma 1 AG</td>
 								<td th:text="${security.symbol}">A01</td>
 								<td th:text="${security.type.description}">Aktie</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash" /></a></td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" data-toggle="delete" th:attr="data-url=@{/security/__${security.id}__}"><span class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>
 						</tbody>
 					</table>

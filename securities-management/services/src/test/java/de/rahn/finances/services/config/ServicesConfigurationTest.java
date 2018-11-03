@@ -43,7 +43,7 @@ import de.rahn.finances.services.SecurityNotFoundException;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { ServicesConfiguration.class })
-@WithMockUser(roles = { "USER" })
+@WithMockUser
 public class ServicesConfigurationTest {
 
 	/** Security ID */

@@ -1,29 +1,23 @@
 /* ==========================================================================
    Author's custom styles
-   Kopfbereich oben  : #4c1c58
-   Kopfbereich unten : #593662
-   Haupthintergrund  : #fffdf7
+   Kopfbereich oben             : #4c1c58
+   Kopfbereich unten            : #593662
+   Haupthintergrund             : #fffdf7
    Hintergrund der Seitenleiste : #edede7
    Rahmen der Seitenleiste      : #e7e7e7
-   Hintergrund des Fußbereich : #2c2c28
-   Titel und Slogan : #ffffff
-   Schriftfarbe : #301313
-   Linkfarbe    : #9d408d
+   Hintergrund des Fußbereich   : #2c2c28
+   Titel und Slogan             : #ffffff
+   Schriftfarbe                 : #301313
+   Linkfarbe                    : #9d408d
    ========================================================================== */
 
 body {
 	padding-top: 70px;
 }
 
-body,
-body.overlay {
+body {
 	color: #301313;
 	background-color: #fffdf7;
-}
-
-.jumbotron {
-	background-color: #edede7;
-	border-color: #e7e7e7;
 }
 
 .navbar {

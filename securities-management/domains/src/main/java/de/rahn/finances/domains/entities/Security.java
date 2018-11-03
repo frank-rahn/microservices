@@ -195,7 +195,7 @@ public class Security extends Audit {
 	}
 
 	/**
-	 * Ersetze die alte Buchung duch die neue Buchung.
+	 * Ersetze die alte Buchung durch die neue Buchung.
 	 *
 	 * @param oldEntryId die Id der alte Buchung
 	 * @param newEntry die neue Buchung (darf nicht gespeichert sein)

@@ -175,7 +175,7 @@ public class SecuritiesServiceMetricsAspectTest {
 			serviceProxy.save((Security) null);
 			fail("Hier hätte eine Exception geworfen werden sollen");
 		} catch (SecurityNotFoundException expected) {
-			// Erwarted
+			// Erwartet
 		}
 
 		assertThat(counters).hasSize(2);

@@ -100,7 +100,7 @@ public class SecuritiesController {
 	}
 
 	/**
-	 * Zeige die Maske zum erfassen eines Wertpapieres an.
+	 * Zeige die Maske zum erfassen eines Wertpapiers an.
 	 *
 	 * @return das Model mit dem leeren Wertpapier
 	 */
@@ -113,7 +113,7 @@ public class SecuritiesController {
 	}
 
 	/**
-	 * Ermittle das anzuzeigene Wertpapier.
+	 * Ermittle das anzuzeigende Wertpapier.
 	 *
 	 * @param id die Id des Wertpapiers
 	 * @return das Model mit dem Wertpapier
@@ -141,7 +141,7 @@ public class SecuritiesController {
 		}
 
 		try {
-			security = service.save(security);
+			service.save(security);
 		} catch (Exception exception) {
 			LOGGER.error("Fehler beim Speichern eines Wertpapiers", exception);
 			bindingResult.addError(new ObjectError("security", exception.toString()));

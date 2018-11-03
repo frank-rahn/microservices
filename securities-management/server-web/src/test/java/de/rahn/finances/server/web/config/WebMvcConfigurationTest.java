@@ -59,7 +59,7 @@ public class WebMvcConfigurationTest {
 	private SecuritiesService service;
 
 	/**
-	 * Alle Wertpapiere laden, alledings gibt es noch keine.
+	 * Alle Wertpapiere laden, allerdings gibt es noch keine.
 	 */
 	@Test
 	public void loadAllSecurities() {
@@ -69,7 +69,7 @@ public class WebMvcConfigurationTest {
 	}
 
 	/**
-	 * Alle Wertpapiere laden, alledings gibt es noch keine.
+	 * Alle Wertpapiere laden, allerdings gibt es noch keine.
 	 */
 	@Test
 	public void createSecurity() {
