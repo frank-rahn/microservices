@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="465214bf-42af-40c9-b6fa-0836a2a8fdf6" name="Default" comment="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/securities-management/target/" />
@@ -74,13 +75,15 @@
     <session id="478071264">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="18" />
+          <entry key="project.open.time.0" value="3" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.open.time.9" value="4" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -90,15 +93,15 @@
           <entry key="css" value="2" />
           <entry key="ddl" value="1" />
           <entry key="dic" value="1" />
-          <entry key="factories" value="4" />
+          <entry key="factories" value="7" />
           <entry key="html" value="12" />
-          <entry key="java" value="97" />
+          <entry key="java" value="102" />
           <entry key="js" value="1" />
           <entry key="properties" value="2" />
           <entry key="sql" value="2" />
           <entry key="txt" value="2" />
           <entry key="xml" value="16" />
-          <entry key="yml" value="2" />
+          <entry key="yml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -107,15 +110,15 @@
           <entry key="CSS" value="2" />
           <entry key="Dictionary" value="1" />
           <entry key="HTML" value="12" />
-          <entry key="JAVA" value="97" />
+          <entry key="JAVA" value="102" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="2" />
           <entry key="SQL" value="3" />
           <entry key="UML" value="1" />
           <entry key="XML" value="16" />
-          <entry key="YAML" value="2" />
-          <entry key="spring.factories" value="4" />
+          <entry key="YAML" value="3" />
+          <entry key="spring.factories" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -124,7 +127,7 @@
           <entry key="html" value="9" />
           <entry key="java" value="138" />
           <entry key="properties" value="2" />
-          <entry key="txt" value="882" />
+          <entry key="txt" value="912" />
           <entry key="xml" value="17" />
         </counts>
       </usages-collector>
@@ -133,7 +136,7 @@
           <entry key="CSS" value="102" />
           <entry key="HTML" value="9" />
           <entry key="JAVA" value="138" />
-          <entry key="PLAIN_TEXT" value="882" />
+          <entry key="PLAIN_TEXT" value="912" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="17" />
         </counts>
@@ -196,9 +199,9 @@
         <option value="$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/Security.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/test/java/de/rahn/finances/server/web/config/WebMvcConfigurationTest.java" />
-        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" />
         <option value="$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/ui/SecuritiesController.java" />
         <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/config/ServicesConfigurationTest.java" />
+        <option value="$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java" />
       </list>
     </option>
   </component>
@@ -249,9 +252,6 @@
             <id>Code style issuesJava</id>
           </State>
           <State>
-            <id>Google Web Toolkit</id>
-          </State>
-          <State>
             <id>ImportsJava</id>
           </State>
           <State>
@@ -294,11 +294,6 @@
             <id>Threading issuesJava</id>
           </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -587,8 +582,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -600,6 +595,19 @@
               <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
               <item name="microservices" type="462c0819:PsiDirectoryNode" />
               <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="microservices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="microservices" type="462c0819:PsiDirectoryNode" />
+              <item name="securities-management" type="462c0819:PsiDirectoryNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -622,21 +630,21 @@
     <property name="RequestMappingsPanelWidth2" value="583" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541280371023" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542487958996" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="/usr/share/hunspell/de_DE_frami.dic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/securities-management/services/src/main/java/de/rahn/finances/services/config/ServicesConfiguration.java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="options.lastSelected" value="reference.settingsdialog.project.gradle" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.43057606" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -650,7 +658,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in server-web">
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -663,6 +671,54 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in commons" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="commons" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in domains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="domains" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in server-web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server-web" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in services" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="services" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -703,9 +759,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.SecuritiesManagementApplication" />
+      <item itemvalue="JUnit.All in commons" />
+      <item itemvalue="JUnit.All in domains" />
+      <item itemvalue="JUnit.All in services" />
+      <item itemvalue="JUnit.All in server-web" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in server-web" />
+        <item itemvalue="JUnit.All in services" />
+        <item itemvalue="JUnit.All in domains" />
+        <item itemvalue="JUnit.All in commons" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="1" Folder0="/usr/share/hunspell" CustomDictionaries="1" CustomDictionary0="/usr/share/hunspell/de_DE_frami.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SpringBeansView">
+    <option name="showFiles" value="false" />
     <option name="beanDetailsProportion" value="0.3" />
   </component>
   <component name="SvnConfiguration">
@@ -741,7 +813,15 @@
       <workItem from="1541015125079" duration="4965000" />
       <workItem from="1541261398214" duration="299000" />
       <workItem from="1541261719136" duration="80000" />
-      <workItem from="1541274988279" duration="5379000" />
+      <workItem from="1541274988279" duration="6900000" />
+      <workItem from="1541345744138" duration="555000" />
+      <workItem from="1541347143769" duration="16000" />
+      <workItem from="1541356126833" duration="20000" />
+      <workItem from="1541356486914" duration="8000" />
+      <workItem from="1541436914624" duration="116000" />
+      <workItem from="1541437574044" duration="7000" />
+      <workItem from="1542218826854" duration="52000" />
+      <workItem from="1542485587041" duration="2099000" />
     </task>
     <task id="LOCAL-00001" summary="Typo im Target-Name">
       <created>1523213840960</created>
@@ -855,11 +935,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541279869150</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Entferntes Attribut wieder hinzugefügt">
+      <created>1541280580596</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1541280580596</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33781000" />
+    <option name="totallyTimeSpent" value="38175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,15 +960,14 @@
   <component name="ToolWindowManager">
     <frame x="1967" y="-2" width="1873" height="1202" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48233047" visible="true" weight="0.30487138" />
-      <window_info id="Structure" order="1" sideWeight="0.51766956" side_tool="true" visible="true" weight="0.30487138" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4756447" visible="true" weight="0.3355227" />
+      <window_info id="Structure" order="1" sideWeight="0.5243553" side_tool="true" visible="true" weight="0.3355227" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5009542" side_tool="true" weight="0.26849315" />
       <window_info id="Web" order="7" sideWeight="0.5019084" side_tool="true" weight="0.26849315" />
-      <window_info anchor="bottom" id="Dependency Viewer" weight="0.3295129" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32919848" />
@@ -897,7 +983,8 @@
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32760268" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" weight="0.3282588" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3285578" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.32760268" />
+      <window_info active="true" anchor="bottom" id="Messages" order="15" visible="true" weight="0.32760268" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="16" weight="0.3295129" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -975,36 +1062,10 @@
     <MESSAGE value="Typos entfernt" />
     <MESSAGE value="Neue Version Spring Boot 1.5.17" />
     <MESSAGE value="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt" />
-    <option name="LAST_COMMIT_MESSAGE" value="* Typos beseitigt&#10;* Überflüssige Tags entfernt &#10;* Doppelter Code zusammengelegt&#10;* Angabe von Defaultwerten entfernt &#10;* Überflüssiges Attribut beseitigt" />
+    <MESSAGE value="Entferntes Attribut wieder hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Entferntes Attribut wieder hinzugefügt" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/entities/package-info.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/EntriesRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/package-info.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/RepositoryPackageMarker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/repositories/SecuritiesRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="35" column="90" lean-forward="true" selection-start-line="35" selection-start-column="90" selection-end-line="35" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/securities-management/domains/src/main/java/de/rahn/finances/domains/package-info.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1152,13 +1213,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE-2.0.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1208,13 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1281,10 +1328,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
           <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
-          <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2775#2776#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,6 +1335,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="31" column="151" selection-start-line="31" selection-start-column="151" selection-end-line="31" selection-end-column="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/services/src/test/java/de/rahn/finances/services/securities/SecuritiesServiceImplSecurityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/config/package-info.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/resources/META-INF/spring.factories">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="43" lean-forward="true" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/commons/src/main/java/de/rahn/finances/commons/config/CommonsConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/securities-management/server-web/src/main/java/de/rahn/finances/server/web/config/WebSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#5670#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1323,7 +1409,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring (commons)|Spring</last-edited>
+          <last-edited>Spring (server-web)|Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1347,7 +1433,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>10</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1359,7 +1445,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring|services</last-edited>
+          <last-edited>Spring|commons</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
