@@ -40,6 +40,8 @@ import de.rahn.finances.domains.repositories.EntriesRepository;
 import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.SecuritiesService;
 
+import java.util.Optional;
+
 /**
  * Der Test für die Implementierung des Services {@link SecuritiesService}.
  *
@@ -71,7 +73,7 @@ public class SecuritiesServiceImplSecurityTest {
 	 * Initialisiere diesen Test
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		Security security = new Security();
 		security.setId(randomUUID().toString());
 		security.setIsin("DE0000000000");

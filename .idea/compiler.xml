@@ -28,14 +28,7 @@
         <module name="domains" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="commons" target="1.8" />
-      <module name="domains" target="1.8" />
-      <module name="microservices" target="1.8" />
-      <module name="securities-management" target="1.8" />
-      <module name="server-web" target="1.8" />
-      <module name="services" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
