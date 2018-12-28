@@ -40,7 +40,7 @@ public class CommonsConfigurationTest {
 	 */
 	@Test
 	public void testSpringConfiguration() {
-		exporter.exportMetrics();
+		exporter.exportMeters();
 	}
 
 }

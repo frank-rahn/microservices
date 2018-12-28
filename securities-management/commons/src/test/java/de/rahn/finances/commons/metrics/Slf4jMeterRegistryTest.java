@@ -44,7 +44,7 @@ public class Slf4jMeterRegistryTest {
 	private Slf4jMeterRegistry registry;
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_Counter() {
@@ -52,13 +52,13 @@ public class Slf4jMeterRegistryTest {
 		registry.counter(name).increment();
 		registry.counter(name).increment();
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=COUNTER,             name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_Timer() {
@@ -66,13 +66,13 @@ public class Slf4jMeterRegistryTest {
 		registry.timer(name).record(1000, MILLISECONDS);
 		registry.timer(name).record(2000, MILLISECONDS);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=TIMER,               name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_Gauge() {
@@ -80,13 +80,13 @@ public class Slf4jMeterRegistryTest {
 		registry.gauge(name, 1);
 		registry.gauge(name, 2);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_Summary() {
@@ -94,13 +94,13 @@ public class Slf4jMeterRegistryTest {
 		registry.summary(name).record(1);
 		registry.summary(name).record(2);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=DISTRIBUTIONSUMMARY, name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_LongTaskTimer() {
@@ -120,59 +120,59 @@ public class Slf4jMeterRegistryTest {
 			}
 		});
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=LONGTASKTIMER,       name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_TimeGauge() {
 		final String name = "test-timegauge";
 		registry.more().timeGauge(name, emptyList(), "1000", MILLISECONDS, Double::parseDouble);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_FunctionCounter() {
 		final String name = "test-functioncounter";
 		registry.more().counter(name, emptyList(), 1000);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONCOUNTER,     name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_FunctionTimer() {
 		final String name = "test-functiontimer";
 		registry.more().timer(name, emptyList(), "1000", Long::parseLong, Double::parseDouble, MILLISECONDS);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONTIMER,       name=" + name + ", tags=[]"));
 	}
 
 	/**
-	 * Test method for {@link Slf4jMeterRegistry#exportMetrics()}.
+	 * Test method for {@link Slf4jMeterRegistry#exportMeters()}.
 	 */
 	@Test
 	public void testExportMetrics_Other() {
 		final String name = "test-other";
 		Meter.builder(name, OTHER, null).register(registry);
 
-		String[] logs = registry.exportMetrics();
+		String[] logs = registry.exportMeters();
 
 		assertThat(logs).anyMatch(s -> s.startsWith("metric=OTHER,               name=" + name + ", tags=[]"));
 	}
