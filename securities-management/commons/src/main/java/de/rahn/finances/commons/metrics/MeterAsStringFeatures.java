@@ -1,6 +1,8 @@
 package de.rahn.finances.commons.metrics;
 
 import io.micrometer.core.instrument.*;
+import io.micrometer.core.instrument.distribution.HistogramSnapshot;
+import io.micrometer.core.instrument.distribution.ValueAtPercentile;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.apache.commons.lang3.StringUtils.rightPad;
@@ -70,6 +72,30 @@ public interface MeterAsStringFeatures {
 	}
 
 	/**
+	 * Liefere die Perzentil für 50 % und 95 %.
+	 *
+	 * @param snapshot die Momentaufnahme der Verteilungsstatistiken
+	 * @return die Perzentil als Zeichenkette
+	 */
+	default String getSnapshotAsString(HistogramSnapshot snapshot) {
+		ValueAtPercentile[] percentileValues = snapshot.percentileValues();
+
+		double median = Double.NaN, percentile = Double.NaN;
+
+		if (percentileValues != null && percentileValues.length > 0) {
+			for (ValueAtPercentile percentileValue : percentileValues) {
+				if (percentileValue.percentile() == 0.5) {
+					median = percentileValue.value(MILLISECONDS);
+				} else if (percentileValue.percentile() == 0.95) {
+					percentile = percentileValue.value(MILLISECONDS);
+				}
+			}
+		}
+
+		return "median (50 %)=" + median + " ms, percentile (95 %)=" + percentile + " ms";
+	}
+
+	/**
 	 * Liefere den Messwert als Zeichenkette.
 	 *
 	 * @param meter der Messwert
@@ -78,9 +104,7 @@ public interface MeterAsStringFeatures {
 	default String getTimerAsString(Timer meter) {
 		return getMeterName(meter, "TIMER") + ", baseTimeUnit=" + meter.baseTimeUnit() + ", count="
 				+ meter.count() + ", mean=" + meter.mean(MILLISECONDS) + " ms, max=" + meter.max(MILLISECONDS)
-				+ " ms, total-time=" + meter.totalTime(MILLISECONDS) + " ms, median (50 %)="
-				+ meter.percentile(0.5, MILLISECONDS) + " ms, percentile (95 %)=" + meter.percentile(0.95, MILLISECONDS)
-				+ " ms";
+				+ " ms, total-time=" + meter.totalTime(MILLISECONDS) + " ms, " + getSnapshotAsString(meter.takeSnapshot());
 	}
 
 	/**
@@ -114,8 +138,8 @@ public interface MeterAsStringFeatures {
 	 */
 	default String getDistributionSummaryAsString(DistributionSummary meter) {
 		return getMeterName(meter, "DISTRIBUTIONSUMMARY") + ", count=" + meter.count() + ", mean=" + meter.mean()
-				+ ", max=" + meter.max() + ", total-amount=" + meter.totalAmount() + ", median (50%)="
-				+ meter.percentile(0.5) + ", percentile (95 %)=" + meter.percentile(0.95);
+				+ ", max=" + meter.max() + ", total-amount=" + meter.totalAmount() + ", "
+				+ getSnapshotAsString(meter.takeSnapshot());
 	}
 
 	/**
