@@ -48,11 +48,6 @@ public class Slf4jMeterRegistry extends SimpleMeterRegistry implements MeterAsSt
 		return logs;
 	}
 
-	/**
-	 * Liefere die aktuellen Messwerte.
-	 *
-	 * @return die aktuellen Messwerte als Zeichenketten
-	 */
 	@Override
 	public String[] getMetersAsStrings() {
 		return getMeters().stream().map(this::getMeterAsString).sorted(naturalOrder()).toArray(String[]::new);
