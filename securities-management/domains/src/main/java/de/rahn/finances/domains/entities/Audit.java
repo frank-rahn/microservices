@@ -64,7 +64,7 @@ public abstract class Audit {
 	@LastModifiedBy
 	private String lastModifiedBy;
 
-	/* Ab hier generiert: Getter ... */
+	/* Ab hier generiert: Getter und Setter */
 
 	/**
 	 * @return the createDate

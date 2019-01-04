@@ -69,7 +69,7 @@ public class EntryTypeTest {
 	 */
 	@Test
 	public void testGetKeyValueEntries() {
-		Entry<String, String> entry = getKeyValueEntries().stream().findFirst().get();
+		Entry<String, String> entry = getKeyValueEntries().stream().findFirst().orElse(null);
 
 		assertThat(entry, notNullValue());
 		assertThat(entry.getKey(), is("raise"));

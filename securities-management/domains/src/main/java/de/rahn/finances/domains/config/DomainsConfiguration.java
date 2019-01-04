@@ -41,7 +41,7 @@ public class DomainsConfiguration {
 	 * @return Über diese Bean holt sich Spring Data JPA den aktuellen Benutzer
 	 */
 	@Bean
-	public SpringSecurityAuditorAwareBean auditorAwareBean() {
+	SpringSecurityAuditorAwareBean auditorAwareBean() {
 		return new SpringSecurityAuditorAwareBean();
 	}
 

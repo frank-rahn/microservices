@@ -15,14 +15,14 @@
  */
 package de.rahn.finances.domains.entities;
 
+import java.util.AbstractMap.SimpleEntry;
+import java.util.List;
+import java.util.Map.Entry;
+
 import static java.util.Arrays.stream;
 import static java.util.Collections.unmodifiableList;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
-
-import java.util.AbstractMap.SimpleEntry;
-import java.util.List;
-import java.util.Map.Entry;
 
 /**
  * Die Art einer Buchung.
@@ -30,23 +30,31 @@ import java.util.Map.Entry;
  * @author Frank W. Rahn
  */
 public enum EntryType {
-	charges("Gebühren", true), buy("Wertpapier Kauf", true), sell("Wertpapier Verkauf", false), dividend("Dividende", false),
-	interest("Zinsen", false), credit("Sonstige Gutschrift", false), debit("Sonstige Belastung", true),
-	reduce("Bestandsminderung", true), raise("Bestandserhöhung", false);
+	charges("Gebühren", true), buy("Wertpapier Kauf", true),
+	sell("Wertpapier Verkauf", false), dividend("Dividende", false),
+	interest("Zinsen", false), credit("Sonstige Gutschrift", false),
+	debit("Sonstige Belastung", true), reduce("Bestandsminderung", true),
+	raise("Bestandserhöhung", false);
 
-	/** Die Liste der Key-Value-Entries dieser Aufzählung. */
+	/**
+	 * Die Liste der Key-Value-Entries dieser Aufzählung.
+	 */
 	private static final List<Entry<String, String>> ENTRIES = unmodifiableList(
-		stream(values()).sorted(comparing(EntryType::getDescription)).map(EntryType::getListEntry).collect(toList()));
+			stream(values()).sorted(comparing(EntryType::getDescription)).map(EntryType::getListEntry).collect(toList()));
 
-	/** Die Beschreibung der Art der Buchung. */
+	/**
+	 * Die Beschreibung der Art der Buchung.
+	 */
 	private final String description;
 
-	/** Belastet diese Art der Buchung das Konto? */
+	/**
+	 * Belastet diese Art der Buchung das Konto?
+	 */
 	private final boolean expense;
 
 	/**
 	 * @param description die Beschreibung der Art der Buchung
-	 * @param expense Belastet diese Art der Buchung das Konto?
+	 * @param expense     Belastet diese Art der Buchung das Konto?
 	 */
 	EntryType(String description, boolean expense) {
 		this.description = description;
@@ -56,7 +64,7 @@ public enum EntryType {
 	/**
 	 * @param description Die Beschreibung der gesuchten Art der Buchung
 	 * @return die Aufzählung
-	 * @throws NullPointerException falls die <code>description</code> <code>null</code> ist
+	 * @throws NullPointerException     falls die <code>description</code> <code>null</code> ist
 	 * @throws IllegalArgumentException falls keine Aufzählung gefunden wird
 	 */
 	public static EntryType searchType(String description) {

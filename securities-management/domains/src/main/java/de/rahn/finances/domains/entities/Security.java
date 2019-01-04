@@ -95,31 +95,16 @@ public class Security extends Audit {
 	@OrderBy(value = "date DESC")
 	private List<Entry> entries;
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		return reflectionHashCode(this, false);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		return reflectionEquals(this, obj, false);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return reflectionToString(this, MULTI_LINE_STYLE);
@@ -235,7 +220,7 @@ public class Security extends Audit {
 		return removeEntry(getEntry(entryId));
 	}
 
-	/* Ab hier generiert: Setter, Getter, toString, hashCode, equals... */
+	/* Ab hier generiert: Setter und Getter */
 
 	/**
 	 * @return the id

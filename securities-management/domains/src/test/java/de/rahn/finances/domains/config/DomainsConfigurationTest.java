@@ -69,21 +69,11 @@ public class DomainsConfigurationTest {
 		public Validator validator() {
 			return new Validator() {
 
-				/**
-				 * {@inheritDoc}
-				 *
-				 * @see Validator#validate(Object, Errors)
-				 */
 				@Override
 				public void validate(Object target, Errors errors) {
 					// Leer
 				}
 
-				/**
-				 * {@inheritDoc}
-				 *
-				 * @see Validator#supports(Class)
-				 */
 				@Override
 				public boolean supports(Class<?> clazz) {
 					return false;

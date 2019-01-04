@@ -15,26 +15,25 @@
  */
 package de.rahn.finances.domains.repositories;
 
-import static de.rahn.finances.domains.entities.EntryType.buy;
-import static de.rahn.finances.domains.entities.SecurityType.stock;
-import static java.math.RoundingMode.HALF_UP;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.time.LocalDate;
-
+import de.rahn.finances.domains.config.DomainsConfiguration;
+import de.rahn.finances.domains.entities.Entry;
+import de.rahn.finances.domains.entities.Security;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import de.rahn.finances.domains.config.DomainsConfiguration;
-import de.rahn.finances.domains.entities.Entry;
-import de.rahn.finances.domains.entities.Security;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.time.LocalDate;
+
+import static de.rahn.finances.domains.entities.EntryType.buy;
+import static de.rahn.finances.domains.entities.SecurityType.stock;
+import static java.math.RoundingMode.HALF_UP;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests für {@link SecuritiesRepository}
@@ -42,9 +41,8 @@ import de.rahn.finances.domains.entities.Security;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DomainsConfiguration.class,
-	properties = { "logging.level.org.hibernate.type=trace", "spring.jpa.properties.hibernate.format_sql=true" })
-@DataJpaTest
+@ContextConfiguration(classes = {DomainsConfiguration.class})
+@DataJpaTest(properties = {"logging.level.org.hibernate.type=trace", "spring.jpa.properties.hibernate.format_sql=true"})
 public class SecuritiesRepositoryTest {
 
 	private static final MathContext MC = new MathContext(16, HALF_UP);

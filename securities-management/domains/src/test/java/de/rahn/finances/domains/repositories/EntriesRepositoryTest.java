@@ -15,19 +15,18 @@
  */
 package de.rahn.finances.domains.repositories;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-
+import de.rahn.finances.domains.config.DomainsConfiguration;
+import de.rahn.finances.domains.entities.Entry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import de.rahn.finances.domains.config.DomainsConfiguration;
-import de.rahn.finances.domains.entities.Entry;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests für {@link EntriesRepository}
@@ -35,9 +34,8 @@ import de.rahn.finances.domains.entities.Entry;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DomainsConfiguration.class,
-	properties = { "logging.level.org.hibernate.type=trace", "spring.jpa.properties.hibernate.format_sql=true" })
-@DataJpaTest
+@ContextConfiguration(classes = {DomainsConfiguration.class})
+@DataJpaTest(properties = {"logging.level.org.hibernate.type=trace", "spring.jpa.properties.hibernate.format_sql=true"})
 public class EntriesRepositoryTest {
 
 	@Autowired

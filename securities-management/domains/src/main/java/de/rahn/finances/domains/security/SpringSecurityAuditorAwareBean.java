@@ -27,11 +27,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringSecurityAuditorAwareBean implements AuditorAware<String> {
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.springframework.data.domain.AuditorAware#getCurrentAuditor()
-	 */
 	@Override
 	public Optional<String> getCurrentAuditor() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
