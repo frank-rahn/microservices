@@ -54,7 +54,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=COUNTER,             name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=COUNTER,             name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=TIMER,               name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=TIMER,               name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=DISTRIBUTIONSUMMARY, name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=DISTRIBUTIONSUMMARY, name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=LONGTASKTIMER,       name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=LONGTASKTIMER,       name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=GAUGE,               name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONCOUNTER,     name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONCOUNTER,     name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONTIMER,       name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=FUNCTIONTIMER,       name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class Slf4jMeterRegistryTest {
 
 		String[] logs = registry.exportMeters();
 
-		assertThat(logs).anyMatch(s -> s.startsWith("metric=OTHER,               name=" + name + ", tags=[]"));
+		assertThat(logs).anyMatch(s -> s.startsWith("metric=OTHER,               name=" + name + ", tags=[{app=securities-management}]"));
 	}
 
 }

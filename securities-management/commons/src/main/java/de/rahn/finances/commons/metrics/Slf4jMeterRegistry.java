@@ -15,15 +15,18 @@
  */
 package de.rahn.finances.commons.metrics;
 
-import static java.lang.String.join;
-import static java.util.Comparator.naturalOrder;
-import static org.slf4j.LoggerFactory.getLogger;
-
+import io.micrometer.core.instrument.Clock;
+import io.micrometer.core.instrument.step.StepMeterRegistry;
+import io.micrometer.core.instrument.step.StepRegistryConfig;
 import org.slf4j.Logger;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import static java.util.Comparator.naturalOrder;
+import static org.apache.commons.lang3.StringUtils.join;
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * Diese Komponente exportiert die Messwerte periodisch nach SLF4J.
@@ -31,21 +34,63 @@ import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
  * @author Frank W. Rahn
  */
 @Component
-public class Slf4jMeterRegistry extends SimpleMeterRegistry implements MeterAsStringFeatures {
+public class Slf4jMeterRegistry extends StepMeterRegistry implements MeterAsStringFeatures {
 
 	private static final Logger LOGGER = getLogger("reporting-metrics");
 
-	/**
-	 * Schreibe jede volle Stunde die aktuellen Messwerte in den Log.
-	 */
-	@Scheduled(cron = "0 0 * * * ?")
-	public String[] exportMeters() {
-		final String[] logs = getMetersAsStrings();
+	public Slf4jMeterRegistry() {
+		this(Clock.SYSTEM);
+	}
 
-		LOGGER.info("\n***** Metrics Report Start *****\n" + join("\n", logs)
+	public Slf4jMeterRegistry(Clock micrometerClock) {
+		super(new StepRegistryConfig() {
+			@Override
+			public String prefix() {
+				return "slf4j";
+			}
+
+			@Override
+			public String get(String key) {
+				return null;
+			}
+
+			@Override
+			public Duration step() {
+				return Duration.ofHours(1);
+			}
+		}, micrometerClock);
+	}
+
+
+	@Override
+	protected TimeUnit getBaseTimeUnit() {
+		return TimeUnit.SECONDS;
+	}
+
+	/**
+	 * Schreibe die Metriken in das Log.
+	 */
+	public final String[] exportMeters() {
+		return publishMeters();
+	}
+
+	/**
+	 * Schreibe die Metriken in das Log.
+	 *
+	 * @return die Liste der Metriken als Zeichenkette
+	 */
+	protected String[] publishMeters() {
+		String[] metersAsStrings = getMetersAsStrings();
+
+		LOGGER.info("\n***** Metrics Report Start *****\n" + join(metersAsStrings, "\n")
 				+ "\n***** Metrics Report End *******");
 
-		return logs;
+		return metersAsStrings;
+	}
+
+	@Override
+	protected final void publish() {
+		publishMeters();
 	}
 
 	@Override

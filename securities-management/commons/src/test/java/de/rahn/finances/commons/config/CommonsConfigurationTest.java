@@ -15,13 +15,13 @@
  */
 package de.rahn.finances.commons.config;
 
+import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
 
 /**
  * Test der Spring Configuration.
@@ -29,7 +29,7 @@ import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { CommonsConfiguration.class })
+@SpringBootTest(classes = { CommonsConfiguration.class, MetricsAutoConfiguration.class})
 public class CommonsConfigurationTest {
 
 	@Autowired

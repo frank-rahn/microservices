@@ -15,11 +15,12 @@
  */
 package de.rahn.finances.commons.config;
 
+import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
+import io.micrometer.core.instrument.Clock;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
-
-import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
 
 /**
  * Die Spring Configuration für die Utilities.
@@ -27,15 +28,22 @@ import de.rahn.finances.commons.metrics.Slf4jMeterRegistry;
  * @author Frank W. Rahn
  */
 @Configuration
-@EnableScheduling
 public class CommonsConfiguration {
+
+	/**
+	 * @return ein Bean, welches die {@link MeterRegistry}s konfiguriert
+	 */
+	@Bean
+	MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
+		return registry -> registry.config().commonTags("app", "securities-management");
+	}
 
 	/**
 	 * @return den Exporter für die Metriken
 	 */
 	@Bean
-	public Slf4jMeterRegistry slf4jMeterRegistry() {
-		return new Slf4jMeterRegistry();
+	MeterRegistry slf4jMeterRegistry(Clock micrometerClock) {
+		return new Slf4jMeterRegistry(micrometerClock);
 	}
 
 }

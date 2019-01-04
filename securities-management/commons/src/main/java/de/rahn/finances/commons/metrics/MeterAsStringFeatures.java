@@ -4,7 +4,9 @@ import io.micrometer.core.instrument.*;
 import io.micrometer.core.instrument.distribution.HistogramSnapshot;
 import io.micrometer.core.instrument.distribution.ValueAtPercentile;
 
+import static java.util.Comparator.naturalOrder;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.rightPad;
 
 public interface MeterAsStringFeatures {
@@ -153,6 +155,27 @@ public interface MeterAsStringFeatures {
 	}
 
 	/**
+	 * Liefere den Tag als Zeichenkette.
+	 *
+	 * @param tag der Tag
+	 * @return der Tag als Zeichenkette
+	 */
+	default String getTagAsString(Tag tag) {
+		return '{' + tag.getKey() + '=' + tag.getValue() + '}';
+	}
+
+	/**
+	 * Liefere die Tags als Zeichenkette.
+	 *
+	 * @param meter der Messwert mit den Tags
+	 * @return die Tags als Zeichenkette
+	 */
+	default String getTagsAsString(Meter meter) {
+		String[] tags = meter.getId().getTags().stream().map(this::getTagAsString).sorted(naturalOrder()).toArray(String[]::new);
+		return "tags=[" + join(tags,',') + ']';
+	}
+
+	/**
 	 * Ermittel den Namen des Messwertes.
 	 *
 	 * @param meter  der Messwert
@@ -160,7 +183,7 @@ public interface MeterAsStringFeatures {
 	 * @return der Name des Messwertes
 	 */
 	default String getMeterName(Meter meter, String prefix) {
-		return "metric=" + rightPad(prefix + ",", 20) + " name=" + meter.getId().getName() + ", tags=" + meter.getId().getTags();
+		return "metric=" + rightPad(prefix + ",", 20) + " name=" + meter.getId().getName() + ", " + getTagsAsString(meter);
 	}
 
 }
