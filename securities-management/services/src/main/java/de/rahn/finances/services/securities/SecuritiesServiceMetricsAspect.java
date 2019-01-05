@@ -23,7 +23,6 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import de.rahn.finances.services.SecuritiesService;
@@ -58,8 +57,18 @@ public class SecuritiesServiceMetricsAspect {
 	public static final String PREFIX_METRICNAME_ERROR = "counter.securities.services.securities.failure.";
 
 	/** Spring Boot Service für Counter und Gauge. */
-	@Autowired
 	private MeterRegistry meterRegistry;
+
+	/**
+	 * Konstuktor dieses Aspekts.
+	 *
+	 * @param meterRegistry Spring Boot Service für Counter und Gauge
+	 */
+	public SecuritiesServiceMetricsAspect(MeterRegistry meterRegistry) {
+		super();
+
+		this.meterRegistry = meterRegistry;
+	}
 
 	/**
 	 * Für den Zugriff auf die Schnittstelle.

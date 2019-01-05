@@ -26,18 +26,14 @@ public class EntryNotFoundException extends RuntimeException {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 
-	private static final String MESSAGE = "Zur ID '%s' wurde keine Buchung gefunden.";
-
-	private static String format(String id) {
-		return String.format(MESSAGE, id);
-	}
+	private static final String MESSAGE = "Zur Id '%s' wurde keine Buchung gefunden.";
 
 	/**
 	 * @param id Die ID einer Buchung, welche nicht gefunden wurde
 	 * @see RuntimeException#RuntimeException(String)
 	 */
 	public EntryNotFoundException(String id) {
-		super(format(id));
+		super(String.format(MESSAGE, id));
 	}
 
 }

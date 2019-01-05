@@ -15,32 +15,28 @@
  */
 package de.rahn.finances.services.securities;
 
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.repositories.SecuritiesRepository;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.config.ServicesConfiguration;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Optional;
+
 import static de.rahn.finances.domains.entities.SecurityType.stock;
 import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Mockito.when;
-import static org.springframework.context.annotation.FilterType.REGEX;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.domains.repositories.EntriesRepository;
-import de.rahn.finances.domains.repositories.SecuritiesRepository;
-import de.rahn.finances.services.SecuritiesService;
-
-import java.util.Optional;
 
 /**
  * Der Test für die Implementierung des Services {@link SecuritiesService}.
@@ -48,43 +44,32 @@ import java.util.Optional;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = {ServicesConfiguration.class})
+@DataJpaTest
 public class SecuritiesServiceImplSecurityTest {
 
 	@MockBean
 	private SecuritiesRepository securitiesRepository;
 
-	@MockBean
-	private EntriesRepository entriesRepository;
-
 	@Autowired
 	private SecuritiesService classUnderTests;
 
-	private Optional<Security> testSecurity;
-
-	@TestConfiguration
-	@ComponentScan(basePackageClasses = { ServicePackageMarker.class },
-		excludeFilters = { @Filter(type = REGEX, pattern = { ".*Aspect" }) })
-	@EnableGlobalMethodSecurity(prePostEnabled = true)
-	static class Config {
-		// Leer
-	}
+	private Security testSecurity;
 
 	/**
 	 * Initialisiere diesen Test
 	 */
 	@Before
 	public void setUp() {
-		Security security = new Security();
-		security.setId(randomUUID().toString());
-		security.setIsin("DE0000000000");
-		security.setWkn("000000");
-		security.setSymbol("ABC");
-		security.setName("ABC AG");
-		security.setType(stock);
+		testSecurity = new Security();
+		testSecurity.setId(randomUUID().toString());
+		testSecurity.setIsin("DE0000000000");
+		testSecurity.setWkn("000000");
+		testSecurity.setSymbol("ABC");
+		testSecurity.setName("ABC AG");
+		testSecurity.setType(stock);
 
-		testSecurity = Optional.of(security);
-
-		when(securitiesRepository.findById(security.getId())).thenReturn(testSecurity);
+		when(securitiesRepository.findById(testSecurity.getId())).thenReturn(Optional.of(testSecurity));
 	}
 
 	/**
@@ -93,18 +78,18 @@ public class SecuritiesServiceImplSecurityTest {
 	@Test
 	@WithMockUser
 	public void testGetSecurityWithRoleUser() {
-		Security security = classUnderTests.getSecurity(testSecurity.get().getId());
+		Security security = classUnderTests.getSecurity(testSecurity.getId());
 
-		assertThat(security).isNotNull().isEqualTo(testSecurity.get());
+		assertThat(security).isNotNull().isEqualTo(testSecurity);
 	}
 
 	/**
 	 * Test method for {@link SecuritiesServiceImpl#getSecurity(String)}.
 	 */
 	@Test(expected = AccessDeniedException.class)
-	@WithMockUser(roles = { "Blubber" })
+	@WithMockUser(roles = {"Blubber"})
 	public void testGetSecurityWithRoleBlubber() {
-		classUnderTests.getSecurity(testSecurity.get().getId());
+		classUnderTests.getSecurity(testSecurity.getId());
 
 		fail("Hier hätte eine Exception geworfen werden müssen");
 	}

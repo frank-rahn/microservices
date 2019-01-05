@@ -15,28 +15,14 @@
  */
 package de.rahn.finances.services.securities;
 
-import static de.rahn.finances.domains.entities.SecurityType.stock;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_CALL;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_CALLS;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_ERROR;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_ERRORS;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_EVENTS;
-import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.PREFIX_METRICNAME_TIMER;
-import static java.util.UUID.randomUUID;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
@@ -45,12 +31,18 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.services.SecuritiesService;
-import de.rahn.finances.services.SecurityNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
-import io.micrometer.core.instrument.Counter;
-import io.micrometer.core.instrument.MeterRegistry;
+import static de.rahn.finances.domains.entities.SecurityType.stock;
+import static de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect.*;
+import static java.util.UUID.randomUUID;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
 
 /**
  * Der Test für den Aspekt {@link SecuritiesServiceMetricsAspect}.
@@ -66,36 +58,38 @@ public class SecuritiesServiceMetricsAspectTest {
 	@Mock
 	private MeterRegistry meterRegistry;
 
-	@InjectMocks
-	private SecuritiesServiceMetricsAspect classUnderTests = new SecuritiesServiceMetricsAspect();
+	private SecuritiesServiceMetricsAspect classUnderTests;
 
 	private SecuritiesService serviceProxy;
 
-	private final Security testSecurity = new Security();
+	private Security testSecurity;
 
-	private final List<String> counters = new ArrayList<>();
+	private List<String> counters;
 
-	private final List<String> gauges = new ArrayList<>();
+	private List<String> gauges;
 
 	/**
 	 * Initialisierung
 	 */
 	@Before
 	public void setUp() {
-		counters.clear();
-		gauges.clear();
+		counters = new ArrayList<>();
+		gauges = new ArrayList<>();
 
-		AspectJProxyFactory factory = new AspectJProxyFactory(service);
-		factory.addAspect(classUnderTests);
+		classUnderTests = new SecuritiesServiceMetricsAspect(meterRegistry);
 
-		serviceProxy = factory.getProxy();
-
+		testSecurity = new Security();
 		testSecurity.setId(randomUUID().toString());
 		testSecurity.setIsin("DE0000000000");
 		testSecurity.setWkn("000000");
 		testSecurity.setSymbol("ABC");
 		testSecurity.setName("ABC AG");
 		testSecurity.setType(stock);
+
+		AspectJProxyFactory factory = new AspectJProxyFactory(service);
+		factory.addAspect(classUnderTests);
+
+		serviceProxy = factory.getProxy();
 
 		List<Security> allSecurity = new ArrayList<>();
 		allSecurity.add(testSecurity);
@@ -125,12 +119,10 @@ public class SecuritiesServiceMetricsAspectTest {
 					return 0;
 				}
 			};
-
 		}).when(meterRegistry).counter(anyString());
 		doAnswer(invocation -> {
 			gauges.add(invocation.getArgument(0));
 			return null;
-
 		}).when(meterRegistry).gauge(anyString(), any());
 	}
 

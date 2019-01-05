@@ -28,16 +28,12 @@ public class SecurityNotFoundException extends RuntimeException {
 
 	private static final String MESSAGE = "Zur ID '%s' wurde kein Wertpapier gefunden.";
 
-	private static String format(String id) {
-		return String.format(MESSAGE, id);
-	}
-
 	/**
 	 * @param id Die ID des Wertpapiers, welches nicht gefunden wurde
 	 * @see RuntimeException#RuntimeException(String)
 	 */
 	public SecurityNotFoundException(String id) {
-		super(format(id));
+		super(String.format(MESSAGE, id));
 	}
 
 }

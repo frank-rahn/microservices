@@ -15,10 +15,18 @@
  */
 package de.rahn.finances.services.config;
 
-import org.springframework.context.annotation.ComponentScan;
+import de.rahn.finances.domains.config.DomainsConfiguration;
+import de.rahn.finances.domains.repositories.EntriesRepository;
+import de.rahn.finances.domains.repositories.SecuritiesRepository;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.securities.SecuritiesServiceImpl;
+import de.rahn.finances.services.securities.SecuritiesServiceMetricsAspect;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import de.rahn.finances.services.securities.ServicePackageMarker;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
  * Die Spring Configuration für die Services.
@@ -26,7 +34,30 @@ import de.rahn.finances.services.securities.ServicePackageMarker;
  * @author Frank W. Rahn
  */
 @Configuration
-@ComponentScan(basePackageClasses = { ServicePackageMarker.class })
+@Import({DomainsConfiguration.class})
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ServicesConfiguration {
-	// Leer
+
+	/**
+	 * @param securitiesRepository Das Repository für die Wertpapiere
+	 * @param entriesRepository    Das Repository für die Buchungen
+	 * @return Das Bean zum Service {@link SecuritiesService}
+	 */
+	@Bean
+	SecuritiesService securitiesService(SecuritiesRepository securitiesRepository, EntriesRepository entriesRepository) {
+		return new SecuritiesServiceImpl(securitiesRepository, entriesRepository);
+	}
+
+	/**
+	 * Der Aspekt zum einsammeln der Daten für die Metriken.
+	 *
+	 * @param meterRegistry Das Spring Boot Bean für die Metriken
+	 * @return Das Bean des Aspekt
+	 */
+	@Bean
+	@ConditionalOnBean(MeterRegistry.class)
+	SecuritiesServiceMetricsAspect securitiesServiceMetricsAspect(MeterRegistry meterRegistry) {
+		return new SecuritiesServiceMetricsAspect(meterRegistry);
+	}
+
 }

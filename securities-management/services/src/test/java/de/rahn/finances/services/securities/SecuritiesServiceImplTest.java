@@ -69,28 +69,30 @@ public class SecuritiesServiceImplTest {
 
 	private SecuritiesServiceImpl classUnderTests;
 
-	private Optional<Security> testSecurity;
+	private Security testSecurity;
 
-	private Optional<Entry> testEntry;
+	private Entry testEntry;
 
 	/**
 	 * Initialisierung
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		classUnderTests = new SecuritiesServiceImpl(securitiesRepository, entriesRepository);
 
-		Security security = new Security();
-		security.setId(randomUUID().toString());
-		security.setIsin("DE0000000000");
-		security.setWkn("000000");
-		security.setSymbol("ABC");
-		security.setName("ABC AG");
-		security.setType(stock);
+		testSecurity = new Security();
+		testSecurity.setId(randomUUID().toString());
+		testSecurity.setIsin("DE0000000000");
+		testSecurity.setWkn("000000");
+		testSecurity.setSymbol("ABC");
+		testSecurity.setName("ABC AG");
+		testSecurity.setType(stock);
 
-		testSecurity = Optional.of(security);
+		testEntry = new Entry();
+		testEntry.setId(randomUUID().toString());
+		testEntry.setType(buy);
 
-		List<Security> allSecurity = singletonList(security);
+		List<Security> allSecurity = singletonList(testSecurity);
 
 		PageImpl<Security> pageable1 = new PageImpl<>(allSecurity, PageRequest.of(0, 1), allSecurity.size() + 1);
 		PageImpl<Security> pageable2 = new PageImpl<>(emptyList(), PageRequest.of(1, 1), allSecurity.size() + 1);
@@ -99,30 +101,24 @@ public class SecuritiesServiceImplTest {
 		when(securitiesRepository.findAll()).thenReturn(allSecurity);
 
 		when(securitiesRepository.findById(anyString())).thenReturn(Optional.empty());
-		when(securitiesRepository.findById((String) null)).thenThrow(new IllegalArgumentException());
-		when(securitiesRepository.findById(security.getId())).thenReturn(testSecurity);
+		when(securitiesRepository.findById(null)).thenThrow(new IllegalArgumentException());
+		when(securitiesRepository.findById(testSecurity.getId())).thenReturn(Optional.of(testSecurity));
 
 		when(securitiesRepository.findByInventoryOrderByIsin(any(Pageable.class), eq(true))).thenReturn(pageable2);
 		when(securitiesRepository.findByInventoryOrderByIsin(null, true)).thenReturn(pageable1);
 		when(securitiesRepository.findByInventoryOrderByIsin(zeroPage, true)).thenReturn(pageable3);
 		when(securitiesRepository.findByInventoryAndTypeOrderByIsin(isNull(), eq(false), eq(stock))).thenReturn(pageable1);
 
-		when(securitiesRepository.save(security)).thenReturn(security);
+		when(securitiesRepository.save(testSecurity)).thenReturn(testSecurity);
 
-		doThrow(new IllegalArgumentException()).when(securitiesRepository).delete((Security) null);
-		doNothing().when(securitiesRepository).delete(security);
-
-		Entry entry = new Entry();
-		entry.setId(randomUUID().toString());
-		entry.setType(buy);
-
-		testEntry = Optional.of(entry);
+		doThrow(new IllegalArgumentException()).when(securitiesRepository).delete(null);
+		doNothing().when(securitiesRepository).delete(testSecurity);
 
 		when(entriesRepository.findById(anyString())).thenReturn(Optional.empty());
-		when(entriesRepository.findById((String) null)).thenThrow(new IllegalArgumentException());
-		when(entriesRepository.findById(entry.getId())).thenReturn(testEntry);
+		when(entriesRepository.findById(null)).thenThrow(new IllegalArgumentException());
+		when(entriesRepository.findById(testEntry.getId())).thenReturn(Optional.of(testEntry));
 
-		when(entriesRepository.save(entry)).thenReturn(entry);
+		when(entriesRepository.save(testEntry)).thenReturn(testEntry);
 	}
 
 	/**
@@ -132,7 +128,7 @@ public class SecuritiesServiceImplTest {
 	public void testGetSecurities() {
 		List<Security> allSecurity = classUnderTests.getSecurities();
 
-		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity.get());
+		assertThat(allSecurity).isNotNull().hasSize(1).contains(testSecurity);
 	}
 
 	/**
@@ -160,9 +156,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testGetSecurity_id_known() {
-		Security security = classUnderTests.getSecurity(testSecurity.get().getId());
+		Security security = classUnderTests.getSecurity(testSecurity.getId());
 
-		assertThat(security).isNotNull().isEqualTo(testSecurity.get());
+		assertThat(security).isNotNull().isEqualTo(testSecurity);
 	}
 
 	/**
@@ -174,7 +170,7 @@ public class SecuritiesServiceImplTest {
 
 		assertThat(page).isNotNull();
 		assertThat(page.getNumberOfElements()).isEqualTo(1);
-		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity.get());
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
 
 		Pageable pageable = page.nextPageable();
 		assertThat(pageable).isNotNull();
@@ -197,7 +193,7 @@ public class SecuritiesServiceImplTest {
 		page = classUnderTests.getSecurities(false, stock, null);
 		assertThat(page).isNotNull();
 		assertThat(page.getNumberOfElements()).isEqualTo(1);
-		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity.get());
+		assertThat(page.getContent()).isNotNull().hasSize(1).contains(testSecurity);
 	}
 
 	/**
@@ -205,9 +201,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveSecurity() {
-		Security security = classUnderTests.save(testSecurity.get());
+		Security security = classUnderTests.save(testSecurity);
 
-		assertThat(security).isEqualTo(testSecurity.get());
+		assertThat(security).isEqualTo(testSecurity);
 	}
 
 	/**
@@ -225,7 +221,7 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testDelete_with() {
-		classUnderTests.delete(testSecurity.get());
+		classUnderTests.delete(testSecurity);
 	}
 
 	/**
@@ -233,9 +229,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testGetEntry_id_known() {
-		Entry entry = classUnderTests.getEntry(testEntry.get().getId());
+		Entry entry = classUnderTests.getEntry(testEntry.getId());
 
-		assertThat(entry).isNotNull().isEqualTo(testEntry.get());
+		assertThat(entry).isNotNull().isEqualTo(testEntry);
 	}
 
 	/**
@@ -263,9 +259,9 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveEntry_1() {
-		Entry entry = classUnderTests.save(testEntry.get());
+		Entry entry = classUnderTests.save(testEntry);
 
-		assertThat(entry).isEqualTo(testEntry.get());
+		assertThat(entry).isEqualTo(testEntry);
 	}
 
 	/**
@@ -273,11 +269,10 @@ public class SecuritiesServiceImplTest {
 	 */
 	@Test
 	public void testSaveEntry_2() {
-		Entry saveEntry = testEntry.get();
-		saveEntry.setId(null);
-		Entry savedEntry = classUnderTests.save(saveEntry);
+		testEntry.setId(null);
+		Entry savedEntry = classUnderTests.save(testEntry);
 
-		assertThat(savedEntry).isEqualTo(saveEntry);
+		assertThat(savedEntry).isEqualTo(testEntry);
 	}
 
 }

@@ -15,28 +15,26 @@
  */
 package de.rahn.finances.services.config;
 
-import static org.junit.rules.ExpectedException.none;
-import static org.mockito.Mockito.when;
-
-import java.util.Optional;
-
+import de.rahn.finances.domains.repositories.EntriesRepository;
+import de.rahn.finances.domains.repositories.SecuritiesRepository;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import de.rahn.finances.domains.repositories.EntriesRepository;
-import de.rahn.finances.domains.repositories.SecuritiesRepository;
-import de.rahn.finances.services.SecuritiesService;
-import de.rahn.finances.services.SecurityNotFoundException;
+import java.util.Optional;
 
-import io.micrometer.core.instrument.MeterRegistry;
+import static org.junit.rules.ExpectedException.none;
+import static org.mockito.Mockito.when;
 
 /**
  * Test der Spring Configuration.
@@ -44,24 +42,21 @@ import io.micrometer.core.instrument.MeterRegistry;
  * @author Frank W. Rahn
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { ServicesConfiguration.class })
+@ContextConfiguration(classes = {ServicesConfiguration.class})
+@DataJpaTest
 @WithMockUser
 public class ServicesConfigurationTest {
 
-	/** Security ID */
+	/**
+	 * Security ID
+	 */
 	private static final String ID = "4711";
 
 	@Rule
 	public final ExpectedException thrown = none();
 
 	@MockBean
-	public SecuritiesRepository securitiesRepository;
-
-	@MockBean
-	public EntriesRepository entriesRepository;
-
-	@MockBean
-	public MeterRegistry meterRegistry;
+	private SecuritiesRepository securitiesRepository;
 
 	@Autowired
 	private SecuritiesService service;

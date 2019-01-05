@@ -12,21 +12,6 @@
  */
 package de.rahn.finances.services.securities;
 
-import static javax.transaction.Transactional.TxType.REQUIRED;
-import static javax.transaction.Transactional.TxType.SUPPORTS;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Service;
-
 import de.rahn.finances.domains.entities.Entry;
 import de.rahn.finances.domains.entities.Security;
 import de.rahn.finances.domains.entities.SecurityType;
@@ -35,6 +20,18 @@ import de.rahn.finances.domains.repositories.SecuritiesRepository;
 import de.rahn.finances.services.EntryNotFoundException;
 import de.rahn.finances.services.SecuritiesService;
 import de.rahn.finances.services.SecurityNotFoundException;
+import org.springframework.context.annotation.Description;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 /**
  * Die Implementierung des {@link SecuritiesService}.
@@ -52,9 +49,11 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 	private final EntriesRepository entriesRepository;
 
 	/**
-	 * Konstruktor.
+	 * Konstruktor des Services.
+	 *
+	 * @param securitiesRepository Das Repository für die Wertpapiere
+	 * @param entriesRepository    Das Repository der Buchungen
 	 */
-	@Autowired
 	public SecuritiesServiceImpl(SecuritiesRepository securitiesRepository, EntriesRepository entriesRepository) {
 		super();
 
@@ -62,31 +61,16 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 		this.entriesRepository = entriesRepository;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#getSecurities()
-	 */
 	@Override
 	public List<Security> getSecurities() {
 		return securitiesRepository.findAll();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#getSecurity(String)
-	 */
 	@Override
 	public Security getSecurity(String id) {
 		return securitiesRepository.findById(id).orElseThrow(() -> new SecurityNotFoundException(id));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#getSecurities(boolean, SecurityType, Pageable)
-	 */
 	@Override
 	public Page<Security> getSecurities(boolean inventory, SecurityType type, Pageable pageable) {
 		Page<Security> page;
@@ -98,7 +82,7 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 
 		if (pageable != null) {
 			if (page.getTotalPages() == 0 && pageable.getPageNumber() > 0
-				|| page.getTotalPages() != 0 && page.getTotalPages() <= pageable.getPageNumber()) {
+					|| page.getTotalPages() != 0 && page.getTotalPages() <= pageable.getPageNumber()) {
 				// Angeforderte Page außerhalb des zulässigen Bereiches
 				int maxPage = page.getTotalPages() == 0 ? 0 : page.getTotalPages() - 1;
 				return getSecurities(inventory, type, PageRequest.of(maxPage, pageable.getPageSize(), pageable.getSort()));
@@ -108,44 +92,24 @@ public class SecuritiesServiceImpl implements SecuritiesService {
 		return page;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#save(Security)
-	 */
 	@Override
 	@Transactional(REQUIRED)
 	public Security save(Security security) {
 		return securitiesRepository.save(security);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#delete(Security)
-	 */
 	@Override
 	@Transactional(REQUIRED)
 	public void delete(Security security) {
 		securitiesRepository.delete(security);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#getEntry(java.lang.String)
-	 */
 	@Override
 	@Transactional(REQUIRED)
 	public Entry getEntry(String id) {
 		return entriesRepository.findById(id).orElseThrow(() -> new EntryNotFoundException(id));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see SecuritiesService#save(Entry)
-	 */
 	@Override
 	@Transactional(REQUIRED)
 	public Entry save(Entry entry) {
