@@ -42,11 +42,6 @@ import de.rahn.finances.services.SecuritiesService;
 @EnableSpringDataWebSupport
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see WebMvcConfigurer#addViewControllers(ViewControllerRegistry)
-	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
@@ -54,11 +49,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		registry.addViewController("/login").setViewName("login");
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see WebMvcConfigurer#addArgumentResolvers(List)
-	 */
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();

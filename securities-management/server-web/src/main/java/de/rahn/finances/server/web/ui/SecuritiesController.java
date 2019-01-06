@@ -15,15 +15,10 @@
  */
 package de.rahn.finances.server.web.ui;
 
-import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
-import static org.slf4j.LoggerFactory.getLogger;
-import static org.springframework.http.ResponseEntity.noContent;
-
-import java.util.List;
-import java.util.Map.Entry;
-
-import javax.validation.Valid;
-
+import de.rahn.finances.domains.entities.Security;
+import de.rahn.finances.domains.entities.SecurityType;
+import de.rahn.finances.services.SecuritiesService;
+import de.rahn.finances.services.SecurityNotFoundException;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
@@ -33,17 +28,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import de.rahn.finances.domains.entities.Security;
-import de.rahn.finances.domains.entities.SecurityType;
-import de.rahn.finances.services.SecuritiesService;
-import de.rahn.finances.services.SecurityNotFoundException;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map.Entry;
+
+import static de.rahn.finances.domains.entities.SecurityType.getKeyValueEntries;
+import static org.slf4j.LoggerFactory.getLogger;
+import static org.springframework.http.ResponseEntity.noContent;
 
 /**
  * Der Controller für die Verwaltung der Wertpapiere.
@@ -79,7 +72,7 @@ public class SecuritiesController {
 	 */
 	@GetMapping(path = "/securities")
 	public String securities(@RequestParam(name = "inventory", defaultValue = "true") boolean inventory, Pageable pageable,
-		Model model) {
+	                         Model model) {
 		LOGGER.info("GetRequest: securities({}, {})", inventory, pageable);
 
 		model.addAttribute("inventory", inventory).addAttribute("page", service.getSecurities(inventory, pageable));
@@ -91,11 +84,11 @@ public class SecuritiesController {
 	 */
 	@GetMapping(path = "/securities/{type}")
 	public String securities(@PathVariable("type") SecurityType type,
-		@RequestParam(name = "inventory", required = false) boolean inventory, Pageable pageable, Model model) {
+	                         @RequestParam(name = "inventory", required = false) boolean inventory, Pageable pageable, Model model) {
 		LOGGER.info("GetRequest: securities({}, {}, {})", type, inventory, pageable);
 
 		model.addAttribute("inventory", inventory).addAttribute("type", type).addAttribute("page",
-			service.getSecurities(inventory, type, pageable));
+				service.getSecurities(inventory, type, pageable));
 		return "securities";
 	}
 

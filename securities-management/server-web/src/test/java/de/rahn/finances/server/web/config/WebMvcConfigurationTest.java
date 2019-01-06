@@ -29,6 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import de.rahn.finances.domains.entities.Security;
@@ -41,6 +42,7 @@ import de.rahn.finances.services.SecuritiesService;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SecuritiesManagementApplication.class, webEnvironment = MOCK)
+@WithMockUser
 public class WebMvcConfigurationTest {
 
 	/** SYMBOL */

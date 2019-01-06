@@ -53,7 +53,7 @@ import de.rahn.finances.services.EntryNotFoundException;
 import de.rahn.finances.services.SecuritiesService;
 
 /**
- * Einen Test für den {@link SecuritiesController}.
+ * Einen Test für den {@link EntriesController}.
  *
  * @author Frank W. Rahn
  */

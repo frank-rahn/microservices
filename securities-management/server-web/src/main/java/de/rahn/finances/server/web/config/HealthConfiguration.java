@@ -27,11 +27,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class HealthConfiguration extends AbstractHealthIndicator {
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see AbstractHealthIndicator#doHealthCheck(Builder)
-	 */
 	@Override
 	protected void doHealthCheck(Builder builder) {
 		builder.up().withDetail("test", "good");

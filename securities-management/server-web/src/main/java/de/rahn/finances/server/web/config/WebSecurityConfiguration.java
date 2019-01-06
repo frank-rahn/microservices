@@ -68,7 +68,7 @@ public class WebSecurityConfiguration {
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
 
-			// Konfiguration der Requests auf dise URL
+			// Konfiguration der Requests auf diese URL
 			http.antMatcher("/actuator/*")
 				.authorizeRequests()
 					.anyRequest()
@@ -97,11 +97,6 @@ public class WebSecurityConfiguration {
 	@Order(2)
 	public class H2ConsoleWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-		/**
-		 * {@inheritDoc}
-		 *
-		 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
-		 */
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off
@@ -138,11 +133,6 @@ public class WebSecurityConfiguration {
 	@Configuration
 	public class FormLoginWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-		/**
-		 * {@inheritDoc}
-		 *
-		 * @see WebSecurityConfigurerAdapter#configure(HttpSecurity)
-		 */
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			// @formatter:off

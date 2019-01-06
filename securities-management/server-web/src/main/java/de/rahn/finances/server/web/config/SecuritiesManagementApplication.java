@@ -27,7 +27,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SecuritiesManagementApplication {
 
 	/**
-	 * @param args die Parameters
+	 * @param args die Parameters von der Kommandozeile
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(SecuritiesManagementApplication.class, args);
