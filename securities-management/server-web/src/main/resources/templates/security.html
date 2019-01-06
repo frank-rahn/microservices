@@ -72,11 +72,9 @@
 						</div>
 					</section>
 					<section class="panel panel-default" th:if="*{!#strings.isEmpty(id)}">
-						<div class="panel-heading" id="audit-heading" role="tab">
-							<h2 class="panel-title">
-								<a class="collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#audit" aria-expanded="false" aria-controls="audit" role="button">
-									Protokoll
-								</a>
+						<div id="audit-heading" class="panel-heading" role="tab">
+							<h2 class="panel-title collapse-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#audit" aria-expanded="false" aria-controls="audit" role="button">
+								Protokoll
 							</h2>
 						</div>
 						<div id="audit" class="panel-collapse collapse" aria-labelledby="audit-heading" role="tabpanel">
