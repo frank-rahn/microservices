@@ -106,14 +106,14 @@ $(document).on('click.bs.delete.data-api', '[data-toggle="delete"]', function(ev
     $.ajax({
         type : 'DELETE',
         url : href,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader(header, token);
+        beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader(header, token);
         },
         success: function () {
             alertMessage("success", "Das Wertpapier wurde gelöscht.");
         },
         error: function (jqXHR) {
-            alertMessage("danger", jqXHR.responseText.message);
+            alertMessage("danger", jqXHR.responseText ? jqXHR.responseText.message : "unbekannter Fehler");
         }
     });
 });
@@ -136,7 +136,7 @@ $(document).on('click.bs.managementapi.data-api', '[data-toggle="managementapi"]
             resetMessage();
         },
         error: function (jqXHR) {
-            modalMessage(title, jqXHR.responseText, true);
+            modalMessage(title, jqXHR.responseText || "unbekannter Fehler", true);
             resetMessage();
         }
     });
