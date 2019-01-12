@@ -66,6 +66,16 @@ if ($.fn.dataTable) {
     });
 }
 
+// Setze für die AJAX-Aufrufe das CSRF-Token in den Request
+function processCsrf() {
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
+    $(document).ajaxSend( function (event, jqXHR) {
+        jqXHR.setRequestHeader(header, token);
+    });
+}
+
 // Meldungen setzen
 function alertMessage(stat, text) {
     $("#placeholder").html(
@@ -96,19 +106,16 @@ function modalMessage(titel, text, error) {
 $(document).on('click.bs.delete.data-api', '[data-toggle="delete"]', function(event) {
     var $this = $(this);
     var href = $this.data("url");
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
 
     if ($this.is('a')) {
         event.preventDefault();
     }
 
+    processCsrf();
+
     $.ajax({
         type : 'DELETE',
         url : href,
-        beforeSend: function(jqXHR) {
-            jqXHR.setRequestHeader(header, token);
-        },
         success: function () {
             alertMessage("success", "Das Wertpapier wurde gelöscht.");
         },
