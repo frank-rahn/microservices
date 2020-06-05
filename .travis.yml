@@ -5,7 +5,7 @@ sudo:
   - false
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 cache:
   directories:
@@ -16,7 +16,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  - mvn clean install
+  - mvn clean install -B
 
 after_success:
-  - mvn test jacoco:report coveralls:report
+  - mvn test jacoco:report coveralls:report -B
